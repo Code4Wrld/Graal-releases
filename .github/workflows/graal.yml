@@ -1,0 +1,209 @@
+# Construction et publication de Graal, sur les machines de GitHub (gratuites sur ce depot PUBLIC).
+# Le code reste dans le depot prive ; ce workflow le recupere avec un jeton en lecture seule.
+#
+# Lance par tools/publier-version.ps1 (gh workflow run graal.yml -f tag=vX.Y.Z) une fois le tag
+# cree dans le depot du code, avec les nouveautes dans sa Release. Il construit en parallele
+# l'APK (Android, Fire TV), le zip Windows et les deux .dmg (Mac Apple Silicon et Intel), et
+# chaque fichier est publie des qu'il est pret : la Release parait avec l'APK, le zip et les
+# .dmg s'y ajoutent ensuite. Une appli ne voit une version qu'une fois le fichier de sa
+# plateforme dedans (Updates.kt).
+#
+# Secrets de CE depot (Settings > Secrets and variables > Actions) :
+#   CODE_TOKEN            jeton GitHub fine-grained, "Contents: Read-only" sur Code4Wrld/Graal
+#   GRAAL_LICENCE_SECRET  le niptv.licenceSecret de local.properties (sans lui, Premium serait offert)
+#   GRAAL_KEYSTORE_B64    la cle de signature de l'APK (niptv.keystore), en base64 : sans la meme
+#                         cle, Android refuserait la mise a jour sur les appareils
+name: Graal
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag de la version (vX.Y.Z), deja cree dans le depot du code"
+        required: true
+      publish:
+        description: "Publier la Release (sinon : fichiers dans les artefacts seulement)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+env:
+  CODE_REPO: Code4Wrld/Graal
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Code de Graal (depot prive)
+        uses: actions/checkout@v5
+        with:
+          repository: ${{ env.CODE_REPO }}
+          ref: ${{ inputs.tag }}
+          token: ${{ secrets.CODE_TOKEN }}
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Secrets (Premium, signature)
+        env:
+          LICENCE: ${{ secrets.GRAAL_LICENCE_SECRET }}
+          KEYSTORE: ${{ secrets.GRAAL_KEYSTORE_B64 }}
+          TMDB: ${{ secrets.GRAAL_TMDB_KEY }}
+        run: |
+          if [ -z "$LICENCE" ] || [ -z "$KEYSTORE" ]; then
+            echo "::error::GRAAL_LICENCE_SECRET ou GRAAL_KEYSTORE_B64 absent : APK refuse (Premium offert ou mise a jour impossible)."
+            exit 1
+          fi
+          echo "$KEYSTORE" | base64 -d > "$RUNNER_TEMP/graal.keystore"
+          {
+            echo "niptv.licenceSecret=$LICENCE"
+            echo "niptv.keystore=$RUNNER_TEMP/graal.keystore"
+            echo "niptv.tmdbKey=$TMDB"
+          } > local.properties
+      - name: APK
+        run: |
+          chmod +x gradlew
+          # Since AGP 9 the APK is its own module (androidApp); older tags still build composeApp.
+          MODULE=composeApp
+          [ -d androidApp ] && MODULE=androidApp
+          ./gradlew ":$MODULE:assembleRelease" --console=plain -q
+          VERSION=$(grep '^niptv.version=' gradle.properties | cut -d= -f2 | tr -d '[:space:]')
+          mkdir -p dist
+          cp "$MODULE/build/outputs/apk/release/$MODULE-release.apk" "dist/Graal-$VERSION.apk"
+          ls -la dist
+      - uses: actions/upload-artifact@v5
+        with:
+          name: Graal-android
+          path: dist/*
+      - name: Release (publiee avec l'APK)
+        if: inputs.publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CODE_TOKEN: ${{ secrets.CODE_TOKEN }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          # The notes are the code repo's Release body, written by tools/publier-version.ps1.
+          GH_TOKEN="$CODE_TOKEN" gh release view "$TAG" -R "$CODE_REPO" --json body -q .body > notes.txt || echo "Graal ${TAG#v}" > notes.txt
+          gh release create "$TAG" dist/* -R "${{ github.repository }}" --title "Graal ${TAG#v}" --notes-file notes.txt --latest
+          GH_TOKEN="$CODE_TOKEN" gh release upload "$TAG" dist/* -R "$CODE_REPO" --clobber || echo "::warning::APK non copie dans la Release du depot du code (jeton en lecture seule)."
+
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 40
+    steps:
+      - name: Code de Graal (depot prive)
+        uses: actions/checkout@v5
+        with:
+          repository: ${{ env.CODE_REPO }}
+          ref: ${{ inputs.tag }}
+          token: ${{ secrets.CODE_TOKEN }}
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Secret Premium
+        shell: bash
+        env:
+          LICENCE: ${{ secrets.GRAAL_LICENCE_SECRET }}
+          TMDB: ${{ secrets.GRAAL_TMDB_KEY }}
+        run: |
+          if [ -z "$LICENCE" ]; then echo "::error::GRAAL_LICENCE_SECRET absent."; exit 1; fi
+          printf 'niptv.licenceSecret=%s\nniptv.tmdbKey=%s\n' "$LICENCE" "$TMDB" > local.properties
+      - name: libVLC
+        shell: pwsh
+        run: ./tools/fetch-vlc.ps1
+      - name: Zip Windows
+        shell: pwsh
+        run: |
+          ./gradlew.bat :composeApp:createDistributable --console=plain -q
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+          $version = ((Get-Content gradle.properties | Where-Object { $_ -match '^niptv.version=' }) -split '=', 2)[1].Trim()
+          New-Item -ItemType Directory -Force dist | Out-Null
+          Compress-Archive -Path composeApp/build/compose/binaries/main/app/Graal -DestinationPath "dist/Graal-$version-Windows.zip"
+          Get-ChildItem dist
+      - uses: actions/upload-artifact@v5
+        with:
+          name: Graal-windows
+          path: dist/*
+      - name: Ajout a la Release
+        if: inputs.publish
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CODE_TOKEN: ${{ secrets.CODE_TOKEN }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          # The Release is created with the APK: wait for it (15 min at most).
+          for i in $(seq 1 90); do gh release view "$TAG" -R "${{ github.repository }}" > /dev/null 2>&1 && break; sleep 10; done
+          gh release upload "$TAG" dist/* -R "${{ github.repository }}" --clobber
+          GH_TOKEN="$CODE_TOKEN" gh release upload "$TAG" dist/* -R "$CODE_REPO" --clobber || echo "::warning::Fichiers non copies dans la Release du depot du code (jeton en lecture seule)."
+
+  mac:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-15
+            arch: arm64
+          - runner: macos-15-intel
+            arch: x64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 40
+    steps:
+      - name: Code de Graal (depot prive)
+        uses: actions/checkout@v5
+        with:
+          repository: ${{ env.CODE_REPO }}
+          ref: ${{ inputs.tag }}
+          token: ${{ secrets.CODE_TOKEN }}
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v4
+      - name: libVLC (celui de VLC.app, inclus dans l'appli)
+        run: |
+          curl -fsSL --retry 4 --retry-all-errors --connect-timeout 20 --max-time 300 -o vlc.dmg https://get.videolan.org/vlc/3.0.21/macosx/vlc-3.0.21-universal.dmg
+          hdiutil attach vlc.dmg -nobrowse -readonly -mountpoint /tmp/vlc
+          mkdir -p composeApp/resources/macos/vlc
+          cp -R /tmp/vlc/VLC.app/Contents/MacOS/lib composeApp/resources/macos/vlc/
+          cp -R /tmp/vlc/VLC.app/Contents/MacOS/plugins composeApp/resources/macos/vlc/
+          hdiutil detach /tmp/vlc
+          # The plugins' index goes stale once the app is signed: without it, VLC simply scans them.
+          find composeApp/resources/macos/vlc/plugins -name 'plugins.dat' -delete
+      - name: Secret Premium
+        env:
+          LICENCE: ${{ secrets.GRAAL_LICENCE_SECRET }}
+          TMDB: ${{ secrets.GRAAL_TMDB_KEY }}
+        run: |
+          if [ -z "$LICENCE" ]; then echo "::error::GRAAL_LICENCE_SECRET absent."; exit 1; fi
+          printf 'niptv.licenceSecret=%s\nniptv.tmdbKey=%s\n' "$LICENCE" "$TMDB" > local.properties
+      - name: .dmg
+        run: |
+          chmod +x gradlew
+          ./gradlew :composeApp:packageDmg --console=plain -q
+          VERSION=$(grep '^niptv.version=' gradle.properties | cut -d= -f2 | tr -d '[:space:]')
+          mkdir -p dist
+          cp composeApp/build/compose/binaries/main/dmg/*.dmg "dist/Graal-$VERSION-macOS-${{ matrix.arch }}.dmg"
+          ls -la dist
+      - uses: actions/upload-artifact@v5
+        with:
+          name: Graal-macOS-${{ matrix.arch }}
+          path: dist/*.dmg
+      - name: Ajout a la Release
+        if: inputs.publish
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CODE_TOKEN: ${{ secrets.CODE_TOKEN }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          # The Release is created with the APK: wait for it (15 min at most).
+          for i in $(seq 1 90); do gh release view "$TAG" -R "${{ github.repository }}" > /dev/null 2>&1 && break; sleep 10; done
+          gh release upload "$TAG" dist/* -R "${{ github.repository }}" --clobber
+          GH_TOKEN="$CODE_TOKEN" gh release upload "$TAG" dist/* -R "$CODE_REPO" --clobber || echo "::warning::Fichiers non copies dans la Release du depot du code (jeton en lecture seule)."
