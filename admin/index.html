@@ -246,8 +246,15 @@ $('b-back').onclick = () => show('v-list');
 let accounts = [];
 async function premium(action, body) {
   const { data, error } = await sb.functions.invoke('premium', { body: { action, ...(body || {}) } });
-  if (error) throw new Error(error.context && error.context.status === 403 ? 'Accès refusé (reconnecte-toi avec le code à 6 chiffres).' : error.message);
-  if (data && data.error) throw new Error({ exists: 'Un compte existe déjà avec cette adresse.', bad_email: 'Adresse e-mail invalide.', not_configured: 'Fonction pas encore configurée (secrets manquants).' }[data.error] || data.error);
+  const MESSAGES = { exists: 'Un compte existe déjà avec cette adresse.', bad_email: 'Adresse e-mail invalide.', forbidden: 'Accès refusé (reconnecte-toi avec le code à 6 chiffres).',
+    not_configured: 'Premium pas encore configuré côté serveur : les secrets (clés de chiffrement, Brevo, Telegram) ne sont pas en place.', server: 'Erreur du serveur Premium (voir les journaux de la fonction dans Supabase).' };
+  if (error) {
+    // The function's own answer (its "error" field) says why, whatever the HTTP status.
+    let why = null;
+    try { why = (await error.context.json()).error; } catch (_) { /* no JSON body */ }
+    throw new Error(MESSAGES[why] || why || error.message);
+  }
+  if (data && data.error) throw new Error(MESSAGES[data.error] || data.error);
   return data;
 }
 async function loadPremium() {
