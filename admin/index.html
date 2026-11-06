@@ -339,8 +339,8 @@ $('c-create').onclick = async () => {
 let all = [];
 async function loadList() {
   say('m-list', 'Chargement…');
-  const { data, error } = await sb.from('support_logs').select('code, created_at, app_version, device').order('created_at', { ascending: false }).limit(300);
-  if (error) return say('m-list', error.message, 'err');
+  let data;
+  try { data = (await premium('admin_logs')).logs || []; } catch (e) { return say('m-list', e.message, 'err'); }
   all = data; say('m-list', data.length ? '' : 'Aucun journal.'); drawList();
 }
 // Sorted by date (newest first) unless a column's title was clicked; clicked again: the other way.
@@ -407,9 +407,11 @@ $('b-delete').onclick = async () => {
   let gone = [];
   // By packs: a long list of codes would not fit in one address.
   for (let i = 0; i < codes.length; i += 100) {
-    const { data, error } = await sb.from('support_logs').delete().in('code', codes.slice(i, i + 100)).select('code');
-    if (error) { say('m-sel', error.message, 'err'); break; }
-    gone = gone.concat((data || []).map(d => d.code));
+    try {
+      const pack = codes.slice(i, i + 100);
+      const { deleted } = await premium('admin_logs_delete', { codes: pack });
+      if (deleted) gone = gone.concat(pack);
+    } catch (e) { say('m-sel', e.message, 'err'); break; }
   }
   const removed = new Set(gone);
   all = all.filter(r => !removed.has(r.code));
@@ -431,10 +433,14 @@ async function openLog(r) {
   $('l-title').textContent = `${r.code || 'Journal'} · ${when(r.created_at)}`;
   $('l-summary').innerHTML = '<div class="stat"><span>Chargement…</span></div>';
   $('l-problems').innerHTML = ''; $('l-timeline').innerHTML = ''; $('l-raw').innerHTML = '';
-  const { data, error } = await sb.from('support_logs').select('log').eq('code', r.code).eq('created_at', r.created_at).limit(1);
-  if (error || !data.length) { $('l-summary').innerHTML = `<div class="stat"><span>${esc(error ? error.message : 'Introuvable')}</span></div>`; return; }
+  let text;
+  try {
+    const res = await premium('admin_log', { code: r.code, created_at: r.created_at });
+    if (res.error) throw new Error('Introuvable');
+    text = res.log || '';
+  } catch (e) { $('l-summary').innerHTML = `<div class="stat"><span>${esc(e.message)}</span></div>`; return; }
   parsed = [];
-  for (const raw of (data[0].log || '').split('\n')) {
+  for (const raw of text.split('\n')) {
     const m = LINE.exec(raw);
     if (m) parsed.push({ at: m[1], lvl: m[2], tag: m[3].trim(), text: m[4] });
     else if (parsed.length && raw.trim()) parsed[parsed.length - 1].text += '\n' + raw;
