@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Graal – IPTV Player</title>
+<meta name="description" content="Graal, le lecteur IPTV pensé pour la télécommande : direct avec guide des programmes, films, séries, replay et enregistrement. Android TV, Fire TV, Windows et Mac.">
+<meta property="og:title" content="Graal – IPTV Player">
+<meta property="og:description" content="Votre quête s'arrête ici. Le lecteur IPTV pensé pour la télécommande.">
+<meta name="theme-color" content="#0B081B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='1' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%237B5CFF'/%3E%3Cstop offset='.55' stop-color='%23C04BE0'/%3E%3Cstop offset='1' stop-color='%23FF7A6B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='200' height='200' rx='44' fill='%23141430'/%3E%3Cpath d='M125.36 72.64 A50 50 0 1 0 140.0 108.0 L99.0 108' fill='none' stroke='url(%23g)' stroke-width='24' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M157.55 48.0 Q160.55 66.0 178.55 69.0 Q160.55 72.0 157.55 90.0 Q154.55 72.0 136.55 69.0 Q154.55 66.0 157.55 48.0 Z' fill='%23FF7A6B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Lexend:wght@500;700;800&display=swap">
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #0B081B; --bg2: #110D26; --panel: rgba(30, 27, 45, .72); --panel-solid: #1E1B2D; --high: #2B2839; --border: rgba(255, 255, 255, .09);
+  --text: #EDEBF7; --dim: #A3A0BD; --faint: #6E6A8A;
+  --g1: #7B5CFF; --g2: #C04BE0; --g3: #FF7A6B; --grad: linear-gradient(110deg, var(--g1), var(--g2) 55%, var(--g3));
+  --gold: #F5C518; --ok: #2ECC71;
+  --radius: 22px;
+  --sel: linear-gradient(90deg, #5323FF, #7232FF, #9342FF);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--bg); }
+body {
+  margin: 0; color: var(--text); font: 16px/1.6 "DM Sans", system-ui, "Segoe UI", Roboto, sans-serif; overflow-x: hidden;
+  background: radial-gradient(1100px 750px at 12% -8%, #192764 0%, transparent 62%), radial-gradient(950px 700px at 108% 28%, #241943 0%, transparent 62%), var(--bg);
+}
+a { color: inherit; }
+h1, h2, h3 { font-family: Lexend, "DM Sans", sans-serif; letter-spacing: -.01em; margin: 0; }
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+.grad-text { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* Header */
+header { position: sticky; top: 0; z-index: 10; background: rgba(11, 8, 27, .78); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+header .wrap { display: flex; align-items: center; gap: 18px; height: 68px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand svg { width: 38px; height: 38px; flex: none; }
+.brand b { font-family: Lexend; font-weight: 800; font-size: 21px; }
+.brand span { display: block; font-size: 10px; letter-spacing: .28em; color: var(--dim); font-weight: 500; margin-top: -4px; }
+nav.main { display: flex; gap: 6px; margin-left: auto; }
+nav.main a { text-decoration: none; color: var(--dim); font-weight: 500; padding: 8px 12px; border-radius: 12px; transition: color .15s, background .15s; }
+nav.main a:hover { color: var(--text); background: rgba(255, 255, 255, .05); }
+select.lang { background: var(--high); color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 7px 10px; font: inherit; font-size: 14px; cursor: pointer; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; border-radius: 30px; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font-size: 16px; transition: transform .15s, filter .15s, background .15s; }
+.btn.primary { background: var(--sel); color: #fff; box-shadow: 0 10px 30px rgba(114, 50, 255, .4); }
+.btn.primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.btn.ghost { background: rgba(255, 255, 255, .06); color: var(--text); border: 1px solid var(--border); }
+.btn.ghost:hover { background: rgba(255, 255, 255, .1); }
+.btn svg { width: 18px; height: 18px; }
+
+/* Hero */
+.hero { padding: 84px 0 70px; }
+.hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+.chip { display: inline-block; padding: 6px 14px; border-radius: 20px; background: rgba(123, 92, 255, .14); border: 1px solid rgba(123, 92, 255, .35); color: #C9BCFF; font-size: 13px; font-weight: 500; }
+.hero h1 { font-size: clamp(40px, 5.4vw, 66px); line-height: 1.05; margin: 20px 0 18px; font-weight: 800; }
+.hero p.lead { font-size: 19px; color: var(--dim); margin: 0 0 30px; max-width: 540px; }
+.hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero .note { margin-top: 22px; font-size: 13.5px; color: var(--faint); max-width: 520px; }
+
+/* App screens redrawn in the Galaxie theme: shapes stand in for every channel, title and picture. */
+.tv { position: relative; }
+.tv::before { content: ""; position: absolute; inset: -50px; background: radial-gradient(closest-side, rgba(114, 50, 255, .38), transparent); filter: blur(24px); z-index: -1; }
+.frame { border-radius: 16px; padding: 9px; background: linear-gradient(160deg, #262338, #141222); box-shadow: 0 40px 90px rgba(0, 0, 0, .55), 0 0 0 1px rgba(255, 255, 255, .07); }
+.stand { width: 26%; height: 12px; margin: 0 auto; background: linear-gradient(#1d1a2d, #0f0d1c); border-radius: 0 0 10px 10px; }
+.app { container-type: inline-size; position: relative; aspect-ratio: 16 / 9; border-radius: 9px; overflow: hidden; color: #fff; font-family: Roboto, "DM Sans", sans-serif;
+  background: radial-gradient(60% 80% at 20% 100%, #1c1f5c 0%, transparent 70%), radial-gradient(50% 70% at 100% 0%, #2a1748 0%, transparent 70%), #0b0a1d; }
+.app * { box-sizing: border-box; }
+.rail { position: absolute; left: 0; top: 0; bottom: 0; width: 6.7cqw; background: rgba(255, 255, 255, .045); display: flex; flex-direction: column; align-items: center; padding-top: 2.4cqw; gap: 1.9cqw; z-index: 2; }
+.rail .g { width: 3.4cqw; height: 3.4cqw; border-radius: .9cqw; margin-bottom: 1.2cqw; }
+.rail i { width: 1.9cqw; height: 1.9cqw; border-radius: .45cqw; background: rgba(255, 255, 255, .28); display: block; }
+.rail i.on { background: transparent; box-shadow: 0 0 0 1.1cqw rgba(255, 255, 255, .09); outline: .35cqw solid rgba(170, 160, 255, .9); outline-offset: -.35cqw; }
+.sk { display: block; height: 1.05cqw; border-radius: .6cqw; background: rgba(255, 255, 255, .78); }
+.sk.dim { background: rgba(255, 255, 255, .3); }
+.sk.acc { background: #8B7BFF; }
+.t { font-size: 1.55cqw; line-height: 1.25; white-space: nowrap; }
+.t.big { font-size: 2.6cqw; font-weight: 700; }
+.t.dim { color: rgba(255, 255, 255, .55); }
+/* Live TV */
+.video { position: absolute; inset: 0; background:
+  radial-gradient(40% 55% at 70% 40%, rgba(255, 122, 107, .45), transparent 70%),
+  radial-gradient(45% 60% at 40% 70%, rgba(123, 92, 255, .55), transparent 70%),
+  radial-gradient(35% 45% at 85% 85%, rgba(46, 204, 170, .25), transparent 70%),
+  linear-gradient(135deg, #1b1640, #120e2a); filter: saturate(1.1); }
+.cats { position: absolute; left: 6.7cqw; top: 0; bottom: 0; width: 22cqw; background: linear-gradient(90deg, rgba(11, 10, 29, .92), rgba(11, 10, 29, .7)); padding: 2.6cqw 1.6cqw; display: flex; flex-direction: column; gap: 2.3cqw; }
+.cats .fav { display: flex; align-items: center; gap: .8cqw; color: #9C8CFF; font-size: 1.55cqw; font-weight: 500; }
+.cats .pill { border: .3cqw solid #7B5CFF; border-radius: 1cqw; padding: 1.3cqw 1.2cqw; display: flex; align-items: center; gap: .9cqw; background: rgba(123, 92, 255, .12); }
+.cats .pill b { width: .35cqw; height: 1.8cqw; background: #8B7BFF; border-radius: .2cqw; }
+.chans { position: absolute; left: 30.5cqw; right: 2.6cqw; top: 2.4cqw; display: flex; flex-direction: column; gap: 1.3cqw; }
+.chan { display: flex; align-items: center; gap: 1.6cqw; padding: 1.2cqw 1.6cqw; border-radius: 1.2cqw; background: rgba(40, 36, 64, .72); backdrop-filter: blur(6px); }
+.chan.sel { background: linear-gradient(90deg, rgba(83, 35, 255, .85), rgba(147, 66, 255, .75)); }
+.chan .n { width: 2.4cqw; color: rgba(255, 255, 255, .6); font-size: 1.6cqw; text-align: center; }
+.chan .logo { width: 7cqw; height: 4.4cqw; border-radius: .8cqw; background: #fff; display: grid; place-items: center; flex: none; }
+.chan .logo span { width: 60%; height: 42%; border-radius: .5cqw; }
+.chan .body { flex: 1; display: flex; flex-direction: column; gap: .75cqw; min-width: 0; }
+.chan .line { display: flex; align-items: center; gap: .9cqw; }
+.chan .rep { width: 1.4cqw; height: 1.4cqw; border-radius: 50%; border: .25cqw solid #8B7BFF; }
+.chan.sel .rep { border-color: #fff; }
+.prog { flex: 0 0 9cqw; height: .45cqw; border-radius: .3cqw; background: rgba(255, 255, 255, .2); overflow: hidden; }
+.prog i { display: block; height: 100%; background: #8B7BFF; }
+.chan.sel .prog i { background: #fff; }
+/* Films */
+.hero-art { position: absolute; inset: 0 0 42% 0; background:
+  radial-gradient(45% 80% at 72% 35%, rgba(255, 166, 107, .55), transparent 70%),
+  radial-gradient(40% 70% at 55% 60%, rgba(192, 75, 224, .5), transparent 70%),
+  radial-gradient(60% 90% at 90% 10%, rgba(123, 92, 255, .45), transparent 70%), #1a1238; }
+.hero-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #0b0a1d 8%, rgba(11, 10, 29, .2) 60%, transparent), linear-gradient(0deg, #0b0a1d, transparent 45%); }
+.films { position: absolute; inset: 0; padding: 4.2cqw 4.2cqw 0; display: flex; flex-direction: column; }
+.films .round { position: absolute; top: 1.6cqw; right: 1.6cqw; display: flex; gap: 1cqw; }
+.films .round i { width: 4.4cqw; height: 4.4cqw; border-radius: 50%; background: rgba(255, 255, 255, .14); display: block; }
+.badges { display: flex; gap: .8cqw; margin: 1.4cqw 0; }
+.badges span { padding: .3cqw .9cqw; border-radius: .5cqw; background: rgba(255, 255, 255, .14); font-size: 1.4cqw; }
+.posters { display: flex; gap: 1.4cqw; margin-top: 1.6cqw; }
+.posters b { flex: 1; aspect-ratio: 2 / 3; border-radius: .9cqw; }
+.posters b.sel { outline: .35cqw solid #7B5CFF; outline-offset: .25cqw; transform: translateY(-.4cqw); }
+/* Settings */
+.setlist { position: absolute; left: 6.7cqw; top: 0; bottom: 0; width: 35.4cqw; background: rgba(255, 255, 255, .035); padding: 3cqw 1.8cqw; }
+.setlist h4 { margin: 0 0 2.6cqw 1.2cqw; font-size: 3cqw; font-weight: 700; }
+.set { display: flex; align-items: center; gap: 1.8cqw; padding: 1.3cqw 1.4cqw; border-radius: 1.2cqw; margin-bottom: .6cqw; }
+.set.sel { background: rgba(255, 255, 255, .09); }
+.set svg { width: 2.2cqw; height: 2.2cqw; fill: #fff; flex: none; }
+.set div { flex: 1; }
+.set .t { font-size: 1.75cqw; }
+.set .t.dim { font-size: 1.3cqw; }
+.set em { font-style: normal; color: rgba(255, 255, 255, .6); font-size: 1.8cqw; }
+.setpane { position: absolute; left: 45.5cqw; top: 3.4cqw; right: 3cqw; }
+.setpane h4 { margin: 0 0 1.2cqw; font-size: 2.9cqw; font-weight: 700; }
+.setpane p { margin: 0 0 2.6cqw; font-size: 1.55cqw; color: rgba(255, 255, 255, .6); line-height: 1.4; white-space: normal; }
+.themes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2cqw; margin-top: 2.4cqw; }
+.themes span { height: 5.4cqw; border-radius: 1cqw; position: relative; }
+.themes span.on { outline: .3cqw solid #fff; outline-offset: .25cqw; }
+.change { display: inline-block; padding: 1.1cqw 3cqw; border-radius: 4cqw; background: linear-gradient(90deg, #5323FF, #7232FF, #9342FF); font-weight: 700; font-size: 1.7cqw; }
+
+/* Screens showcase */
+.shots { display: grid; grid-template-columns: 1fr; gap: 26px; }
+.tabs { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; }
+.tabs button { padding: 10px 22px; border-radius: 30px; border: 1px solid var(--border); background: rgba(255, 255, 255, .05); color: var(--dim); font: inherit; font-weight: 500; cursor: pointer; }
+.tabs button.on { background: linear-gradient(90deg, #5323FF, #7232FF, #9342FF); color: #fff; border-color: transparent; font-weight: 700; }
+.shot { display: none; max-width: 900px; margin: 0 auto; }
+.shot.on { display: block; }
+.shot figcaption { text-align: center; color: var(--dim); margin-top: 22px; font-size: 16px; }
+
+/* Sections */
+section { padding: 84px 0; }
+.head { text-align: center; max-width: 720px; margin: 0 auto 48px; }
+.head h2 { font-size: clamp(30px, 3.6vw, 42px); font-weight: 800; line-height: 1.15; }
+.head p { color: var(--dim); font-size: 18px; margin: 14px 0 0; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; backdrop-filter: blur(6px); transition: transform .2s, border-color .2s; }
+.card:hover { transform: translateY(-3px); border-color: rgba(192, 75, 224, .35); }
+.card .ico { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; background: rgba(123, 92, 255, .16); margin-bottom: 16px; }
+.card .ico svg { width: 24px; height: 24px; stroke: #C9BCFF; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.card h3 { font-size: 18px; margin-bottom: 8px; font-weight: 700; }
+.card p { margin: 0; color: var(--dim); font-size: 15px; }
+
+/* Premium */
+#premium { background: linear-gradient(180deg, transparent, rgba(123, 92, 255, .07) 30%, rgba(192, 75, 224, .06) 70%, transparent); }
+.pgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 56px; }
+.pgrid .card .ico { background: rgba(245, 197, 24, .13); }
+.pgrid .card .ico svg { stroke: var(--gold); }
+.plans { display: grid; grid-template-columns: repeat(2, minmax(0, 360px)); gap: 22px; justify-content: center; }
+.plan { position: relative; border-radius: 26px; padding: 34px 30px 30px; background: var(--panel-solid); border: 1px solid var(--border); text-align: center; }
+.plan.best { background: linear-gradient(var(--panel-solid), var(--panel-solid)) padding-box, var(--grad) border-box; border: 2px solid transparent; }
+.tag { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); white-space: nowrap; background: var(--gold); color: #1a1400; font-weight: 700; font-size: 13px; padding: 4px 14px; border-radius: 20px; }
+.plan h3 { font-size: 22px; }
+.plan .devices { color: var(--dim); margin: 4px 0 18px; }
+.price { display: flex; align-items: baseline; justify-content: center; gap: 12px; }
+.price b { font-family: Lexend; font-size: 54px; font-weight: 800; line-height: 1; }
+.price s { color: var(--faint); font-size: 22px; }
+.plan .once { color: var(--dim); font-size: 14px; margin: 10px 0 0; }
+.steps { max-width: 820px; margin: 56px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; counter-reset: s; }
+.step { padding: 22px; border-radius: 18px; background: rgba(255, 255, 255, .03); border: 1px solid var(--border); }
+.step::before { counter-increment: s; content: counter(s); display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--grad); font-weight: 700; margin-bottom: 12px; }
+.step p { margin: 0; color: var(--dim); font-size: 15px; }
+.step b { color: var(--text); }
+.center-note { text-align: center; color: var(--faint); font-size: 14px; margin-top: 22px; }
+
+/* Download */
+.dl { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.dl .card { display: flex; flex-direction: column; }
+.dl .card p { flex: 1; margin-bottom: 18px; }
+.dl .btn { justify-content: center; padding: 12px 18px; font-size: 15px; }
+.dl .btn + .btn { margin-top: 8px; }
+.version { text-align: center; color: var(--dim); margin: -28px 0 36px; font-size: 15px; }
+.firetv { margin-top: 28px; display: grid; grid-template-columns: 1fr 1.3fr; gap: 28px; align-items: center; background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 30px; }
+.firetv h3 { font-size: 22px; margin-bottom: 8px; }
+.firetv p { color: var(--dim); margin: 0; }
+.firetv ol { margin: 0; padding-left: 20px; color: var(--dim); }
+.firetv li { margin: 6px 0; }
+.firetv li b { color: var(--text); }
+.url { font-family: ui-monospace, Consolas, monospace; font-size: 26px; font-weight: 700; padding: 10px 18px; border-radius: 14px; background: #0D0A1F; border: 1px dashed rgba(192, 75, 224, .5); display: inline-block; margin-top: 14px; }
+.compat { text-align: center; color: var(--faint); font-size: 14px; margin-top: 24px; }
+
+/* FAQ */
+.faq { max-width: 800px; margin: 0 auto; }
+details { background: var(--panel); border: 1px solid var(--border); border-radius: 18px; padding: 0 24px; margin-bottom: 12px; }
+summary { cursor: pointer; list-style: none; padding: 20px 0; font-weight: 700; font-size: 17px; display: flex; justify-content: space-between; gap: 16px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--g2); font-size: 22px; line-height: 1; transition: transform .2s; }
+details[open] summary::after { transform: rotate(45deg); }
+details p { margin: 0 0 20px; color: var(--dim); }
+
+/* Footer */
+footer { border-top: 1px solid var(--border); padding: 40px 0 50px; color: var(--faint); font-size: 14px; }
+footer .wrap { display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; }
+footer a { color: var(--dim); }
+footer .legal { max-width: 560px; }
+
+@media (max-width: 980px) {
+  .hero .wrap { grid-template-columns: 1fr; gap: 48px; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .pgrid, .dl { grid-template-columns: repeat(2, 1fr); }
+  .firetv { grid-template-columns: 1fr; }
+  nav.main a:not(.keep) { display: none; }
+}
+@media (max-width: 640px) {
+  .wrap { padding: 0 16px; }
+  header .wrap { height: 60px; gap: 10px; }
+  .brand span { display: none; }
+  nav.main { display: none; }
+  select.lang { margin-left: auto; }
+  .hero { padding: 48px 0 40px; }
+  section { padding: 60px 0; }
+  .grid, .pgrid, .dl, .steps { grid-template-columns: 1fr; }
+  .plans { grid-template-columns: 1fr; }
+  .url { font-size: 20px; }
+  .btn { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .card, .btn { transition: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Graal – IPTV Player">
+      <svg viewBox="0 0 200 200" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7B5CFF"/><stop offset=".55" stop-color="#C04BE0"/><stop offset="1" stop-color="#FF7A6B"/></linearGradient><linearGradient id="ln" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1A1A36"/><stop offset="1" stop-color="#0E0E1E"/></linearGradient><radialGradient id="lh"><stop offset="0" stop-color="#FF7A6B" stop-opacity=".55"/><stop offset="1" stop-color="#FF7A6B" stop-opacity="0"/></radialGradient></defs><rect width="200" height="200" rx="44" fill="url(#ln)"/><circle cx="157.55" cy="69" r="26" fill="url(#lh)"/><path d="M125.36 72.64 A50 50 0 1 0 140.0 108.0 L99.0 108" fill="none" stroke="url(#lg)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><path d="M157.55 48.0 Q160.55 66.0 178.55 69.0 Q160.55 72.0 157.55 90.0 Q154.55 72.0 136.55 69.0 Q154.55 66.0 157.55 48.0 Z" fill="#FF7A6B"/><circle cx="180.55" cy="96" r="4" fill="#FF7A6B" opacity=".6"/></svg>
+      <div><b>Graal</b><span>IPTV PLAYER</span></div>
+    </a>
+    <nav class="main">
+      <a href="#fonctions" data-i="nav.features">Fonctions</a>
+      <a href="#premium" data-i="nav.premium">Premium</a>
+      <a href="#telecharger" class="keep" data-i="nav.download">Télécharger</a>
+      <a href="#faq" data-i="nav.faq">Questions</a>
+    </nav>
+    <select class="lang" id="lang" aria-label="Langue">
+      <option value="fr">FR</option><option value="en">EN</option><option value="es">ES</option><option value="it">IT</option><option value="pt">PT</option><option value="de">DE</option>
+    </select>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <span class="chip" data-i="hero.chip">Android TV · Fire TV · Windows · Mac</span>
+      <h1><span data-i="hero.title1">Votre quête</span><br><span class="grad-text" data-i="hero.title2">s'arrête ici.</span></h1>
+      <p class="lead" data-i="hero.lead">Graal est le lecteur IPTV pensé pour la télécommande : direct avec guide des programmes, films, séries, replay et enregistrement, dans une interface fluide et soignée.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#telecharger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg><span data-i="hero.cta1">Télécharger gratuitement</span></a>
+        <a class="btn ghost" href="#premium" data-i="hero.cta2">Découvrir Premium</a>
+      </div>
+      <p class="note" data-i="hero.note">Graal est un lecteur : il ne fournit aucune chaîne. Vous y ajoutez votre propre abonnement.</p>
+    </div>
+    <div class="tv" aria-hidden="true"><div class="frame"><div class="app"><div class="hero-art"></div><div class="films"><div class="round"><i></i><i></i><i></i></div><span class="sk" style="width:26cqw;height:3.6cqw;border-radius:1cqw"></span><span class="sk dim" style="width:30cqw;height:1.5cqw;margin-top:1.6cqw"></span><div class="badges"><span>TP</span><span>★ 8,5</span><span>2 h 30</span></div><span class="sk dim" style="width:44cqw;margin-bottom:.9cqw"></span><span class="sk dim" style="width:38cqw"></span><span class="sk" style="width:18cqw;height:1.6cqw;margin-top:3cqw"></span><div class="posters"><b class="" style="background:linear-gradient(160deg,#7B5CFF,#2B1E66)"></b><b class="" style="background:linear-gradient(160deg,#FF7A6B,#7A2A3A)"></b><b class="" style="background:linear-gradient(160deg,#2EC4B6,#14555A)"></b><b class="" style="background:linear-gradient(160deg,#C04BE0,#4B1D63)"></b><b class="sel" style="background:linear-gradient(160deg,#F5B85B,#7A4B12)"></b><b class="" style="background:linear-gradient(160deg,#5B8CFF,#1E3270)"></b><b class="" style="background:linear-gradient(160deg,#E85D9A,#5E1A3D)"></b></div><div class="posters" style="margin-top:1.6cqw"><b class="" style="background:linear-gradient(160deg,#7B5CFF,#2B1E66)"></b><b class="" style="background:linear-gradient(160deg,#FF7A6B,#7A2A3A)"></b><b class="" style="background:linear-gradient(160deg,#2EC4B6,#14555A)"></b><b class="" style="background:linear-gradient(160deg,#C04BE0,#4B1D63)"></b><b class="" style="background:linear-gradient(160deg,#F5B85B,#7A4B12)"></b><b class="" style="background:linear-gradient(160deg,#5B8CFF,#1E3270)"></b><b class="" style="background:linear-gradient(160deg,#E85D9A,#5E1A3D)"></b></div></div></div></div><div class="stand"></div></div>
+  </div>
+</div>
+
+<section id="ecrans">
+  <div class="wrap">
+    <div class="head">
+      <h2 data-i="shots.title">Une interface pensée pour le canapé</h2>
+      <p data-i="shots.sub">Grande, lisible et rapide à la télécommande. Neuf thèmes de couleur, ici « Galaxie ».</p>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="on" data-shot="0" data-i="shots.t1">TV en direct</button>
+      <button data-shot="1" data-i="shots.t2">Films et séries</button>
+      <button data-shot="2" data-i="shots.t3">Paramètres</button>
+    </div>
+    <figure class="shot on" style="margin:0 auto"><div class="tv" aria-hidden="true"><div class="frame"><div class="app"><div class="video"></div><div class="rail"><svg class="g" viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#16142c"/><path d="M125.36 72.64 A50 50 0 1 0 140.0 108.0 L99.0 108" fill="none" stroke="url(#lg)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><path d="M157.55 48.0 Q160.55 66.0 178.55 69.0 Q160.55 72.0 157.55 90.0 Q154.55 72.0 136.55 69.0 Q154.55 66.0 157.55 48.0 Z" fill="#FF7A6B"/></svg><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="cats"><div class="fav">★ <span class="sk" style="width:6cqw;background:#9C8CFF"></span></div><div class="pill"><b></b><span class="sk" style="width:11cqw"></span></div><span class="sk dim" style="width:12cqw;margin-left:1.4cqw"></span><span class="sk dim" style="width:10cqw;margin-left:1.4cqw"></span><span class="sk dim" style="width:13cqw;margin-left:1.4cqw"></span><span class="sk dim" style="width:9cqw;margin-left:1.4cqw"></span><span class="sk dim" style="width:11cqw;margin-left:1.4cqw"></span><span class="sk dim" style="width:12cqw;margin-left:1.4cqw"></span><span class="sk dim" style="width:8cqw;margin-left:1.4cqw"></span></div><div class="chans"><div class="chan"><span class="n">15</span><span class="logo"><span style="background:linear-gradient(135deg,#5B5BD6,#2F2F8F)"></span></span><div class="body"><div class="line"><span class="sk" style="width:14cqw;height:1.35cqw"></span><span class=rep></span></div><div class="line"><span class="sk acc" style="width:3.4cqw"></span><span class="sk dim" style="width:16cqw"></span><span class="prog"><i style="width:45%"></i></span></div><div class="line"><span class="sk dim" style="width:6cqw;opacity:.7"></span><span class="sk dim" style="width:12cqw;opacity:.7"></span></div></div></div><div class="chan sel"><span class="n">16</span><span class="logo"><span style="background:linear-gradient(135deg,#E8505B,#B0303A)"></span></span><div class="body"><div class="line"><span class="sk" style="width:17cqw;height:1.35cqw"></span><span class=rep></span></div><div class="line"><span class="sk acc" style="width:3.4cqw"></span><span class="sk dim" style="width:20cqw"></span><span class="prog"><i style="width:70%"></i></span></div><div class="line"><span class="sk dim" style="width:6cqw;opacity:.7"></span><span class="sk dim" style="width:16cqw;opacity:.7"></span></div></div></div><div class="chan"><span class="n">17</span><span class="logo"><span style="background:linear-gradient(135deg,#2EB67D,#1B7F56)"></span></span><div class="body"><div class="line"><span class="sk" style="width:15cqw;height:1.35cqw"></span><span class=rep></span></div><div class="line"><span class="sk acc" style="width:3.4cqw"></span><span class="sk dim" style="width:18cqw"></span><span class="prog"><i style="width:25%"></i></span></div><div class="line"><span class="sk dim" style="width:6cqw;opacity:.7"></span><span class="sk dim" style="width:14cqw;opacity:.7"></span></div></div></div><div class="chan"><span class="n">18</span><span class="logo"><span style="background:linear-gradient(135deg,#F2A93B,#D97B12)"></span></span><div class="body"><div class="line"><span class="sk" style="width:16cqw;height:1.35cqw"></span><span class=rep></span></div><div class="line"><span class="sk acc" style="width:3.4cqw"></span><span class="sk dim" style="width:14cqw"></span><span class="prog"><i style="width:60%"></i></span></div><div class="line"><span class="sk dim" style="width:6cqw;opacity:.7"></span><span class="sk dim" style="width:10cqw;opacity:.7"></span></div></div></div><div class="chan"><span class="n">19</span><span class="logo"><span style="background:linear-gradient(135deg,#3BA4F2,#1E6FB5)"></span></span><div class="body"><div class="line"><span class="sk" style="width:13cqw;height:1.35cqw"></span></div><div class="line"><span class="sk acc" style="width:3.4cqw"></span><span class="sk dim" style="width:17cqw"></span><span class="prog"><i style="width:10%"></i></span></div><div class="line"><span class="sk dim" style="width:6cqw;opacity:.7"></span><span class="sk dim" style="width:13cqw;opacity:.7"></span></div></div></div><div class="chan"><span class="n">20</span><span class="logo"><span style="background:linear-gradient(135deg,#B05BFF,#6A22B8)"></span></span><div class="body"><div class="line"><span class="sk" style="width:15cqw;height:1.35cqw"></span></div><div class="line"><span class="sk acc" style="width:3.4cqw"></span><span class="sk dim" style="width:17cqw"></span><span class="prog"><i style="width:10%"></i></span></div><div class="line"><span class="sk dim" style="width:6cqw;opacity:.7"></span><span class="sk dim" style="width:15cqw;opacity:.7"></span></div></div></div></div></div></div><div class="stand"></div></div><figcaption data-i="shots.c1">Vos chaînes avec le programme en cours, le suivant et sa progression, sur la vidéo qui continue.</figcaption></figure>
+    <figure class="shot" style="margin:0 auto"><div class="tv" aria-hidden="true"><div class="frame"><div class="app"><div class="hero-art"></div><div class="films"><div class="round"><i></i><i></i><i></i></div><span class="sk" style="width:26cqw;height:3.6cqw;border-radius:1cqw"></span><span class="sk dim" style="width:30cqw;height:1.5cqw;margin-top:1.6cqw"></span><div class="badges"><span>TP</span><span>★ 8,5</span><span>2 h 30</span></div><span class="sk dim" style="width:44cqw;margin-bottom:.9cqw"></span><span class="sk dim" style="width:38cqw"></span><span class="sk" style="width:18cqw;height:1.6cqw;margin-top:3cqw"></span><div class="posters"><b class="" style="background:linear-gradient(160deg,#7B5CFF,#2B1E66)"></b><b class="" style="background:linear-gradient(160deg,#FF7A6B,#7A2A3A)"></b><b class="" style="background:linear-gradient(160deg,#2EC4B6,#14555A)"></b><b class="" style="background:linear-gradient(160deg,#C04BE0,#4B1D63)"></b><b class="sel" style="background:linear-gradient(160deg,#F5B85B,#7A4B12)"></b><b class="" style="background:linear-gradient(160deg,#5B8CFF,#1E3270)"></b><b class="" style="background:linear-gradient(160deg,#E85D9A,#5E1A3D)"></b></div><div class="posters" style="margin-top:1.6cqw"><b class="" style="background:linear-gradient(160deg,#7B5CFF,#2B1E66)"></b><b class="" style="background:linear-gradient(160deg,#FF7A6B,#7A2A3A)"></b><b class="" style="background:linear-gradient(160deg,#2EC4B6,#14555A)"></b><b class="" style="background:linear-gradient(160deg,#C04BE0,#4B1D63)"></b><b class="" style="background:linear-gradient(160deg,#F5B85B,#7A4B12)"></b><b class="" style="background:linear-gradient(160deg,#5B8CFF,#1E3270)"></b><b class="" style="background:linear-gradient(160deg,#E85D9A,#5E1A3D)"></b></div></div></div></div><div class="stand"></div></div><figcaption data-i="shots.c2">Chaque titre sur sa propre image : genres, âge, note, durée, résumé, puis la rangée de la catégorie.</figcaption></figure>
+    <figure class="shot" style="margin:0 auto"><div class="tv" aria-hidden="true"><div class="frame"><div class="app"><div class="rail"><svg class="g" viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#16142c"/><path d="M125.36 72.64 A50 50 0 1 0 140.0 108.0 L99.0 108" fill="none" stroke="url(#lg)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><path d="M157.55 48.0 Q160.55 66.0 178.55 69.0 Q160.55 72.0 157.55 90.0 Q154.55 72.0 136.55 69.0 Q154.55 66.0 157.55 48.0 Z" fill="#FF7A6B"/></svg><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="setlist"><h4>Paramètres</h4><div class="set"><svg viewBox="0 0 24 24"><path d="M9 2l2 6 6 2-6 2-2 6-2-6-6-2 6-2zM19 13l1 3 3 1-3 1-1 3-1-3-3-1 3-1z"/></svg><div><div class="t">Mise à jour</div><div class="t dim">Graal à jour</div></div><em>›</em></div><div class="set"><svg viewBox="0 0 24 24"><path d="M12 4a8 8 0 107.7 10h-2.1A6 6 0 1112 6c1.7 0 3.1.7 4.2 1.8L13 11h7V4l-2.4 2.4A8 8 0 0012 4z"/></svg><div><div class="t">Actualiser le contenu</div><div class="t dim">Chaînes, films, séries, guide</div></div><em>›</em></div><div class="set"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6z"/></svg><div><div class="t">Abonnements</div><div class="t dim">Mon abonnement</div></div><em>›</em></div><div class="set"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg><div><div class="t">Lecteur</div><div class="t dim">Réserve du direct : 10 s</div></div><em>›</em></div><div class="set"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.9 6h-3a15 15 0 00-1.3-3.9A8 8 0 0118.9 8zM12 4c.8 1.2 1.5 2.5 1.9 4h-3.8c.4-1.5 1.1-2.8 1.9-4zM4.3 14a8 8 0 010-4h3.4a16 16 0 000 4zm.8 2h3a15 15 0 001.3 3.9A8 8 0 015.1 16zm3-8h-3a8 8 0 014.3-3.9A15 15 0 008.1 8zM12 20c-.8-1.2-1.5-2.5-1.9-4h3.8c-.4 1.5-1.1 2.8-1.9 4zm2.3-6H9.7a14 14 0 010-4h4.6a14 14 0 010 4zm.3 5.9c.6-1.2 1-2.5 1.3-3.9h3a8 8 0 01-4.3 3.9zm1.7-5.9a16 16 0 000-4h3.4a8 8 0 010 4z"/></svg><div><div class="t">Langue de l’appli</div><div class="t dim">Automatique</div></div><em>›</em></div><div class="set sel"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 000 18c1.4 0 2-1.2 1.4-2.2-.7-1.1-.1-2.5 1.3-2.5H17a4 4 0 004-4c0-5-4-9.3-9-9.3zM6.5 12a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm3-4a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm5 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm3 4a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/></svg><div><div class="t">Thème de couleur</div><div class="t dim">Galaxie</div></div><em>›</em></div></div><div class="setpane"><h4>Thème de couleur</h4><p>Neuf thèmes au choix, avec un aperçu de chacun : seules les couleurs changent, pas la disposition.</p><span class="change">Changer</span><div class="themes"><span class="" style="background:linear-gradient(135deg,#3AA0FF,#1A4E8C)"></span><span class="" style="background:linear-gradient(135deg,#F5C518,#8A6A00)"></span><span class="" style="background:linear-gradient(135deg,#FF7A6B,#8A2F2A)"></span><span class="" style="background:linear-gradient(135deg,#FF5A36,#7A1E0E)"></span><span class="" style="background:linear-gradient(135deg,#2EC4B6,#0F5E57)"></span><span class="" style="background:linear-gradient(135deg,#9342FF,#4B1D8C)"></span><span class="" style="background:linear-gradient(135deg,#FF3EA5,#7A0F52)"></span><span class="on" style="background:linear-gradient(135deg,#7232FF,#241943)"></span><span class="" style="background:linear-gradient(135deg,#7C8798,#2B313B)"></span></div></div></div></div><div class="stand"></div></div><figcaption data-i="shots.c3">Des réglages clairs, expliqués à droite, et le thème de couleur que vous préférez.</figcaption></figure>
+    <p class="center-note" data-i="shots.note">Illustrations : les chaînes, titres et images sont remplacés par des formes neutres.</p>
+  </div>
+</section>
+
+<section id="fonctions">
+  <div class="wrap">
+    <div class="head">
+      <h2 data-i="feat.title">Tout pour regarder, rien de superflu</h2>
+      <p data-i="feat.sub">La version gratuite est complète et sans publicité.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3 data-i="f1.t">Direct et guide des programmes</h3><p data-i="f1.d">Chaînes par catégories, programme en cours et suivant, guide complet, logos officiels et zapping instantané.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5M16 4v5M10 13l5 2.5-5 2.5z"/></svg></div><h3 data-i="f2.t">Films et séries</h3><p data-i="f2.d">Fiches complètes avec résumé, acteurs, bandes-annonces et notes. Reprise là où vous vous êtes arrêté.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg></div><h3 data-i="f3.t">Recherche unique</h3><p data-i="f3.d">Chaînes, films et séries en une seule recherche, pensée pour la télécommande.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></div><h3 data-i="f4.t">Favoris, listes et historique</h3><p data-i="f4.d">Vos favoris, vos listes perso et votre historique, propres à chaque abonnement.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></div><h3 data-i="f5.t">Vos langues</h3><p data-i="f5.d">Choisissez les langues que vous regardez : seuls ces chaînes et ces contenus s'affichent. Appli en 6 langues.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></div><h3 data-i="f6.t">Contrôle parental</h3><p data-i="f6.d">Un code parental et des chaînes verrouillées, à votre main.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div><h3 data-i="f7.t">Tous les abonnements</h3><p data-i="f7.d">Xtream Codes, portail MAC (Stalker) et playlists M3U. Saisie depuis votre téléphone par QR code.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div><h3 data-i="f8.t">Doux avec votre fournisseur</h3><p data-i="f8.d">Une seule connexion et des demandes espacées : Graal évite les blocages de compte.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 000 18c1.7 0 2-1.5 1.2-2.6-.8-1.1-.2-2.4 1.3-2.4H17a4 4 0 004-4c0-5-4-9-9-9z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7.5" r="1"/></svg></div><h3 data-i="f9.t">Neuf thèmes</h3><p data-i="f9.d">Une interface fluide, aux couleurs que vous choisissez, mise à jour toute seule.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="premium">
+  <div class="wrap">
+    <div class="head">
+      <span class="chip" data-i="prem.chip">Graal Premium</span>
+      <h2 style="margin-top:16px"><span data-i="prem.title1">Allez plus loin</span> <span class="grad-text" data-i="prem.title2">avec Premium</span></h2>
+      <p data-i="prem.sub">Payé une fois, à vie. Lié à votre adresse e-mail : vous le retrouvez après une réinitialisation ou sur une nouvelle box.</p>
+    </div>
+    <div class="pgrid">
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 108-8 8 8 0 00-6.3 3"/><path d="M4 4v4h4"/><path d="M10.5 9.5l4 2.5-4 2.5z"/></svg></div><h3 data-i="p1.t">Replay</h3><p data-i="p1.d">Reprenez un programme au début ou revoyez les programmes passés.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4" fill="#F5C518" stroke="none"/></svg></div><h3 data-i="p2.t">Enregistrement</h3><p data-i="p2.d">Le programme en cours, ou programmé depuis le guide, sur clé ou disque USB.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7l3.5 2.5-1.3 4h-4.4l-1.3-4zM12 3v4M20.5 9.5l-5 0M17 19l-2.8-5.5M7 19l2.8-5.5M3.5 9.5h5"/></svg></div><h3 data-i="p3.t">Mes sports</h3><p data-i="p3.d">Vos équipes, scores, classements, F1, et les matchs du jour à la TV.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 12h4l2-5 4 10 2-5h4"/></svg></div><h3 data-i="p4.t">Secours automatique</h3><p data-i="p4.d">Une chaîne coupe ? Graal passe tout seul sur une autre version (FHD, HD, SD).</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v7M14 17.5h7"/></svg></div><h3 data-i="p5.t">Catégories intelligentes</h3><p data-i="p5.d">Foot, Basket, Cinéma… les chaînes regroupées automatiquement.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="10" rx="2"/><path d="M8 3h11a2 2 0 012 2v9"/></svg></div><h3 data-i="p6.t">Plusieurs abonnements</h3><p data-i="p6.d">Ajoutez-en autant que vous voulez et passez de l'un à l'autre.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M20 7a8 8 0 00-14.3-1.7M4 17a8 8 0 0014.3 1.7"/><path d="M20 3v4h-4M4 21v-4h4"/></svg></div><h3 data-i="p7.t">Synchronisation</h3><p data-i="p7.d">Historique, favoris, listes et réglages identiques sur toutes vos box.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="12" height="9" rx="1.5"/><rect x="15" y="9" width="7" height="10" rx="1.5"/><path d="M6 18h4"/></svg></div><h3 data-i="p8.t">Continuer ailleurs</h3><p data-i="p8.d">Envoyez la vidéo en cours sur une autre box de la maison.</p></div>
+    </div>
+
+    <div class="plans">
+      <div class="plan">
+        <span class="tag" data-i="plan.launch">Offre de lancement</span>
+        <h3 data-i="plan1.t">1 appareil</h3>
+        <p class="devices" data-i="plan1.d">Pour votre box ou votre TV</p>
+        <div class="price"><s>15 €</s><b>12 €</b></div>
+        <p class="once" data-i="plan.once">Paiement unique · à vie</p>
+      </div>
+      <div class="plan best">
+        <span class="tag" data-i="plan.launch">Offre de lancement</span>
+        <h3 data-i="plan2.t">Foyer</h3>
+        <p class="devices" data-i="plan2.d">Jusqu'à 5 appareils : box, téléphone, PC…</p>
+        <div class="price"><s>25 €</s><b>20 €</b></div>
+        <p class="once" data-i="plan.once">Paiement unique · à vie</p>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step"><p data-ih="s1">Dans Graal : <b>Paramètres › Premium › Demander Premium</b>.</p></div>
+      <div class="step"><p data-ih="s2">Saisissez <b>votre e-mail</b> et le code reçu, puis choisissez votre formule.</p></div>
+      <div class="step"><p data-ih="s3">Réglez auprès de votre vendeur : <b>Premium s'active tout seul</b>.</p></div>
+    </div>
+    <p class="center-note" data-ih="prem.contact">Une question ? <a href="mailto:contact@graaltv.com">contact@graaltv.com</a></p>
+  </div>
+</section>
+
+<section id="telecharger">
+  <div class="wrap">
+    <div class="head">
+      <h2 data-i="dl.title">Télécharger Graal</h2>
+      <p data-i="dl.sub">Gratuit. Les mises à jour arrivent ensuite toutes seules, dans l'appli.</p>
+    </div>
+    <p class="version" id="version"></p>
+    <div class="dl">
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8"/></svg></div><h3>Android TV · Google TV</h3><p data-i="dl.atv">Box et TV Android 7 ou plus : Shield, Mi Box, Chromecast avec Google TV, Formuler…</p><a class="btn primary" data-asset=".apk" href="https://github.com/Code4Wrld/Graal-releases/releases/latest" data-i="dl.apk">Télécharger l'APK</a></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></div><h3 data-i="dl.phone.t">Téléphone et tablette</h3><p data-i="dl.phone">Android 7 ou plus, au doigt, en portrait ou en paysage.</p><a class="btn ghost" data-asset=".apk" href="https://github.com/Code4Wrld/Graal-releases/releases/latest" data-i="dl.apk">Télécharger l'APK</a></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 5.5l7.5-1v7H3zM12 4.2L21 3v8.5h-9zM3 12.5h7.5v7L3 18.5zM12 12.5h9V21l-9-1.2z"/></svg></div><h3>Windows</h3><p data-i="dl.win">Windows 10 ou 11, 64 bits. Au clavier et à la souris.</p><a class="btn ghost" data-asset="-Windows.zip" href="https://github.com/Code4Wrld/Graal-releases/releases/latest" data-i="dl.win.b">Télécharger pour Windows</a></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M16 3c-1.2.1-2.6.9-3.3 2-.7.9-1.2 2.2-1 3.4 1.3.1 2.6-.7 3.4-1.7.7-1 1.1-2.2.9-3.7zM19.5 16.6c-.6 1.3-.9 1.9-1.6 3-1 1.6-2.5 3.5-4.3 3.5-1.6 0-2-1-4.2-1s-2.7 1-4.3 1C3.3 23.1 2 21.3 1 19.7c-2.6-4.3-1.8-9.6 1.3-11.6 1.1-.7 2.4-1.1 3.6-1.1 1.6 0 2.7 1 4 1 1.3 0 2-.9 4-1 1.5 0 3.1.8 4.2 2.2-3.7 2-3.1 7.3.4 8.4z" transform="translate(2 -1) scale(.9)"/></svg></div><h3>Mac</h3><p data-i="dl.mac">Apple Silicon (M1 et suivants) ou Intel.</p><a class="btn ghost" data-asset="-macOS-arm64.dmg" href="https://github.com/Code4Wrld/Graal-releases/releases/latest">Apple Silicon</a><a class="btn ghost" data-asset="-macOS-x64.dmg" href="https://github.com/Code4Wrld/Graal-releases/releases/latest">Intel</a></div>
+    </div>
+
+    <div class="firetv">
+      <div>
+        <h3>Fire TV</h3>
+        <p data-i="ft.sub">Avec l'appli gratuite Downloader, tapez simplement :</p>
+        <span class="url">graaltv.com/apk</span>
+      </div>
+      <ol>
+        <li data-ih="ft.1">Installez <b>Downloader</b> depuis l'Appstore (gratuit, icône orange).</li>
+        <li data-ih="ft.2"><b>Paramètres › Ma Fire TV › À propos</b> : cliquez 7 fois sur le nom de l'appareil.</li>
+        <li data-ih="ft.3"><b>Options pour les développeurs › Installer des applis inconnues › Downloader</b> : activé.</li>
+        <li data-ih="ft.4">Dans Downloader, tapez <b>graaltv.com/apk</b>, puis <b>Installer</b>.</li>
+      </ol>
+    </div>
+    <p class="compat" data-i="dl.compat">Non compatible : les Fire TV sous Vega OS (Fire TV Stick HD 2025) et les TV non Android.</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="head"><h2 data-i="faq.title">Questions fréquentes</h2></div>
+    <div class="faq">
+      <details><summary data-i="q1">Graal fournit-il des chaînes ?</summary><p data-i="a1">Non. Graal est un lecteur : vous y ajoutez l'abonnement de votre choix. Utilisez-le uniquement avec des contenus auxquels vous avez légalement accès.</p></details>
+      <details><summary data-i="q2">Quels abonnements sont compatibles ?</summary><p data-i="a2">Xtream Codes (serveur, identifiant et mot de passe), portail MAC (Stalker / Ministra) et playlists M3U, par lien ou par fichier.</p></details>
+      <details><summary data-i="q3">La version gratuite est-elle limitée dans le temps ?</summary><p data-i="a3">Non. Le direct, le guide, les films, les séries, la recherche et les favoris restent gratuits, sans limite de durée et sans publicité.</p></details>
+      <details><summary data-i="q4">Je réinitialise ma box : est-ce que je perds Premium ?</summary><p data-i="a4">Non. Réinstallez Graal, puis Paramètres › Premium › « Je l'ai déjà » avec votre adresse e-mail et le code reçu : Premium revient tout de suite.</p></details>
+      <details><summary data-i="q5">Sur combien d'appareils puis-je utiliser Premium ?</summary><p data-i="a5">Un appareil avec la formule 1 appareil, jusqu'à cinq avec la formule Foyer (box, téléphone, PC, Mac…). Vous pouvez remplacer un ancien appareil par un nouveau.</p></details>
+      <details><summary data-i="q6">Que deviennent mes données ?</summary><p data-i="a6">Votre abonnement reste sur votre appareil. L'adresse e-mail de votre Premium est enregistrée chiffrée, et la synchronisation entre vos appareils est chiffrée avant de quitter la box.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <b style="color:var(--text);font-family:Lexend">Graal – IPTV Player</b><br>
+      <span data-i="foot.contact">Contact</span> : <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>
+    </div>
+    <p class="legal" data-i="foot.legal">Graal est un lecteur multimédia. Il ne fournit, n'héberge ni ne vend aucun contenu audiovisuel ; chaque utilisateur est responsable des abonnements qu'il y ajoute.</p>
+    <div>© 2026 Graal</div>
+  </div>
+</footer>
+
+<script>
+// Texts in the app's six languages; French is in the page itself. [data-i]: text, [data-ih]: text with <b>/<a>.
+const T = {
+  en: {
+    'shots.title': 'Built for the couch', 'shots.sub': 'Big, readable and quick with the remote. Nine colour themes, shown here in “Galaxy”.', 'shots.t1': 'Live TV', 'shots.t2': 'Movies and series', 'shots.t3': 'Settings', 'shots.c1': 'Your channels with the current programme, the next one and its progress, over the video that keeps playing.', 'shots.c2': 'Each title on its own picture: genres, age rating, score, length, synopsis, then the category row.', 'shots.c3': 'Clear settings, explained on the right, and the colour theme you like best.', 'shots.note': 'Illustrations: channels, titles and pictures are replaced with neutral shapes.',
+    'nav.features': 'Features', 'nav.premium': 'Premium', 'nav.download': 'Download', 'nav.faq': 'FAQ',
+    'hero.chip': 'Android TV · Fire TV · Windows · Mac', 'hero.title1': 'Your quest', 'hero.title2': 'ends here.',
+    'hero.lead': 'Graal is the IPTV player built for the remote: live TV with a programme guide, movies, series, catch-up and recording, in a smooth, polished interface.',
+    'hero.cta1': 'Download for free', 'hero.cta2': 'Discover Premium', 'hero.note': 'Graal is a player: it provides no channels. You add your own subscription.',
+    'feat.title': 'Everything to watch, nothing superfluous', 'feat.sub': 'The free version is complete and ad-free.',
+    'f1.t': 'Live TV and programme guide', 'f1.d': 'Channels by category, current and next programme, full guide, official logos and instant zapping.',
+    'f2.t': 'Movies and series', 'f2.d': 'Full details with synopsis, cast, trailers and ratings. Resume right where you left off.',
+    'f3.t': 'One search', 'f3.d': 'Channels, movies and series in a single search, designed for the remote.',
+    'f4.t': 'Favourites, lists and history', 'f4.d': 'Your favourites, custom lists and history, kept for each subscription.',
+    'f5.t': 'Your languages', 'f5.d': 'Choose the languages you watch: only those channels and titles are shown. App in 6 languages.',
+    'f6.t': 'Parental control', 'f6.d': 'A parental code and locked channels, under your control.',
+    'f7.t': 'Every subscription type', 'f7.d': 'Xtream Codes, MAC portal (Stalker) and M3U playlists. Type it on your phone with a QR code.',
+    'f8.t': 'Gentle with your provider', 'f8.d': 'One connection and spaced-out requests: Graal avoids account blocks.',
+    'f9.t': 'Nine themes', 'f9.d': 'A smooth interface in the colours you choose, updating itself.',
+    'prem.chip': 'Graal Premium', 'prem.title1': 'Go further', 'prem.title2': 'with Premium',
+    'prem.sub': 'Paid once, for life. Linked to your e-mail address: you get it back after a reset or on a new box.',
+    'p1.t': 'Catch-up', 'p1.d': 'Restart a programme from the beginning or watch past programmes.',
+    'p2.t': 'Recording', 'p2.d': 'The current programme, or scheduled from the guide, to a USB stick or drive.',
+    'p3.t': 'My sports', 'p3.d': 'Your teams, scores, standings, F1, and today’s matches on TV.',
+    'p4.t': 'Automatic fallback', 'p4.d': 'A channel drops? Graal switches to another version by itself (FHD, HD, SD).',
+    'p5.t': 'Smart categories', 'p5.d': 'Football, Basketball, Movies… channels grouped automatically.',
+    'p6.t': 'Several subscriptions', 'p6.d': 'Add as many as you like and switch between them.',
+    'p7.t': 'Sync', 'p7.d': 'History, favourites, lists and settings identical on all your boxes.',
+    'p8.t': 'Continue elsewhere', 'p8.d': 'Send what you are watching to another box in the house.',
+    'plan.launch': 'Launch offer', 'plan1.t': '1 device', 'plan1.d': 'For your box or TV', 'plan2.t': 'Household', 'plan2.d': 'Up to 5 devices: box, phone, PC…', 'plan.once': 'One-time payment · for life',
+    's1': 'In Graal: <b>Settings › Premium › Request Premium</b>.', 's2': 'Enter <b>your e-mail</b> and the code you receive, then choose your plan.', 's3': 'Pay your seller: <b>Premium turns on by itself</b>.',
+    'prem.contact': 'A question? <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>',
+    'dl.title': 'Download Graal', 'dl.sub': 'Free. Updates then arrive by themselves, in the app.', 'dl.version': 'Version {v}',
+    'dl.atv': 'Android 7+ boxes and TVs: Shield, Mi Box, Chromecast with Google TV, Formuler…', 'dl.apk': 'Download the APK',
+    'dl.phone.t': 'Phone and tablet', 'dl.phone': 'Android 7 or later, touch, portrait or landscape.',
+    'dl.win': 'Windows 10 or 11, 64-bit. Keyboard and mouse.', 'dl.win.b': 'Download for Windows', 'dl.mac': 'Apple Silicon (M1 and later) or Intel.',
+    'ft.sub': 'With the free Downloader app, just type:',
+    'ft.1': 'Install <b>Downloader</b> from the Appstore (free, orange icon).', 'ft.2': '<b>Settings › My Fire TV › About</b>: click the device name 7 times.',
+    'ft.3': '<b>Developer options › Install unknown apps › Downloader</b>: on.', 'ft.4': 'In Downloader, type <b>graaltv.com/apk</b>, then <b>Install</b>.',
+    'dl.compat': 'Not compatible: Fire TV devices on Vega OS (Fire TV Stick HD 2025) and non-Android TVs.',
+    'faq.title': 'Frequently asked questions',
+    'q1': 'Does Graal provide channels?', 'a1': 'No. Graal is a player: you add the subscription of your choice. Only use it with content you are legally entitled to access.',
+    'q2': 'Which subscriptions are supported?', 'a2': 'Xtream Codes (server, username and password), MAC portal (Stalker / Ministra) and M3U playlists, by link or file.',
+    'q3': 'Is the free version time-limited?', 'a3': 'No. Live TV, the guide, movies, series, search and favourites stay free, with no time limit and no ads.',
+    'q4': 'I reset my box: do I lose Premium?', 'a4': 'No. Reinstall Graal, then Settings › Premium › “I already have it” with your e-mail address and the code you receive: Premium is back at once.',
+    'q5': 'On how many devices can I use Premium?', 'a5': 'One device with the 1-device plan, up to five with the Household plan (box, phone, PC, Mac…). You can replace an old device with a new one.',
+    'q6': 'What happens to my data?', 'a6': 'Your subscription stays on your device. Your Premium e-mail address is stored encrypted, and sync between your devices is encrypted before it leaves the box.',
+    'foot.contact': 'Contact', 'foot.legal': 'Graal is a media player. It does not provide, host or sell any audiovisual content; each user is responsible for the subscriptions they add.',
+  },
+  es: {
+    'shots.title': 'Una interfaz pensada para el sofá', 'shots.sub': 'Grande, legible y rápida con el mando. Nueve temas de color, aquí «Galaxia».', 'shots.t1': 'TV en directo', 'shots.t2': 'Películas y series', 'shots.t3': 'Ajustes', 'shots.c1': 'Sus canales con el programa actual, el siguiente y su progreso, sobre el vídeo que sigue reproduciéndose.', 'shots.c2': 'Cada título sobre su propia imagen: géneros, edad, nota, duración, sinopsis y la fila de la categoría.', 'shots.c3': 'Ajustes claros, explicados a la derecha, y el tema de color que prefiera.', 'shots.note': 'Ilustraciones: los canales, títulos e imágenes se sustituyen por formas neutras.',
+    'nav.features': 'Funciones', 'nav.premium': 'Premium', 'nav.download': 'Descargar', 'nav.faq': 'Preguntas',
+    'hero.chip': 'Android TV · Fire TV · Windows · Mac', 'hero.title1': 'Su búsqueda', 'hero.title2': 'termina aquí.',
+    'hero.lead': 'Graal es el reproductor IPTV pensado para el mando: TV en directo con guía de programas, películas, series, replay y grabación, en una interfaz fluida y cuidada.',
+    'hero.cta1': 'Descargar gratis', 'hero.cta2': 'Descubrir Premium', 'hero.note': 'Graal es un reproductor: no ofrece ningún canal. Usted añade su propia suscripción.',
+    'feat.title': 'Todo para ver, nada superfluo', 'feat.sub': 'La versión gratuita es completa y sin publicidad.',
+    'f1.t': 'Directo y guía de programas', 'f1.d': 'Canales por categorías, programa actual y siguiente, guía completa, logotipos oficiales y zapping instantáneo.',
+    'f2.t': 'Películas y series', 'f2.d': 'Fichas completas con sinopsis, reparto, tráileres y notas. Continúe justo donde lo dejó.',
+    'f3.t': 'Una sola búsqueda', 'f3.d': 'Canales, películas y series en una sola búsqueda, pensada para el mando.',
+    'f4.t': 'Favoritos, listas e historial', 'f4.d': 'Sus favoritos, listas personales e historial, propios de cada suscripción.',
+    'f5.t': 'Sus idiomas', 'f5.d': 'Elija los idiomas que ve: solo se muestran esos canales y contenidos. Aplicación en 6 idiomas.',
+    'f6.t': 'Control parental', 'f6.d': 'Un código parental y canales bloqueados, a su gusto.',
+    'f7.t': 'Todas las suscripciones', 'f7.d': 'Xtream Codes, portal MAC (Stalker) y listas M3U. Escríbala desde su teléfono con un código QR.',
+    'f8.t': 'Cuidadoso con su proveedor', 'f8.d': 'Una sola conexión y peticiones espaciadas: Graal evita los bloqueos de cuenta.',
+    'f9.t': 'Nueve temas', 'f9.d': 'Una interfaz fluida, con los colores que elija, que se actualiza sola.',
+    'prem.chip': 'Graal Premium', 'prem.title1': 'Vaya más allá', 'prem.title2': 'con Premium',
+    'prem.sub': 'Se paga una vez, de por vida. Vinculado a su correo: lo recupera tras un restablecimiento o en una nueva box.',
+    'p1.t': 'Replay', 'p1.d': 'Retome un programa desde el principio o vea los programas pasados.',
+    'p2.t': 'Grabación', 'p2.d': 'El programa actual, o programada desde la guía, en memoria o disco USB.',
+    'p3.t': 'Mis deportes', 'p3.d': 'Sus equipos, resultados, clasificaciones, F1 y los partidos del día en la TV.',
+    'p4.t': 'Respaldo automático', 'p4.d': '¿Se corta un canal? Graal cambia solo a otra versión (FHD, HD, SD).',
+    'p5.t': 'Categorías inteligentes', 'p5.d': 'Fútbol, Baloncesto, Cine… canales agrupados automáticamente.',
+    'p6.t': 'Varias suscripciones', 'p6.d': 'Añada tantas como quiera y pase de una a otra.',
+    'p7.t': 'Sincronización', 'p7.d': 'Historial, favoritos, listas y ajustes idénticos en todas sus boxes.',
+    'p8.t': 'Continuar en otro lugar', 'p8.d': 'Envíe lo que está viendo a otra box de la casa.',
+    'plan.launch': 'Oferta de lanzamiento', 'plan1.t': '1 dispositivo', 'plan1.d': 'Para su box o su TV', 'plan2.t': 'Hogar', 'plan2.d': 'Hasta 5 dispositivos: box, teléfono, PC…', 'plan.once': 'Pago único · de por vida',
+    's1': 'En Graal: <b>Ajustes › Premium › Solicitar Premium</b>.', 's2': 'Introduzca <b>su correo</b> y el código recibido, y elija su fórmula.', 's3': 'Pague a su vendedor: <b>Premium se activa solo</b>.',
+    'prem.contact': '¿Alguna pregunta? <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>',
+    'dl.title': 'Descargar Graal', 'dl.sub': 'Gratis. Las actualizaciones llegan después solas, en la aplicación.', 'dl.version': 'Versión {v}',
+    'dl.atv': 'Boxes y TV Android 7 o superior: Shield, Mi Box, Chromecast con Google TV, Formuler…', 'dl.apk': 'Descargar el APK',
+    'dl.phone.t': 'Teléfono y tableta', 'dl.phone': 'Android 7 o superior, táctil, en vertical u horizontal.',
+    'dl.win': 'Windows 10 u 11, 64 bits. Con teclado y ratón.', 'dl.win.b': 'Descargar para Windows', 'dl.mac': 'Apple Silicon (M1 y posteriores) o Intel.',
+    'ft.sub': 'Con la aplicación gratuita Downloader, escriba simplemente:',
+    'ft.1': 'Instale <b>Downloader</b> desde la Appstore (gratis, icono naranja).', 'ft.2': '<b>Ajustes › Mi Fire TV › Acerca de</b>: pulse 7 veces el nombre del dispositivo.',
+    'ft.3': '<b>Opciones para desarrolladores › Instalar aplicaciones desconocidas › Downloader</b>: activado.', 'ft.4': 'En Downloader, escriba <b>graaltv.com/apk</b> y luego <b>Instalar</b>.',
+    'dl.compat': 'No compatible: Fire TV con Vega OS (Fire TV Stick HD 2025) y televisores no Android.',
+    'faq.title': 'Preguntas frecuentes',
+    'q1': '¿Graal ofrece canales?', 'a1': 'No. Graal es un reproductor: usted añade la suscripción que elija. Úselo solo con contenidos a los que tenga acceso legal.',
+    'q2': '¿Qué suscripciones son compatibles?', 'a2': 'Xtream Codes (servidor, usuario y contraseña), portal MAC (Stalker / Ministra) y listas M3U, por enlace o archivo.',
+    'q3': '¿La versión gratuita tiene límite de tiempo?', 'a3': 'No. El directo, la guía, las películas, las series, la búsqueda y los favoritos siguen siendo gratuitos, sin límite de tiempo y sin publicidad.',
+    'q4': 'Restablezco mi box: ¿pierdo Premium?', 'a4': 'No. Reinstale Graal y luego Ajustes › Premium › «Ya lo tengo» con su correo y el código recibido: Premium vuelve al instante.',
+    'q5': '¿En cuántos dispositivos puedo usar Premium?', 'a5': 'Un dispositivo con la fórmula 1 dispositivo, hasta cinco con la fórmula Hogar (box, teléfono, PC, Mac…). Puede sustituir un dispositivo antiguo por uno nuevo.',
+    'q6': '¿Qué pasa con mis datos?', 'a6': 'Su suscripción se queda en su dispositivo. El correo de su Premium se guarda cifrado, y la sincronización entre sus dispositivos se cifra antes de salir de la box.',
+    'foot.contact': 'Contacto', 'foot.legal': 'Graal es un reproductor multimedia. No ofrece, aloja ni vende ningún contenido audiovisual; cada usuario es responsable de las suscripciones que añade.',
+  },
+  it: {
+    'shots.title': 'Un’interfaccia pensata per il divano', 'shots.sub': 'Grande, leggibile e veloce con il telecomando. Nove temi di colore, qui «Galassia».', 'shots.t1': 'TV in diretta', 'shots.t2': 'Film e serie', 'shots.t3': 'Impostazioni', 'shots.c1': 'I suoi canali con il programma in corso, il successivo e il suo avanzamento, sul video che continua.', 'shots.c2': 'Ogni titolo sulla propria immagine: generi, età, voto, durata, trama, poi la fila della categoria.', 'shots.c3': 'Impostazioni chiare, spiegate a destra, e il tema di colore che preferisce.', 'shots.note': 'Illustrazioni: canali, titoli e immagini sono sostituiti da forme neutre.',
+    'nav.features': 'Funzioni', 'nav.premium': 'Premium', 'nav.download': 'Scarica', 'nav.faq': 'Domande',
+    'hero.chip': 'Android TV · Fire TV · Windows · Mac', 'hero.title1': 'La sua ricerca', 'hero.title2': 'finisce qui.',
+    'hero.lead': 'Graal è il lettore IPTV pensato per il telecomando: diretta con guida ai programmi, film, serie, replay e registrazione, in un’interfaccia fluida e curata.',
+    'hero.cta1': 'Scarica gratis', 'hero.cta2': 'Scopri Premium', 'hero.note': 'Graal è un lettore: non fornisce alcun canale. Lei aggiunge il proprio abbonamento.',
+    'feat.title': 'Tutto per guardare, niente di superfluo', 'feat.sub': 'La versione gratuita è completa e senza pubblicità.',
+    'f1.t': 'Diretta e guida ai programmi', 'f1.d': 'Canali per categorie, programma attuale e successivo, guida completa, loghi ufficiali e zapping istantaneo.',
+    'f2.t': 'Film e serie', 'f2.d': 'Schede complete con trama, cast, trailer e voti. Riprende esattamente da dove si era fermato.',
+    'f3.t': 'Un’unica ricerca', 'f3.d': 'Canali, film e serie in un’unica ricerca, pensata per il telecomando.',
+    'f4.t': 'Preferiti, liste e cronologia', 'f4.d': 'I suoi preferiti, le liste personali e la cronologia, per ogni abbonamento.',
+    'f5.t': 'Le sue lingue', 'f5.d': 'Scelga le lingue che guarda: vengono mostrati solo quei canali e contenuti. App in 6 lingue.',
+    'f6.t': 'Controllo parentale', 'f6.d': 'Un codice parentale e canali bloccati, come preferisce.',
+    'f7.t': 'Tutti gli abbonamenti', 'f7.d': 'Xtream Codes, portale MAC (Stalker) e playlist M3U. Digitazione dal telefono con un codice QR.',
+    'f8.t': 'Delicato con il suo fornitore', 'f8.d': 'Una sola connessione e richieste distanziate: Graal evita i blocchi dell’account.',
+    'f9.t': 'Nove temi', 'f9.d': 'Un’interfaccia fluida, nei colori che sceglie, che si aggiorna da sola.',
+    'prem.chip': 'Graal Premium', 'prem.title1': 'Vada oltre', 'prem.title2': 'con Premium',
+    'prem.sub': 'Pagato una volta, per sempre. Legato al suo indirizzo e-mail: lo ritrova dopo un ripristino o su un nuovo box.',
+    'p1.t': 'Replay', 'p1.d': 'Riprenda un programma dall’inizio o riveda i programmi passati.',
+    'p2.t': 'Registrazione', 'p2.d': 'Il programma in corso, o programmata dalla guida, su chiavetta o disco USB.',
+    'p3.t': 'I miei sport', 'p3.d': 'Le sue squadre, risultati, classifiche, F1 e le partite del giorno in TV.',
+    'p4.t': 'Riserva automatica', 'p4.d': 'Un canale si interrompe? Graal passa da solo a un’altra versione (FHD, HD, SD).',
+    'p5.t': 'Categorie intelligenti', 'p5.d': 'Calcio, Basket, Cinema… canali raggruppati automaticamente.',
+    'p6.t': 'Più abbonamenti', 'p6.d': 'Ne aggiunga quanti vuole e passi dall’uno all’altro.',
+    'p7.t': 'Sincronizzazione', 'p7.d': 'Cronologia, preferiti, liste e impostazioni identici su tutti i suoi box.',
+    'p8.t': 'Continua altrove', 'p8.d': 'Invii ciò che sta guardando a un altro box di casa.',
+    'plan.launch': 'Offerta di lancio', 'plan1.t': '1 dispositivo', 'plan1.d': 'Per il suo box o la sua TV', 'plan2.t': 'Famiglia', 'plan2.d': 'Fino a 5 dispositivi: box, telefono, PC…', 'plan.once': 'Pagamento unico · per sempre',
+    's1': 'In Graal: <b>Impostazioni › Premium › Richiedi Premium</b>.', 's2': 'Inserisca <b>la sua e-mail</b> e il codice ricevuto, poi scelga la formula.', 's3': 'Paghi il suo venditore: <b>Premium si attiva da solo</b>.',
+    'prem.contact': 'Una domanda? <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>',
+    'dl.title': 'Scarica Graal', 'dl.sub': 'Gratis. Gli aggiornamenti arrivano poi da soli, nell’app.', 'dl.version': 'Versione {v}',
+    'dl.atv': 'Box e TV Android 7 o successivi: Shield, Mi Box, Chromecast con Google TV, Formuler…', 'dl.apk': 'Scarica l’APK',
+    'dl.phone.t': 'Telefono e tablet', 'dl.phone': 'Android 7 o successivi, al tocco, in verticale o in orizzontale.',
+    'dl.win': 'Windows 10 o 11, 64 bit. Con tastiera e mouse.', 'dl.win.b': 'Scarica per Windows', 'dl.mac': 'Apple Silicon (M1 e successivi) o Intel.',
+    'ft.sub': 'Con l’app gratuita Downloader, digiti semplicemente:',
+    'ft.1': 'Installi <b>Downloader</b> dall’Appstore (gratis, icona arancione).', 'ft.2': '<b>Impostazioni › La mia Fire TV › Info</b>: clicchi 7 volte sul nome del dispositivo.',
+    'ft.3': '<b>Opzioni sviluppatore › Installa app sconosciute › Downloader</b>: attivo.', 'ft.4': 'In Downloader, digiti <b>graaltv.com/apk</b>, poi <b>Installa</b>.',
+    'dl.compat': 'Non compatibile: le Fire TV con Vega OS (Fire TV Stick HD 2025) e le TV non Android.',
+    'faq.title': 'Domande frequenti',
+    'q1': 'Graal fornisce canali?', 'a1': 'No. Graal è un lettore: aggiunge l’abbonamento che preferisce. Lo usi solo con contenuti a cui ha legalmente accesso.',
+    'q2': 'Quali abbonamenti sono compatibili?', 'a2': 'Xtream Codes (server, nome utente e password), portale MAC (Stalker / Ministra) e playlist M3U, tramite link o file.',
+    'q3': 'La versione gratuita ha un limite di tempo?', 'a3': 'No. Diretta, guida, film, serie, ricerca e preferiti restano gratuiti, senza limiti di tempo e senza pubblicità.',
+    'q4': 'Ripristino il mio box: perdo Premium?', 'a4': 'No. Reinstalli Graal, poi Impostazioni › Premium › «Ce l’ho già» con il suo indirizzo e-mail e il codice ricevuto: Premium torna subito.',
+    'q5': 'Su quanti dispositivi posso usare Premium?', 'a5': 'Un dispositivo con la formula 1 dispositivo, fino a cinque con la formula Famiglia (box, telefono, PC, Mac…). Può sostituire un vecchio dispositivo con uno nuovo.',
+    'q6': 'Che fine fanno i miei dati?', 'a6': 'Il suo abbonamento resta sul suo dispositivo. L’indirizzo e-mail del suo Premium è salvato cifrato, e la sincronizzazione tra i suoi dispositivi è cifrata prima di lasciare il box.',
+    'foot.contact': 'Contatto', 'foot.legal': 'Graal è un lettore multimediale. Non fornisce, ospita né vende alcun contenuto audiovisivo; ogni utente è responsabile degli abbonamenti che aggiunge.',
+  },
+  pt: {
+    'shots.title': 'Uma interface pensada para o sofá', 'shots.sub': 'Grande, legível e rápida com o comando. Nove temas de cor, aqui «Galáxia».', 'shots.t1': 'TV em direto', 'shots.t2': 'Filmes e séries', 'shots.t3': 'Definições', 'shots.c1': 'Os seus canais com o programa atual, o seguinte e o seu progresso, sobre o vídeo que continua.', 'shots.c2': 'Cada título sobre a sua própria imagem: géneros, idade, nota, duração, sinopse e depois a fila da categoria.', 'shots.c3': 'Definições claras, explicadas à direita, e o tema de cor que preferir.', 'shots.note': 'Ilustrações: os canais, títulos e imagens são substituídos por formas neutras.',
+    'nav.features': 'Funções', 'nav.premium': 'Premium', 'nav.download': 'Transferir', 'nav.faq': 'Perguntas',
+    'hero.chip': 'Android TV · Fire TV · Windows · Mac', 'hero.title1': 'A sua busca', 'hero.title2': 'termina aqui.',
+    'hero.lead': 'O Graal é o leitor IPTV pensado para o comando: TV em direto com guia de programas, filmes, séries, replay e gravação, numa interface fluida e cuidada.',
+    'hero.cta1': 'Transferir grátis', 'hero.cta2': 'Descobrir o Premium', 'hero.note': 'O Graal é um leitor: não fornece nenhum canal. Adicione a sua própria subscrição.',
+    'feat.title': 'Tudo para ver, nada de supérfluo', 'feat.sub': 'A versão gratuita é completa e sem publicidade.',
+    'f1.t': 'Direto e guia de programas', 'f1.d': 'Canais por categorias, programa atual e seguinte, guia completo, logótipos oficiais e zapping instantâneo.',
+    'f2.t': 'Filmes e séries', 'f2.d': 'Fichas completas com sinopse, elenco, trailers e notas. Retome exatamente onde parou.',
+    'f3.t': 'Uma única pesquisa', 'f3.d': 'Canais, filmes e séries numa só pesquisa, pensada para o comando.',
+    'f4.t': 'Favoritos, listas e histórico', 'f4.d': 'Os seus favoritos, listas pessoais e histórico, próprios de cada subscrição.',
+    'f5.t': 'As suas línguas', 'f5.d': 'Escolha as línguas que vê: só esses canais e conteúdos aparecem. Aplicação em 6 línguas.',
+    'f6.t': 'Controlo parental', 'f6.d': 'Um código parental e canais bloqueados, como preferir.',
+    'f7.t': 'Todas as subscrições', 'f7.d': 'Xtream Codes, portal MAC (Stalker) e listas M3U. Introduza-a no telemóvel com um código QR.',
+    'f8.t': 'Cuidadoso com o seu fornecedor', 'f8.d': 'Uma só ligação e pedidos espaçados: o Graal evita bloqueios de conta.',
+    'f9.t': 'Nove temas', 'f9.d': 'Uma interface fluida, nas cores que escolher, que se atualiza sozinha.',
+    'prem.chip': 'Graal Premium', 'prem.title1': 'Vá mais longe', 'prem.title2': 'com o Premium',
+    'prem.sub': 'Pago uma vez, para sempre. Associado ao seu e-mail: recupera-o após uma reposição ou numa nova box.',
+    'p1.t': 'Replay', 'p1.d': 'Retome um programa desde o início ou reveja programas passados.',
+    'p2.t': 'Gravação', 'p2.d': 'O programa atual, ou agendada a partir do guia, em pen ou disco USB.',
+    'p3.t': 'Os meus desportos', 'p3.d': 'As suas equipas, resultados, classificações, F1 e os jogos do dia na TV.',
+    'p4.t': 'Reserva automática', 'p4.d': 'Um canal falha? O Graal muda sozinho para outra versão (FHD, HD, SD).',
+    'p5.t': 'Categorias inteligentes', 'p5.d': 'Futebol, Basquetebol, Cinema… canais agrupados automaticamente.',
+    'p6.t': 'Várias subscrições', 'p6.d': 'Adicione quantas quiser e passe de uma para outra.',
+    'p7.t': 'Sincronização', 'p7.d': 'Histórico, favoritos, listas e definições idênticos em todas as suas boxes.',
+    'p8.t': 'Continuar noutro lugar', 'p8.d': 'Envie o que está a ver para outra box da casa.',
+    'plan.launch': 'Oferta de lançamento', 'plan1.t': '1 aparelho', 'plan1.d': 'Para a sua box ou TV', 'plan2.t': 'Família', 'plan2.d': 'Até 5 aparelhos: box, telemóvel, PC…', 'plan.once': 'Pagamento único · para sempre',
+    's1': 'No Graal: <b>Definições › Premium › Pedir Premium</b>.', 's2': 'Introduza <b>o seu e-mail</b> e o código recebido, e escolha a sua fórmula.', 's3': 'Pague ao seu vendedor: <b>o Premium ativa-se sozinho</b>.',
+    'prem.contact': 'Alguma pergunta? <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>',
+    'dl.title': 'Transferir o Graal', 'dl.sub': 'Grátis. As atualizações chegam depois sozinhas, na aplicação.', 'dl.version': 'Versão {v}',
+    'dl.atv': 'Boxes e TVs Android 7 ou superior: Shield, Mi Box, Chromecast com Google TV, Formuler…', 'dl.apk': 'Transferir o APK',
+    'dl.phone.t': 'Telemóvel e tablet', 'dl.phone': 'Android 7 ou superior, tátil, na vertical ou na horizontal.',
+    'dl.win': 'Windows 10 ou 11, 64 bits. Com teclado e rato.', 'dl.win.b': 'Transferir para Windows', 'dl.mac': 'Apple Silicon (M1 e seguintes) ou Intel.',
+    'ft.sub': 'Com a aplicação gratuita Downloader, escreva simplesmente:',
+    'ft.1': 'Instale o <b>Downloader</b> a partir da Appstore (grátis, ícone laranja).', 'ft.2': '<b>Definições › A minha Fire TV › Acerca de</b>: clique 7 vezes no nome do aparelho.',
+    'ft.3': '<b>Opções de programador › Instalar aplicações desconhecidas › Downloader</b>: ativado.', 'ft.4': 'No Downloader, escreva <b>graaltv.com/apk</b> e depois <b>Instalar</b>.',
+    'dl.compat': 'Não compatível: Fire TV com Vega OS (Fire TV Stick HD 2025) e TVs não Android.',
+    'faq.title': 'Perguntas frequentes',
+    'q1': 'O Graal fornece canais?', 'a1': 'Não. O Graal é um leitor: adiciona a subscrição que escolher. Use-o apenas com conteúdos a que tenha acesso legal.',
+    'q2': 'Que subscrições são compatíveis?', 'a2': 'Xtream Codes (servidor, utilizador e palavra-passe), portal MAC (Stalker / Ministra) e listas M3U, por link ou ficheiro.',
+    'q3': 'A versão gratuita tem limite de tempo?', 'a3': 'Não. O direto, o guia, os filmes, as séries, a pesquisa e os favoritos continuam gratuitos, sem limite de tempo e sem publicidade.',
+    'q4': 'Reponho a minha box: perco o Premium?', 'a4': 'Não. Reinstale o Graal e depois Definições › Premium › «Já o tenho» com o seu e-mail e o código recebido: o Premium volta de imediato.',
+    'q5': 'Em quantos aparelhos posso usar o Premium?', 'a5': 'Um aparelho com a fórmula 1 aparelho, até cinco com a fórmula Família (box, telemóvel, PC, Mac…). Pode substituir um aparelho antigo por um novo.',
+    'q6': 'O que acontece aos meus dados?', 'a6': 'A sua subscrição fica no seu aparelho. O e-mail do seu Premium é guardado cifrado, e a sincronização entre os seus aparelhos é cifrada antes de sair da box.',
+    'foot.contact': 'Contacto', 'foot.legal': 'O Graal é um leitor multimédia. Não fornece, aloja nem vende qualquer conteúdo audiovisual; cada utilizador é responsável pelas subscrições que adiciona.',
+  },
+  de: {
+    'shots.title': 'Gemacht fürs Sofa', 'shots.sub': 'Groß, gut lesbar und schnell mit der Fernbedienung. Neun Farbdesigns, hier „Galaxie“.', 'shots.t1': 'Live-TV', 'shots.t2': 'Filme und Serien', 'shots.t3': 'Einstellungen', 'shots.c1': 'Ihre Sender mit laufender und nächster Sendung samt Fortschritt, über dem Video, das weiterläuft.', 'shots.c2': 'Jeder Titel auf seinem eigenen Bild: Genres, Altersfreigabe, Bewertung, Dauer, Inhalt, dann die Reihe der Kategorie.', 'shots.c3': 'Klare Einstellungen, rechts erklärt, und das Farbdesign, das Ihnen gefällt.', 'shots.note': 'Illustrationen: Sender, Titel und Bilder sind durch neutrale Formen ersetzt.',
+    'nav.features': 'Funktionen', 'nav.premium': 'Premium', 'nav.download': 'Download', 'nav.faq': 'Fragen',
+    'hero.chip': 'Android TV · Fire TV · Windows · Mac', 'hero.title1': 'Ihre Suche', 'hero.title2': 'endet hier.',
+    'hero.lead': 'Graal ist der IPTV-Player für die Fernbedienung: Live-TV mit Programmführer, Filme, Serien, Replay und Aufnahme in einer flüssigen, durchdachten Oberfläche.',
+    'hero.cta1': 'Kostenlos herunterladen', 'hero.cta2': 'Premium entdecken', 'hero.note': 'Graal ist ein Player: Er liefert keine Sender. Sie fügen Ihr eigenes Abonnement hinzu.',
+    'feat.title': 'Alles zum Fernsehen, nichts Überflüssiges', 'feat.sub': 'Die kostenlose Version ist vollständig und werbefrei.',
+    'f1.t': 'Live-TV und Programmführer', 'f1.d': 'Sender nach Kategorien, aktuelle und nächste Sendung, vollständiger Programmführer, offizielle Logos und sofortiges Umschalten.',
+    'f2.t': 'Filme und Serien', 'f2.d': 'Ausführliche Seiten mit Inhalt, Besetzung, Trailern und Bewertungen. Weiterschauen genau dort, wo Sie aufgehört haben.',
+    'f3.t': 'Eine einzige Suche', 'f3.d': 'Sender, Filme und Serien in einer Suche, gemacht für die Fernbedienung.',
+    'f4.t': 'Favoriten, Listen und Verlauf', 'f4.d': 'Ihre Favoriten, eigenen Listen und Ihr Verlauf, für jedes Abonnement getrennt.',
+    'f5.t': 'Ihre Sprachen', 'f5.d': 'Wählen Sie die Sprachen, die Sie schauen: Nur diese Sender und Inhalte werden angezeigt. App in 6 Sprachen.',
+    'f6.t': 'Jugendschutz', 'f6.d': 'Ein Jugendschutzcode und gesperrte Sender, ganz nach Ihrem Wunsch.',
+    'f7.t': 'Alle Abonnements', 'f7.d': 'Xtream Codes, MAC-Portal (Stalker) und M3U-Playlists. Eingabe am Handy per QR-Code.',
+    'f8.t': 'Schonend für Ihren Anbieter', 'f8.d': 'Eine Verbindung und verteilte Anfragen: Graal vermeidet Kontosperren.',
+    'f9.t': 'Neun Designs', 'f9.d': 'Eine flüssige Oberfläche in Ihren Farben, die sich selbst aktualisiert.',
+    'prem.chip': 'Graal Premium', 'prem.title1': 'Mehr erleben', 'prem.title2': 'mit Premium',
+    'prem.sub': 'Einmal bezahlt, für immer. Mit Ihrer E-Mail-Adresse verknüpft: Sie erhalten es nach einem Zurücksetzen oder auf einer neuen Box zurück.',
+    'p1.t': 'Replay', 'p1.d': 'Eine Sendung von vorn starten oder vergangene Sendungen ansehen.',
+    'p2.t': 'Aufnahme', 'p2.d': 'Die laufende Sendung oder aus dem Programmführer geplant, auf USB-Stick oder -Festplatte.',
+    'p3.t': 'Mein Sport', 'p3.d': 'Ihre Teams, Ergebnisse, Tabellen, F1 und die Spiele des Tages im TV.',
+    'p4.t': 'Automatischer Ersatz', 'p4.d': 'Ein Sender bricht ab? Graal wechselt von selbst auf eine andere Version (FHD, HD, SD).',
+    'p5.t': 'Intelligente Kategorien', 'p5.d': 'Fußball, Basketball, Kino… Sender automatisch gruppiert.',
+    'p6.t': 'Mehrere Abonnements', 'p6.d': 'Fügen Sie beliebig viele hinzu und wechseln Sie zwischen ihnen.',
+    'p7.t': 'Synchronisierung', 'p7.d': 'Verlauf, Favoriten, Listen und Einstellungen gleich auf allen Ihren Boxen.',
+    'p8.t': 'Woanders weiterschauen', 'p8.d': 'Senden Sie, was Sie gerade sehen, an eine andere Box im Haus.',
+    'plan.launch': 'Einführungsangebot', 'plan1.t': '1 Gerät', 'plan1.d': 'Für Ihre Box oder Ihren Fernseher', 'plan2.t': 'Haushalt', 'plan2.d': 'Bis zu 5 Geräte: Box, Handy, PC…', 'plan.once': 'Einmalzahlung · für immer',
+    's1': 'In Graal: <b>Einstellungen › Premium › Premium anfordern</b>.', 's2': 'Geben Sie <b>Ihre E-Mail</b> und den erhaltenen Code ein und wählen Sie Ihr Paket.', 's3': 'Bezahlen Sie Ihren Verkäufer: <b>Premium schaltet sich von selbst ein</b>.',
+    'prem.contact': 'Eine Frage? <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>',
+    'dl.title': 'Graal herunterladen', 'dl.sub': 'Kostenlos. Updates kommen danach von selbst, in der App.', 'dl.version': 'Version {v}',
+    'dl.atv': 'Boxen und Fernseher ab Android 7: Shield, Mi Box, Chromecast mit Google TV, Formuler…', 'dl.apk': 'APK herunterladen',
+    'dl.phone.t': 'Handy und Tablet', 'dl.phone': 'Ab Android 7, per Touch, im Hoch- oder Querformat.',
+    'dl.win': 'Windows 10 oder 11, 64 Bit. Mit Tastatur und Maus.', 'dl.win.b': 'Für Windows herunterladen', 'dl.mac': 'Apple Silicon (ab M1) oder Intel.',
+    'ft.sub': 'Mit der kostenlosen App Downloader einfach eingeben:',
+    'ft.1': 'Installieren Sie <b>Downloader</b> aus dem Appstore (kostenlos, orangefarbenes Symbol).', 'ft.2': '<b>Einstellungen › Meine Fire TV › Info</b>: 7-mal auf den Gerätenamen klicken.',
+    'ft.3': '<b>Entwickleroptionen › Unbekannte Apps installieren › Downloader</b>: an.', 'ft.4': 'In Downloader <b>graaltv.com/apk</b> eingeben, dann <b>Installieren</b>.',
+    'dl.compat': 'Nicht kompatibel: Fire TV mit Vega OS (Fire TV Stick HD 2025) und Fernseher ohne Android.',
+    'faq.title': 'Häufige Fragen',
+    'q1': 'Liefert Graal Sender?', 'a1': 'Nein. Graal ist ein Player: Sie fügen das Abonnement Ihrer Wahl hinzu. Nutzen Sie ihn nur mit Inhalten, auf die Sie rechtmäßig Zugriff haben.',
+    'q2': 'Welche Abonnements werden unterstützt?', 'a2': 'Xtream Codes (Server, Benutzername und Passwort), MAC-Portal (Stalker / Ministra) und M3U-Playlists, per Link oder Datei.',
+    'q3': 'Ist die kostenlose Version zeitlich begrenzt?', 'a3': 'Nein. Live-TV, Programmführer, Filme, Serien, Suche und Favoriten bleiben kostenlos, ohne Zeitlimit und ohne Werbung.',
+    'q4': 'Ich setze meine Box zurück: Verliere ich Premium?', 'a4': 'Nein. Installieren Sie Graal neu, dann Einstellungen › Premium › „Habe ich schon“ mit Ihrer E-Mail-Adresse und dem erhaltenen Code: Premium ist sofort zurück.',
+    'q5': 'Auf wie vielen Geräten kann ich Premium nutzen?', 'a5': 'Ein Gerät mit dem Paket 1 Gerät, bis zu fünf mit dem Paket Haushalt (Box, Handy, PC, Mac…). Sie können ein altes Gerät durch ein neues ersetzen.',
+    'q6': 'Was passiert mit meinen Daten?', 'a6': 'Ihr Abonnement bleibt auf Ihrem Gerät. Ihre Premium-E-Mail-Adresse wird verschlüsselt gespeichert, und die Synchronisierung zwischen Ihren Geräten wird verschlüsselt, bevor sie die Box verlässt.',
+    'foot.contact': 'Kontakt', 'foot.legal': 'Graal ist ein Mediaplayer. Er liefert, hostet oder verkauft keine audiovisuellen Inhalte; jeder Nutzer ist für die von ihm hinzugefügten Abonnements verantwortlich.',
+  },
+};
+
+// French as written in the page, kept to come back to it.
+const FR = {};
+document.querySelectorAll('[data-i]').forEach(el => { FR[el.dataset.i] = el.textContent; });
+document.querySelectorAll('[data-ih]').forEach(el => { FR[el.dataset.ih] = el.innerHTML; });
+FR['dl.version'] = 'Version {v}';
+let current = 'fr', version = null;
+
+function apply(lang) {
+  current = T[lang] ? lang : 'fr';
+  const t = current === 'fr' ? FR : T[current];
+  document.documentElement.lang = current;
+  document.querySelectorAll('[data-i]').forEach(el => { const v = t[el.dataset.i] ?? FR[el.dataset.i]; if (v != null) el.textContent = v; });
+  document.querySelectorAll('[data-ih]').forEach(el => { const v = t[el.dataset.ih] ?? FR[el.dataset.ih]; if (v != null) el.innerHTML = v; });
+  $lang.value = current;
+  drawVersion();
+}
+function drawVersion() {
+  const t = current === 'fr' ? FR : T[current];
+  document.getElementById('version').textContent = version ? (t['dl.version'] || FR['dl.version']).replace('{v}', version) : '';
+}
+
+const $lang = document.getElementById('lang');
+$lang.onchange = () => { try { localStorage.setItem('graal-lang', $lang.value); } catch (e) {} apply($lang.value); };
+let saved = null;
+try { saved = localStorage.getItem('graal-lang'); } catch (e) {}
+apply(saved || (navigator.language || 'fr').slice(0, 2).toLowerCase());
+
+document.querySelectorAll('[data-shot]').forEach(b => b.onclick = () => {
+  document.querySelectorAll('[data-shot]').forEach(x => x.classList.toggle('on', x === b));
+  document.querySelectorAll('.shot').forEach((f, i) => f.classList.toggle('on', String(i) === b.dataset.shot));
+});
+
+// Each button points to the newest published file for its platform; without an answer, the releases page.
+fetch('https://api.github.com/repos/Code4Wrld/Graal-releases/releases/latest')
+  .then(r => r.ok ? r.json() : null)
+  .then(rel => {
+    if (!rel || !rel.assets) return;
+    version = String(rel.tag_name || '').replace(/^v/, '');
+    document.querySelectorAll('[data-asset]').forEach(a => {
+      const f = rel.assets.find(x => x.name.endsWith(a.dataset.asset) && (a.dataset.asset !== '.apk' || !/-(Windows|macOS)/.test(x.name)));
+      if (f) a.href = f.browser_download_url;
+    });
+    drawVersion();
+  })
+  .catch(() => {});
+</script>
+</body>
+</html>
