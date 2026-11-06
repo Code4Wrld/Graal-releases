@@ -392,7 +392,7 @@ footer .legal { max-width: 560px; }
       <details><summary data-i="q3">La version gratuite est-elle limitée dans le temps ?</summary><p data-i="a3">Non. Le direct, le guide, les films, les séries, la recherche et les favoris restent gratuits, sans limite de durée et sans publicité.</p></details>
       <details><summary data-i="q4">Je réinitialise ma box : est-ce que je perds Premium ?</summary><p data-i="a4">Non. Réinstallez Graal, puis Paramètres › Premium › « Je l'ai déjà » avec votre adresse e-mail et le code reçu : Premium revient tout de suite.</p></details>
       <details><summary data-i="q5">Sur combien d'appareils puis-je utiliser Premium ?</summary><p data-i="a5">Un appareil avec la formule 1 appareil, jusqu'à cinq avec la formule Foyer (box, téléphone, PC, Mac…). Vous pouvez remplacer un ancien appareil par un nouveau.</p></details>
-      <details><summary data-i="q6">Que deviennent mes données ?</summary><p data-i="a6">Votre abonnement reste sur votre appareil. L'adresse e-mail de votre Premium est enregistrée chiffrée, et la synchronisation entre vos appareils est chiffrée avant de quitter la box.</p></details>
+      <details><summary data-i="q6">Que deviennent mes données ?</summary><p data-i="a6">Votre abonnement IPTV reste uniquement sur votre appareil. Le serveur Graal ne garde rien en clair : votre adresse e-mail, le code et le nom de vos appareils sont chiffrés (AES-256-GCM, un vecteur aléatoire par donnée) et retrouvés par une empreinte poivrée (HMAC-SHA256, clé secrète gardée hors de la base). Votre historique synchronisé est chiffré sur votre box avant d'être envoyé. Les paiements se font sur la page sécurisée du prestataire : Graal ne voit jamais votre carte.</p></details>
     </div>
   </div>
 </section>
@@ -455,7 +455,7 @@ const T = {
     'q3': 'Is the free version time-limited?', 'a3': 'No. Live TV, the guide, movies, series, search and favourites stay free, with no time limit and no ads.',
     'q4': 'I reset my box: do I lose Premium?', 'a4': 'No. Reinstall Graal, then Settings › Premium › “I already have it” with your e-mail address and the code you receive: Premium is back at once.',
     'q5': 'On how many devices can I use Premium?', 'a5': 'One device with the 1-device plan, up to five with the Household plan (box, phone, PC, Mac…). You can replace an old device with a new one.',
-    'q6': 'What happens to my data?', 'a6': 'Your subscription stays on your device. Your Premium e-mail address is stored encrypted, and sync between your devices is encrypted before it leaves the box.',
+    'q6': 'What happens to my data?', 'a6': "Your IPTV subscription stays on your device only. Graal's server keeps nothing in clear: your e-mail address and your devices' code and name are encrypted (AES-256-GCM, a random vector per value) and found again by a peppered hash (HMAC-SHA256, secret key kept outside the database). Your synced history is encrypted on your box before it is sent. Payments happen on the provider's secure page: Graal never sees your card.",
     'foot.contact': 'Contact', 'foot.legal': 'Graal is a media player. It does not provide, host or sell any audiovisual content; each user is responsible for the subscriptions they add.',
   },
   es: {
@@ -501,7 +501,7 @@ const T = {
     'q3': '¿La versión gratuita tiene límite de tiempo?', 'a3': 'No. El directo, la guía, las películas, las series, la búsqueda y los favoritos siguen siendo gratuitos, sin límite de tiempo y sin publicidad.',
     'q4': 'Restablezco mi box: ¿pierdo Premium?', 'a4': 'No. Reinstale Graal y luego Ajustes › Premium › «Ya lo tengo» con su correo y el código recibido: Premium vuelve al instante.',
     'q5': '¿En cuántos dispositivos puedo usar Premium?', 'a5': 'Un dispositivo con la fórmula 1 dispositivo, hasta cinco con la fórmula Hogar (box, teléfono, PC, Mac…). Puede sustituir un dispositivo antiguo por uno nuevo.',
-    'q6': '¿Qué pasa con mis datos?', 'a6': 'Su suscripción se queda en su dispositivo. El correo de su Premium se guarda cifrado, y la sincronización entre sus dispositivos se cifra antes de salir de la box.',
+    'q6': '¿Qué pasa con mis datos?', 'a6': 'Su suscripción IPTV se queda solo en su dispositivo. El servidor de Graal no guarda nada en claro: su correo y el código y el nombre de sus dispositivos están cifrados (AES-256-GCM, un vector aleatorio por dato) y se localizan mediante una huella con pimienta (HMAC-SHA256, clave secreta guardada fuera de la base de datos). Su historial sincronizado se cifra en su box antes de enviarse. Los pagos se hacen en la página segura del proveedor: Graal nunca ve su tarjeta.',
     'foot.contact': 'Contacto', 'foot.legal': 'Graal es un reproductor multimedia. No ofrece, aloja ni vende ningún contenido audiovisual; cada usuario es responsable de las suscripciones que añade.',
   },
   it: {
@@ -547,7 +547,7 @@ const T = {
     'q3': 'La versione gratuita ha un limite di tempo?', 'a3': 'No. Diretta, guida, film, serie, ricerca e preferiti restano gratuiti, senza limiti di tempo e senza pubblicità.',
     'q4': 'Ripristino il mio box: perdo Premium?', 'a4': 'No. Reinstalli Graal, poi Impostazioni › Premium › «Ce l’ho già» con il suo indirizzo e-mail e il codice ricevuto: Premium torna subito.',
     'q5': 'Su quanti dispositivi posso usare Premium?', 'a5': 'Un dispositivo con la formula 1 dispositivo, fino a cinque con la formula Famiglia (box, telefono, PC, Mac…). Può sostituire un vecchio dispositivo con uno nuovo.',
-    'q6': 'Che fine fanno i miei dati?', 'a6': 'Il suo abbonamento resta sul suo dispositivo. L’indirizzo e-mail del suo Premium è salvato cifrato, e la sincronizzazione tra i suoi dispositivi è cifrata prima di lasciare il box.',
+    'q6': 'Che fine fanno i miei dati?', 'a6': "Il suo abbonamento IPTV resta solo sul suo dispositivo. Il server di Graal non conserva nulla in chiaro: il suo indirizzo e-mail e il codice e il nome dei suoi dispositivi sono cifrati (AES-256-GCM, un vettore casuale per dato) e ritrovati tramite un'impronta con pepe (HMAC-SHA256, chiave segreta conservata fuori dal database). La cronologia sincronizzata è cifrata sul suo box prima dell'invio. I pagamenti avvengono sulla pagina sicura del fornitore: Graal non vede mai la sua carta.",
     'foot.contact': 'Contatto', 'foot.legal': 'Graal è un lettore multimediale. Non fornisce, ospita né vende alcun contenuto audiovisivo; ogni utente è responsabile degli abbonamenti che aggiunge.',
   },
   pt: {
@@ -593,7 +593,7 @@ const T = {
     'q3': 'A versão gratuita tem limite de tempo?', 'a3': 'Não. O direto, o guia, os filmes, as séries, a pesquisa e os favoritos continuam gratuitos, sem limite de tempo e sem publicidade.',
     'q4': 'Reponho a minha box: perco o Premium?', 'a4': 'Não. Reinstale o Graal e depois Definições › Premium › «Já o tenho» com o seu e-mail e o código recebido: o Premium volta de imediato.',
     'q5': 'Em quantos aparelhos posso usar o Premium?', 'a5': 'Um aparelho com a fórmula 1 aparelho, até cinco com a fórmula Família (box, telemóvel, PC, Mac…). Pode substituir um aparelho antigo por um novo.',
-    'q6': 'O que acontece aos meus dados?', 'a6': 'A sua subscrição fica no seu aparelho. O e-mail do seu Premium é guardado cifrado, e a sincronização entre os seus aparelhos é cifrada antes de sair da box.',
+    'q6': 'O que acontece aos meus dados?', 'a6': 'A sua subscrição IPTV fica apenas no seu aparelho. O servidor do Graal não guarda nada em claro: o seu e-mail e o código e o nome dos seus aparelhos são cifrados (AES-256-GCM, um vetor aleatório por dado) e encontrados através de uma impressão com pimenta (HMAC-SHA256, chave secreta guardada fora da base de dados). O seu histórico sincronizado é cifrado na sua box antes de ser enviado. Os pagamentos são feitos na página segura do prestador: o Graal nunca vê o seu cartão.',
     'foot.contact': 'Contacto', 'foot.legal': 'O Graal é um leitor multimédia. Não fornece, aloja nem vende qualquer conteúdo audiovisual; cada utilizador é responsável pelas subscrições que adiciona.',
   },
   de: {
@@ -639,7 +639,7 @@ const T = {
     'q3': 'Ist die kostenlose Version zeitlich begrenzt?', 'a3': 'Nein. Live-TV, Programmführer, Filme, Serien, Suche und Favoriten bleiben kostenlos, ohne Zeitlimit und ohne Werbung.',
     'q4': 'Ich setze meine Box zurück: Verliere ich Premium?', 'a4': 'Nein. Installieren Sie Graal neu, dann Einstellungen › Premium › „Habe ich schon“ mit Ihrer E-Mail-Adresse und dem erhaltenen Code: Premium ist sofort zurück.',
     'q5': 'Auf wie vielen Geräten kann ich Premium nutzen?', 'a5': 'Ein Gerät mit dem Paket 1 Gerät, bis zu fünf mit dem Paket Haushalt (Box, Handy, PC, Mac…). Sie können ein altes Gerät durch ein neues ersetzen.',
-    'q6': 'Was passiert mit meinen Daten?', 'a6': 'Ihr Abonnement bleibt auf Ihrem Gerät. Ihre Premium-E-Mail-Adresse wird verschlüsselt gespeichert, und die Synchronisierung zwischen Ihren Geräten wird verschlüsselt, bevor sie die Box verlässt.',
+    'q6': 'Was passiert mit meinen Daten?', 'a6': 'Ihr IPTV-Abonnement bleibt nur auf Ihrem Gerät. Der Graal-Server speichert nichts im Klartext: Ihre E-Mail-Adresse sowie Code und Name Ihrer Geräte sind verschlüsselt (AES-256-GCM, ein zufälliger Vektor pro Wert) und werden über einen gepfefferten Hash wiedergefunden (HMAC-SHA256, geheimer Schlüssel außerhalb der Datenbank). Ihr synchronisierter Verlauf wird auf Ihrer Box verschlüsselt, bevor er gesendet wird. Zahlungen erfolgen auf der sicheren Seite des Anbieters: Graal sieht Ihre Karte nie.',
     'foot.contact': 'Kontakt', 'foot.legal': 'Graal ist ein Mediaplayer. Er liefert, hostet oder verkauft keine audiovisuellen Inhalte; jeder Nutzer ist für die von ihm hinzugefügten Abonnements verantwortlich.',
   },
 };
