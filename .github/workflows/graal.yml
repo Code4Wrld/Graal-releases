@@ -54,11 +54,13 @@ jobs:
           KEYSTORE: ${{ secrets.GRAAL_KEYSTORE_B64 }}
           TMDB: ${{ secrets.GRAAL_TMDB_KEY }}
         run: |
+          # A secret pasted with a line end would break the key or the APK: kept bare.
+          LICENCE=$(printf '%s' "$LICENCE" | tr -d '\r\n'); TMDB=$(printf '%s' "$TMDB" | tr -d '\r\n')
           if [ -z "$LICENCE" ] || [ -z "$KEYSTORE" ]; then
             echo "::error::GRAAL_LICENCE_SECRET ou GRAAL_KEYSTORE_B64 absent : APK refuse (Premium offert ou mise a jour impossible)."
             exit 1
           fi
-          echo "$KEYSTORE" | base64 -d > "$RUNNER_TEMP/graal.keystore"
+          printf '%s' "$KEYSTORE" | tr -d '\r\n ' | base64 -d > "$RUNNER_TEMP/graal.keystore"
           {
             echo "niptv.licenceSecret=$LICENCE"
             echo "niptv.keystore=$RUNNER_TEMP/graal.keystore"
@@ -112,6 +114,8 @@ jobs:
           LICENCE: ${{ secrets.GRAAL_LICENCE_SECRET }}
           TMDB: ${{ secrets.GRAAL_TMDB_KEY }}
         run: |
+          # A secret pasted with a line end would break the key or the APK: kept bare.
+          LICENCE=$(printf '%s' "$LICENCE" | tr -d '\r\n'); TMDB=$(printf '%s' "$TMDB" | tr -d '\r\n')
           if [ -z "$LICENCE" ]; then echo "::error::GRAAL_LICENCE_SECRET absent."; exit 1; fi
           printf 'niptv.licenceSecret=%s\nniptv.tmdbKey=%s\n' "$LICENCE" "$TMDB" > local.properties
       - name: libVLC
@@ -181,6 +185,8 @@ jobs:
           LICENCE: ${{ secrets.GRAAL_LICENCE_SECRET }}
           TMDB: ${{ secrets.GRAAL_TMDB_KEY }}
         run: |
+          # A secret pasted with a line end would break the key or the APK: kept bare.
+          LICENCE=$(printf '%s' "$LICENCE" | tr -d '\r\n'); TMDB=$(printf '%s' "$TMDB" | tr -d '\r\n')
           if [ -z "$LICENCE" ]; then echo "::error::GRAAL_LICENCE_SECRET absent."; exit 1; fi
           printf 'niptv.licenceSecret=%s\nniptv.tmdbKey=%s\n' "$LICENCE" "$TMDB" > local.properties
       - name: .dmg
