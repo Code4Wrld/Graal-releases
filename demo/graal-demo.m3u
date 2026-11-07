@@ -1,25 +1,33 @@
 #EXTM3U
-#EXTINF:-1 tvg-name="France 24" tvg-logo="" group-title="Information",France 24
-https://static.france24.com/live/F24_FR_HI_HLS/live_tv.m3u8
-#EXTINF:-1 tvg-name="Red Bull TV" group-title="Sport",Red Bull TV
-https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master.m3u8
-#EXTINF:-1 tvg-name="NASA TV" group-title="Découverte",NASA TV
-https://ntv1.akamaized.net/hls/live/2014075/NASA-NTV1-HLS/master.m3u8
-#EXTINF:-1 tvg-logo="https://archive.org/services/img/his_girl_friday" group-title="Films du domaine public",His Girl Friday (1940)
-https://archive.org/download/his_girl_friday/his_girl_friday_512kb.mp4
-#EXTINF:-1 tvg-logo="https://archive.org/services/img/house_on_haunted_hill_ipod" group-title="Films du domaine public",House on Haunted Hill (1959)
-https://archive.org/download/house_on_haunted_hill_ipod/house_on_haunted_hill_512kb.mp4
-#EXTINF:-1 tvg-logo="https://archive.org/services/img/JungleBook" group-title="Films du domaine public",Jungle Book (1942)
-https://archive.org/download/JungleBook/Jungle_Book_512kb.mp4
-#EXTINF:-1 tvg-logo="https://archive.org/services/img/nosferatu_1922" group-title="Films du domaine public",Nosferatu (1922)
-https://archive.org/download/nosferatu_1922/nosferatu_1922_512kb.mp4
-#EXTINF:-1 tvg-logo="https://archive.org/services/img/charlie_chaplin_film_fest" group-title="Films du domaine public",Charlie Chaplin Festival (1938)
-https://archive.org/download/charlie_chaplin_film_fest/charlie_chaplin_film_fest_512kb.mp4
-#EXTINF:-1 tvg-logo="https://archive.org/services/img/The_Pied_Piper_of_Hamelin" group-title="Films du domaine public",The Pied Piper of Hamelin (1957)
-https://archive.org/download/The_Pied_Piper_of_Hamelin/pied_512kb.mp4
-#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/8/8f/Sintel_poster.jpg" group-title="Films libres Blender",Sintel (2010)
-https://download.blender.org/durian/movies/Sintel.2010.1080p.mkv
-#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/8/8f/Sintel_poster.jpg" group-title="Courts métrages libres",Blender Open Movies S01 E01
-https://download.blender.org/durian/movies/Sintel.2010.1080p.mkv
-#EXTINF:-1 group-title="Courts métrages libres",Blender Open Movies S01 E02
-https://download.blender.org/demo/movies/ToS/tears_of_steel_720p.mov
+#EXTINF:-1 tvg-name="Arte" group-title="Généralistes",Arte
+https://artesimulcast.akamaized.net/hls/live/2031003/artelive_fr/index.m3u8
+#EXTINF:-1 tvg-name="TV5 Monde FBS" group-title="Généralistes",TV5MONDE FBS
+https://ott.tv5monde.com/Content/HLS/Live/channel(fbs)/index.m3u8
+#EXTINF:-1 tvg-name="TV5 Monde Info" group-title="Information",TV5MONDE Info
+https://ott.tv5monde.com/Content/HLS/Live/channel(info)/index.m3u8
+#EXTINF:-1 tvg-name="CGTN Français" group-title="Information",CGTN Français
+https://news.cgtn.com/resource/live/french/cgtn-f.m3u8
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/c/c5/Big_buck_bunny_poster_big.jpg" group-title="Films d'animation libres",Big Buck Bunny (2008)
+https://archive.org/download/BigBuckBunnyFULLHD60FPS/Big%20Buck%20Bunny%20-%20FULL%20HD%2060FPS.mp4
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/8/8f/Sintel_poster.jpg" group-title="Films d'animation libres",Sintel (2010)
+https://archive.org/download/Sintel/sintel-2048-surround.mp4
+#EXTINF:-1 group-title="Films d'animation libres",Tears of Steel (2012)
+https://archive.org/download/Tears-of-Steel/tears_of_steel_1080p.mkv
+#EXTINF:-1 group-title="Films d'animation libres",Elephants Dream (2006)
+https://download.blender.org/ED/elephantsdream-720-h264-st-aac.mov
+#EXTINF:-1 group-title="Films d'animation libres",Cosmos Laundromat (2015)
+https://archive.org/download/CosmosLaundromatFirstCycle/Cosmos%20Laundromat%20-%20First%20Cycle%20%281080p%29.mp4
+#EXTINF:-1 group-title="Films d'animation libres",Spring (2019)
+https://archive.org/download/spring_blenderopenmovie/Spring%20-%20Blender%20Open%20Movie%20-%20YouTube.mkv
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/c/c5/Big_buck_bunny_poster_big.jpg" group-title="Séries d'animation libres",Blender Open Movies S01 E01
+https://archive.org/download/BigBuckBunnyFULLHD60FPS/Big%20Buck%20Bunny%20-%20FULL%20HD%2060FPS.mp4
+#EXTINF:-1 group-title="Séries d'animation libres",Blender Open Movies S01 E02
+https://download.blender.org/ED/elephantsdream-720-h264-st-aac.mov
+#EXTINF:-1 group-title="Séries d'animation libres",Blender Open Movies S01 E03
+https://archive.org/download/Sintel/sintel-2048-surround.mp4
+#EXTINF:-1 group-title="Séries d'animation libres",Blender Open Movies S01 E04
+https://archive.org/download/Tears-of-Steel/tears_of_steel_1080p.mkv
+#EXTINF:-1 group-title="Séries d'animation libres",Blender Open Movies S01 E05
+https://archive.org/download/CosmosLaundromatFirstCycle/Cosmos%20Laundromat%20-%20First%20Cycle%20%281080p%29.mp4
+#EXTINF:-1 group-title="Séries d'animation libres",Blender Open Movies S01 E06
+https://archive.org/download/spring_blenderopenmovie/Spring%20-%20Blender%20Open%20Movie%20-%20YouTube.mkv
