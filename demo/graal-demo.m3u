@@ -1,11 +1,11 @@
 #EXTM3U
 #EXTINF:-1 tvg-name="Arte" group-title="Généralistes",Arte
 https://artesimulcast.akamaized.net/hls/live/2031003/artelive_fr/index.m3u8
-#EXTINF:-1 tvg-name="TV5MONDE FBS" group-title="Généralistes",TV5MONDE FBS
+#EXTINF:-1 tvg-id="TV5MondeFranceBelgiumSwitzerlandMonaco.fr" tvg-name="TV5MONDE FBS" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Logo_TV5_Monde_-_2021.svg/960px-Logo_TV5_Monde_-_2021.svg.png" group-title="Généralistes",TV5MONDE FBS
 https://ott.tv5monde.com/Content/HLS/Live/channel(fbs)/index.m3u8
-#EXTINF:-1 tvg-name="TV5MONDE Info" group-title="Information",TV5MONDE Info
+#EXTINF:-1 tvg-id="TV5MondeInfo.fr" tvg-name="TV5MONDE Info" tvg-logo="https://i.imgur.com/AJx5Fy2.png" group-title="Information",TV5MONDE Info
 https://ott.tv5monde.com/Content/HLS/Live/channel(info)/index.m3u8
-#EXTINF:-1 tvg-name="CGTN Français" group-title="Information",CGTN Français
+#EXTINF:-1 tvg-id="CGTNFrench.cn" tvg-name="CGTN Français" tvg-logo="https://i.imgur.com/BwhledK.png" group-title="Information",CGTN Français
 https://news.cgtn.com/resource/live/french/cgtn-f.m3u8
 #EXTINF:-1 group-title="Films d'animation libres",Big Buck Bunny (2008)
 https://archive.org/download/BigBuckBunnyFULLHD60FPS/Big%20Buck%20Bunny%20-%20FULL%20HD%2060FPS.mp4
