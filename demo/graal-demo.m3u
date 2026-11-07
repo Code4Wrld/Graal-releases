@@ -55,3 +55,7 @@ https://archive.org/download/pioneer-one-ep.-4-triangular-diploma/PIONEER%20ONE%
 https://archive.org/download/pioneer-one-ep.-5-sea-change/PIONEER%20ONE%20Ep.5%20Sea%20Change.mp4
 #EXTINF:-1 group-title="Séries libres",Pioneer One S01 E06
 https://archive.org/download/pioneer-one-ep.-6-war-of-the-world-3mp-4_202608/PIONEER%20ONE%20Ep.6%20War%20of%20the%20World3mp4.mp4
+#EXTINF:-1 group-title="Radios",FIP
+https://icecast.radiofrance.fr/fip-hifi.aac
+#EXTINF:-1 group-title="Radios",France Musique
+https://icecast.radiofrance.fr/francemusique-hifi.aac
