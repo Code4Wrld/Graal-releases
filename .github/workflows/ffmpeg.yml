@@ -1,0 +1,71 @@
+# Décodeurs audio FFmpeg de Graal (Android, Fire TV) : AC-3, E-AC-3, DTS, TrueHD… pour les box
+# qui ne les décodent pas elles-mêmes.
+#
+# Construit l'extension FFmpeg de Media3 (Google, licence Apache 2.0) avec FFmpeg compilé SANS
+# --enable-gpl ni --enable-nonfree : la bibliothèque reste sous LGPL 2.1, comme le permet une
+# application fermée. Ce workflow public est aussi la recette demandée par la LGPL : n'importe qui
+# peut reconstruire la bibliothèque à l'identique (mêmes sources, mêmes options) et la remplacer.
+#
+# Résultat : l'artefact « media3-ffmpeg-decoder » (le .aar), versé ensuite dans le dépôt du code
+# (third_party/maven) par tools/ffmpeg/importer.ps1.
+name: FFmpeg (Media3)
+
+on:
+  workflow_dispatch:
+    inputs:
+      media3:
+        description: "Version de Media3 (tag androidx/media), la même que l'appli"
+        default: "1.11.1"
+      ffmpeg:
+        description: "Branche de FFmpeg (celle recommandée par Media3)"
+        default: "release/6.0"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      NDK_VERSION: "26.3.11579264"
+      DECODERS: "flac alac pcm_mulaw pcm_alaw mp3 aac ac3 eac3 dca mlp truehd vorbis opus"
+    steps:
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: NDK et CMake
+        run: |
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install "ndk;$NDK_VERSION" "cmake;3.22.1" > /dev/null
+          echo "NDK_PATH=$ANDROID_HOME/ndk/$NDK_VERSION" >> "$GITHUB_ENV"
+
+      - name: Sources (Media3 et FFmpeg)
+        run: |
+          git clone --depth 1 --branch "${{ inputs.media3 }}" https://github.com/androidx/media.git
+          cd media/libraries/decoder_ffmpeg/src/main/jni
+          git clone --depth 1 --branch "${{ inputs.ffmpeg }}" https://git.ffmpeg.org/ffmpeg.git ffmpeg
+          git -C ffmpeg log -1 --format='FFmpeg %H (%cd)' > "$GITHUB_WORKSPACE/ffmpeg-version.txt"
+
+      - name: FFmpeg (LGPL, sans --enable-gpl)
+        run: |
+          cd media/libraries/decoder_ffmpeg/src/main/jni
+          # The official script: only the decoders listed, no GPL nor non-free part.
+          ! grep -q -- "--enable-gpl\|--enable-nonfree" build_ffmpeg.sh
+          ./build_ffmpeg.sh "$GITHUB_WORKSPACE/media/libraries/decoder_ffmpeg/src/main" "$NDK_PATH" linux-x86_64 21 $DECODERS
+
+      - name: Extension Media3 (.aar)
+        run: |
+          cd media
+          echo "ndk.dir=$NDK_PATH" >> local.properties
+          ./gradlew --no-daemon -q lib-decoder-ffmpeg:assembleRelease
+          mkdir -p "$GITHUB_WORKSPACE/out"
+          cp libraries/decoder_ffmpeg/buildout/outputs/aar/*release*.aar "$GITHUB_WORKSPACE/out/media3-ffmpeg-decoder-${{ inputs.media3 }}.aar"
+          cp "$GITHUB_WORKSPACE/ffmpeg-version.txt" "$GITHUB_WORKSPACE/out/"
+          printf 'Media3 %s, FFmpeg %s, decodeurs : %s, NDK %s\n' "${{ inputs.media3 }}" "${{ inputs.ffmpeg }}" "$DECODERS" "$NDK_VERSION" >> "$GITHUB_WORKSPACE/out/ffmpeg-version.txt"
+          ls -la "$GITHUB_WORKSPACE/out"
+
+      - uses: actions/upload-artifact@v5
+        with:
+          name: media3-ffmpeg-decoder
+          path: out/*
