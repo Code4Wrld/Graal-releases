@@ -10,8 +10,8 @@
 #
 # Secrets de CE depot (Settings > Secrets and variables > Actions) :
 #   CODE_TOKEN            jeton GitHub fine-grained, "Contents: Read-only" sur Code4Wrld/Graal
-#   GRAAL_LICENCE_SECRET  le niptv.licenceSecret de local.properties (sans lui, Premium serait offert)
-#   GRAAL_KEYSTORE_B64    la cle de signature de l'APK (niptv.keystore), en base64 : sans la meme
+#   GRAAL_LICENCE_SECRET  le graal.licenceSecret de local.properties (sans lui, Premium serait offert)
+#   GRAAL_KEYSTORE_B64    la cle de signature de l'APK (graal.keystore), en base64 : sans la meme
 #                         cle, Android refuserait la mise a jour sur les appareils
 name: Graal
 
@@ -62,9 +62,9 @@ jobs:
           fi
           printf '%s' "$KEYSTORE" | tr -d '\r\n ' | base64 -d > "$RUNNER_TEMP/graal.keystore"
           {
-            echo "niptv.licenceSecret=$LICENCE"
-            echo "niptv.keystore=$RUNNER_TEMP/graal.keystore"
-            echo "niptv.tmdbKey=$TMDB"
+            echo "graal.licenceSecret=$LICENCE"
+            echo "graal.keystore=$RUNNER_TEMP/graal.keystore"
+            echo "graal.tmdbKey=$TMDB"
           } > local.properties
       - name: APK
         run: |
@@ -73,7 +73,7 @@ jobs:
           MODULE=composeApp
           [ -d androidApp ] && MODULE=androidApp
           ./gradlew ":$MODULE:assembleRelease" --console=plain -q
-          VERSION=$(grep '^niptv.version=' gradle.properties | cut -d= -f2 | tr -d '[:space:]')
+          VERSION=$(grep '^graal.version=' gradle.properties | cut -d= -f2 | tr -d '[:space:]')
           mkdir -p dist
           cp "$MODULE/build/outputs/apk/release/$MODULE-release.apk" "dist/Graal-$VERSION.apk"
           ls -la dist
@@ -117,7 +117,7 @@ jobs:
           # A secret pasted with a line end would break the key or the APK: kept bare.
           LICENCE=$(printf '%s' "$LICENCE" | tr -d '\r\n'); TMDB=$(printf '%s' "$TMDB" | tr -d '\r\n')
           if [ -z "$LICENCE" ]; then echo "::error::GRAAL_LICENCE_SECRET absent."; exit 1; fi
-          printf 'niptv.licenceSecret=%s\nniptv.tmdbKey=%s\n' "$LICENCE" "$TMDB" > local.properties
+          printf 'graal.licenceSecret=%s\ngraal.tmdbKey=%s\n' "$LICENCE" "$TMDB" > local.properties
       - name: libVLC
         shell: pwsh
         run: ./tools/fetch-vlc.ps1
@@ -126,7 +126,7 @@ jobs:
         run: |
           ./gradlew.bat :composeApp:createDistributable --console=plain -q
           if ($LASTEXITCODE -ne 0) { exit 1 }
-          $version = ((Get-Content gradle.properties | Where-Object { $_ -match '^niptv.version=' }) -split '=', 2)[1].Trim()
+          $version = ((Get-Content gradle.properties | Where-Object { $_ -match '^graal.version=' }) -split '=', 2)[1].Trim()
           New-Item -ItemType Directory -Force dist | Out-Null
           Compress-Archive -Path composeApp/build/compose/binaries/main/app/Graal -DestinationPath "dist/Graal-$version-Windows.zip"
           Get-ChildItem dist
@@ -188,12 +188,12 @@ jobs:
           # A secret pasted with a line end would break the key or the APK: kept bare.
           LICENCE=$(printf '%s' "$LICENCE" | tr -d '\r\n'); TMDB=$(printf '%s' "$TMDB" | tr -d '\r\n')
           if [ -z "$LICENCE" ]; then echo "::error::GRAAL_LICENCE_SECRET absent."; exit 1; fi
-          printf 'niptv.licenceSecret=%s\nniptv.tmdbKey=%s\n' "$LICENCE" "$TMDB" > local.properties
+          printf 'graal.licenceSecret=%s\ngraal.tmdbKey=%s\n' "$LICENCE" "$TMDB" > local.properties
       - name: .dmg
         run: |
           chmod +x gradlew
           ./gradlew :composeApp:packageDmg --console=plain -q
-          VERSION=$(grep '^niptv.version=' gradle.properties | cut -d= -f2 | tr -d '[:space:]')
+          VERSION=$(grep '^graal.version=' gradle.properties | cut -d= -f2 | tr -d '[:space:]')
           mkdir -p dist
           cp composeApp/build/compose/binaries/main/dmg/*.dmg "dist/Graal-$VERSION-macOS-${{ matrix.arch }}.dmg"
           ls -la dist
