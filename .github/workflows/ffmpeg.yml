@@ -27,7 +27,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      NDK_VERSION: "26.3.11579264"
+      NDK_VERSION: "28.2.13676358"
       DECODERS: "flac alac pcm_mulaw pcm_alaw mp3 aac ac3 eac3 dca mlp truehd vorbis opus"
     steps:
       - uses: actions/setup-java@v4
