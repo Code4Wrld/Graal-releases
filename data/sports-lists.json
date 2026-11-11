@@ -1,5 +1,5 @@
 {
- "_lisezmoi": "Listes de Graal sans source gratuite, relues par l'appli toutes les 12 h : modifier ici en cours de saison, sans nouvelle version. Une liste vide ou absente : celle intégrée à l'appli.",
+ "_lisezmoi": "Listes de Graal sans source gratuite, relues par l'appli toutes les 12 h : modifier ici en cours de saison, sans nouvelle version. Une liste vide ou absente : celle intégrée à l'appli. « sports » : les listes du handball, du cricket et du cyclisme (compétitions, équipes, joueurs et coureurs par groupe) : à vérifier et compléter à chaque saison.",
  "rally": {
   "teams": [
    "Toyota Gazoo Racing WRT",
@@ -61,5 +61,668 @@
    "Bernadette Szőcs",
    "Shin Yu-bin"
   ]
+ },
+ "sports": {
+  "handball": {
+   "competitions": [
+    "Liqui Moly Starligue",
+    "Ligue des champions EHF",
+    "Championnat du monde",
+    "Championnat d'Europe"
+   ],
+   "groups": [
+    {
+     "title": "Starligue",
+     "kind": "team",
+     "items": [
+      "Paris Saint-Germain Handball",
+      "HBC Nantes",
+      "Montpellier Handball",
+      "Chambéry Savoie Mont-Blanc Handball",
+      "Fenix Toulouse Handball",
+      "Pays d'Aix Université Club",
+      "Limoges Handball",
+      "USAM Nîmes Gard",
+      "C' Chartres Métropole Handball",
+      "Saint-Raphaël Var Handball",
+      "Dunkerque Handball Grand Littoral",
+      "Cesson Rennes Métropole Handball",
+      "Istres Provence Handball",
+      "US Ivry Handball",
+      "Sélestat Alsace Handball"
+     ]
+    },
+    {
+     "title": "Ligue des champions EHF",
+     "kind": "team",
+     "items": [
+      "FC Barcelone",
+      "Telekom Veszprém",
+      "SC Magdebourg",
+      "Füchse Berlin",
+      "Aalborg Håndbold",
+      "Paris Saint-Germain Handball",
+      "HBC Nantes",
+      "Industria Kielce",
+      "OTP Bank-Pick Szeged",
+      "Sporting CP",
+      "FC Porto",
+      "Orlen Wisła Płock",
+      "Dinamo Bucarest",
+      "GOG Håndbold",
+      "Kolstad Håndball",
+      "Eurofarm Pelister"
+     ]
+    },
+    {
+     "title": "Équipes nationales",
+     "kind": "team",
+     "items": [
+      "France",
+      "Danemark",
+      "Espagne",
+      "Allemagne",
+      "Suède",
+      "Norvège",
+      "Croatie",
+      "Hongrie",
+      "Islande",
+      "Égypte",
+      "Portugal",
+      "Slovénie"
+     ]
+    },
+    {
+     "title": "Joueurs et joueuses",
+     "kind": "person",
+     "items": [
+      "Dika Mem",
+      "Ludovic Fabregas",
+      "Elohim Prandi",
+      "Melvyn Richardson",
+      "Nedim Remili",
+      "Kentin Mahé",
+      "Aymeric Minne",
+      "Yanis Lenne",
+      "Mathias Gidsel",
+      "Simon Pytlick",
+      "Niklas Landin",
+      "Aron Pálmarsson",
+      "Sander Sagosen",
+      "Domagoj Duvnjak",
+      "Ómar Ingi Magnússon",
+      "Juri Knorr",
+      "Andreas Wolff",
+      "Estelle Nze Minko",
+      "Pauletta Foppa",
+      "Hatadou Sako",
+      "Tamara Horacek",
+      "Henny Reistad"
+     ]
+    }
+   ]
+  },
+  "cricket": {
+   "competitions": [
+    "IPL",
+    "Coupe du monde",
+    "The Ashes",
+    "Big Bash League"
+   ],
+   "groups": [
+    {
+     "title": "IPL",
+     "kind": "team",
+     "items": [
+      "Chennai Super Kings",
+      "Mumbai Indians",
+      "Royal Challengers Bengaluru",
+      "Kolkata Knight Riders",
+      "Delhi Capitals",
+      "Punjab Kings",
+      "Rajasthan Royals",
+      "Sunrisers Hyderabad",
+      "Gujarat Titans",
+      "Lucknow Super Giants"
+     ]
+    },
+    {
+     "title": "Équipes nationales",
+     "kind": "team",
+     "items": [
+      "Inde",
+      "Australie",
+      "Angleterre",
+      "Pakistan",
+      "Nouvelle-Zélande",
+      "Afrique du Sud",
+      "Sri Lanka",
+      "Bangladesh",
+      "Afghanistan",
+      "Antilles"
+     ]
+    },
+    {
+     "title": "Joueurs",
+     "kind": "person",
+     "items": [
+      "Virat Kohli",
+      "Rohit Sharma",
+      "Jasprit Bumrah",
+      "Shubman Gill",
+      "Joe Root",
+      "Ben Stokes",
+      "Steve Smith",
+      "Pat Cummins",
+      "Travis Head",
+      "Babar Azam",
+      "Kane Williamson",
+      "Rashid Khan",
+      "Shaheen Afridi",
+      "Mitchell Starc"
+     ]
+    }
+   ]
+  },
+  "cyclisme-route": {
+   "competitions": [
+    "Tour de France",
+    "Giro d'Italia",
+    "Vuelta",
+    "Paris-Roubaix",
+    "Tour des Flandres",
+    "Milan-San Remo",
+    "Liège-Bastogne-Liège",
+    "Il Lombardia",
+    "Paris-Nice",
+    "Critérium du Dauphiné",
+    "Championnats du monde sur route"
+   ],
+   "groups": [
+    {
+     "title": "Équipes",
+     "kind": "team",
+     "items": [
+      "UAE Team Emirates XRG",
+      "Team Visma | Lease a Bike",
+      "Soudal Quick-Step",
+      "Lidl-Trek",
+      "Red Bull-Bora-Hansgrohe",
+      "INEOS Grenadiers",
+      "Decathlon CMA CGM",
+      "Groupama-FDJ",
+      "EF Education-EasyPost",
+      "Alpecin-Premier Tech",
+      "Bahrain Victorious",
+      "Movistar Team",
+      "Jayco AlUla",
+      "Cofidis",
+      "Intermarché-Wanty",
+      "Uno-X Mobility",
+      "Lotto",
+      "Team Picnic PostNL",
+      "XDS Astana",
+      "NSN Cycling"
+     ]
+    },
+    {
+     "title": "Coureurs et coureuses",
+     "kind": "person",
+     "items": [
+      "Tadej Pogačar",
+      "Jonas Vingegaard",
+      "Remco Evenepoel",
+      "Mathieu van der Poel",
+      "Wout van Aert",
+      "Primož Roglič",
+      "Juan Ayuso",
+      "Tom Pidcock",
+      "Florian Lipowitz",
+      "João Almeida",
+      "Isaac del Toro",
+      "Mads Pedersen",
+      "Jasper Philipsen",
+      "Jonathan Milan",
+      "Tim Merlier",
+      "Biniam Girmay",
+      "Julian Alaphilippe",
+      "Romain Grégoire",
+      "Lenny Martinez",
+      "Kévin Vauquelin",
+      "Paul Seixas",
+      "Valentin Madouas",
+      "Felix Gall",
+      "Pauline Ferrand-Prévot",
+      "Demi Vollering",
+      "Lotte Kopecky",
+      "Marianne Vos",
+      "Elisa Longo Borghini",
+      "Katarzyna Niewiadoma",
+      "Juliette Labous"
+     ]
+    }
+   ]
+  },
+  "vtt-xc": {
+   "competitions": [
+    "Coupe du monde de cross-country",
+    "Championnats du monde de cross-country",
+    "Jeux olympiques"
+   ],
+   "groups": [
+    {
+     "title": "Coureurs et coureuses",
+     "kind": "person",
+     "items": [
+      "Victor Koretzky",
+      "Jordan Sarrou",
+      "Luca Martin",
+      "Mathis Azzaro",
+      "Alan Hatherly",
+      "Christopher Blevins",
+      "Nino Schurter",
+      "Mathias Flückiger",
+      "Samuel Gaze",
+      "Tom Pidcock",
+      "Loana Lecomte",
+      "Puck Pieterse",
+      "Jenny Rissveds",
+      "Evie Richards",
+      "Jolanda Neff",
+      "Alessandra Keller",
+      "Haley Batten",
+      "Savilia Blunk"
+     ]
+    }
+   ]
+  },
+  "vtt-dh": {
+   "competitions": [
+    "Coupe du monde de descente",
+    "Championnats du monde de descente"
+   ],
+   "groups": [
+    {
+     "title": "Coureurs et coureuses",
+     "kind": "person",
+     "items": [
+      "Loïc Bruni",
+      "Amaury Pierron",
+      "Loris Vergier",
+      "Benoît Coulanges",
+      "Jackson Goldstone",
+      "Finn Iles",
+      "Troy Brosnan",
+      "Laurie Greenland",
+      "Andreas Kolb",
+      "Ronan Dunne",
+      "Valentina Höll",
+      "Myriam Nicole",
+      "Marine Cabirou",
+      "Tahnée Seagrave",
+      "Gracey Hemstreet",
+      "Nina Hoffmann"
+     ]
+    }
+   ]
+  },
+  "volley": {
+   "competitions": [
+    "Marmara SpikeLigue",
+    "Ligue des champions CEV",
+    "Ligue des nations",
+    "Championnat du monde"
+   ],
+   "groups": [
+    {
+     "title": "Équipes nationales",
+     "kind": "team",
+     "items": [
+      "France",
+      "Pologne",
+      "Italie",
+      "Brésil",
+      "États-Unis",
+      "Japon",
+      "Slovénie",
+      "Serbie",
+      "Turquie"
+     ]
+    },
+    {
+     "title": "Joueurs et joueuses",
+     "kind": "person",
+     "items": [
+      "Earvin N'Gapeth",
+      "Antoine Brizard",
+      "Jean Patry",
+      "Trévor Clévenot",
+      "Barthélémy Chinenyeze",
+      "Jenia Grebennikov",
+      "Wilfredo León",
+      "Bartosz Kurek",
+      "Simone Giannelli",
+      "Alessandro Michieletto",
+      "Yuji Nishida",
+      "Paola Egonu",
+      "Tijana Bošković",
+      "Gabi Guimarães"
+     ]
+    }
+   ]
+  },
+  "golf": {
+   "competitions": [
+    "Masters",
+    "PGA Championship",
+    "US Open",
+    "The Open",
+    "Ryder Cup",
+    "DP World Tour"
+   ],
+   "groups": [
+    {
+     "title": "Golfeurs et golfeuses",
+     "kind": "person",
+     "items": [
+      "Scottie Scheffler",
+      "Rory McIlroy",
+      "Jon Rahm",
+      "Xander Schauffele",
+      "Ludvig Åberg",
+      "Bryson DeChambeau",
+      "Collin Morikawa",
+      "Viktor Hovland",
+      "Matthieu Pavon",
+      "Victor Perez",
+      "Céline Boutier",
+      "Nelly Korda",
+      "Lydia Ko"
+     ]
+    }
+   ]
+  },
+  "athletisme": {
+   "competitions": [
+    "Ligue de diamant",
+    "Championnats du monde",
+    "Championnats d'Europe",
+    "Jeux olympiques",
+    "Marathons majeurs"
+   ],
+   "groups": [
+    {
+     "title": "Athlètes",
+     "kind": "person",
+     "items": [
+      "Armand Duplantis",
+      "Noah Lyles",
+      "Jakob Ingebrigtsen",
+      "Karsten Warholm",
+      "Kevin Mayer",
+      "Sasha Zhoya",
+      "Gabriel Tual",
+      "Renaud Lavillenie",
+      "Faith Kipyegon",
+      "Beatrice Chebet",
+      "Sydney McLaughlin-Levrone",
+      "Femke Bol",
+      "Julien Alfred",
+      "Cyréna Samba-Mayela"
+     ]
+    }
+   ]
+  },
+  "ski": {
+   "competitions": [
+    "Coupe du monde de ski alpin",
+    "Coupe du monde de biathlon",
+    "Championnats du monde de ski alpin",
+    "Championnats du monde de biathlon"
+   ],
+   "groups": [
+    {
+     "title": "Ski alpin",
+     "kind": "person",
+     "items": [
+      "Marco Odermatt",
+      "Clément Noël",
+      "Cyprien Sarrazin",
+      "Lucas Pinheiro Braathen",
+      "Henrik Kristoffersen",
+      "Mikaela Shiffrin",
+      "Federica Brignone",
+      "Lara Gut-Behrami"
+     ]
+    },
+    {
+     "title": "Biathlon",
+     "kind": "person",
+     "items": [
+      "Quentin Fillon Maillet",
+      "Émilien Jacquelin",
+      "Éric Perrot",
+      "Sturla Holm Lægreid",
+      "Julia Simon",
+      "Justine Braisaz-Bouchet",
+      "Lou Jeanmonnot",
+      "Franziska Preuss"
+     ]
+    }
+   ]
+  },
+  "voile": {
+   "competitions": [
+    "Vendée Globe",
+    "Route du Rhum",
+    "Transat Jacques Vabre",
+    "SailGP",
+    "America's Cup",
+    "The Ocean Race",
+    "Solitaire du Figaro"
+   ],
+   "groups": [
+    {
+     "title": "Skippers",
+     "kind": "person",
+     "items": [
+      "Charlie Dalin",
+      "Yoann Richomme",
+      "Thomas Ruyant",
+      "Jérémie Beyou",
+      "Armel Le Cléac'h",
+      "François Gabart",
+      "Charles Caudrelier",
+      "Thomas Coville",
+      "Sam Goodchild",
+      "Boris Herrmann",
+      "Yannick Bestaven",
+      "Clarisse Crémer",
+      "Justine Mettraux",
+      "Violette Dorange"
+     ]
+    },
+    {
+     "title": "Équipes SailGP",
+     "kind": "team",
+     "items": [
+      "France SailGP Team",
+      "Emirates GBR",
+      "Australia SailGP Team",
+      "New Zealand SailGP Team",
+      "Spain SailGP Team",
+      "United States SailGP Team",
+      "Denmark SailGP Team",
+      "Canada SailGP Team",
+      "Germany SailGP Team",
+      "Switzerland SailGP Team",
+      "Italy SailGP Team",
+      "Brazil SailGP Team"
+     ]
+    }
+   ]
+  },
+  "surf": {
+   "competitions": [
+    "WSL Championship Tour",
+    "Pipeline",
+    "Teahupo'o",
+    "Jeux olympiques"
+   ],
+   "groups": [
+    {
+     "title": "Surfeurs et surfeuses",
+     "kind": "person",
+     "items": [
+      "Kauli Vaast",
+      "Jérémy Florès",
+      "Johanne Defay",
+      "Vahine Fierro",
+      "Gabriel Medina",
+      "Filipe Toledo",
+      "Italo Ferreira",
+      "Griffin Colapinto",
+      "Jack Robinson",
+      "John John Florence",
+      "Caroline Marks",
+      "Carissa Moore",
+      "Tyler Wright",
+      "Molly Picklum"
+     ]
+    }
+   ]
+  },
+  "natation": {
+   "competitions": [
+    "Championnats du monde",
+    "Championnats d'Europe",
+    "Jeux olympiques"
+   ],
+   "groups": [
+    {
+     "title": "Nageurs et nageuses",
+     "kind": "person",
+     "items": [
+      "Léon Marchand",
+      "Maxime Grousset",
+      "Florent Manaudou",
+      "Yohann Ndoye-Brouard",
+      "David Popovici",
+      "Pan Zhanle",
+      "Summer McIntosh",
+      "Katie Ledecky",
+      "Ariarne Titmus",
+      "Mollie O'Callaghan",
+      "Kaylee McKeown",
+      "Gretchen Walsh"
+     ]
+    }
+   ]
+  },
+  "aviron": {
+   "competitions": [
+    "Coupe du monde d'aviron",
+    "Championnats du monde d'aviron",
+    "Coupe du monde de canoë-kayak",
+    "Championnats du monde de canoë-kayak"
+   ],
+   "groups": [
+    {
+     "title": "Rameurs et rameuses",
+     "kind": "person",
+     "items": [
+      "Hugo Boucheron",
+      "Matthieu Androdias",
+      "Oliver Zeidler",
+      "Paul Martin"
+     ]
+    },
+    {
+     "title": "Canoë-kayak",
+     "kind": "person",
+     "items": [
+      "Nicolas Gestin",
+      "Titouan Castryck",
+      "Camille Prigent",
+      "Marjorie Delassus",
+      "Angèle Hug",
+      "Jessica Fox"
+     ]
+    }
+   ]
+  },
+  "padel": {
+   "competitions": [
+    "Premier Padel",
+    "Championnats du monde"
+   ],
+   "groups": [
+    {
+     "title": "Joueurs et joueuses",
+     "kind": "person",
+     "items": [
+      "Arturo Coello",
+      "Agustín Tapia",
+      "Alejandro Galán",
+      "Federico Chingotto",
+      "Juan Lebrón",
+      "Ari Sánchez",
+      "Paula Josemaría",
+      "Gemma Triay",
+      "Delfina Brea",
+      "Bea González",
+      "Alix Collombon"
+     ]
+    }
+   ]
+  },
+  "snooker": {
+   "competitions": [
+    "Championnat du monde",
+    "UK Championship",
+    "Masters"
+   ],
+   "groups": [
+    {
+     "title": "Joueurs",
+     "kind": "person",
+     "items": [
+      "Ronnie O'Sullivan",
+      "Judd Trump",
+      "Mark Selby",
+      "Kyren Wilson",
+      "Zhao Xintong",
+      "Mark Allen",
+      "Neil Robertson",
+      "John Higgins",
+      "Luca Brecel"
+     ]
+    }
+   ]
+  },
+  "flechettes": {
+   "competitions": [
+    "Championnat du monde PDC",
+    "Premier League",
+    "World Matchplay"
+   ],
+   "groups": [
+    {
+     "title": "Joueurs",
+     "kind": "person",
+     "items": [
+      "Luke Littler",
+      "Luke Humphries",
+      "Michael van Gerwen",
+      "Gerwyn Price",
+      "Michael Smith",
+      "Stephen Bunting",
+      "Rob Cross",
+      "Nathan Aspinall",
+      "Peter Wright"
+     ]
+    }
+   ]
+  }
  }
 }
