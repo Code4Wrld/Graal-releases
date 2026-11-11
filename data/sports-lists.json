@@ -1,0 +1,65 @@
+{
+ "_lisezmoi": "Listes de Graal sans source gratuite, relues par l'appli toutes les 12 h : modifier ici en cours de saison, sans nouvelle version. Une liste vide ou absente : celle intégrée à l'appli.",
+ "rally": {
+  "teams": [
+   "Toyota Gazoo Racing WRT",
+   "Hyundai Shell Mobis WRT",
+   "M-Sport Ford WRT"
+  ],
+  "drivers": [
+   "Sébastien Ogier",
+   "Elfyn Evans",
+   "Thierry Neuville",
+   "Ott Tänak",
+   "Adrien Fourmaux",
+   "Oliver Solberg",
+   "Sami Pajari",
+   "Takamoto Katsuta",
+   "Hayden Paddon",
+   "Grégoire Munster",
+   "Josh McErlean",
+   "Jon Armstrong",
+   "Mārtiņš Sesks",
+   "Esapekka Lappi",
+   "Dani Sordo",
+   "Yohan Rossel",
+   "Sébastien Loeb",
+   "Kalle Rovanperä"
+  ]
+ },
+ "ping": {
+  "players": [
+   "Félix Lebrun",
+   "Alexis Lebrun",
+   "Simon Gauzy",
+   "Jia Nan Yuan",
+   "Prithika Pavade",
+   "Camille Lutz",
+   "Thibault Poret",
+   "Flavien Coton",
+   "Charlotte Lutz",
+   "Lilou Massart",
+   "Wang Chuqin",
+   "Fan Zhendong",
+   "Lin Shidong",
+   "Ma Long",
+   "Liang Jingkun",
+   "Tomokazu Harimoto",
+   "Hugo Calderano",
+   "Truls Möregårdh",
+   "Dang Qiu",
+   "Patrick Franziska",
+   "Darko Jorgic",
+   "Lin Yun-ju",
+   "Sun Yingsha",
+   "Wang Manyu",
+   "Chen Xingtong",
+   "Wang Yidi",
+   "Hina Hayata",
+   "Miwa Harimoto",
+   "Mima Ito",
+   "Bernadette Szőcs",
+   "Shin Yu-bin"
+  ]
+ }
+}
