@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conditions générales de vente – Graal Premium</title>
+<meta name="description" content="Conditions générales de vente de Graal Premium : licence payée une fois, prix, paiement PayPal, rétractation, garanties légales, médiation.">
+<style>
+/* Pages légales de graaltv.com : une colonne lisible sur tout écran, l'aspect sombre de Graal. */
+:root { color-scheme: dark; --bg: #0B081B; --panel: #17142B; --panel2: #1F1B38; --border: #343050; --text: #ECECF4; --dim: #B4B4CE; --faint: #8A8AA8; --accent: #B79BFF; --todo: #F5C518; --check: #7FD4FF; }
+* { box-sizing: border-box; }
+html { background: var(--bg); scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; color: var(--text); font: 17px/1.65 system-ui, "Segoe UI", Roboto, sans-serif; padding: 24px 16px 64px; overflow-wrap: break-word; }
+main, .top, .foot { max-width: 780px; margin: 0 auto; }
+a { color: var(--accent); overflow-wrap: anywhere; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.top { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin-bottom: 28px; font-size: 15px; }
+.top .home { font-weight: 700; text-decoration: none; margin-right: auto; }
+.top a:not(.home) { color: var(--faint); text-decoration: none; }
+.top a[aria-current] { color: var(--text); font-weight: 700; }
+.langs { display: flex; flex-wrap: wrap; gap: 4px; width: 100%; justify-content: flex-end; }
+.top .langs a { color: var(--faint); font-size: 13px; font-weight: 700; letter-spacing: .4px; padding: 3px 8px; border: 1px solid var(--border); border-radius: 8px; }
+.top .langs a[aria-current] { color: var(--text); border-color: var(--accent); background: var(--panel2); }
+.translated { font-size: 15px; }
+html.swap #page { visibility: hidden; }
+h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; margin: 0 0 8px; text-wrap: balance; }
+.date { color: var(--faint); margin: 0 0 24px; font-size: 15px; }
+h2 { font-size: 21px; line-height: 1.3; margin: 40px 0 10px; scroll-margin-top: 16px; }
+h3 { font-size: 17px; margin: 22px 0 6px; color: var(--text); }
+p, li, td { color: var(--dim); }
+p b, li b, td b, p strong { color: var(--text); }
+ul, ol { padding-left: 22px; }
+li { margin: 4px 0; }
+.box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 14px 20px; margin: 16px 0; }
+.box p { margin: 6px 0; }
+.box.key { border-color: #5b4a99; background: var(--panel2); }
+.toc { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 12px 20px; margin: 20px 0 8px; font-size: 15px; }
+.toc b { display: block; margin-bottom: 4px; }
+.toc ol { margin: 0; padding-left: 22px; columns: 2 260px; column-gap: 28px; }
+.toc li { margin: 2px 0; break-inside: avoid; }
+.toc a { text-decoration: none; }
+.tablewrap { margin: 14px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.5; }
+th, td { text-align: left; vertical-align: top; padding: 9px 10px; border-bottom: 1px solid var(--border); }
+th { color: var(--text); background: var(--panel); font-weight: 700; }
+.todo { background: rgba(245, 197, 24, .15); color: var(--todo); border-radius: 6px; padding: 1px 6px; font-weight: 700; }
+.check { background: rgba(127, 212, 255, .13); color: var(--check); border-radius: 6px; padding: 1px 6px; font-weight: 700; }
+.form { background: var(--panel); border: 1px dashed var(--border); border-radius: 12px; padding: 12px 18px; }
+.foot { margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--border); color: var(--faint); font-size: 14px; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 12px; }
+.foot nav a { color: var(--dim); }
+.foot p { color: var(--faint); margin: 6px 0; }
+@media (max-width: 600px) {
+  body { font-size: 16px; padding-top: 18px; }
+  h2 { font-size: 19px; }
+  .top .home { width: 100%; }
+  .langs { justify-content: flex-start; }
+  /* Tableaux en fiches empilées : chaque cellule porte le nom de sa colonne. */
+  table, thead, tbody, tr, th, td { display: block; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; margin: 10px 0; padding: 4px 12px; }
+  td { border: 0; padding: 6px 0; }
+  td + td { border-top: 1px solid var(--border); }
+  td[data-label]::before { content: attr(data-label); display: block; color: var(--text); font-weight: 700; font-size: 13px; }
+}
+@media print {
+  :root { color-scheme: light; --bg: #fff; --panel: #f4f4f8; --panel2: #f4f4f8; --border: #ccc; --text: #000; --dim: #222; --faint: #444; --accent: #2a2a8a; }
+  body { padding: 0; }
+  .top, .toc, .langs { display: none; }
+}
+</style>
+<script src="../lang.js"></script>
+<script>(function () { var l = window.GraalLang ? GraalLang.pick() : 'fr'; document.documentElement.lang = l; if (l !== 'fr') document.documentElement.classList.add('swap'); })();</script>
+</head>
+<body>
+<div id="page">
+<nav class="top" aria-label="Pages légales"><a class="home" href="../?lang=fr">‹ Graal – IPTV Player</a> <a href="../cgv/?lang=fr" aria-current="page">Conditions de vente</a> <a href="../confidentialite/?lang=fr">Confidentialité</a> <a href="../mentions-legales/?lang=fr">Mentions légales</a>
+<span class="langs" role="group" aria-label="Langue"><a href="?lang=fr" hreflang="fr" lang="fr" data-setlang="fr" aria-current="true">FR</a> <a href="?lang=en" hreflang="en" lang="en" data-setlang="en">EN</a> <a href="?lang=es" hreflang="es" lang="es" data-setlang="es">ES</a> <a href="?lang=it" hreflang="it" lang="it" data-setlang="it">IT</a> <a href="?lang=pt" hreflang="pt" lang="pt" data-setlang="pt">PT</a> <a href="?lang=de" hreflang="de" lang="de" data-setlang="de">DE</a></span></nav>
+<main>
+<h1>Conditions générales de vente de Graal Premium</h1>
+<p class="date">Version du 16 novembre 2026. Applicables aux commandes passées à partir de cette date.</p>
+
+<div class="box key">
+  <p><b>En bref.</b> Graal est gratuit. Premium est une licence payée une seule fois, sans paiement récurrent, qui débloque des fonctions de l'application. <b>L'achat couvre uniquement l'application : aucune chaîne, aucune playlist ni aucun contenu.</b> Vous pouvez essayer Graal gratuitement avant d'acheter, et vous faire rembourser Premium pendant 14 jours sur simple demande, même si vous l'avez utilisé.</p>
+</div>
+
+<nav class="toc" aria-label="Sommaire"><b>Sommaire</b><ol>
+  <li><a href="#objet">Objet et acceptation</a></li>
+  <li><a href="#vendeur">Le vendeur</a></li>
+  <li><a href="#produit">Ce que vous achetez</a></li>
+  <li><a href="#formules">Formules et durée</a></li>
+  <li><a href="#prix">Prix</a></li>
+  <li><a href="#commande">Commande</a></li>
+  <li><a href="#paiement">Paiement et preuve</a></li>
+  <li><a href="#activation">Activation</a></li>
+  <li><a href="#retractation">Rétractation et remboursement</a></li>
+  <li><a href="#garanties">Garanties légales</a></li>
+  <li><a href="#disponibilite">Disponibilité et services tiers</a></li>
+  <li><a href="#usage">Utilisation de la licence</a></li>
+  <li><a href="#responsabilite">Responsabilité</a></li>
+  <li><a href="#donnees">Données personnelles</a></li>
+  <li><a href="#reclamations">Service client et réclamations</a></li>
+  <li><a href="#mediation">Médiation de la consommation</a></li>
+  <li><a href="#droit">Droit applicable et litiges</a></li>
+  <li><a href="#modifications">Modification des conditions</a></li>
+  <li><a href="#formulaire">Annexe : formulaire de rétractation</a></li>
+</ol></nav>
+
+<h2 id="objet">1. Objet et acceptation</h2>
+<p>Les présentes conditions générales de vente (CGV) régissent la vente de la licence <b>Graal Premium</b> aux consommateurs, depuis l'application Graal – IPTV Player.</p>
+<p>Avant de payer, vous êtes invité à lire et à accepter ces CGV. La version applicable est celle en vigueur à la date de votre commande ; elle vous est envoyée avec votre confirmation de commande et vous pouvez en demander une copie à tout moment.</p>
+
+<h2 id="vendeur">2. Le vendeur</h2>
+<p>Graal Premium est vendu par Code4Wrld, entreprise individuelle (EI) en cours d'immatriculation au registre du commerce et des sociétés de Draguignan (numéro SIRET indiqué ici dès l'immatriculation), dont l'adresse est communiquée sur simple demande à contact@graaltv.com.</p>
+<p>Contact : <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+<p>TVA non applicable, article 293 B du CGI : les prix sont indiqués sans TVA.</p>
+
+<h2 id="produit">3. Ce que vous achetez</h2>
+<p><b>Graal – IPTV Player</b> est un lecteur multimédia : il lit les sources (playlist Xtream ou M3U, portail Stalker) que <b>vous</b> y ajoutez. <b>Premium</b> est une licence d'utilisation qui débloque dans cette application des fonctions supplémentaires : synchronisation entre appareils, replay, enregistrement, secours automatique de qualité, catégories intelligentes, plusieurs playlists et reprise sur un autre appareil. La liste à jour et la description de chaque fonction figurent sur <a href="../?lang=fr#premium">graaltv.com</a> et dans l'application.</p>
+<div class="box">
+  <p><b>Le prix couvre uniquement l'application.</b> Graal ne fournit, n'héberge, ne vend, ne sollicite ni ne recommande aucune chaîne, playlist ou contenu audiovisuel. Premium ne donne accès à aucun contenu.</p>
+  <p>Graal n'est affilié à aucun fournisseur de contenus. Vous utilisez Graal avec vos propres sources, que vous devez avoir le droit de lire (et, pour l'enregistrement, de copier). Graal n'approuve pas la diffusion de contenus protégés sans l'autorisation de leurs titulaires.</p>
+</div>
+<p>Certaines fonctions dépendent de ce que propose votre propre source : le replay, par exemple, n'est possible que si votre fournisseur le met à disposition pour la chaîne concernée. La version gratuite vous permet de le vérifier avant l'achat.</p>
+<p><b>Compatibilité.</b> Graal fonctionne sur Android TV, Google TV et Fire TV (Android 7 ou plus), sur téléphones et tablettes Android, sur Windows 10 et 11 et sur Mac. Les appareils non compatibles sont indiqués sur <a href="../?lang=fr#telecharger">la page de téléchargement</a>.</p>
+
+<h2 id="formules">4. Formules et durée</h2>
+<ul>
+  <li><b>1 appareil</b> : Premium sur un appareil.</li>
+  <li><b>Foyer</b> : Premium sur 5 appareils au plus, utilisés par les membres d'un même foyer (personnes vivant sous le même toit).</li>
+</ul>
+<p>Vous pouvez remplacer un appareil par un autre, depuis l'application.</p>
+<p><b>« À vie »</b> signifie : un paiement unique, sans limite de durée et sans renouvellement. Une fois activé, Premium fonctionne sur l'appareil même sans connexion à nos serveurs. Les fonctions qui en ont besoin (synchronisation, récupération de Premium sur un nouvel appareil) restent assurées tant que le service Graal est exploité. Si nous devions arrêter ce service, nous vous préviendrions au moins <b>6 mois</b> à l'avance, par e-mail et dans l'application, et Premium resterait actif sur les appareils déjà activés.</p>
+
+<h2 id="prix">5. Prix</h2>
+<p>Les prix sont indiqués en euros, toutes taxes comprises, dans l'application avant le paiement. Prix de lancement, valables jusqu'au <b>31 décembre 2026 inclus</b> (heure de Paris) : <b>12 €</b> pour la formule 1 appareil et <b>20 €</b> pour la formule Foyer. À partir du 1<sup>er</sup> janvier 2027 : 15 € et 25 €.</p>
+<p>Le prix payé est celui affiché au moment de la commande. Un changement de prix ultérieur n'a aucun effet sur un achat déjà payé. Si votre moyen de paiement est dans une autre monnaie, d'éventuels frais de conversion sont facturés par votre banque ou par PayPal, pas par nous.</p>
+
+<h2 id="commande">6. Commande</h2>
+<ol>
+  <li>Dans l'application, <b>Paramètres › Premium</b> : vous indiquez votre adresse e-mail et saisissez le code de vérification reçu.</li>
+  <li>Vous choisissez votre formule. Le récapitulatif (formule, nombre d'appareils, prix TTC) s'affiche ; vous pouvez revenir en arrière et changer de formule.</li>
+  <li>Vous acceptez les présentes CGV, puis payez sur la page sécurisée de PayPal. Le bouton de paiement indique clairement que la commande vous oblige à payer.</li>
+</ol>
+<p>Le contrat est conclu au moment où PayPal accepte le paiement. Vous recevez alors, par e-mail, une confirmation de commande et un reçu, avec un lien vers ces CGV. Conservez cet e-mail.</p>
+
+<h2 id="paiement">7. Paiement et preuve</h2>
+<p>Le paiement est réalisé par <b>PayPal</b>, avec un compte PayPal ou par carte bancaire, et débité immédiatement. Nous ne recevons et ne conservons aucune donnée de carte bancaire : PayPal nous transmet seulement le montant, la date, l'état et les références du paiement.</p>
+<p><b>Preuve.</b> Les enregistrements de PayPal et ceux de notre serveur (date, montant, références de commande et de paiement) font foi entre les parties, sauf preuve contraire que vous pouvez apporter par tout moyen.</p>
+<p><b>Paiement en double.</b> Si vous avez été débité deux fois pour la même commande, écrivez-nous : le paiement en trop vous est remboursé.</p>
+<p><b>Paiement annulé ou contesté.</b> Si un paiement est annulé, remboursé par PayPal ou contesté auprès de votre banque, Premium peut être désactivé une fois la situation constatée ; nous vous en informons par e-mail. Vous pouvez à tout moment nous contacter pour régler la situation.</p>
+
+<h2 id="activation">8. Activation</h2>
+<p>Premium s'active automatiquement sur votre appareil dans les minutes qui suivent le paiement. Vous le retrouvez sur un autre appareil ou après une réinitialisation avec la même adresse e-mail et un code de vérification (« Je l'ai déjà »).</p>
+<p>Si Premium n'est pas actif <b>une heure</b> après votre paiement, écrivez à <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>. Si nous ne pouvons pas l'activer sous 7 jours, vous êtes intégralement remboursé.</p>
+
+<h2 id="retractation">9. Rétractation et remboursement</h2>
+<p><b>Votre droit légal.</b> Vous disposez d'un délai de <b>14 jours</b> à compter de la conclusion du contrat (votre paiement) pour vous rétracter, sans avoir à donner de motif ni à payer de frais (articles L221-18 et suivants du code de la consommation).</p>
+<p><b>Notre choix, plus favorable que la loi.</b> Pour un contenu numérique, la loi permet au vendeur de supprimer ce droit si l'acheteur y renonce expressément pour en profiter tout de suite (article L221-28, 13° du code de la consommation). <b>Nous ne vous demandons pas ce renoncement</b> : même si vous avez déjà utilisé Premium, vous pouvez vous rétracter et être remboursé pendant 14 jours.</p>
+<p><b>Comment faire.</b> Envoyez-nous, avant la fin du délai, une déclaration sans ambiguïté : un e-mail à <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>, de préférence depuis l'adresse de votre compte Premium, ou le <a href="#formulaire">formulaire de rétractation</a> ci-dessous. Nous accusons réception par e-mail.</p>
+<p><b>Remboursement.</b> Nous vous remboursons la totalité du prix payé, sur le moyen de paiement utilisé, au plus tard <b>14 jours</b> après avoir reçu votre demande, sans aucun frais. Premium est alors désactivé sur vos appareils ; la version gratuite de Graal reste utilisable.</p>
+<p>Après ce délai, un remboursement reste possible dans les cas prévus par la loi (notamment au titre de la garantie de conformité, article 10) et en cas de double paiement ou de défaut d'activation (articles 7 et 8). Pour tout autre cas, écrivez-nous : chaque demande est examinée.</p>
+
+<h2 id="garanties">10. Garanties légales</h2>
+<p>Premium est un contenu numérique, assorti de services numériques (compte, synchronisation). Vous bénéficiez de la <b>garantie légale de conformité des contenus et services numériques</b> (articles L224-25-12 et suivants du code de la consommation) :</p>
+<ul>
+  <li>Premium doit correspondre à sa description, fonctionner sur les appareils compatibles annoncés et recevoir les mises à jour, notamment de sécurité, nécessaires à son bon fonctionnement.</li>
+  <li>La garantie couvre le défaut de conformité qui apparaît dans les <b>deux ans</b> suivant la fourniture de la licence et, pour les services fournis de manière continue (synchronisation, compte Premium), pendant toute la durée de leur fourniture.</li>
+  <li>En cas de défaut, vous avez droit à la mise en conformité, gratuitement et dans un délai raisonnable ; à défaut, à une réduction du prix ou à la résolution du contrat, avec remboursement.</li>
+</ul>
+<p>Vous bénéficiez aussi de la garantie des vices cachés (articles 1641 et suivants du code civil). Ces garanties légales s'appliquent indépendamment du remboursement de 14 jours de l'article 9.</p>
+<p>Un problème causé par votre source (serveur du fournisseur hors service, chaîne retirée, replay non proposé), par votre connexion ou par un appareil indiqué comme non compatible avant l'achat n'est pas un défaut de conformité de Premium.</p>
+
+<h2 id="disponibilite">11. Disponibilité et services tiers</h2>
+<p>Nous faisons le nécessaire pour que les services en ligne de Graal (compte, synchronisation, mises à jour) soient disponibles, mais ils peuvent être interrompus pour maintenance, mise à jour, incident technique ou cas de force majeure. Nous ne promettons pas une lecture sans coupure : la qualité de lecture dépend de votre source, de votre réseau et de votre appareil.</p>
+<p>Certaines informations affichées (guide des programmes, fiches des films et séries, informations sportives) proviennent de services extérieurs dont la disponibilité peut varier.</p>
+
+<h2 id="usage">12. Utilisation de la licence</h2>
+<ul>
+  <li>Premium est lié à l'adresse e-mail indiquée lors de l'achat.</li>
+  <li>La licence est personnelle (formule 1 appareil) ou limitée à votre foyer (formule Foyer). Elle ne peut être ni revendue, ni louée, ni cédée, ni partagée en dehors de ce cadre.</li>
+  <li>Graal ne doit être utilisé qu'avec des contenus que vous avez le droit de lire ; l'enregistrement est réservé à votre usage personnel.</li>
+  <li>L'achat vous donne un droit d'utilisation, pas la propriété du logiciel : Graal reste la propriété exclusive de l'éditeur. Il est interdit de le copier, le modifier, le décompiler, le désassembler ou d'en réutiliser le code, dans les limites prévues par la loi (voir les <a href="../mentions-legales/?lang=fr#pi">mentions légales</a>).</li>
+  <li>En cas de fraude, de revente ou d'usage illicite avéré, la licence peut être retirée, après vous en avoir informé par e-mail. Vos droits légaux, dont la rétractation, restent intacts.</li>
+</ul>
+
+<h2 id="responsabilite">13. Responsabilité</h2>
+<p>Vous êtes seul responsable des sources que vous ajoutez dans Graal et de l'usage que vous en faites. Graal n'a aucun lien avec les fournisseurs de ces sources et ne répond ni de leur contenu, ni de leur disponibilité, ni de leur légalité.</p>
+<p>Notre responsabilité ne peut être engagée pour un dommage causé par votre propre fait, par un tiers (notamment votre fournisseur de contenus) ou par un cas de force majeure. Rien dans ces CGV ne limite les droits que la loi vous accorde, ni notre responsabilité en cas de faute lourde ou de dommage corporel.</p>
+
+<h2 id="donnees">14. Données personnelles</h2>
+<p>Pour Premium, nous traitons votre adresse e-mail et la liste de vos appareils, chiffrées, ainsi que le montant, la date et les références de votre paiement. Tout est détaillé dans la <a href="../confidentialite/?lang=fr">politique de confidentialité</a> et, dans l'application, dans <b>Paramètres › Mes données</b>, où vous pouvez aussi supprimer votre compte.</p>
+
+<h2 id="reclamations">15. Service client et réclamations</h2>
+<p>Pour toute question ou réclamation, écrivez à <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>, si possible depuis l'adresse de votre compte Premium, en décrivant le problème (appareil, version de Graal). Nous répondons en principe sous 7 jours. Le journal de diagnostic (<b>Paramètres › Journal de diagnostic › Envoyer au vendeur</b>) nous aide à comprendre un problème technique.</p>
+
+<h2 id="mediation">16. Médiation de la consommation</h2>
+<p>Si notre réponse ne vous satisfait pas, ou en l'absence de réponse dans un délai de deux mois, vous pouvez saisir gratuitement le médiateur de la consommation dont nous relevons (articles L611-1 et suivants du code de la consommation), dans un délai d'un an à compter de votre réclamation écrite :</p>
+<p class="box">Le médiateur de la consommation est en cours de désignation ; ses coordonnées seront indiquées ici. En attendant, toute réclamation est traitée à <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+
+<h2 id="droit">17. Droit applicable et litiges</h2>
+<p>Ces CGV sont soumises au droit français. Si vous résidez dans un autre pays, vous conservez la protection des dispositions impératives de la loi de votre pays de résidence. En cas de litige, et après une tentative de résolution amiable, vous pouvez saisir la juridiction compétente selon les règles légales, notamment celle du lieu de votre domicile.</p>
+
+<h2 id="modifications">18. Modification des conditions</h2>
+<p>Nous pouvons modifier ces CGV, par exemple pour suivre une évolution de la loi ou de l'offre. La nouvelle version s'applique aux commandes passées après sa mise en ligne ; une commande déjà passée reste régie par la version acceptée lors de l'achat.</p>
+
+<h2 id="formulaire">Annexe : formulaire de rétractation</h2>
+<p>À compléter et à renvoyer uniquement si vous souhaitez vous rétracter (un simple e-mail suffit aussi).</p>
+<div class="form">
+  <p>À l'attention de Code4Wrld, <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> :</p>
+  <p>Je vous notifie par la présente ma rétractation du contrat portant sur la fourniture du contenu numérique ci-dessous :</p>
+  <ul>
+    <li>Graal Premium, formule : ………………</li>
+    <li>Commandé le : ………………</li>
+    <li>Adresse e-mail du compte Premium : ………………</li>
+    <li>Nom du consommateur : ………………</li>
+    <li>Adresse du consommateur : ………………</li>
+    <li>Date : ………………</li>
+    <li>Signature (uniquement en cas d'envoi sur papier) : ………………</li>
+  </ul>
+</div>
+</main>
+<footer class="foot">
+  <nav aria-label="Pages légales"><a href="../cgv/?lang=fr">Conditions de vente</a> <a href="../confidentialite/?lang=fr">Confidentialité</a> <a href="../mentions-legales/?lang=fr">Mentions légales</a></nav>
+  <p>Graal est un lecteur multimédia. Il ne fournit, n'héberge, ne vend ni ne recommande aucune chaîne, playlist ou contenu audiovisuel, et n'est affilié à aucun fournisseur. Chaque utilisateur est seul responsable des sources qu'il y ajoute et doit avoir le droit de les lire.</p>
+  <p>Contact : <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> · © 2026 Graal</p>
+</footer>
+</div>
+<template data-lang="en" data-title="General Terms and Conditions of Sale – Graal Premium" data-desc="General Terms and Conditions of Sale of Graal Premium: one-time paid licence, prices, PayPal payment, withdrawal, legal guarantees, mediation.">
+<nav class="top" aria-label="Legal pages"><a class="home" href="../?lang=en">‹ Graal – IPTV Player</a> <a href="../cgv/?lang=en" aria-current="page">Terms of sale</a> <a href="../confidentialite/?lang=en">Privacy</a> <a href="../mentions-legales/?lang=en">Legal notice</a>
+<span class="langs" role="group" aria-label="Language"><a href="?lang=fr" hreflang="fr" lang="fr" data-setlang="fr">FR</a> <a href="?lang=en" hreflang="en" lang="en" data-setlang="en" aria-current="true">EN</a> <a href="?lang=es" hreflang="es" lang="es" data-setlang="es">ES</a> <a href="?lang=it" hreflang="it" lang="it" data-setlang="it">IT</a> <a href="?lang=pt" hreflang="pt" lang="pt" data-setlang="pt">PT</a> <a href="?lang=de" hreflang="de" lang="de" data-setlang="de">DE</a></span></nav>
+<main>
+<p class="box translated" lang="en">Translation provided for information only; only the French version is legally binding. <a href="?lang=fr" hreflang="fr" lang="fr">Read the French version</a></p>
+<h1>General Terms and Conditions of Sale of Graal Premium</h1>
+<p class="date">Version of 16 November 2026. Applicable to orders placed from that date.</p>
+
+<div class="box key">
+  <p><b>In short.</b> Graal is free. Premium is a licence paid for only once, with no recurring payment, that unlocks features of the application. <b>The purchase covers only the application: no channels, no playlists and no content.</b> You can try Graal free of charge before buying, and get a refund for Premium within 14 days simply by asking, even if you have used it.</p>
+</div>
+
+<nav class="toc" aria-label="Contents"><b>Contents</b><ol>
+  <li><a href="#objet">Purpose and acceptance</a></li>
+  <li><a href="#vendeur">The seller</a></li>
+  <li><a href="#produit">What you are buying</a></li>
+  <li><a href="#formules">Plans and duration</a></li>
+  <li><a href="#prix">Prices</a></li>
+  <li><a href="#commande">Ordering</a></li>
+  <li><a href="#paiement">Payment and proof</a></li>
+  <li><a href="#activation">Activation</a></li>
+  <li><a href="#retractation">Withdrawal and refund</a></li>
+  <li><a href="#garanties">Legal guarantees</a></li>
+  <li><a href="#disponibilite">Availability and third-party services</a></li>
+  <li><a href="#usage">Use of the licence</a></li>
+  <li><a href="#responsabilite">Liability</a></li>
+  <li><a href="#donnees">Personal data</a></li>
+  <li><a href="#reclamations">Customer service and complaints</a></li>
+  <li><a href="#mediation">Consumer mediation</a></li>
+  <li><a href="#droit">Governing law and disputes</a></li>
+  <li><a href="#modifications">Changes to these terms</a></li>
+  <li><a href="#formulaire">Annex: withdrawal form</a></li>
+</ol></nav>
+
+<h2 id="objet">1. Purpose and acceptance</h2>
+<p>These general terms and conditions of sale (GTCS) govern the sale of the <b>Graal Premium</b> licence to consumers, from within the Graal – IPTV Player application.</p>
+<p>Before paying, you are asked to read and accept these GTCS. The applicable version is the one in force on the date of your order; it is sent to you with your order confirmation and you may request a copy at any time.</p>
+
+<h2 id="vendeur">2. The seller</h2>
+<p>Graal Premium is sold by Code4Wrld, a sole proprietorship (entreprise individuelle, EI) currently being registered with the Trade and Companies Register (RCS) of Draguignan (SIRET number to be shown here once registered), whose address is provided simply on request to contact@graaltv.com.</p>
+<p>Contact: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+<p>VAT not applicable, article 293 B of the French General Tax Code (CGI): prices are shown without VAT.</p>
+
+<h2 id="produit">3. What you are buying</h2>
+<p><b>Graal – IPTV Player</b> is a media player: it plays the sources (Xtream or M3U playlist, Stalker portal) that <b>you</b> add to it. <b>Premium</b> is a user licence that unlocks additional features in this application: synchronisation between devices, replay, recording, automatic quality fallback, smart categories, multiple playlists and resuming on another device. The up-to-date list and the description of each feature can be found on <a href="../?lang=en#premium">graaltv.com</a> and in the application.</p>
+<div class="box">
+  <p><b>The price covers only the application.</b> Graal does not provide, host, sell, solicit or recommend any channel, playlist or audiovisual content. Premium does not give access to any content.</p>
+  <p>Graal is not affiliated with any content provider. You use Graal with your own sources, which you must have the right to play (and, for recording, to copy). Graal does not endorse the distribution of protected content without the authorisation of its rights holders.</p>
+</div>
+<p>Some features depend on what your own source offers: replay, for example, is only possible if your provider makes it available for the channel concerned. The free version lets you check this before purchase.</p>
+<p><b>Compatibility.</b> Graal works on Android TV, Google TV and Fire TV (Android 7 or later), on Android phones and tablets, on Windows 10 and 11 and on Mac. Incompatible devices are listed on <a href="../?lang=en#telecharger">the download page</a>.</p>
+
+<h2 id="formules">4. Plans and duration</h2>
+<ul>
+  <li><b>1 device</b>: Premium on one device.</li>
+  <li><b>Household</b>: Premium on up to 5 devices, used by members of the same household (people living under the same roof).</li>
+</ul>
+<p>You can replace one device with another, from within the application.</p>
+<p><b>“Lifetime”</b> means: a single payment, with no time limit and no renewal. Once activated, Premium works on the device even without a connection to our servers. The features that require one (synchronisation, recovering Premium on a new device) remain provided for as long as the Graal service is operated. Should we have to discontinue this service, we would notify you at least <b>6 months</b> in advance, by e-mail and in the application, and Premium would remain active on devices already activated.</p>
+
+<h2 id="prix">5. Prices</h2>
+<p>Prices are shown in euros, all taxes included, in the application before payment. Launch prices, valid until <b>31 December 2026 inclusive</b> (Paris time): <b>€12</b> for the 1 device plan and <b>€20</b> for the Household plan. From 1 January 2027: €15 and €25.</p>
+<p>The price paid is the one displayed at the time of the order. A later price change has no effect on a purchase already paid for. If your means of payment is in another currency, any conversion fees are charged by your bank or by PayPal, not by us.</p>
+
+<h2 id="commande">6. Ordering</h2>
+<ol>
+  <li>In the application, <b>Settings › Premium</b>: you enter your e-mail address and type in the verification code you receive.</li>
+  <li>You choose your plan. The summary (plan, number of devices, price including tax) is displayed; you can go back and change plan.</li>
+  <li>You accept these GTCS, then pay on PayPal's secure page. The payment button clearly indicates that the order entails an obligation to pay.</li>
+</ol>
+<p>The contract is concluded when PayPal accepts the payment. You then receive, by e-mail, an order confirmation and a receipt, with a link to these GTCS. Keep this e-mail.</p>
+
+<h2 id="paiement">7. Payment and proof</h2>
+<p>Payment is made via <b>PayPal</b>, with a PayPal account or by bank card, and is debited immediately. We do not receive or store any bank card data: PayPal only sends us the amount, date, status and references of the payment.</p>
+<p><b>Proof.</b> PayPal's records and those of our server (date, amount, order and payment references) are binding between the parties, unless you provide evidence to the contrary, which you may do by any means.</p>
+<p><b>Duplicate payment.</b> If you have been charged twice for the same order, write to us: the overpayment will be refunded to you.</p>
+<p><b>Cancelled or disputed payment.</b> If a payment is cancelled, refunded by PayPal or disputed with your bank, Premium may be deactivated once the situation has been established; we will inform you of this by e-mail. You may contact us at any time to resolve the situation.</p>
+
+<h2 id="activation">8. Activation</h2>
+<p>Premium is activated automatically on your device within minutes of payment. You can recover it on another device or after a reset with the same e-mail address and a verification code (“I already have it”).</p>
+<p>If Premium is not active <b>one hour</b> after your payment, write to <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>. If we are unable to activate it within 7 days, you will be refunded in full.</p>
+
+<h2 id="retractation">9. Withdrawal and refund</h2>
+<p><b>Your legal right.</b> You have <b>14 days</b> from the conclusion of the contract (your payment) to withdraw, without having to give any reason or pay any costs (articles L221-18 et seq. of the French Consumer Code (code de la consommation)).</p>
+<p><b>Our choice, more favourable than the law.</b> For digital content, the law allows the seller to remove this right if the buyer expressly waives it in order to benefit from the content immediately (article L221-28, 13° of the French Consumer Code). <b>We do not ask you for this waiver</b>: even if you have already used Premium, you can withdraw and be refunded within 14 days.</p>
+<p><b>How to do it.</b> Send us, before the period expires, an unambiguous statement: an e-mail to <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>, preferably from the address of your Premium account, or the <a href="#formulaire">withdrawal form</a> below. We will acknowledge receipt by e-mail.</p>
+<p><b>Refund.</b> We will refund the full price paid, using the means of payment used, no later than <b>14 days</b> after receiving your request, at no cost to you. Premium is then deactivated on your devices; the free version of Graal remains usable.</p>
+<p>After this period, a refund remains possible in the cases provided for by law (in particular under the legal guarantee of conformity, article 10) and in the event of duplicate payment or failed activation (articles 7 and 8). For any other case, write to us: every request is considered.</p>
+
+<h2 id="garanties">10. Legal guarantees</h2>
+<p>Premium is digital content, accompanied by digital services (account, synchronisation). You benefit from the <b>legal guarantee of conformity for digital content and services</b> (articles L224-25-12 et seq. of the French Consumer Code (code de la consommation)):</p>
+<ul>
+  <li>Premium must match its description, work on the advertised compatible devices and receive the updates, including security updates, necessary for it to function properly.</li>
+  <li>The guarantee covers any lack of conformity that appears within <b>two years</b> of the supply of the licence and, for services supplied continuously (synchronisation, Premium account), throughout the period during which they are supplied.</li>
+  <li>In the event of a defect, you are entitled to have it brought into conformity, free of charge and within a reasonable time; failing that, to a price reduction or to termination of the contract, with a refund.</li>
+</ul>
+<p>You also benefit from the guarantee against hidden defects (articles 1641 et seq. of the French Civil Code (code civil)). These legal guarantees apply independently of the 14-day refund in article 9.</p>
+<p>A problem caused by your source (provider's server out of service, channel removed, replay not offered), by your connection or by a device indicated as incompatible before purchase is not a lack of conformity of Premium.</p>
+
+<h2 id="disponibilite">11. Availability and third-party services</h2>
+<p>We do what is necessary to keep Graal's online services (account, synchronisation, updates) available, but they may be interrupted for maintenance, updates, technical incidents or force majeure. We do not promise uninterrupted playback: playback quality depends on your source, your network and your device.</p>
+<p>Some information displayed (programme guide, film and series details, sports information) comes from external services whose availability may vary.</p>
+
+<h2 id="usage">12. Use of the licence</h2>
+<ul>
+  <li>Premium is linked to the e-mail address given at the time of purchase.</li>
+  <li>The licence is personal (1 device plan) or limited to your household (Household plan). It may not be resold, rented, transferred or shared outside this scope.</li>
+  <li>Graal must only be used with content that you have the right to play; recording is reserved for your personal use.</li>
+  <li>The purchase gives you a right of use, not ownership of the software: Graal remains the exclusive property of the publisher. Copying, modifying, decompiling or disassembling it, or reusing its code, is prohibited, within the limits provided for by law (see the <a href="../mentions-legales/?lang=en#pi">legal notice</a>).</li>
+  <li>In the event of proven fraud, resale or unlawful use, the licence may be withdrawn, after you have been informed by e-mail. Your legal rights, including withdrawal, remain intact.</li>
+</ul>
+
+<h2 id="responsabilite">13. Liability</h2>
+<p>You alone are responsible for the sources you add to Graal and for the use you make of them. Graal has no connection with the providers of these sources and is not answerable for their content, their availability or their legality.</p>
+<p>We cannot be held liable for damage caused by your own act, by a third party (in particular your content provider) or by force majeure. Nothing in these GTCS limits the rights granted to you by law, or our liability in the event of gross negligence or personal injury.</p>
+
+<h2 id="donnees">14. Personal data</h2>
+<p>For Premium, we process your e-mail address and the list of your devices, encrypted, as well as the amount, date and references of your payment. Everything is detailed in the <a href="../confidentialite/?lang=en">privacy policy</a> and, in the application, in <b>Settings › My data</b>, where you can also delete your account.</p>
+
+<h2 id="reclamations">15. Customer service and complaints</h2>
+<p>For any question or complaint, write to <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>, if possible from the address of your Premium account, describing the problem (device, Graal version). We normally reply within 7 days. The diagnostic log (<b>Settings › Diagnostic log › Send to seller</b>) helps us understand a technical problem.</p>
+
+<h2 id="mediation">16. Consumer mediation</h2>
+<p>If you are not satisfied with our response, or if there is no response within two months, you may refer the matter free of charge to the consumer mediator to which we are subject (articles L611-1 et seq. of the French Consumer Code), within one year of your written complaint:</p>
+<p class="box">The consumer mediator is currently being appointed; their contact details will be shown here. In the meantime, all complaints are handled at <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+
+<h2 id="droit">17. Governing law and disputes</h2>
+<p>These GTCS are governed by French law. If you reside in another country, you retain the protection of the mandatory provisions of the law of your country of residence. In the event of a dispute, and after an attempt at amicable resolution, you may refer the matter to the competent court in accordance with the legal rules, in particular the court of your place of residence.</p>
+
+<h2 id="modifications">18. Changes to these terms</h2>
+<p>We may amend these GTCS, for example to follow a change in the law or in our offer. The new version applies to orders placed after it is published online; an order already placed remains governed by the version accepted at the time of purchase.</p>
+
+<h2 id="formulaire">Annex: withdrawal form</h2>
+<p>Complete and return this form only if you wish to withdraw from the contract (a simple e-mail is also sufficient).</p>
+<div class="form">
+  <p>To Code4Wrld, <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>:</p>
+  <p>I hereby give notice that I withdraw from the contract for the supply of the following digital content:</p>
+  <ul>
+    <li>Graal Premium, plan: ………………</li>
+    <li>Ordered on: ………………</li>
+    <li>E-mail address of the Premium account: ………………</li>
+    <li>Name of consumer: ………………</li>
+    <li>Address of consumer: ………………</li>
+    <li>Date: ………………</li>
+    <li>Signature (only if this form is sent on paper): ………………</li>
+  </ul>
+</div>
+</main>
+<footer class="foot">
+  <nav aria-label="Legal pages"><a href="../cgv/?lang=en">Terms of sale</a> <a href="../confidentialite/?lang=en">Privacy</a> <a href="../mentions-legales/?lang=en">Legal notice</a></nav>
+  <p>Graal is a media player. It does not provide, host, sell or recommend any channel, playlist or audiovisual content, and is not affiliated with any provider. Each user is solely responsible for the sources they add and must have the right to play them.</p>
+  <p>Contact: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> · © 2026 Graal</p>
+</footer>
+</template>
+<template data-lang="es" data-title="Condiciones generales de venta – Graal Premium" data-desc="Condiciones generales de venta de Graal Premium: licencia de pago único, precio, pago con PayPal, desistimiento, garantías legales, mediación.">
+<nav class="top" aria-label="Páginas legales"><a class="home" href="../?lang=es">‹ Graal – IPTV Player</a> <a href="../cgv/?lang=es" aria-current="page">Condiciones de venta</a> <a href="../confidentialite/?lang=es">Privacidad</a> <a href="../mentions-legales/?lang=es">Aviso legal</a>
+<span class="langs" role="group" aria-label="Idioma"><a href="?lang=fr" hreflang="fr" lang="fr" data-setlang="fr">FR</a> <a href="?lang=en" hreflang="en" lang="en" data-setlang="en">EN</a> <a href="?lang=es" hreflang="es" lang="es" data-setlang="es" aria-current="true">ES</a> <a href="?lang=it" hreflang="it" lang="it" data-setlang="it">IT</a> <a href="?lang=pt" hreflang="pt" lang="pt" data-setlang="pt">PT</a> <a href="?lang=de" hreflang="de" lang="de" data-setlang="de">DE</a></span></nav>
+<main>
+<p class="box translated" lang="es">Traducción a título informativo; solo la versión francesa da fe. <a href="?lang=fr" hreflang="fr" lang="fr">Leer la versión francesa</a></p>
+<h1>Condiciones generales de venta de Graal Premium</h1>
+<p class="date">Versión del 16 de noviembre de 2026. Aplicables a los pedidos realizados a partir de esta fecha.</p>
+
+<div class="box key">
+  <p><b>En resumen.</b> Graal es gratuito. Premium es una licencia de pago único, sin pagos periódicos, que desbloquea funciones de la aplicación. <b>La compra cubre únicamente la aplicación: ningún canal, ninguna lista de reproducción ni ningún contenido.</b> Puede probar Graal gratuitamente antes de comprar y obtener el reembolso de Premium durante 14 días previa simple solicitud, aunque lo haya utilizado.</p>
+</div>
+
+<nav class="toc" aria-label="Índice"><b>Índice</b><ol>
+  <li><a href="#objet">Objeto y aceptación</a></li>
+  <li><a href="#vendeur">El vendedor</a></li>
+  <li><a href="#produit">Lo que usted compra</a></li>
+  <li><a href="#formules">Planes y duración</a></li>
+  <li><a href="#prix">Precio</a></li>
+  <li><a href="#commande">Pedido</a></li>
+  <li><a href="#paiement">Pago y prueba</a></li>
+  <li><a href="#activation">Activación</a></li>
+  <li><a href="#retractation">Desistimiento y reembolso</a></li>
+  <li><a href="#garanties">Garantías legales</a></li>
+  <li><a href="#disponibilite">Disponibilidad y servicios de terceros</a></li>
+  <li><a href="#usage">Uso de la licencia</a></li>
+  <li><a href="#responsabilite">Responsabilidad</a></li>
+  <li><a href="#donnees">Datos personales</a></li>
+  <li><a href="#reclamations">Atención al cliente y reclamaciones</a></li>
+  <li><a href="#mediation">Mediación de consumo</a></li>
+  <li><a href="#droit">Legislación aplicable y litigios</a></li>
+  <li><a href="#modifications">Modificación de las condiciones</a></li>
+  <li><a href="#formulaire">Anexo: formulario de desistimiento</a></li>
+</ol></nav>
+
+<h2 id="objet">1. Objeto y aceptación</h2>
+<p>Las presentes condiciones generales de venta (CGV) rigen la venta de la licencia <b>Graal Premium</b> a los consumidores, desde la aplicación Graal – IPTV Player.</p>
+<p>Antes de pagar, se le invita a leer y aceptar estas CGV. La versión aplicable es la vigente en la fecha de su pedido; se le envía junto con la confirmación de su pedido y puede solicitar una copia en cualquier momento.</p>
+
+<h2 id="vendeur">2. El vendedor</h2>
+<p>Graal Premium es vendido por Code4Wrld, empresa individual (entreprise individuelle, EI) en proceso de inscripción en el Registro Mercantil (registre du commerce et des sociétés, RCS) de Draguignan (el número SIRET se indicará aquí en cuanto se produzca la inscripción), cuya dirección se facilita previa simple solicitud a contact@graaltv.com.</p>
+<p>Contacto: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+<p>IVA no aplicable, artículo 293 B del Código General de Impuestos francés (CGI): los precios se indican sin IVA.</p>
+
+<h2 id="produit">3. Lo que usted compra</h2>
+<p><b>Graal – IPTV Player</b> es un reproductor multimedia: reproduce las fuentes (lista de reproducción Xtream o M3U, portal Stalker) que <b>usted</b> añade. <b>Premium</b> es una licencia de uso que desbloquea en esta aplicación funciones adicionales: sincronización entre dispositivos, replay, grabación, respaldo automático de calidad, categorías inteligentes, varias listas de reproducción y reanudación en otro dispositivo. La lista actualizada y la descripción de cada función figuran en <a href="../?lang=es#premium">graaltv.com</a> y en la aplicación.</p>
+<div class="box">
+  <p><b>El precio cubre únicamente la aplicación.</b> Graal no suministra, aloja, vende, solicita ni recomienda ningún canal, lista de reproducción ni contenido audiovisual. Premium no da acceso a ningún contenido.</p>
+  <p>Graal no está afiliado a ningún proveedor de contenidos. Usted utiliza Graal con sus propias fuentes, que debe tener derecho a reproducir (y, en el caso de la grabación, a copiar). Graal no aprueba la difusión de contenidos protegidos sin la autorización de sus titulares.</p>
+</div>
+<p>Algunas funciones dependen de lo que ofrezca su propia fuente: el replay, por ejemplo, solo es posible si su proveedor lo pone a disposición para el canal en cuestión. La versión gratuita le permite comprobarlo antes de la compra.</p>
+<p><b>Compatibilidad.</b> Graal funciona en Android TV, Google TV y Fire TV (Android 7 o superior), en teléfonos y tabletas Android, en Windows 10 y 11 y en Mac. Los dispositivos no compatibles se indican en <a href="../?lang=es#telecharger">la página de descarga</a>.</p>
+
+<h2 id="formules">4. Planes y duración</h2>
+<ul>
+  <li><b>1 dispositivo</b>: Premium en un dispositivo.</li>
+  <li><b>Hogar</b>: Premium en un máximo de 5 dispositivos, utilizados por los miembros de un mismo hogar (personas que viven bajo el mismo techo).</li>
+</ul>
+<p>Puede sustituir un dispositivo por otro desde la aplicación.</p>
+<p><b>«De por vida»</b> significa: un pago único, sin límite de duración y sin renovación. Una vez activado, Premium funciona en el dispositivo incluso sin conexión con nuestros servidores. Las funciones que la necesitan (sincronización, recuperación de Premium en un nuevo dispositivo) se mantienen mientras se explote el servicio Graal. Si tuviéramos que cesar este servicio, se lo comunicaríamos con al menos <b>6 meses</b> de antelación, por correo electrónico y en la aplicación, y Premium seguiría activo en los dispositivos ya activados.</p>
+
+<h2 id="prix">5. Precio</h2>
+<p>Los precios se indican en euros, con todos los impuestos incluidos, en la aplicación antes del pago. Precios de lanzamiento, válidos hasta el <b>31 de diciembre de 2026 inclusive</b> (hora de París): <b>12 €</b> para el plan 1 dispositivo y <b>20 €</b> para el plan Hogar. A partir del 1.<sup>o</sup> de enero de 2027: 15 € y 25 €.</p>
+<p>El precio pagado es el que se muestra en el momento del pedido. Un cambio de precio posterior no tiene ningún efecto sobre una compra ya pagada. Si su medio de pago está en otra moneda, los posibles gastos de conversión los factura su banco o PayPal, no nosotros.</p>
+
+<h2 id="commande">6. Pedido</h2>
+<ol>
+  <li>En la aplicación, <b>Ajustes › Premium</b>: indica su dirección de correo electrónico e introduce el código de verificación recibido.</li>
+  <li>Elige su plan. Se muestra el resumen (plan, número de dispositivos, precio con impuestos incluidos); puede volver atrás y cambiar de plan.</li>
+  <li>Acepta las presentes CGV y, a continuación, paga en la página segura de PayPal. El botón de pago indica claramente que el pedido implica una obligación de pago.</li>
+</ol>
+<p>El contrato se celebra en el momento en que PayPal acepta el pago. Entonces recibe, por correo electrónico, una confirmación del pedido y un recibo, con un enlace a estas CGV. Conserve este correo electrónico.</p>
+
+<h2 id="paiement">7. Pago y prueba</h2>
+<p>El pago se realiza mediante <b>PayPal</b>, con una cuenta PayPal o con tarjeta bancaria, y se carga inmediatamente. No recibimos ni conservamos ningún dato de tarjeta bancaria: PayPal solo nos transmite el importe, la fecha, el estado y las referencias del pago.</p>
+<p><b>Prueba.</b> Los registros de PayPal y los de nuestro servidor (fecha, importe, referencias del pedido y del pago) hacen fe entre las partes, salvo prueba en contrario que usted puede aportar por cualquier medio.</p>
+<p><b>Pago duplicado.</b> Si se le ha cobrado dos veces por el mismo pedido, escríbanos: se le reembolsará el pago en exceso.</p>
+<p><b>Pago anulado o impugnado.</b> Si un pago se anula, es reembolsado por PayPal o se impugna ante su banco, Premium puede desactivarse una vez constatada la situación; se lo comunicaremos por correo electrónico. Puede ponerse en contacto con nosotros en cualquier momento para resolver la situación.</p>
+
+<h2 id="activation">8. Activación</h2>
+<p>Premium se activa automáticamente en su dispositivo en los minutos siguientes al pago. Puede recuperarlo en otro dispositivo o tras un restablecimiento con la misma dirección de correo electrónico y un código de verificación («Ya lo tengo»).</p>
+<p>Si Premium no está activo <b>una hora</b> después de su pago, escriba a <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>. Si no podemos activarlo en un plazo de 7 días, se le reembolsará íntegramente.</p>
+
+<h2 id="retractation">9. Desistimiento y reembolso</h2>
+<p><b>Su derecho legal.</b> Dispone de un plazo de <b>14 días</b> a partir de la celebración del contrato (su pago) para desistir, sin necesidad de indicar el motivo ni de pagar gastos (artículos L221-18 y siguientes del Código de Consumo francés (code de la consommation)).</p>
+<p><b>Nuestra elección, más favorable que la ley.</b> Para un contenido digital, la ley permite al vendedor suprimir este derecho si el comprador renuncia expresamente a él para disfrutarlo de inmediato (artículo L221-28, 13° del Código de Consumo francés). <b>No le pedimos esta renuncia</b>: aunque ya haya utilizado Premium, puede desistir y obtener el reembolso durante 14 días.</p>
+<p><b>Cómo hacerlo.</b> Envíenos, antes de que finalice el plazo, una declaración inequívoca: un correo electrónico a <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>, preferiblemente desde la dirección de su cuenta Premium, o el <a href="#formulaire">formulario de desistimiento</a> que figura más abajo. Le acusaremos recibo por correo electrónico.</p>
+<p><b>Reembolso.</b> Le reembolsamos la totalidad del precio pagado, mediante el medio de pago utilizado, a más tardar <b>14 días</b> después de recibir su solicitud, sin ningún gasto. Premium se desactiva entonces en sus dispositivos; la versión gratuita de Graal sigue pudiendo utilizarse.</p>
+<p>Transcurrido este plazo, sigue siendo posible un reembolso en los casos previstos por la ley (en particular en virtud de la garantía de conformidad, artículo 10) y en caso de pago duplicado o de falta de activación (artículos 7 y 8). Para cualquier otro caso, escríbanos: se examina cada solicitud.</p>
+
+<h2 id="garanties">10. Garantías legales</h2>
+<p>Premium es un contenido digital, acompañado de servicios digitales (cuenta, sincronización). Usted se beneficia de la <b>garantía legal de conformidad de los contenidos y servicios digitales</b> (artículos L224-25-12 y siguientes del Código de Consumo francés):</p>
+<ul>
+  <li>Premium debe corresponder a su descripción, funcionar en los dispositivos compatibles anunciados y recibir las actualizaciones, en particular de seguridad, necesarias para su correcto funcionamiento.</li>
+  <li>La garantía cubre la falta de conformidad que se manifieste en los <b>dos años</b> siguientes al suministro de la licencia y, para los servicios suministrados de forma continua (sincronización, cuenta Premium), durante todo el período de su suministro.</li>
+  <li>En caso de falta de conformidad, tiene derecho a la puesta en conformidad, de forma gratuita y en un plazo razonable; en su defecto, a una reducción del precio o a la resolución del contrato, con reembolso.</li>
+</ul>
+<p>También se beneficia de la garantía por vicios ocultos (artículos 1641 y siguientes del Código Civil francés (code civil)). Estas garantías legales se aplican con independencia del reembolso de 14 días del artículo 9.</p>
+<p>Un problema causado por su fuente (servidor del proveedor fuera de servicio, canal retirado, replay no ofrecido), por su conexión o por un dispositivo indicado como no compatible antes de la compra no constituye una falta de conformidad de Premium.</p>
+
+<h2 id="disponibilite">11. Disponibilidad y servicios de terceros</h2>
+<p>Hacemos lo necesario para que los servicios en línea de Graal (cuenta, sincronización, actualizaciones) estén disponibles, pero pueden interrumpirse por mantenimiento, actualización, incidencia técnica o causa de fuerza mayor. No prometemos una reproducción sin cortes: la calidad de reproducción depende de su fuente, de su red y de su dispositivo.</p>
+<p>Parte de la información mostrada (guía de programas, fichas de películas y series, información deportiva) procede de servicios externos cuya disponibilidad puede variar.</p>
+
+<h2 id="usage">12. Uso de la licencia</h2>
+<ul>
+  <li>Premium está vinculado a la dirección de correo electrónico indicada en el momento de la compra.</li>
+  <li>La licencia es personal (plan 1 dispositivo) o está limitada a su hogar (plan Hogar). No puede revenderse, alquilarse, cederse ni compartirse fuera de este marco.</li>
+  <li>Graal solo debe utilizarse con contenidos que usted tenga derecho a reproducir; la grabación está reservada a su uso personal.</li>
+  <li>La compra le otorga un derecho de uso, no la propiedad del software: Graal sigue siendo propiedad exclusiva del editor. Está prohibido copiarlo, modificarlo, descompilarlo, desensamblarlo o reutilizar su código, dentro de los límites previstos por la ley (véase el <a href="../mentions-legales/?lang=es#pi">aviso legal</a>).</li>
+  <li>En caso de fraude, reventa o uso ilícito probado, la licencia puede retirarse, tras habérselo comunicado por correo electrónico. Sus derechos legales, incluido el desistimiento, permanecen intactos.</li>
+</ul>
+
+<h2 id="responsabilite">13. Responsabilidad</h2>
+<p>Usted es el único responsable de las fuentes que añade a Graal y del uso que hace de ellas. Graal no tiene ningún vínculo con los proveedores de estas fuentes y no responde de su contenido, ni de su disponibilidad, ni de su legalidad.</p>
+<p>No se nos podrá exigir responsabilidad por un daño causado por su propia actuación, por un tercero (en particular su proveedor de contenidos) o por una causa de fuerza mayor. Nada en estas CGV limita los derechos que le otorga la ley, ni nuestra responsabilidad en caso de culpa grave o de daño corporal.</p>
+
+<h2 id="donnees">14. Datos personales</h2>
+<p>Para Premium, tratamos su dirección de correo electrónico y la lista de sus dispositivos, cifradas, así como el importe, la fecha y las referencias de su pago. Todo se detalla en la <a href="../confidentialite/?lang=es">política de privacidad</a> y, en la aplicación, en <b>Ajustes › Mis datos</b>, donde también puede eliminar su cuenta.</p>
+
+<h2 id="reclamations">15. Atención al cliente y reclamaciones</h2>
+<p>Para cualquier pregunta o reclamación, escriba a <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>, si es posible desde la dirección de su cuenta Premium, describiendo el problema (dispositivo, versión de Graal). En principio respondemos en un plazo de 7 días. El registro de diagnóstico (<b>Ajustes › Registro de diagnóstico › Enviar al vendedor</b>) nos ayuda a entender un problema técnico.</p>
+
+<h2 id="mediation">16. Mediación de consumo</h2>
+<p>Si nuestra respuesta no le satisface, o a falta de respuesta en un plazo de dos meses, puede acudir gratuitamente al mediador de consumo del que dependemos (artículos L611-1 y siguientes del Código de Consumo francés), en el plazo de un año a partir de su reclamación escrita:</p>
+<p class="box">El mediador de consumo está en proceso de designación; sus datos de contacto se indicarán aquí. Mientras tanto, cualquier reclamación se tramita en <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+
+<h2 id="droit">17. Legislación aplicable y litigios</h2>
+<p>Estas CGV se rigen por el Derecho francés. Si reside en otro país, conserva la protección de las disposiciones imperativas de la ley de su país de residencia. En caso de litigio, y tras un intento de resolución amistosa, puede acudir al órgano jurisdiccional competente según las normas legales, en particular el del lugar de su domicilio.</p>
+
+<h2 id="modifications">18. Modificación de las condiciones</h2>
+<p>Podemos modificar estas CGV, por ejemplo para adaptarlas a un cambio de la ley o de la oferta. La nueva versión se aplica a los pedidos realizados después de su publicación en línea; un pedido ya realizado sigue rigiéndose por la versión aceptada en el momento de la compra.</p>
+
+<h2 id="formulaire">Anexo: formulario de desistimiento</h2>
+<p>Cumplimente y envíe este formulario únicamente si desea desistir del contrato (un simple correo electrónico también es suficiente).</p>
+<div class="form">
+  <p>A la atención de Code4Wrld, <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>:</p>
+  <p>Por la presente le comunico mi desistimiento del contrato relativo al suministro del contenido digital indicado a continuación:</p>
+  <ul>
+    <li>Graal Premium, plan: ………………</li>
+    <li>Pedido el: ………………</li>
+    <li>Dirección de correo electrónico de la cuenta Premium: ………………</li>
+    <li>Nombre del consumidor: ………………</li>
+    <li>Dirección del consumidor: ………………</li>
+    <li>Fecha: ………………</li>
+    <li>Firma (solo si se envía en papel): ………………</li>
+  </ul>
+</div>
+</main>
+<footer class="foot">
+  <nav aria-label="Páginas legales"><a href="../cgv/?lang=es">Condiciones de venta</a> <a href="../confidentialite/?lang=es">Privacidad</a> <a href="../mentions-legales/?lang=es">Aviso legal</a></nav>
+  <p>Graal es un reproductor multimedia. No proporciona, aloja, vende ni recomienda ningún canal, lista ni contenido audiovisual, y no está afiliado a ningún proveedor. Cada usuario es el único responsable de las fuentes que añade y debe tener derecho a reproducirlas.</p>
+  <p>Contacto: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> · © 2026 Graal</p>
+</footer>
+</template>
+<template data-lang="it" data-title="Condizioni generali di vendita – Graal Premium" data-desc="Condizioni generali di vendita di Graal Premium: licenza pagata una sola volta, prezzi, pagamento PayPal, recesso, garanzie legali, mediazione.">
+<nav class="top" aria-label="Pagine legali"><a class="home" href="../?lang=it">‹ Graal – IPTV Player</a> <a href="../cgv/?lang=it" aria-current="page">Condizioni di vendita</a> <a href="../confidentialite/?lang=it">Privacy</a> <a href="../mentions-legales/?lang=it">Note legali</a>
+<span class="langs" role="group" aria-label="Lingua"><a href="?lang=fr" hreflang="fr" lang="fr" data-setlang="fr">FR</a> <a href="?lang=en" hreflang="en" lang="en" data-setlang="en">EN</a> <a href="?lang=es" hreflang="es" lang="es" data-setlang="es">ES</a> <a href="?lang=it" hreflang="it" lang="it" data-setlang="it" aria-current="true">IT</a> <a href="?lang=pt" hreflang="pt" lang="pt" data-setlang="pt">PT</a> <a href="?lang=de" hreflang="de" lang="de" data-setlang="de">DE</a></span></nav>
+<main>
+<p class="box translated" lang="it">Traduzione a titolo informativo; fa fede solo la versione francese. <a href="?lang=fr" hreflang="fr" lang="fr">Leggi la versione francese</a></p>
+<h1>Condizioni generali di vendita di Graal Premium</h1>
+<p class="date">Versione del 16 novembre 2026. Applicabili agli ordini effettuati a partire da questa data.</p>
+
+<div class="box key">
+  <p><b>In breve.</b> Graal è gratuito. Premium è una licenza pagata una sola volta, senza pagamenti ricorrenti, che sblocca funzioni dell'applicazione. <b>L'acquisto copre unicamente l'applicazione: nessun canale, nessuna playlist né alcun contenuto.</b> Può provare Graal gratuitamente prima di acquistare e ottenere il rimborso di Premium entro 14 giorni su semplice richiesta, anche se lo ha utilizzato.</p>
+</div>
+
+<nav class="toc" aria-label="Indice"><b>Indice</b><ol>
+  <li><a href="#objet">Oggetto e accettazione</a></li>
+  <li><a href="#vendeur">Il venditore</a></li>
+  <li><a href="#produit">Che cosa acquista</a></li>
+  <li><a href="#formules">Formule e durata</a></li>
+  <li><a href="#prix">Prezzi</a></li>
+  <li><a href="#commande">Ordine</a></li>
+  <li><a href="#paiement">Pagamento e prova</a></li>
+  <li><a href="#activation">Attivazione</a></li>
+  <li><a href="#retractation">Recesso e rimborso</a></li>
+  <li><a href="#garanties">Garanzie legali</a></li>
+  <li><a href="#disponibilite">Disponibilità e servizi di terzi</a></li>
+  <li><a href="#usage">Utilizzo della licenza</a></li>
+  <li><a href="#responsabilite">Responsabilità</a></li>
+  <li><a href="#donnees">Dati personali</a></li>
+  <li><a href="#reclamations">Servizio clienti e reclami</a></li>
+  <li><a href="#mediation">Mediazione dei consumatori</a></li>
+  <li><a href="#droit">Legge applicabile e controversie</a></li>
+  <li><a href="#modifications">Modifica delle condizioni</a></li>
+  <li><a href="#formulaire">Allegato: modulo di recesso</a></li>
+</ol></nav>
+
+<h2 id="objet">1. Oggetto e accettazione</h2>
+<p>Le presenti condizioni generali di vendita (CGV) disciplinano la vendita della licenza <b>Graal Premium</b> ai consumatori, dall'applicazione Graal – IPTV Player.</p>
+<p>Prima di pagare, Le viene chiesto di leggere e accettare queste CGV. La versione applicabile è quella in vigore alla data del Suo ordine; Le viene inviata insieme alla conferma d'ordine e può richiederne una copia in qualsiasi momento.</p>
+
+<h2 id="vendeur">2. Il venditore</h2>
+<p>Graal Premium è venduto da Code4Wrld, impresa individuale (entreprise individuelle, EI) in corso di iscrizione presso il Registro delle imprese (registre du commerce et des sociétés, RCS) di Draguignan (numero SIRET indicato qui non appena avvenuta l'iscrizione), il cui indirizzo è comunicato su semplice richiesta a contact@graaltv.com.</p>
+<p>Contatto: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+<p>IVA non applicabile, articolo 293 B del Codice generale delle imposte francese (CGI): i prezzi sono indicati senza IVA.</p>
+
+<h2 id="produit">3. Che cosa acquista</h2>
+<p><b>Graal – IPTV Player</b> è un lettore multimediale: riproduce le sorgenti (playlist Xtream o M3U, portale Stalker) che <b>Lei</b> vi aggiunge. <b>Premium</b> è una licenza d'uso che sblocca in questa applicazione funzioni aggiuntive: sincronizzazione tra dispositivi, replay, registrazione, ripiego automatico di qualità, categorie intelligenti, più playlist e ripresa su un altro dispositivo. L'elenco aggiornato e la descrizione di ciascuna funzione si trovano su <a href="../?lang=it#premium">graaltv.com</a> e nell'applicazione.</p>
+<div class="box">
+  <p><b>Il prezzo copre unicamente l'applicazione.</b> Graal non fornisce, non ospita, non vende, non sollecita né raccomanda alcun canale, playlist o contenuto audiovisivo. Premium non dà accesso ad alcun contenuto.</p>
+  <p>Graal non è affiliato ad alcun fornitore di contenuti. Lei utilizza Graal con le Sue sorgenti, che deve avere il diritto di riprodurre (e, per la registrazione, di copiare). Graal non approva la diffusione di contenuti protetti senza l'autorizzazione dei rispettivi titolari.</p>
+</div>
+<p>Alcune funzioni dipendono da ciò che offre la Sua sorgente: il replay, ad esempio, è possibile solo se il Suo fornitore lo mette a disposizione per il canale interessato. La versione gratuita Le consente di verificarlo prima dell'acquisto.</p>
+<p><b>Compatibilità.</b> Graal funziona su Android TV, Google TV e Fire TV (Android 7 o successivo), su smartphone e tablet Android, su Windows 10 e 11 e su Mac. I dispositivi non compatibili sono indicati nella <a href="../?lang=it#telecharger">pagina di download</a>.</p>
+
+<h2 id="formules">4. Formule e durata</h2>
+<ul>
+  <li><b>1 dispositivo</b>: Premium su un dispositivo.</li>
+  <li><b>Famiglia</b>: Premium su 5 dispositivi al massimo, utilizzati dai membri di uno stesso nucleo familiare (persone che vivono sotto lo stesso tetto).</li>
+</ul>
+<p>Può sostituire un dispositivo con un altro, dall'applicazione.</p>
+<p><b>«A vita»</b> significa: un pagamento unico, senza limiti di durata e senza rinnovo. Una volta attivato, Premium funziona sul dispositivo anche senza connessione ai nostri server. Le funzioni che ne hanno bisogno (sincronizzazione, recupero di Premium su un nuovo dispositivo) restano garantite finché il servizio Graal è in esercizio. Se dovessimo interrompere questo servizio, La avviseremmo con almeno <b>6 mesi</b> di anticipo, per e-mail e nell'applicazione, e Premium resterebbe attivo sui dispositivi già attivati.</p>
+
+<h2 id="prix">5. Prezzi</h2>
+<p>I prezzi sono indicati in euro, tasse incluse, nell'applicazione prima del pagamento. Prezzi di lancio, validi fino al <b>31 dicembre 2026 incluso</b> (ora di Parigi): <b>12 €</b> per la formula 1 dispositivo e <b>20 €</b> per la formula Famiglia. A partire dal 1<sup>o</sup> gennaio 2027: 15 € e 25 €.</p>
+<p>Il prezzo pagato è quello visualizzato al momento dell'ordine. Una successiva variazione di prezzo non ha alcun effetto su un acquisto già pagato. Se il Suo mezzo di pagamento è in un'altra valuta, eventuali costi di conversione sono addebitati dalla Sua banca o da PayPal, non da noi.</p>
+
+<h2 id="commande">6. Ordine</h2>
+<ol>
+  <li>Nell'applicazione, <b>Impostazioni › Premium</b>: indica il Suo indirizzo e-mail e inserisce il codice di verifica ricevuto.</li>
+  <li>Sceglie la Sua formula. Viene visualizzato il riepilogo (formula, numero di dispositivi, prezzo tasse incluse); può tornare indietro e cambiare formula.</li>
+  <li>Accetta le presenti CGV, quindi paga sulla pagina sicura di PayPal. Il pulsante di pagamento indica chiaramente che l'ordine comporta l'obbligo di pagare.</li>
+</ol>
+<p>Il contratto è concluso nel momento in cui PayPal accetta il pagamento. Riceve quindi, per e-mail, una conferma d'ordine e una ricevuta, con un link a queste CGV. Conservi questa e-mail.</p>
+
+<h2 id="paiement">7. Pagamento e prova</h2>
+<p>Il pagamento è effettuato tramite <b>PayPal</b>, con un conto PayPal o con carta bancaria, e addebitato immediatamente. Non riceviamo né conserviamo alcun dato della carta bancaria: PayPal ci trasmette solo l'importo, la data, lo stato e i riferimenti del pagamento.</p>
+<p><b>Prova.</b> Le registrazioni di PayPal e quelle del nostro server (data, importo, riferimenti dell'ordine e del pagamento) fanno fede tra le parti, salvo prova contraria che Lei può fornire con qualsiasi mezzo.</p>
+<p><b>Pagamento doppio.</b> Se Le è stato addebitato due volte lo stesso ordine, ci scriva: il pagamento in eccesso Le viene rimborsato.</p>
+<p><b>Pagamento annullato o contestato.</b> Se un pagamento viene annullato, rimborsato da PayPal o contestato presso la Sua banca, Premium può essere disattivato una volta accertata la situazione; La informiamo per e-mail. Può contattarci in qualsiasi momento per risolvere la situazione.</p>
+
+<h2 id="activation">8. Attivazione</h2>
+<p>Premium si attiva automaticamente sul Suo dispositivo nei minuti successivi al pagamento. Lo ritrova su un altro dispositivo o dopo un ripristino con lo stesso indirizzo e-mail e un codice di verifica («Ce l'ho già»).</p>
+<p>Se Premium non è attivo <b>un'ora</b> dopo il Suo pagamento, scriva a <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>. Se non riusciamo ad attivarlo entro 7 giorni, viene rimborsato integralmente.</p>
+
+<h2 id="retractation">9. Recesso e rimborso</h2>
+<p><b>Il Suo diritto legale.</b> Dispone di un termine di <b>14 giorni</b> dalla conclusione del contratto (il Suo pagamento) per recedere, senza dover fornire alcuna motivazione né sostenere alcun costo (articoli L221-18 e seguenti del Codice del consumo francese, code de la consommation).</p>
+<p><b>La nostra scelta, più favorevole della legge.</b> Per un contenuto digitale, la legge consente al venditore di escludere questo diritto se l'acquirente vi rinuncia espressamente per poterne usufruire subito (articolo L221-28, 13° del Codice del consumo francese). <b>Non Le chiediamo questa rinuncia</b>: anche se ha già utilizzato Premium, può recedere ed essere rimborsato entro 14 giorni.</p>
+<p><b>Come fare.</b> Ci invii, prima della scadenza del termine, una dichiarazione esplicita: un'e-mail a <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>, preferibilmente dall'indirizzo del Suo account Premium, oppure il <a href="#formulaire">modulo di recesso</a> riportato di seguito. Confermiamo la ricezione per e-mail.</p>
+<p><b>Rimborso.</b> Le rimborsiamo la totalità del prezzo pagato, sul mezzo di pagamento utilizzato, al più tardi <b>14 giorni</b> dopo aver ricevuto la Sua richiesta, senza alcun costo. Premium viene allora disattivato sui Suoi dispositivi; la versione gratuita di Graal resta utilizzabile.</p>
+<p>Dopo tale termine, un rimborso resta possibile nei casi previsti dalla legge (in particolare a titolo della garanzia di conformità, articolo 10) e in caso di pagamento doppio o di mancata attivazione (articoli 7 e 8). Per qualsiasi altro caso, ci scriva: ogni richiesta viene esaminata.</p>
+
+<h2 id="garanties">10. Garanzie legali</h2>
+<p>Premium è un contenuto digitale, accompagnato da servizi digitali (account, sincronizzazione). Lei beneficia della <b>garanzia legale di conformità dei contenuti e servizi digitali</b> (articoli L224-25-12 e seguenti del Codice del consumo francese):</p>
+<ul>
+  <li>Premium deve corrispondere alla sua descrizione, funzionare sui dispositivi compatibili dichiarati e ricevere gli aggiornamenti, in particolare di sicurezza, necessari al suo corretto funzionamento.</li>
+  <li>La garanzia copre il difetto di conformità che si manifesta entro <b>due anni</b> dalla fornitura della licenza e, per i servizi forniti in modo continuativo (sincronizzazione, account Premium), per tutta la durata della loro fornitura.</li>
+  <li>In caso di difetto, ha diritto al ripristino della conformità, gratuitamente ed entro un termine ragionevole; in mancanza, a una riduzione del prezzo o alla risoluzione del contratto, con rimborso.</li>
+</ul>
+<p>Beneficia inoltre della garanzia per vizi occulti (articoli 1641 e seguenti del Codice civile francese, code civil). Queste garanzie legali si applicano indipendentemente dal rimborso entro 14 giorni dell'articolo 9.</p>
+<p>Un problema causato dalla Sua sorgente (server del fornitore fuori servizio, canale rimosso, replay non offerto), dalla Sua connessione o da un dispositivo indicato come non compatibile prima dell'acquisto non costituisce un difetto di conformità di Premium.</p>
+
+<h2 id="disponibilite">11. Disponibilità e servizi di terzi</h2>
+<p>Facciamo il necessario affinché i servizi online di Graal (account, sincronizzazione, aggiornamenti) siano disponibili, ma possono essere interrotti per manutenzione, aggiornamento, incidente tecnico o cause di forza maggiore. Non promettiamo una riproduzione senza interruzioni: la qualità di riproduzione dipende dalla Sua sorgente, dalla Sua rete e dal Suo dispositivo.</p>
+<p>Alcune informazioni visualizzate (guida dei programmi, schede dei film e delle serie, informazioni sportive) provengono da servizi esterni la cui disponibilità può variare.</p>
+
+<h2 id="usage">12. Utilizzo della licenza</h2>
+<ul>
+  <li>Premium è legato all'indirizzo e-mail indicato al momento dell'acquisto.</li>
+  <li>La licenza è personale (formula 1 dispositivo) o limitata al Suo nucleo familiare (formula Famiglia). Non può essere rivenduta, noleggiata, ceduta né condivisa al di fuori di tale ambito.</li>
+  <li>Graal deve essere utilizzato solo con contenuti che Lei ha il diritto di riprodurre; la registrazione è riservata al Suo uso personale.</li>
+  <li>L'acquisto Le conferisce un diritto d'uso, non la proprietà del software: Graal resta di proprietà esclusiva dell'editore. È vietato copiarlo, modificarlo, decompilarlo, disassemblarlo o riutilizzarne il codice, nei limiti previsti dalla legge (si vedano le <a href="../mentions-legales/?lang=it#pi">note legali</a>).</li>
+  <li>In caso di frode, rivendita o uso illecito accertato, la licenza può essere revocata, dopo averLa informata per e-mail. I Suoi diritti legali, tra cui il recesso, restano intatti.</li>
+</ul>
+
+<h2 id="responsabilite">13. Responsabilità</h2>
+<p>Lei è l'unico responsabile delle sorgenti che aggiunge in Graal e dell'uso che ne fa. Graal non ha alcun legame con i fornitori di tali sorgenti e non risponde né del loro contenuto, né della loro disponibilità, né della loro liceità.</p>
+<p>La nostra responsabilità non può essere invocata per un danno causato da un Suo fatto, da un terzo (in particolare il Suo fornitore di contenuti) o da una causa di forza maggiore. Nulla in queste CGV limita i diritti che la legge Le riconosce, né la nostra responsabilità in caso di colpa grave o di danno alla persona.</p>
+
+<h2 id="donnees">14. Dati personali</h2>
+<p>Per Premium, trattiamo il Suo indirizzo e-mail e l'elenco dei Suoi dispositivi, cifrati, nonché l'importo, la data e i riferimenti del Suo pagamento. Tutto è descritto in dettaglio nell'<a href="../confidentialite/?lang=it">informativa sulla privacy</a> e, nell'applicazione, in <b>Impostazioni › I miei dati</b>, dove può anche eliminare il Suo account.</p>
+
+<h2 id="reclamations">15. Servizio clienti e reclami</h2>
+<p>Per qualsiasi domanda o reclamo, scriva a <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>, se possibile dall'indirizzo del Suo account Premium, descrivendo il problema (dispositivo, versione di Graal). Rispondiamo di norma entro 7 giorni. Il registro diagnostico (<b>Impostazioni › Registro diagnostico › Invia al venditore</b>) ci aiuta a capire un problema tecnico.</p>
+
+<h2 id="mediation">16. Mediazione dei consumatori</h2>
+<p>Se la nostra risposta non La soddisfa, o in assenza di risposta entro due mesi, può rivolgersi gratuitamente al mediatore dei consumatori competente per noi (articoli L611-1 e seguenti del Codice del consumo francese), entro un anno dal Suo reclamo scritto:</p>
+<p class="box">Il mediatore dei consumatori è in corso di designazione; i suoi recapiti saranno indicati qui. Nel frattempo, ogni reclamo viene trattato all'indirizzo <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+
+<h2 id="droit">17. Legge applicabile e controversie</h2>
+<p>Queste CGV sono soggette al diritto francese. Se risiede in un altro Paese, conserva la protezione delle disposizioni imperative della legge del Suo Paese di residenza. In caso di controversia, e dopo un tentativo di risoluzione amichevole, può adire il giudice competente secondo le norme di legge, in particolare quello del luogo del Suo domicilio.</p>
+
+<h2 id="modifications">18. Modifica delle condizioni</h2>
+<p>Possiamo modificare queste CGV, ad esempio per seguire un'evoluzione della legge o dell'offerta. La nuova versione si applica agli ordini effettuati dopo la sua pubblicazione online; un ordine già effettuato resta disciplinato dalla versione accettata al momento dell'acquisto.</p>
+
+<h2 id="formulaire">Allegato: modulo di recesso</h2>
+<p>Da compilare e restituire solo se desidera recedere (è sufficiente anche una semplice e-mail).</p>
+<div class="form">
+  <p>All'attenzione di Code4Wrld, <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>:</p>
+  <p>Con la presente notifico il mio recesso dal contratto relativo alla fornitura del contenuto digitale indicato di seguito:</p>
+  <ul>
+    <li>Graal Premium, formula: ………………</li>
+    <li>Ordinato il: ………………</li>
+    <li>Indirizzo e-mail dell'account Premium: ………………</li>
+    <li>Nome del consumatore: ………………</li>
+    <li>Indirizzo del consumatore: ………………</li>
+    <li>Data: ………………</li>
+    <li>Firma (solo in caso di invio su carta): ………………</li>
+  </ul>
+</div>
+</main>
+<footer class="foot">
+  <nav aria-label="Pagine legali"><a href="../cgv/?lang=it">Condizioni di vendita</a> <a href="../confidentialite/?lang=it">Privacy</a> <a href="../mentions-legales/?lang=it">Note legali</a></nav>
+  <p>Graal è un lettore multimediale. Non fornisce, ospita, vende né consiglia alcun canale, playlist o contenuto audiovisivo e non è affiliato ad alcun fornitore. Ogni utente è l'unico responsabile delle fonti che aggiunge e deve avere il diritto di riprodurle.</p>
+  <p>Contatto: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> · © 2026 Graal</p>
+</footer>
+</template>
+<template data-lang="pt" data-title="Condições gerais de venda – Graal Premium" data-desc="Condições gerais de venda do Graal Premium: licença paga uma única vez, preço, pagamento PayPal, livre resolução, garantias legais, mediação.">
+<nav class="top" aria-label="Páginas legais"><a class="home" href="../?lang=pt">‹ Graal – IPTV Player</a> <a href="../cgv/?lang=pt" aria-current="page">Condições de venda</a> <a href="../confidentialite/?lang=pt">Privacidade</a> <a href="../mentions-legales/?lang=pt">Aviso legal</a>
+<span class="langs" role="group" aria-label="Idioma"><a href="?lang=fr" hreflang="fr" lang="fr" data-setlang="fr">FR</a> <a href="?lang=en" hreflang="en" lang="en" data-setlang="en">EN</a> <a href="?lang=es" hreflang="es" lang="es" data-setlang="es">ES</a> <a href="?lang=it" hreflang="it" lang="it" data-setlang="it">IT</a> <a href="?lang=pt" hreflang="pt" lang="pt" data-setlang="pt" aria-current="true">PT</a> <a href="?lang=de" hreflang="de" lang="de" data-setlang="de">DE</a></span></nav>
+<main>
+<p class="box translated" lang="pt">Tradução para informação; só a versão francesa faz fé. <a href="?lang=fr" hreflang="fr" lang="fr">Ler a versão francesa</a></p>
+<h1>Condições gerais de venda do Graal Premium</h1>
+<p class="date">Versão de 16 de novembro de 2026. Aplicáveis às encomendas efetuadas a partir desta data.</p>
+
+<div class="box key">
+  <p><b>Em resumo.</b> O Graal é gratuito. O Premium é uma licença paga uma única vez, sem pagamentos periódicos, que desbloqueia funções da aplicação. <b>A compra abrange apenas a aplicação: nenhum canal, nenhuma playlist nem nenhum conteúdo.</b> Pode experimentar o Graal gratuitamente antes de comprar e ser reembolsado do Premium durante 14 dias mediante simples pedido, mesmo que o tenha utilizado.</p>
+</div>
+
+<nav class="toc" aria-label="Índice"><b>Índice</b><ol>
+  <li><a href="#objet">Objeto e aceitação</a></li>
+  <li><a href="#vendeur">O vendedor</a></li>
+  <li><a href="#produit">O que compra</a></li>
+  <li><a href="#formules">Planos e duração</a></li>
+  <li><a href="#prix">Preço</a></li>
+  <li><a href="#commande">Encomenda</a></li>
+  <li><a href="#paiement">Pagamento e prova</a></li>
+  <li><a href="#activation">Ativação</a></li>
+  <li><a href="#retractation">Livre resolução e reembolso</a></li>
+  <li><a href="#garanties">Garantias legais</a></li>
+  <li><a href="#disponibilite">Disponibilidade e serviços de terceiros</a></li>
+  <li><a href="#usage">Utilização da licença</a></li>
+  <li><a href="#responsabilite">Responsabilidade</a></li>
+  <li><a href="#donnees">Dados pessoais</a></li>
+  <li><a href="#reclamations">Apoio ao cliente e reclamações</a></li>
+  <li><a href="#mediation">Mediação de consumo</a></li>
+  <li><a href="#droit">Lei aplicável e litígios</a></li>
+  <li><a href="#modifications">Alteração das condições</a></li>
+  <li><a href="#formulaire">Anexo: formulário de livre resolução</a></li>
+</ol></nav>
+
+<h2 id="objet">1. Objeto e aceitação</h2>
+<p>As presentes condições gerais de venda (CGV) regem a venda da licença <b>Graal Premium</b> aos consumidores, a partir da aplicação Graal – IPTV Player.</p>
+<p>Antes de pagar, é convidado a ler e a aceitar estas CGV. A versão aplicável é a que estiver em vigor na data da sua encomenda; é-lhe enviada com a confirmação da encomenda e pode pedir uma cópia a qualquer momento.</p>
+
+<h2 id="vendeur">2. O vendedor</h2>
+<p>O Graal Premium é vendido pela Code4Wrld, empresa em nome individual (entreprise individuelle, EI) em processo de inscrição no Registo Comercial (RCS, registre du commerce et des sociétés) de Draguignan (número SIRET indicado aqui logo após a inscrição), cujo endereço é comunicado mediante simples pedido para contact@graaltv.com.</p>
+<p>Contacto: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+<p>IVA não aplicável, artigo 293 B do Código Geral dos Impostos francês (CGI, code général des impôts): os preços são indicados sem IVA.</p>
+
+<h2 id="produit">3. O que compra</h2>
+<p>O <b>Graal – IPTV Player</b> é um leitor multimédia: lê as fontes (playlist Xtream ou M3U, portal Stalker) que <b>o senhor</b> lá adiciona. O <b>Premium</b> é uma licença de utilização que desbloqueia nesta aplicação funções adicionais: sincronização entre aparelhos, replay, gravação, recurso automático de qualidade, categorias inteligentes, várias playlists e retoma noutro aparelho. A lista atualizada e a descrição de cada função constam de <a href="../?lang=pt#premium">graaltv.com</a> e da aplicação.</p>
+<div class="box">
+  <p><b>O preço abrange apenas a aplicação.</b> O Graal não fornece, não aloja, não vende, não solicita nem recomenda nenhum canal, playlist ou conteúdo audiovisual. O Premium não dá acesso a nenhum conteúdo.</p>
+  <p>O Graal não está afiliado a nenhum fornecedor de conteúdos. Utiliza o Graal com as suas próprias fontes, que deve ter o direito de ler (e, no caso da gravação, de copiar). O Graal não aprova a difusão de conteúdos protegidos sem a autorização dos respetivos titulares.</p>
+</div>
+<p>Algumas funções dependem do que a sua própria fonte oferece: o replay, por exemplo, só é possível se o seu fornecedor o disponibilizar para o canal em causa. A versão gratuita permite-lhe verificá-lo antes da compra.</p>
+<p><b>Compatibilidade.</b> O Graal funciona em Android TV, Google TV e Fire TV (Android 7 ou superior), em telemóveis e tablets Android, em Windows 10 e 11 e em Mac. Os aparelhos não compatíveis são indicados na <a href="../?lang=pt#telecharger">página de transferência</a>.</p>
+
+<h2 id="formules">4. Planos e duração</h2>
+<ul>
+  <li><b>1 aparelho</b>: Premium num aparelho.</li>
+  <li><b>Família</b>: Premium em 5 aparelhos no máximo, utilizados pelos membros de um mesmo agregado familiar (pessoas que vivem sob o mesmo teto).</li>
+</ul>
+<p>Pode substituir um aparelho por outro, a partir da aplicação.</p>
+<p><b>«Vitalício»</b> significa: um pagamento único, sem limite de duração e sem renovação. Uma vez ativado, o Premium funciona no aparelho mesmo sem ligação aos nossos servidores. As funções que dela necessitam (sincronização, recuperação do Premium num novo aparelho) continuam asseguradas enquanto o serviço Graal for explorado. Se tivermos de encerrar este serviço, avisá-lo-emos com pelo menos <b>6 meses</b> de antecedência, por e-mail e na aplicação, e o Premium continuará ativo nos aparelhos já ativados.</p>
+
+<h2 id="prix">5. Preço</h2>
+<p>Os preços são indicados em euros, com todos os impostos incluídos, na aplicação antes do pagamento. Preços de lançamento, válidos até <b>31 de dezembro de 2026, inclusive</b> (hora de Paris): <b>12 €</b> para o plano 1 aparelho e <b>20 €</b> para o plano Família. A partir de 1 de janeiro de 2027: 15 € e 25 €.</p>
+<p>O preço pago é o apresentado no momento da encomenda. Uma alteração posterior do preço não tem qualquer efeito sobre uma compra já paga. Se o seu meio de pagamento estiver noutra moeda, eventuais encargos de conversão são cobrados pelo seu banco ou pelo PayPal, e não por nós.</p>
+
+<h2 id="commande">6. Encomenda</h2>
+<ol>
+  <li>Na aplicação, <b>Definições › Premium</b>: indica o seu endereço de e-mail e introduz o código de verificação recebido.</li>
+  <li>Escolhe o seu plano. É apresentado o resumo (plano, número de aparelhos, preço com IVA incluído); pode voltar atrás e mudar de plano.</li>
+  <li>Aceita as presentes CGV e, em seguida, paga na página segura do PayPal. O botão de pagamento indica claramente que a encomenda implica uma obrigação de pagamento.</li>
+</ol>
+<p>O contrato é celebrado no momento em que o PayPal aceita o pagamento. Recebe então, por e-mail, uma confirmação da encomenda e um recibo, com uma ligação para estas CGV. Guarde este e-mail.</p>
+
+<h2 id="paiement">7. Pagamento e prova</h2>
+<p>O pagamento é efetuado através do <b>PayPal</b>, com uma conta PayPal ou por cartão bancário, e debitado imediatamente. Não recebemos nem conservamos quaisquer dados do cartão bancário: o PayPal transmite-nos apenas o montante, a data, o estado e as referências do pagamento.</p>
+<p><b>Prova.</b> Os registos do PayPal e os do nosso servidor (data, montante, referências da encomenda e do pagamento) fazem fé entre as partes, salvo prova em contrário, que pode apresentar por qualquer meio.</p>
+<p><b>Pagamento em duplicado.</b> Se tiver sido debitado duas vezes pela mesma encomenda, escreva-nos: o pagamento em excesso ser-lhe-á reembolsado.</p>
+<p><b>Pagamento anulado ou contestado.</b> Se um pagamento for anulado, reembolsado pelo PayPal ou contestado junto do seu banco, o Premium pode ser desativado depois de constatada a situação; informá-lo-emos por e-mail. Pode contactar-nos a qualquer momento para regularizar a situação.</p>
+
+<h2 id="activation">8. Ativação</h2>
+<p>O Premium é ativado automaticamente no seu aparelho nos minutos seguintes ao pagamento. Recupera-o noutro aparelho ou após uma reposição com o mesmo endereço de e-mail e um código de verificação («Já o tenho»).</p>
+<p>Se o Premium não estiver ativo <b>uma hora</b> após o seu pagamento, escreva para <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>. Se não conseguirmos ativá-lo no prazo de 7 dias, será integralmente reembolsado.</p>
+
+<h2 id="retractation">9. Livre resolução e reembolso</h2>
+<p><b>O seu direito legal.</b> Dispõe de um prazo de <b>14 dias</b> a contar da celebração do contrato (o seu pagamento) para exercer o direito de livre resolução, sem ter de indicar o motivo nem pagar quaisquer encargos (artigos L221-18 e seguintes do Código do Consumo francês (code de la consommation)).</p>
+<p><b>A nossa opção, mais favorável do que a lei.</b> Para um conteúdo digital, a lei permite ao vendedor suprimir este direito se o comprador a ele renunciar expressamente para dele beneficiar de imediato (artigo L221-28, 13.º, do Código do Consumo francês). <b>Não lhe pedimos essa renúncia</b>: mesmo que já tenha utilizado o Premium, pode exercer o direito de livre resolução e ser reembolsado durante 14 dias.</p>
+<p><b>Como proceder.</b> Envie-nos, antes do fim do prazo, uma declaração inequívoca: um e-mail para <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>, de preferência a partir do endereço da sua conta Premium, ou o <a href="#formulaire">formulário de livre resolução</a> abaixo. Acusamos a receção por e-mail.</p>
+<p><b>Reembolso.</b> Reembolsamos a totalidade do preço pago, através do meio de pagamento utilizado, o mais tardar <b>14 dias</b> após a receção do seu pedido, sem quaisquer encargos. O Premium é então desativado nos seus aparelhos; a versão gratuita do Graal continua utilizável.</p>
+<p>Após este prazo, continua a ser possível um reembolso nos casos previstos na lei (nomeadamente ao abrigo da garantia de conformidade, artigo 10) e em caso de pagamento em duplicado ou de falta de ativação (artigos 7 e 8). Para qualquer outro caso, escreva-nos: cada pedido é analisado.</p>
+
+<h2 id="garanties">10. Garantias legais</h2>
+<p>O Premium é um conteúdo digital, acompanhado de serviços digitais (conta, sincronização). Beneficia da <b>garantia legal de conformidade dos conteúdos e serviços digitais</b> (artigos L224-25-12 e seguintes do Código do Consumo francês):</p>
+<ul>
+  <li>O Premium deve corresponder à sua descrição, funcionar nos aparelhos compatíveis anunciados e receber as atualizações, nomeadamente de segurança, necessárias ao seu bom funcionamento.</li>
+  <li>A garantia abrange a falta de conformidade que se manifeste nos <b>dois anos</b> seguintes ao fornecimento da licença e, no caso dos serviços fornecidos de forma contínua (sincronização, conta Premium), durante todo o período do seu fornecimento.</li>
+  <li>Em caso de falta de conformidade, tem direito à reposição da conformidade, gratuitamente e num prazo razoável; não sendo possível, a uma redução do preço ou à resolução do contrato, com reembolso.</li>
+</ul>
+<p>Beneficia também da garantia contra vícios ocultos (artigos 1641 e seguintes do Código Civil francês (code civil)). Estas garantias legais aplicam-se independentemente do reembolso de 14 dias do artigo 9.</p>
+<p>Um problema causado pela sua fonte (servidor do fornecedor fora de serviço, canal retirado, replay não disponibilizado), pela sua ligação ou por um aparelho indicado como não compatível antes da compra não constitui uma falta de conformidade do Premium.</p>
+
+<h2 id="disponibilite">11. Disponibilidade e serviços de terceiros</h2>
+<p>Fazemos o necessário para que os serviços online do Graal (conta, sincronização, atualizações) estejam disponíveis, mas podem ser interrompidos por manutenção, atualização, incidente técnico ou caso de força maior. Não prometemos uma reprodução sem interrupções: a qualidade de reprodução depende da sua fonte, da sua rede e do seu aparelho.</p>
+<p>Algumas informações apresentadas (guia de programas, fichas de filmes e séries, informações desportivas) provêm de serviços externos cuja disponibilidade pode variar.</p>
+
+<h2 id="usage">12. Utilização da licença</h2>
+<ul>
+  <li>O Premium está associado ao endereço de e-mail indicado no momento da compra.</li>
+  <li>A licença é pessoal (plano 1 aparelho) ou limitada ao seu agregado familiar (plano Família). Não pode ser revendida, alugada, cedida nem partilhada fora deste âmbito.</li>
+  <li>O Graal só deve ser utilizado com conteúdos que tenha o direito de ler; a gravação destina-se exclusivamente ao seu uso pessoal.</li>
+  <li>A compra confere-lhe um direito de utilização, e não a propriedade do software: o Graal continua a ser propriedade exclusiva do editor. É proibido copiá-lo, modificá-lo, descompilá-lo, desmontá-lo ou reutilizar o seu código, nos limites previstos na lei (ver o <a href="../mentions-legales/?lang=pt#pi">aviso legal</a>).</li>
+  <li>Em caso de fraude, revenda ou utilização ilícita comprovada, a licença pode ser retirada, depois de o termos informado por e-mail. Os seus direitos legais, incluindo o direito de livre resolução, mantêm-se intactos.</li>
+</ul>
+
+<h2 id="responsabilite">13. Responsabilidade</h2>
+<p>É o único responsável pelas fontes que adiciona ao Graal e pelo uso que delas faz. O Graal não tem qualquer ligação aos fornecedores dessas fontes e não responde pelo seu conteúdo, pela sua disponibilidade nem pela sua legalidade.</p>
+<p>A nossa responsabilidade não pode ser invocada por um dano causado por facto que lhe seja imputável, por um terceiro (nomeadamente o seu fornecedor de conteúdos) ou por um caso de força maior. Nada nestas CGV limita os direitos que a lei lhe confere, nem a nossa responsabilidade em caso de culpa grave ou de dano corporal.</p>
+
+<h2 id="donnees">14. Dados pessoais</h2>
+<p>Para o Premium, tratamos o seu endereço de e-mail e a lista dos seus aparelhos, cifrados, bem como o montante, a data e as referências do seu pagamento. Tudo é descrito em pormenor na <a href="../confidentialite/?lang=pt">política de privacidade</a> e, na aplicação, em <b>Definições › Os meus dados</b>, onde também pode eliminar a sua conta.</p>
+
+<h2 id="reclamations">15. Apoio ao cliente e reclamações</h2>
+<p>Para qualquer pergunta ou reclamação, escreva para <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>, se possível a partir do endereço da sua conta Premium, descrevendo o problema (aparelho, versão do Graal). Respondemos, em princípio, no prazo de 7 dias. O log de diagnóstico (<b>Definições › Log de diagnóstico › Enviar ao vendedor</b>) ajuda-nos a compreender um problema técnico.</p>
+
+<h2 id="mediation">16. Mediação de consumo</h2>
+<p>Se a nossa resposta não o satisfizer, ou na falta de resposta no prazo de dois meses, pode recorrer gratuitamente ao mediador de consumo de que dependemos (artigos L611-1 e seguintes do Código do Consumo francês), no prazo de um ano a contar da sua reclamação escrita:</p>
+<p class="box">O mediador de consumo está em processo de designação; os seus contactos serão indicados aqui. Entretanto, qualquer reclamação é tratada através de <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+
+<h2 id="droit">17. Lei aplicável e litígios</h2>
+<p>Estas CGV estão sujeitas à lei francesa. Se residir noutro país, mantém a proteção das disposições imperativas da lei do seu país de residência. Em caso de litígio, e após uma tentativa de resolução amigável, pode recorrer ao tribunal competente segundo as regras legais, nomeadamente o do lugar do seu domicílio.</p>
+
+<h2 id="modifications">18. Alteração das condições</h2>
+<p>Podemos alterar estas CGV, por exemplo para acompanhar uma evolução da lei ou da oferta. A nova versão aplica-se às encomendas efetuadas após a sua publicação online; uma encomenda já efetuada continua a reger-se pela versão aceite no momento da compra.</p>
+
+<h2 id="formulaire">Anexo: formulário de livre resolução</h2>
+<p>A preencher e devolver apenas se pretender exercer o direito de livre resolução (um simples e-mail também é suficiente).</p>
+<div class="form">
+  <p>À atenção da Code4Wrld, <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>:</p>
+  <p>Pela presente, comunico que exerço o meu direito de livre resolução do contrato relativo ao fornecimento do conteúdo digital abaixo indicado:</p>
+  <ul>
+    <li>Graal Premium, plano: ………………</li>
+    <li>Encomendado em: ………………</li>
+    <li>Endereço de e-mail da conta Premium: ………………</li>
+    <li>Nome do consumidor: ………………</li>
+    <li>Endereço do consumidor: ………………</li>
+    <li>Data: ………………</li>
+    <li>Assinatura (apenas em caso de envio em papel): ………………</li>
+  </ul>
+</div>
+</main>
+<footer class="foot">
+  <nav aria-label="Páginas legais"><a href="../cgv/?lang=pt">Condições de venda</a> <a href="../confidentialite/?lang=pt">Privacidade</a> <a href="../mentions-legales/?lang=pt">Aviso legal</a></nav>
+  <p>O Graal é um leitor multimédia. Não fornece, aloja, vende nem recomenda qualquer canal, lista ou conteúdo audiovisual, e não está afiliado a nenhum fornecedor. Cada utilizador é o único responsável pelas fontes que adiciona e deve ter o direito de as reproduzir.</p>
+  <p>Contacto: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> · © 2026 Graal</p>
+</footer>
+</template>
+<template data-lang="de" data-title="Allgemeine Verkaufsbedingungen – Graal Premium" data-desc="Allgemeine Verkaufsbedingungen von Graal Premium: einmalig bezahlte Lizenz, Preise, Zahlung über PayPal, Widerruf, gesetzliche Gewährleistung, Schlichtung.">
+<nav class="top" aria-label="Rechtliche Seiten"><a class="home" href="../?lang=de">‹ Graal – IPTV Player</a> <a href="../cgv/?lang=de" aria-current="page">Verkaufsbedingungen</a> <a href="../confidentialite/?lang=de">Datenschutz</a> <a href="../mentions-legales/?lang=de">Impressum</a>
+<span class="langs" role="group" aria-label="Sprache"><a href="?lang=fr" hreflang="fr" lang="fr" data-setlang="fr">FR</a> <a href="?lang=en" hreflang="en" lang="en" data-setlang="en">EN</a> <a href="?lang=es" hreflang="es" lang="es" data-setlang="es">ES</a> <a href="?lang=it" hreflang="it" lang="it" data-setlang="it">IT</a> <a href="?lang=pt" hreflang="pt" lang="pt" data-setlang="pt">PT</a> <a href="?lang=de" hreflang="de" lang="de" data-setlang="de" aria-current="true">DE</a></span></nav>
+<main>
+<p class="box translated" lang="de">Übersetzung zur Information; maßgeblich ist allein die französische Fassung. <a href="?lang=fr" hreflang="fr" lang="fr">Französische Fassung lesen</a></p>
+<h1>Allgemeine Verkaufsbedingungen von Graal Premium</h1>
+<p class="date">Fassung vom 16. November 2026. Gültig für Bestellungen ab diesem Datum.</p>
+
+<div class="box key">
+  <p><b>Kurz gesagt.</b> Graal ist kostenlos. Premium ist eine einmalig bezahlte Lizenz ohne wiederkehrende Zahlungen, die Funktionen der Anwendung freischaltet. <b>Der Kauf umfasst ausschließlich die Anwendung: keine Sender, keine Playlists und keine Inhalte.</b> Sie können Graal vor dem Kauf kostenlos testen und sich Premium 14 Tage lang auf einfache Anfrage erstatten lassen, auch wenn Sie es bereits genutzt haben.</p>
+</div>
+
+<nav class="toc" aria-label="Inhalt"><b>Inhalt</b><ol>
+  <li><a href="#objet">Gegenstand und Annahme</a></li>
+  <li><a href="#vendeur">Der Verkäufer</a></li>
+  <li><a href="#produit">Was Sie kaufen</a></li>
+  <li><a href="#formules">Pakete und Laufzeit</a></li>
+  <li><a href="#prix">Preise</a></li>
+  <li><a href="#commande">Bestellung</a></li>
+  <li><a href="#paiement">Zahlung und Nachweis</a></li>
+  <li><a href="#activation">Aktivierung</a></li>
+  <li><a href="#retractation">Widerruf und Erstattung</a></li>
+  <li><a href="#garanties">Gesetzliche Gewährleistung</a></li>
+  <li><a href="#disponibilite">Verfügbarkeit und Dienste Dritter</a></li>
+  <li><a href="#usage">Nutzung der Lizenz</a></li>
+  <li><a href="#responsabilite">Haftung</a></li>
+  <li><a href="#donnees">Personenbezogene Daten</a></li>
+  <li><a href="#reclamations">Kundenservice und Beschwerden</a></li>
+  <li><a href="#mediation">Verbraucherschlichtung</a></li>
+  <li><a href="#droit">Anwendbares Recht und Streitigkeiten</a></li>
+  <li><a href="#modifications">Änderung der Bedingungen</a></li>
+  <li><a href="#formulaire">Anhang: Widerrufsformular</a></li>
+</ol></nav>
+
+<h2 id="objet">1. Gegenstand und Annahme</h2>
+<p>Diese Allgemeinen Verkaufsbedingungen (AGB) regeln den Verkauf der Lizenz <b>Graal Premium</b> an Verbraucher über die Anwendung Graal – IPTV Player.</p>
+<p>Vor der Zahlung werden Sie gebeten, diese AGB zu lesen und anzunehmen. Maßgeblich ist die am Tag Ihrer Bestellung geltende Fassung; sie wird Ihnen mit Ihrer Bestellbestätigung zugesandt, und Sie können jederzeit eine Kopie anfordern.</p>
+
+<h2 id="vendeur">2. Der Verkäufer</h2>
+<p>Graal Premium wird verkauft von Code4Wrld, Einzelunternehmen (entreprise individuelle, EI), dessen Eintragung in das Handels- und Gesellschaftsregister (registre du commerce et des sociétés, RCS) Draguignan läuft (die SIRET-Nummer wird hier nach der Eintragung angegeben) und dessen Anschrift auf einfache Anfrage an contact@graaltv.com mitgeteilt wird.</p>
+<p>Kontakt: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+<p>Keine Umsatzsteuer gemäß Artikel 293 B des französischen allgemeinen Steuergesetzbuchs (CGI): Die Preise werden ohne Umsatzsteuer angegeben.</p>
+
+<h2 id="produit">3. Was Sie kaufen</h2>
+<p><b>Graal – IPTV Player</b> ist ein Mediaplayer: Er gibt die Quellen (Xtream- oder M3U-Playlist, Stalker-Portal) wieder, die <b>Sie</b> hinzufügen. <b>Premium</b> ist eine Nutzungslizenz, die in dieser Anwendung zusätzliche Funktionen freischaltet: Synchronisierung zwischen Geräten, Replay, Aufnahme, automatische Qualitäts-Ausweichlösung, intelligente Kategorien, mehrere Playlists und Fortsetzen auf einem anderen Gerät. Die aktuelle Liste und die Beschreibung jeder Funktion finden Sie auf <a href="../?lang=de#premium">graaltv.com</a> und in der Anwendung.</p>
+<div class="box">
+  <p><b>Der Preis umfasst ausschließlich die Anwendung.</b> Graal stellt keine Sender, Playlists oder audiovisuellen Inhalte bereit, hostet, verkauft, bewirbt oder empfiehlt keine solchen. Premium gewährt keinen Zugang zu Inhalten.</p>
+  <p>Graal ist mit keinem Inhalteanbieter verbunden. Sie nutzen Graal mit Ihren eigenen Quellen, zu deren Wiedergabe (und, für die Aufnahme, zu deren Vervielfältigung) Sie berechtigt sein müssen. Graal billigt die Verbreitung geschützter Inhalte ohne Genehmigung ihrer Rechteinhaber nicht.</p>
+</div>
+<p>Einige Funktionen hängen davon ab, was Ihre eigene Quelle anbietet: Replay ist zum Beispiel nur möglich, wenn Ihr Anbieter es für den betreffenden Sender bereitstellt. Mit der kostenlosen Version können Sie dies vor dem Kauf prüfen.</p>
+<p><b>Kompatibilität.</b> Graal läuft auf Android TV, Google TV und Fire TV (Android 7 oder höher), auf Android-Smartphones und -Tablets, auf Windows 10 und 11 sowie auf dem Mac. Nicht kompatible Geräte sind auf <a href="../?lang=de#telecharger">der Download-Seite</a> angegeben.</p>
+
+<h2 id="formules">4. Pakete und Laufzeit</h2>
+<ul>
+  <li><b>1 Gerät</b>: Premium auf einem Gerät.</li>
+  <li><b>Haushalt</b>: Premium auf höchstens 5 Geräten, die von den Mitgliedern desselben Haushalts (Personen, die unter einem Dach leben) genutzt werden.</li>
+</ul>
+<p>Sie können ein Gerät in der Anwendung durch ein anderes ersetzen.</p>
+<p><b>„Lebenslang“</b> bedeutet: eine einmalige Zahlung, ohne zeitliche Begrenzung und ohne Verlängerung. Einmal aktiviert, funktioniert Premium auf dem Gerät auch ohne Verbindung zu unseren Servern. Die Funktionen, die eine solche Verbindung benötigen (Synchronisierung, Wiederherstellung von Premium auf einem neuen Gerät), bleiben gewährleistet, solange der Dienst Graal betrieben wird. Sollten wir diesen Dienst einstellen, würden wir Sie mindestens <b>6 Monate</b> im Voraus per E-Mail und in der Anwendung benachrichtigen, und Premium bliebe auf den bereits aktivierten Geräten aktiv.</p>
+
+<h2 id="prix">5. Preise</h2>
+<p>Die Preise werden in Euro inklusive aller Steuern in der Anwendung vor der Zahlung angegeben. Einführungspreise, gültig bis einschließlich <b>31. Dezember 2026</b> (Pariser Zeit): <b>12 €</b> für das Paket 1 Gerät und <b>20 €</b> für das Paket Haushalt. Ab dem 1. Januar 2027: 15 € und 25 €.</p>
+<p>Es gilt der zum Zeitpunkt der Bestellung angezeigte Preis. Eine spätere Preisänderung hat keine Auswirkung auf einen bereits bezahlten Kauf. Lautet Ihr Zahlungsmittel auf eine andere Währung, werden etwaige Umrechnungsgebühren von Ihrer Bank oder von PayPal berechnet, nicht von uns.</p>
+
+<h2 id="commande">6. Bestellung</h2>
+<ol>
+  <li>In der Anwendung, unter <b>Einstellungen › Premium</b>: Sie geben Ihre E-Mail-Adresse an und tragen den erhaltenen Bestätigungscode ein.</li>
+  <li>Sie wählen Ihr Paket. Die Zusammenfassung (Paket, Anzahl der Geräte, Preis inkl. Steuern) wird angezeigt; Sie können zurückgehen und das Paket wechseln.</li>
+  <li>Sie nehmen diese AGB an und bezahlen dann auf der sicheren Seite von PayPal. Die Zahlungsschaltfläche weist deutlich darauf hin, dass die Bestellung Sie zur Zahlung verpflichtet.</li>
+</ol>
+<p>Der Vertrag kommt in dem Moment zustande, in dem PayPal die Zahlung annimmt. Sie erhalten dann per E-Mail eine Bestellbestätigung und eine Quittung mit einem Link zu diesen AGB. Bewahren Sie diese E-Mail auf.</p>
+
+<h2 id="paiement">7. Zahlung und Nachweis</h2>
+<p>Die Zahlung erfolgt über <b>PayPal</b>, mit einem PayPal-Konto oder per Bankkarte, und wird sofort abgebucht. Wir erhalten und speichern keine Kartendaten: PayPal übermittelt uns nur den Betrag, das Datum, den Status und die Referenzen der Zahlung.</p>
+<p><b>Nachweis.</b> Die Aufzeichnungen von PayPal und die unseres Servers (Datum, Betrag, Bestell- und Zahlungsreferenzen) sind zwischen den Parteien maßgeblich, vorbehaltlich eines Gegenbeweises, den Sie mit jedem Mittel erbringen können.</p>
+<p><b>Doppelte Zahlung.</b> Wurde Ihnen dieselbe Bestellung zweimal abgebucht, schreiben Sie uns: Die zu viel gezahlte Zahlung wird Ihnen erstattet.</p>
+<p><b>Stornierte oder beanstandete Zahlung.</b> Wird eine Zahlung storniert, von PayPal erstattet oder bei Ihrer Bank beanstandet, kann Premium deaktiviert werden, sobald dies festgestellt ist; wir informieren Sie darüber per E-Mail. Sie können uns jederzeit kontaktieren, um die Angelegenheit zu klären.</p>
+
+<h2 id="activation">8. Aktivierung</h2>
+<p>Premium wird in den Minuten nach der Zahlung automatisch auf Ihrem Gerät aktiviert. Auf einem anderen Gerät oder nach einem Zurücksetzen stellen Sie es mit derselben E-Mail-Adresse und einem Bestätigungscode wieder her („Habe ich schon“).</p>
+<p>Ist Premium <b>eine Stunde</b> nach Ihrer Zahlung nicht aktiv, schreiben Sie an <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>. Können wir es nicht innerhalb von 7 Tagen aktivieren, erhalten Sie den vollen Betrag zurück.</p>
+
+<h2 id="retractation">9. Widerruf und Erstattung</h2>
+<p><b>Ihr gesetzliches Recht.</b> Sie haben eine Frist von <b>14 Tagen</b> ab Vertragsschluss (Ihrer Zahlung), um den Vertrag zu widerrufen, ohne Angabe von Gründen und ohne Kosten (Artikel L221-18 ff. des französischen Verbrauchergesetzbuchs (code de la consommation)).</p>
+<p><b>Unsere Entscheidung, günstiger als das Gesetz.</b> Bei digitalen Inhalten erlaubt das Gesetz dem Verkäufer, dieses Recht entfallen zu lassen, wenn der Käufer ausdrücklich darauf verzichtet, um die Inhalte sofort zu nutzen (Artikel L221-28, 13° des Verbrauchergesetzbuchs). <b>Wir verlangen diesen Verzicht nicht von Ihnen</b>: Auch wenn Sie Premium bereits genutzt haben, können Sie 14 Tage lang widerrufen und eine Erstattung erhalten.</p>
+<p><b>So gehen Sie vor.</b> Senden Sie uns vor Ablauf der Frist eine eindeutige Erklärung: eine E-Mail an <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>, vorzugsweise von der Adresse Ihres Premium-Kontos aus, oder das untenstehende <a href="#formulaire">Widerrufsformular</a>. Wir bestätigen den Eingang per E-Mail.</p>
+<p><b>Erstattung.</b> Wir erstatten Ihnen den gesamten gezahlten Preis über das verwendete Zahlungsmittel spätestens <b>14 Tage</b> nach Eingang Ihrer Anfrage, ohne jegliche Kosten. Premium wird dann auf Ihren Geräten deaktiviert; die kostenlose Version von Graal bleibt nutzbar.</p>
+<p>Nach Ablauf dieser Frist bleibt eine Erstattung in den gesetzlich vorgesehenen Fällen möglich (insbesondere im Rahmen der Gewährleistung für Vertragsmäßigkeit, Abschnitt 10) sowie bei doppelter Zahlung oder fehlgeschlagener Aktivierung (Abschnitte 7 und 8). In allen anderen Fällen schreiben Sie uns: Jede Anfrage wird geprüft.</p>
+
+<h2 id="garanties">10. Gesetzliche Gewährleistung</h2>
+<p>Premium ist ein digitaler Inhalt, verbunden mit digitalen Dienstleistungen (Konto, Synchronisierung). Sie genießen die <b>gesetzliche Gewährleistung für die Vertragsmäßigkeit digitaler Inhalte und Dienstleistungen</b> (Artikel L224-25-12 ff. des französischen Verbrauchergesetzbuchs):</p>
+<ul>
+  <li>Premium muss seiner Beschreibung entsprechen, auf den angegebenen kompatiblen Geräten funktionieren und die für sein ordnungsgemäßes Funktionieren erforderlichen Updates erhalten, insbesondere Sicherheitsupdates.</li>
+  <li>Die Gewährleistung umfasst Vertragswidrigkeiten, die innerhalb von <b>zwei Jahren</b> nach Bereitstellung der Lizenz auftreten, und, bei fortlaufend bereitgestellten Diensten (Synchronisierung, Premium-Konto), während der gesamten Dauer ihrer Bereitstellung.</li>
+  <li>Bei einem Mangel haben Sie Anspruch auf Herstellung des vertragsgemäßen Zustands, kostenlos und innerhalb einer angemessenen Frist; andernfalls auf Minderung des Preises oder Beendigung des Vertrags mit Erstattung.</li>
+</ul>
+<p>Sie genießen außerdem die Gewährleistung für verborgene Mängel (Artikel 1641 ff. des französischen Zivilgesetzbuchs (code civil)). Diese gesetzlichen Gewährleistungen gelten unabhängig von der 14-tägigen Erstattung nach Abschnitt 9.</p>
+<p>Ein Problem, das durch Ihre Quelle (Server des Anbieters außer Betrieb, entfernter Sender, nicht angebotenes Replay), durch Ihre Verbindung oder durch ein vor dem Kauf als nicht kompatibel angegebenes Gerät verursacht wird, ist keine Vertragswidrigkeit von Premium.</p>
+
+<h2 id="disponibilite">11. Verfügbarkeit und Dienste Dritter</h2>
+<p>Wir tun das Nötige, damit die Online-Dienste von Graal (Konto, Synchronisierung, Updates) verfügbar sind, sie können jedoch wegen Wartung, Aktualisierung, technischer Störung oder höherer Gewalt unterbrochen werden. Wir versprechen keine unterbrechungsfreie Wiedergabe: Die Wiedergabequalität hängt von Ihrer Quelle, Ihrem Netzwerk und Ihrem Gerät ab.</p>
+<p>Einige angezeigte Informationen (Programmführer, Film- und Serienseiten, Sportinformationen) stammen von externen Diensten, deren Verfügbarkeit schwanken kann.</p>
+
+<h2 id="usage">12. Nutzung der Lizenz</h2>
+<ul>
+  <li>Premium ist an die beim Kauf angegebene E-Mail-Adresse gebunden.</li>
+  <li>Die Lizenz ist persönlich (Paket 1 Gerät) oder auf Ihren Haushalt beschränkt (Paket Haushalt). Sie darf außerhalb dieses Rahmens weder weiterverkauft noch vermietet, übertragen oder geteilt werden.</li>
+  <li>Graal darf nur mit Inhalten verwendet werden, zu deren Wiedergabe Sie berechtigt sind; die Aufnahme ist Ihrem persönlichen Gebrauch vorbehalten.</li>
+  <li>Der Kauf gibt Ihnen ein Nutzungsrecht, nicht das Eigentum an der Software: Graal bleibt ausschließliches Eigentum des Herausgebers. Es ist untersagt, die Software zu kopieren, zu ändern, zu dekompilieren, zu disassemblieren oder ihren Code wiederzuverwenden, in den gesetzlich vorgesehenen Grenzen (siehe das <a href="../mentions-legales/?lang=de#pi">Impressum</a>).</li>
+  <li>Bei nachgewiesenem Betrug, Weiterverkauf oder rechtswidriger Nutzung kann die Lizenz entzogen werden, nachdem wir Sie per E-Mail darüber informiert haben. Ihre gesetzlichen Rechte, einschließlich des Widerrufs, bleiben unberührt.</li>
+</ul>
+
+<h2 id="responsabilite">13. Haftung</h2>
+<p>Sie allein sind für die Quellen verantwortlich, die Sie in Graal hinzufügen, und für deren Nutzung. Graal steht in keiner Verbindung zu den Anbietern dieser Quellen und haftet weder für deren Inhalt noch für deren Verfügbarkeit noch für deren Rechtmäßigkeit.</p>
+<p>Wir haften nicht für einen Schaden, der durch Ihr eigenes Verhalten, durch einen Dritten (insbesondere Ihren Inhalteanbieter) oder durch höhere Gewalt verursacht wird. Nichts in diesen AGB schränkt die Rechte ein, die Ihnen das Gesetz gewährt, noch unsere Haftung bei grobem Verschulden oder Körperschäden.</p>
+
+<h2 id="donnees">14. Personenbezogene Daten</h2>
+<p>Für Premium verarbeiten wir Ihre E-Mail-Adresse und die Liste Ihrer Geräte, verschlüsselt, sowie Betrag, Datum und Referenzen Ihrer Zahlung. Alles ist ausführlich in der <a href="../confidentialite/?lang=de">Datenschutzerklärung</a> beschrieben und in der Anwendung unter <b>Einstellungen › Meine Daten</b>, wo Sie Ihr Konto auch löschen können.</p>
+
+<h2 id="reclamations">15. Kundenservice und Beschwerden</h2>
+<p>Für alle Fragen oder Beschwerden schreiben Sie an <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>, wenn möglich von der Adresse Ihres Premium-Kontos aus, und beschreiben Sie das Problem (Gerät, Version von Graal). Wir antworten in der Regel innerhalb von 7 Tagen. Das Diagnoseprotokoll (<b>Einstellungen › Diagnoseprotokoll › An den Verkäufer senden</b>) hilft uns, ein technisches Problem zu verstehen.</p>
+
+<h2 id="mediation">16. Verbraucherschlichtung</h2>
+<p>Wenn Sie mit unserer Antwort nicht zufrieden sind oder innerhalb von zwei Monaten keine Antwort erhalten, können Sie sich kostenlos an die für uns zuständige Verbraucherschlichtungsstelle wenden (Artikel L611-1 ff. des Verbrauchergesetzbuchs), und zwar innerhalb eines Jahres ab Ihrer schriftlichen Beschwerde:</p>
+<p class="box">Die Verbraucherschlichtungsstelle wird derzeit benannt; ihre Kontaktdaten werden hier angegeben. Bis dahin wird jede Beschwerde unter <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> bearbeitet.</p>
+
+<h2 id="droit">17. Anwendbares Recht und Streitigkeiten</h2>
+<p>Diese AGB unterliegen französischem Recht. Wenn Sie in einem anderen Land wohnen, behalten Sie den Schutz der zwingenden Bestimmungen des Rechts Ihres Wohnsitzlandes. Im Streitfall und nach einem Versuch der gütlichen Einigung können Sie das nach den gesetzlichen Regeln zuständige Gericht anrufen, insbesondere das Gericht Ihres Wohnorts.</p>
+
+<h2 id="modifications">18. Änderung der Bedingungen</h2>
+<p>Wir können diese AGB ändern, zum Beispiel um einer Änderung des Gesetzes oder des Angebots zu folgen. Die neue Fassung gilt für Bestellungen, die nach ihrer Veröffentlichung aufgegeben werden; eine bereits aufgegebene Bestellung unterliegt weiterhin der beim Kauf angenommenen Fassung.</p>
+
+<h2 id="formulaire">Anhang: Widerrufsformular</h2>
+<p>Nur ausfüllen und zurücksenden, wenn Sie den Vertrag widerrufen möchten (eine einfache E-Mail genügt ebenfalls).</p>
+<div class="form">
+  <p>An Code4Wrld, <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>:</p>
+  <p>Hiermit widerrufe ich den von mir abgeschlossenen Vertrag über die Bereitstellung des folgenden digitalen Inhalts:</p>
+  <ul>
+    <li>Graal Premium, Paket: ………………</li>
+    <li>Bestellt am: ………………</li>
+    <li>E-Mail-Adresse des Premium-Kontos: ………………</li>
+    <li>Name des Verbrauchers: ………………</li>
+    <li>Anschrift des Verbrauchers: ………………</li>
+    <li>Datum: ………………</li>
+    <li>Unterschrift (nur bei Mitteilung auf Papier): ………………</li>
+  </ul>
+</div>
+</main>
+<footer class="foot">
+  <nav aria-label="Rechtliche Seiten"><a href="../cgv/?lang=de">Verkaufsbedingungen</a> <a href="../confidentialite/?lang=de">Datenschutz</a> <a href="../mentions-legales/?lang=de">Impressum</a></nav>
+  <p>Graal ist ein Mediaplayer. Er stellt keine Sender, Playlists oder audiovisuellen Inhalte bereit, hostet, verkauft oder empfiehlt sie nicht und ist mit keinem Anbieter verbunden. Jeder Nutzer ist allein für die hinzugefügten Quellen verantwortlich und muss das Recht haben, sie abzuspielen.</p>
+  <p>Kontakt: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> · © 2026 Graal</p>
+</footer>
+</template>
+<script>
+// Shows the version in the visitor's language (see ../lang.js); French stays in the page for readers without JavaScript.
+(function () {
+  var root = document.documentElement, lang = root.lang;
+  var tpl = lang !== 'fr' && document.querySelector('template[data-lang="' + lang + '"]');
+  if (tpl) {
+    var page = document.getElementById('page');
+    page.replaceChildren(tpl.content.cloneNode(true));
+    document.title = tpl.dataset.title;
+    document.querySelector('meta[name="description"]').content = tpl.dataset.desc;
+  } else root.lang = 'fr';
+  root.classList.remove('swap');
+  var target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (tpl && target) target.scrollIntoView();
+})();
+</script>
+</body>
+</html>

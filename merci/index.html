@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Graal Premium</title>
+<script src="../lang.js"></script>
+<style>
+/* Shown on the buyer's phone after PayPal: one message, Graal's dark look. */
+:root { color-scheme: dark; --bg: #0B081B; --panel: #1E1B2D; --border: #3A3748; --text: #E8E8F0; --dim: #9090B0; --ok: #2ECC71; --warn: #F5C518; --err: #E74C3C; }
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px 16px; color: var(--text);
+  font: 17px/1.5 system-ui, "Segoe UI", Roboto, sans-serif;
+  background: radial-gradient(900px 600px at 20% -10%, #192764 0%, transparent 60%), var(--bg); }
+main { width: min(440px, 100%); background: var(--panel); border: 1px solid var(--border); border-radius: 22px; padding: 32px 26px; text-align: center; }
+.sign { width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 16px; display: grid; place-items: center; font-size: 34px; font-weight: 700; color: #06200f; background: var(--ok); }
+.sign.attente { background: var(--warn); color: #2a2100; } .sign.annule { background: #6b6880; color: #fff; } .sign.erreur { background: var(--err); color: #fff; }
+h1 { font-size: 24px; margin: 0 0 12px; text-wrap: balance; }
+p { margin: 0 0 10px; } p.dim { color: var(--dim); font-size: 15px; }
+footer { margin-top: 22px; color: var(--dim); font-size: 14px; font-weight: 700; letter-spacing: .3px; }
+.langs { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; margin-top: 14px; }
+.langs a { color: var(--dim); text-decoration: none; font-size: 13px; font-weight: 700; padding: 3px 8px; border: 1px solid var(--border); border-radius: 8px; }
+.langs a[aria-current] { color: var(--text); border-color: #B79BFF; }
+</style>
+</head>
+<body>
+<main>
+  <div class="sign" id="sign">✓</div>
+  <h1 id="title"></h1>
+  <p id="text"></p>
+  <p class="dim" id="more"></p>
+  <footer>Graal Player</footer>
+  <div class="langs" id="langs" role="group"></div>
+</main>
+<script>
+// ?etat=ok|attente|annule|erreur&lang=fr|en|es|it|pt|de, set by the server function "premium";
+// without ?lang=, the language chosen on graaltv.com, then the browser's (../lang.js), as on every page of the site.
+const TEXTS = {
+  fr: {
+    ok: ["Paiement reçu, merci !", "Votre Premium Graal est activé.", "Retournez sur votre appareil : il se débloque tout seul en moins d'une minute. Un reçu vous est envoyé par e-mail."],
+    attente: ["Paiement en cours de traitement", "PayPal n'a pas encore confirmé votre paiement.", "Votre Premium s'activera tout seul dès la confirmation. Si rien ne se passe dans l'heure, écrivez à contact@graaltv.com."],
+    annule: ["Paiement annulé", "Rien n'a été débité.", "Pour reprendre, scannez de nouveau le code affiché par Graal."],
+    erreur: ["Paiement impossible", "Le paiement n'a pas pu être lancé. Rien n'a été débité.", "Rouvrez Premium dans Graal pour obtenir un nouveau code, ou écrivez à contact@graaltv.com."],
+  },
+  en: {
+    ok: ["Payment received, thank you!", "Your Graal Premium is active.", "Go back to your device: it unlocks by itself within a minute. A receipt is sent to you by e-mail."],
+    attente: ["Payment being processed", "PayPal has not confirmed your payment yet.", "Your Premium will turn on by itself once it is confirmed. If nothing happens within the hour, write to contact@graaltv.com."],
+    annule: ["Payment cancelled", "Nothing was charged.", "To try again, scan the code shown by Graal once more."],
+    erreur: ["Payment not possible", "The payment could not be started. Nothing was charged.", "Open Premium in Graal again to get a new code, or write to contact@graaltv.com."],
+  },
+  es: {
+    ok: ["Pago recibido, ¡gracias!", "Su Premium de Graal está activado.", "Vuelva a su dispositivo: se desbloquea solo en menos de un minuto. Le enviamos un recibo por correo."],
+    attente: ["Pago en curso", "PayPal aún no ha confirmado su pago.", "Su Premium se activará solo en cuanto se confirme. Si no ocurre nada en una hora, escriba a contact@graaltv.com."],
+    annule: ["Pago cancelado", "No se ha cobrado nada.", "Para volver a intentarlo, escanee de nuevo el código que muestra Graal."],
+    erreur: ["Pago imposible", "No se ha podido iniciar el pago. No se ha cobrado nada.", "Vuelva a abrir Premium en Graal para obtener un nuevo código, o escriba a contact@graaltv.com."],
+  },
+  it: {
+    ok: ["Pagamento ricevuto, grazie!", "Il suo Premium Graal è attivo.", "Torni al suo dispositivo: si sblocca da solo in meno di un minuto. Le inviamo una ricevuta via e-mail."],
+    attente: ["Pagamento in elaborazione", "PayPal non ha ancora confermato il pagamento.", "Il suo Premium si attiverà da solo alla conferma. Se non succede nulla entro un'ora, scriva a contact@graaltv.com."],
+    annule: ["Pagamento annullato", "Non è stato addebitato nulla.", "Per riprovare, scansioni di nuovo il codice mostrato da Graal."],
+    erreur: ["Pagamento impossibile", "Non è stato possibile avviare il pagamento. Non è stato addebitato nulla.", "Riapra Premium in Graal per ottenere un nuovo codice, oppure scriva a contact@graaltv.com."],
+  },
+  pt: {
+    ok: ["Pagamento recebido, obrigado!", "O seu Premium Graal está ativo.", "Volte ao seu aparelho: desbloqueia-se sozinho em menos de um minuto. Enviamos-lhe um recibo por e-mail."],
+    attente: ["Pagamento em processamento", "O PayPal ainda não confirmou o seu pagamento.", "O seu Premium ativa-se sozinho assim que for confirmado. Se nada acontecer dentro de uma hora, escreva para contact@graaltv.com."],
+    annule: ["Pagamento cancelado", "Nada foi cobrado.", "Para tentar de novo, leia outra vez o código mostrado pelo Graal."],
+    erreur: ["Pagamento impossível", "Não foi possível iniciar o pagamento. Nada foi cobrado.", "Volte a abrir Premium no Graal para obter um novo código, ou escreva para contact@graaltv.com."],
+  },
+  de: {
+    ok: ["Zahlung erhalten, vielen Dank!", "Ihr Graal Premium ist aktiv.", "Kehren Sie zu Ihrem Gerät zurück: Es wird in weniger als einer Minute von selbst freigeschaltet. Sie erhalten einen Beleg per E-Mail."],
+    attente: ["Zahlung wird bearbeitet", "PayPal hat Ihre Zahlung noch nicht bestätigt.", "Ihr Premium wird nach der Bestätigung von selbst aktiviert. Wenn innerhalb einer Stunde nichts passiert, schreiben Sie an contact@graaltv.com."],
+    annule: ["Zahlung abgebrochen", "Es wurde nichts abgebucht.", "Um es erneut zu versuchen, scannen Sie den von Graal angezeigten Code noch einmal."],
+    erreur: ["Zahlung nicht möglich", "Die Zahlung konnte nicht gestartet werden. Es wurde nichts abgebucht.", "Öffnen Sie Premium in Graal erneut, um einen neuen Code zu erhalten, oder schreiben Sie an contact@graaltv.com."],
+  },
+};
+const query = new URLSearchParams(location.search);
+const picked = window.GraalLang ? GraalLang.pick() : query.get("lang");
+const lang = TEXTS[picked] ? picked : "fr";
+const state = TEXTS[lang][query.get("etat")] ? query.get("etat") : "erreur";
+const [title, text, more] = TEXTS[lang][state];
+document.documentElement.lang = lang;
+document.getElementById("title").textContent = title;
+document.getElementById("text").textContent = text;
+document.getElementById("more").textContent = more;
+const sign = document.getElementById("sign");
+sign.className = "sign " + state;
+sign.textContent = { ok: "✓", attente: "…", annule: "×", erreur: "!" }[state];
+// Language switcher: same page, same state, another language (the choice is kept for the whole site).
+const langs = document.getElementById("langs");
+langs.setAttribute("aria-label", { fr: "Langue", en: "Language", es: "Idioma", it: "Lingua", pt: "Idioma", de: "Sprache" }[lang]);
+Object.keys(TEXTS).forEach(l => {
+  const q = new URLSearchParams(location.search); q.set("lang", l);
+  const a = document.createElement("a");
+  a.href = "?" + q; a.lang = l; a.hreflang = l; a.dataset.setlang = l; a.textContent = l.toUpperCase();
+  if (l === lang) a.setAttribute("aria-current", "true");
+  langs.append(a);
+});
+</script>
+</body>
+</html>

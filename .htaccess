@@ -1,0 +1,25 @@
+# graaltv.com : toujours en https et sans www, comme l'adresse officielle du site.
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/\.well-known/
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^graaltv\.com$ [NC]
+RewriteRule ^(.*)$ https://graaltv.com/$1 [R=301,L]
+
+# Un dossier demandé sans sa barre finale (/cgv) : renvoyé vers /cgv/, sans numéro de port.
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.+[^/])$ https://graaltv.com/$1/ [R=301,L]
+
+# Pas de liste des fichiers d'un dossier.
+Options -Indexes
+
+AddDefaultCharset UTF-8
+AddType application/json .json
+
+# En-têtes de sécurité, et lecture des données ouverte à toutes les origines (comme avant).
+<IfModule mod_headers.c>
+Header always set Strict-Transport-Security "max-age=15552000"
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set Access-Control-Allow-Origin "*"
+</IfModule>

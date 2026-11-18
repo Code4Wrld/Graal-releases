@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Politique de confidentialité – Graal</title>
+<meta name="description" content="Ce que Graal – IPTV Player garde sur vous, pourquoi, combien de temps, chez qui, comment c'est protégé, et vos droits.">
+<style>
+/* Pages légales de graaltv.com : une colonne lisible sur tout écran, l'aspect sombre de Graal. */
+:root { color-scheme: dark; --bg: #0B081B; --panel: #17142B; --panel2: #1F1B38; --border: #343050; --text: #ECECF4; --dim: #B4B4CE; --faint: #8A8AA8; --accent: #B79BFF; --todo: #F5C518; --check: #7FD4FF; }
+* { box-sizing: border-box; }
+html { background: var(--bg); scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; color: var(--text); font: 17px/1.65 system-ui, "Segoe UI", Roboto, sans-serif; padding: 24px 16px 64px; overflow-wrap: break-word; }
+main, .top, .foot { max-width: 780px; margin: 0 auto; }
+a { color: var(--accent); overflow-wrap: anywhere; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.top { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin-bottom: 28px; font-size: 15px; }
+.top .home { font-weight: 700; text-decoration: none; margin-right: auto; }
+.top a:not(.home) { color: var(--faint); text-decoration: none; }
+.top a[aria-current] { color: var(--text); font-weight: 700; }
+.langs { display: flex; flex-wrap: wrap; gap: 4px; width: 100%; justify-content: flex-end; }
+.top .langs a { color: var(--faint); font-size: 13px; font-weight: 700; letter-spacing: .4px; padding: 3px 8px; border: 1px solid var(--border); border-radius: 8px; }
+.top .langs a[aria-current] { color: var(--text); border-color: var(--accent); background: var(--panel2); }
+.translated { font-size: 15px; }
+html.swap #page { visibility: hidden; }
+h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; margin: 0 0 8px; text-wrap: balance; }
+.date { color: var(--faint); margin: 0 0 24px; font-size: 15px; }
+h2 { font-size: 21px; line-height: 1.3; margin: 40px 0 10px; scroll-margin-top: 16px; }
+h3 { font-size: 17px; margin: 22px 0 6px; color: var(--text); }
+p, li, td { color: var(--dim); }
+p b, li b, td b, p strong { color: var(--text); }
+ul, ol { padding-left: 22px; }
+li { margin: 4px 0; }
+.box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 14px 20px; margin: 16px 0; }
+.box p { margin: 6px 0; }
+.box.key { border-color: #5b4a99; background: var(--panel2); }
+.toc { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 12px 20px; margin: 20px 0 8px; font-size: 15px; }
+.toc b { display: block; margin-bottom: 4px; }
+.toc ol { margin: 0; padding-left: 22px; columns: 2 260px; column-gap: 28px; }
+.toc li { margin: 2px 0; break-inside: avoid; }
+.toc a { text-decoration: none; }
+.tablewrap { margin: 14px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.5; }
+th, td { text-align: left; vertical-align: top; padding: 9px 10px; border-bottom: 1px solid var(--border); }
+th { color: var(--text); background: var(--panel); font-weight: 700; }
+.todo { background: rgba(245, 197, 24, .15); color: var(--todo); border-radius: 6px; padding: 1px 6px; font-weight: 700; }
+.check { background: rgba(127, 212, 255, .13); color: var(--check); border-radius: 6px; padding: 1px 6px; font-weight: 700; }
+.form { background: var(--panel); border: 1px dashed var(--border); border-radius: 12px; padding: 12px 18px; }
+.foot { margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--border); color: var(--faint); font-size: 14px; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 12px; }
+.foot nav a { color: var(--dim); }
+.foot p { color: var(--faint); margin: 6px 0; }
+@media (max-width: 600px) {
+  body { font-size: 16px; padding-top: 18px; }
+  h2 { font-size: 19px; }
+  .top .home { width: 100%; }
+  .langs { justify-content: flex-start; }
+  /* Tableaux en fiches empilées : chaque cellule porte le nom de sa colonne. */
+  table, thead, tbody, tr, th, td { display: block; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; margin: 10px 0; padding: 4px 12px; }
+  td { border: 0; padding: 6px 0; }
+  td + td { border-top: 1px solid var(--border); }
+  td[data-label]::before { content: attr(data-label); display: block; color: var(--text); font-weight: 700; font-size: 13px; }
+}
+@media print {
+  :root { color-scheme: light; --bg: #fff; --panel: #f4f4f8; --panel2: #f4f4f8; --border: #ccc; --text: #000; --dim: #222; --faint: #444; --accent: #2a2a8a; }
+  body { padding: 0; }
+  .top, .toc, .langs { display: none; }
+}
+</style>
+<script src="../lang.js"></script>
+<script>(function () { var l = window.GraalLang ? GraalLang.pick() : 'fr'; document.documentElement.lang = l; if (l !== 'fr') document.documentElement.classList.add('swap'); })();</script>
+</head>
+<body>
+<div id="page">
+<nav class="top" aria-label="Pages légales"><a class="home" href="../?lang=fr">‹ Graal – IPTV Player</a> <a href="../cgv/?lang=fr">Conditions de vente</a> <a href="../confidentialite/?lang=fr" aria-current="page">Confidentialité</a> <a href="../mentions-legales/?lang=fr">Mentions légales</a>
+<span class="langs" role="group" aria-label="Langue"><a href="?lang=fr" hreflang="fr" lang="fr" data-setlang="fr" aria-current="true">FR</a> <a href="?lang=en" hreflang="en" lang="en" data-setlang="en">EN</a> <a href="?lang=es" hreflang="es" lang="es" data-setlang="es">ES</a> <a href="?lang=it" hreflang="it" lang="it" data-setlang="it">IT</a> <a href="?lang=pt" hreflang="pt" lang="pt" data-setlang="pt">PT</a> <a href="?lang=de" hreflang="de" lang="de" data-setlang="de">DE</a></span></nav>
+<main>
+<h1>Politique de confidentialité</h1>
+<p class="date">Version du 18 novembre 2026. Elle reprend, en détail, ce qu'indique l'application dans <b>Paramètres › Mes données</b>.</p>
+
+<div class="box key">
+  <p><b>L'essentiel.</b> Vos playlists, votre historique et vos réglages restent sur votre appareil. Pour Premium, nous gardons votre adresse e-mail et la liste de vos appareils, <b>chiffrées</b>, et les références de votre paiement. La synchronisation est chiffrée sur votre appareil : ni nous ni l'hébergeur ne pouvons la lire. Pas de publicité, pas de pistage, pas de mesure d'audience, aucune donnée vendue ni partagée.</p>
+</div>
+
+<nav class="toc" aria-label="Sommaire"><b>Sommaire</b><ol>
+  <li><a href="#responsable">Responsable du traitement</a></li>
+  <li><a href="#appareil">Ce qui reste sur votre appareil</a></li>
+  <li><a href="#traitements">Ce que nous traitons, pourquoi, combien de temps</a></li>
+  <li><a href="#services">Services contactés par l'application</a></li>
+  <li><a href="#site">Le site graaltv.com</a></li>
+  <li><a href="#destinataires">Destinataires et sous-traitants</a></li>
+  <li><a href="#transferts">Transferts hors de l'Union européenne</a></li>
+  <li><a href="#securite">Sécurité</a></li>
+  <li><a href="#droits">Vos droits</a></li>
+  <li><a href="#mineurs">Mineurs</a></li>
+  <li><a href="#modifications">Modifications</a></li>
+</ol></nav>
+
+<h2 id="responsable">1. Responsable du traitement</h2>
+<p>Code4Wrld, entreprise individuelle, éditeur de Graal (voir les <a href="../mentions-legales/?lang=fr">mentions légales</a>). Pour toute question sur vos données : <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+<p>Votre <b>fournisseur de contenus</b> (le serveur de votre playlist) traite lui-même les données de connexion que votre appareil lui envoie : il en est seul responsable, selon ses propres conditions.</p>
+
+<h2 id="appareil">2. Ce qui reste sur votre appareil</h2>
+<p>Vos playlists (adresse du serveur, identifiant et mot de passe du fournisseur), l'historique et les positions de lecture, les favoris, les listes, vos sports, les rappels, les réglages, le code parental (seulement son empreinte, jamais le code), la clé Premium, le journal de diagnostic et le catalogue en cache sont gardés <b>uniquement sur votre appareil</b> : dans le stockage de l'application sur Android (avec une copie de la configuration et du journal dans un dossier <code>Graal</code> de l'appareil, si vous l'autorisez, pour ne rien perdre en cas de désinstallation), et dans le dossier <code>.graal</code> de votre dossier personnel sur PC et Mac.</p>
+<p>Nous n'y avons pas accès. Vous les effacez avec <b>Paramètres › Mes données › Tout effacer sur cet appareil</b> (vos enregistrements vidéo, qui sont vos fichiers, ne sont pas supprimés). Une désinstallation ne supprime pas la copie gardée hors de l'application sur Android : supprimez-la avec « Tout effacer » avant, ou à la main.</p>
+
+<h2 id="traitements">3. Ce que nous traitons, pourquoi, combien de temps</h2>
+<div class="tablewrap"><table>
+  <thead><tr><th>Données</th><th>Pourquoi</th><th>Base légale (RGPD)</th><th>Durée</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Données"><b>Compte Premium</b> : adresse e-mail et liste de vos appareils (code et nom de chaque appareil), chiffrées ; formule ; dates ; éventuelle note du vendeur (chiffrée)</td><td data-label="Pourquoi">Créer votre compte, activer et retrouver Premium sur vos appareils, vous envoyer les codes, la confirmation et le reçu</td><td data-label="Base légale (RGPD)">Exécution du contrat (art. 6.1.b)</td><td data-label="Durée">Tant que le compte existe. Supprimé dès que vous le demandez (<b>Mes données › Supprimer mon compte Premium</b> ou par e-mail)</td></tr>
+    <tr><td data-label="Données"><b>Code de vérification</b> à 6 chiffres</td><td data-label="Pourquoi">Prouver que l'adresse e-mail est la vôtre</td><td data-label="Base légale (RGPD)">Exécution du contrat</td><td data-label="Durée">Seulement son empreinte, valable 10 minutes ; effacé le lendemain de son expiration</td></tr>
+    <tr><td data-label="Données"><b>Journal technique du compte</b> (étapes d'activation)</td><td data-label="Pourquoi">Sécurité, résolution d'incidents</td><td data-label="Base légale (RGPD)">Intérêt légitime (art. 6.1.f) : protéger le service</td><td data-label="Durée">2 jours</td></tr>
+    <tr><td data-label="Données"><b>Paiement</b> : montant, devise, date, état, références de commande et de paiement PayPal, frais</td><td data-label="Pourquoi">Activer Premium, gérer remboursements et contestations, tenir la comptabilité</td><td data-label="Base légale (RGPD)">Exécution du contrat ; obligation légale (art. 6.1.c) pour la comptabilité</td><td data-label="Durée">Paiement encaissé : 10 ans (article L123-22 du code de commerce), sans lien avec votre compte s'il a été supprimé. Commande jamais payée : 30 jours</td></tr>
+    <tr><td data-label="Données"><b>Synchronisation</b> (Premium, si vous l'activez) : copie de vos données <b>chiffrée sur l'appareil</b> avant l'envoi (AES-256-GCM, clé tirée de votre playlist)</td><td data-label="Pourquoi">Retrouver historique, favoris, listes et réglages sur vos appareils</td><td data-label="Base légale (RGPD)">Exécution du contrat</td><td data-label="Durée">Jusqu'à ce que vous l'effaciez (<b>Mes données › Effacer la copie en ligne</b>). À défaut, elle est effacée automatiquement après 2 ans sans aucune synchronisation.</td></tr>
+    <tr><td data-label="Données"><b>Journal de diagnostic envoyé</b> : erreurs notées par l'application et informations techniques sur l'appareil, sans mot de passe, chiffré</td><td data-label="Pourquoi">Vous aider quand vous signalez un problème</td><td data-label="Base légale (RGPD)">Exécution du contrat (votre demande d'assistance)</td><td data-label="Durée">Seulement quand vous appuyez sur « Envoyer au vendeur » ; effacé automatiquement au bout de 7 jours, ou avant sur demande</td></tr>
+    <tr><td data-label="Données"><b>Échanges avec le support</b> : vos e-mails et nos réponses</td><td data-label="Pourquoi">Répondre à vos questions, réclamations, demandes d'exercice de droits</td><td data-label="Base légale (RGPD)">Intérêt légitime ; obligation légale pour les demandes RGPD</td><td data-label="Durée">3 ans après le dernier échange</td></tr>
+  </tbody>
+</table></div>
+<p>Les alertes internes que reçoit l'éditeur (nouvelle demande, paiement reçu) ne contiennent jamais votre adresse e-mail. Aucune décision automatisée produisant des effets juridiques n'est prise à votre égard, et aucun profil n'est établi.</p>
+
+<h2 id="services">4. Services contactés par l'application</h2>
+<p>Pour afficher certaines informations, l'application interroge directement des services publics d'information, <b>sans compte et sans rien envoyer qui vous identifie</b> : seule l'adresse IP de votre connexion leur est visible, comme pour toute page web.</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Service</th><th>Pour quoi faire</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Service">Serveur de votre playlist</td><td data-label="Pour quoi faire">Lire les chaînes, films, séries et le guide que vous y avez (votre fournisseur, responsable de ses propres traitements)</td></tr>
+    <tr><td data-label="Service">xmltvfr.fr</td><td data-label="Pour quoi faire">Guide des programmes</td></tr>
+    <tr><td data-label="Service">TMDB (The Movie Database)</td><td data-label="Pour quoi faire">Fiches des films et séries (titres, résumés, acteurs, images)</td></tr>
+    <tr><td data-label="Service">Wikipédia, Wikidata, Wikimedia Commons</td><td data-label="Pour quoi faire">Titres traduits, photos, classements et informations sportives</td></tr>
+    <tr><td data-label="Service">ESPN</td><td data-label="Pour quoi faire">Matchs, résultats et statistiques sportives</td></tr>
+    <tr><td data-label="Service">YouTube</td><td data-label="Pour quoi faire">Bandes-annonces</td></tr>
+    <tr><td data-label="Service">TheIntroDB et un catalogue public de films et séries</td><td data-label="Pour quoi faire">Repérer les génériques, compléter une fiche en secours</td></tr>
+    <tr><td data-label="Service">GitHub (dont iptv-org.github.io)</td><td data-label="Pour quoi faire">Mises à jour de l'application, logos des chaînes</td></tr>
+    <tr><td data-label="Service">graaltv.com (notre site)</td><td data-label="Pour quoi faire">Réglages des pages Sports et des thèmes</td></tr>
+    <tr><td data-label="Service">Google (ML Kit, Android) ou Hugging Face (PC et Mac)</td><td data-label="Pour quoi faire">Téléchargement unique des modèles de traduction ; aucun texte n'y est envoyé, la traduction se fait sur l'appareil</td></tr>
+    <tr><td data-label="Service">Supabase (nos serveurs)</td><td data-label="Pour quoi faire">Compte Premium, synchronisation si activée, journal si vous l'envoyez</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="site">5. Le site graaltv.com</h2>
+<ul>
+  <li><b>Aucun cookie</b>, aucune mesure d'audience, aucune publicité.</li>
+  <li>La langue que vous choisissez est gardée dans votre navigateur (stockage local, clé <code>graal-lang</code>) : elle ne nous est pas envoyée. Ce stockage, strictement nécessaire au service demandé, ne requiert pas de consentement.</li>
+  <li>Le site est hébergé par OVH, en France, qui enregistre des journaux techniques (dont l'adresse IP) pour la sécurité de son service, selon sa propre politique.</li>
+  <li>Les polices de caractères du site sont chargées depuis les serveurs de Google Fonts, qui reçoivent à cette occasion l'adresse IP de votre connexion.</li>
+  <li>Le paiement s'effectue sur les pages de PayPal ; la page de remerciement du site ne collecte rien.</li>
+</ul>
+
+<h2 id="destinataires">6. Destinataires et sous-traitants</h2>
+<p>Vos données ne sont ni vendues, ni louées, ni partagées à des fins commerciales. Seul l'éditeur y accède, par une console protégée par mot de passe et double authentification. Elles sont traitées pour notre compte par :</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Prestataire</th><th>Rôle</th><th>Lieu</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Prestataire">Supabase Inc.</td><td data-label="Rôle">Hébergement de la base de données et des fonctions serveur (compte Premium, paiements, synchronisation, journaux)</td><td data-label="Lieu">Données stockées à Paris (région eu-west-3, Union européenne) ; société établie aux États-Unis</td></tr>
+    <tr><td data-label="Prestataire">Brevo (Sendinblue SAS)</td><td data-label="Rôle">Envoi des e-mails : codes de vérification, confirmations, reçus</td><td data-label="Lieu">France</td></tr>
+    <tr><td data-label="Prestataire">OVH SAS</td><td data-label="Rôle">Hébergement du site</td><td data-label="Lieu">France</td></tr>
+    <tr><td data-label="Prestataire">GitHub, Inc.</td><td data-label="Rôle">Hébergement des fichiers de mise à jour</td><td data-label="Lieu">États-Unis</td></tr>
+  </tbody>
+</table></div>
+<p><b>PayPal</b> (PayPal (Europe) S.à r.l. et Cie, S.C.A., Luxembourg) traite vos données de paiement (identité, moyen de paiement) en tant que <b>responsable de traitement distinct</b>, selon sa propre politique de confidentialité ; il nous transmet seulement les informations listées ci-dessus. Les services de l'article 4 ne reçoivent aucune donnée de notre part.</p>
+<p>Nous pouvons communiquer des données aux autorités judiciaires ou administratives uniquement sur réquisition ou décision légale. Du fait du chiffrement, nous ne détenons ni les identifiants de votre playlist, ni la liste de ce que vous regardez.</p>
+
+<h2 id="transferts">7. Transferts hors de l'Union européenne</h2>
+<p>Nos données Premium et de synchronisation sont stockées dans l'Union européenne. Lorsque des prestataires établis aux États-Unis (Supabase, GitHub) peuvent y accéder, notamment pour la maintenance, ces transferts sont encadrés par les clauses contractuelles types de la Commission européenne et, le cas échéant, par le cadre de protection des données UE–États-Unis. Vous pouvez obtenir une copie de ces garanties en nous écrivant.</p>
+
+<h2 id="securite">8. Sécurité</h2>
+<ul>
+  <li><b>Rien en clair sur le serveur</b> : adresse e-mail, code et nom de chaque appareil et note du vendeur sont chiffrés en AES-256-GCM (un vecteur aléatoire par donnée) ; l'adresse et le code de l'appareil sont retrouvés par une empreinte HMAC-SHA256 calculée avec une clé secrète.</li>
+  <li><b>Clés hors de la base</b> : les clés de chiffrement sont des secrets de la fonction serveur ; une copie de la base seule ne révèle rien.</li>
+  <li><b>Accès fermés</b> : les tables ne sont lisibles que par la fonction serveur ; la console d'administration exige un mot de passe et un code à 6 chiffres.</li>
+  <li><b>Synchronisation chiffrée de bout en bout</b> : seul un appareil qui connaît votre playlist peut retrouver et lire la copie.</li>
+  <li>Tout passe en HTTPS ; un ménage automatique efface chaque nuit les journaux et codes expirés.</li>
+</ul>
+<p>En cas de violation de données présentant un risque pour vous, nous le notifions à la CNIL dans les 72 heures et vous en informons lorsque la loi l'exige.</p>
+
+<h2 id="droits">9. Vos droits</h2>
+<p>Où que vous soyez, vous pouvez <b>accéder</b> à vos données, les <b>rectifier</b>, les <b>effacer</b>, en <b>limiter</b> le traitement, vous <b>opposer</b> à un traitement fondé sur l'intérêt légitime, en obtenir la <b>portabilité</b>, et définir des <b>directives</b> sur leur sort après votre décès.</p>
+<ul>
+  <li><b>Dans l'application</b> : <b>Paramètres › Mes données</b> permet d'effacer la copie en ligne, de supprimer votre compte Premium et de tout effacer sur l'appareil, chaque fois après confirmation.</li>
+  <li><b>Par e-mail</b> : <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>, de préférence depuis l'adresse de votre compte. Comme nous ne gardons votre adresse que chiffrée, nous pouvons vous demander de confirmer qu'elle est la vôtre (code de vérification). Réponse sous un mois, prolongeable de deux mois pour une demande complexe ; vous en êtes alors informé.</li>
+  <li><b>Réclamation</b> : vous pouvez saisir la CNIL (3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07, <a href="https://www.cnil.fr">cnil.fr</a>) ou l'autorité de protection des données de votre pays.</li>
+</ul>
+<p>La suppression du compte Premium arrête Premium sur tous vos appareils. Les données de paiement sont conservées le temps de l'obligation comptable, sans lien avec vous.</p>
+
+<h2 id="mineurs">10. Mineurs</h2>
+<p>Le compte Premium est réservé aux personnes majeures ou autorisées par le titulaire de l'autorité parentale. Si vous pensez qu'un mineur nous a transmis des données sans cette autorisation, écrivez-nous : nous les supprimerons.</p>
+
+<h2 id="modifications">11. Modifications</h2>
+<p>Cette politique suit l'évolution de l'application (nouveau prestataire, changement d'hébergement, nouvelle durée). Toute modification importante est annoncée dans l'application ou sur ce site, et la date en haut de page est mise à jour.</p>
+</main>
+<footer class="foot">
+  <nav aria-label="Pages légales"><a href="../cgv/?lang=fr">Conditions de vente</a> <a href="../confidentialite/?lang=fr">Confidentialité</a> <a href="../mentions-legales/?lang=fr">Mentions légales</a></nav>
+  <p>Graal est un lecteur multimédia. Il ne fournit, n'héberge, ne vend ni ne recommande aucune chaîne, playlist ou contenu audiovisuel, et n'est affilié à aucun fournisseur. Chaque utilisateur est seul responsable des sources qu'il y ajoute et doit avoir le droit de les lire.</p>
+  <p>Contact : <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> · © 2026 Graal</p>
+</footer>
+</div>
+<template data-lang="en" data-title="Privacy Policy – Graal" data-desc="What Graal – IPTV Player keeps about you, why, for how long, with whom, how it is protected, and your rights.">
+<nav class="top" aria-label="Legal pages"><a class="home" href="../?lang=en">‹ Graal – IPTV Player</a> <a href="../cgv/?lang=en">Terms of sale</a> <a href="../confidentialite/?lang=en" aria-current="page">Privacy</a> <a href="../mentions-legales/?lang=en">Legal notice</a>
+<span class="langs" role="group" aria-label="Language"><a href="?lang=fr" hreflang="fr" lang="fr" data-setlang="fr">FR</a> <a href="?lang=en" hreflang="en" lang="en" data-setlang="en" aria-current="true">EN</a> <a href="?lang=es" hreflang="es" lang="es" data-setlang="es">ES</a> <a href="?lang=it" hreflang="it" lang="it" data-setlang="it">IT</a> <a href="?lang=pt" hreflang="pt" lang="pt" data-setlang="pt">PT</a> <a href="?lang=de" hreflang="de" lang="de" data-setlang="de">DE</a></span></nav>
+<main>
+<p class="box translated" lang="en">Translation provided for information only; only the French version is legally binding. <a href="?lang=fr" hreflang="fr" lang="fr">Read the French version</a></p>
+<h1>Privacy Policy</h1>
+<p class="date">Version of 18 November 2026. It sets out, in detail, what the application shows in <b>Settings › My data</b>.</p>
+
+<div class="box key">
+  <p><b>The essentials.</b> Your playlists, your history and your settings stay on your device. For Premium, we keep your e-mail address and the list of your devices, <b>encrypted</b>, and the references of your payment. Synchronisation is encrypted on your device: neither we nor the hosting provider can read it. No advertising, no tracking, no audience measurement, no data sold or shared.</p>
+</div>
+
+<nav class="toc" aria-label="Contents"><b>Contents</b><ol>
+  <li><a href="#responsable">Data controller</a></li>
+  <li><a href="#appareil">What stays on your device</a></li>
+  <li><a href="#traitements">What we process, why, and for how long</a></li>
+  <li><a href="#services">Services contacted by the application</a></li>
+  <li><a href="#site">The graaltv.com website</a></li>
+  <li><a href="#destinataires">Recipients and processors</a></li>
+  <li><a href="#transferts">Transfers outside the European Union</a></li>
+  <li><a href="#securite">Security</a></li>
+  <li><a href="#droits">Your rights</a></li>
+  <li><a href="#mineurs">Minors</a></li>
+  <li><a href="#modifications">Changes</a></li>
+</ol></nav>
+
+<h2 id="responsable">1. Data controller</h2>
+<p>Code4Wrld, sole proprietorship (entreprise individuelle), publisher of Graal (see the <a href="../mentions-legales/?lang=en">legal notice</a>). For any question about your data: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+<p>Your <b>content provider</b> (the server of your playlist) itself processes the connection data that your device sends to it: it alone is responsible for this, under its own terms.</p>
+
+<h2 id="appareil">2. What stays on your device</h2>
+<p>Your playlists (server address, provider username and password), history and playback positions, favourites, lists, your sports, reminders, settings, the parental code (only its hash, never the code itself), the Premium key, the diagnostic log and the cached catalogue are kept <b>only on your device</b>: in the application's storage on Android (with a copy of the configuration and the log in a <code>Graal</code> folder on the device, if you allow it, so that nothing is lost if the application is uninstalled), and in the <code>.graal</code> folder of your home folder on PC and Mac.</p>
+<p>We have no access to them. You erase them with <b>Settings › My data › Delete everything on this device</b> (your video recordings, which are your files, are not deleted). Uninstalling does not delete the copy kept outside the application on Android: delete it beforehand with “Delete everything”, or manually.</p>
+
+<h2 id="traitements">3. What we process, why, and for how long</h2>
+<div class="tablewrap"><table>
+  <thead><tr><th>Data</th><th>Why</th><th>Legal basis (GDPR)</th><th>Duration</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Data"><b>Premium account</b>: e-mail address and list of your devices (code and name of each device), encrypted; plan; dates; any note from the seller (encrypted)</td><td data-label="Why">Creating your account, activating and recovering Premium on your devices, sending you codes, the confirmation and the receipt</td><td data-label="Legal basis (GDPR)">Performance of the contract (art. 6.1.b)</td><td data-label="Duration">As long as the account exists. Deleted as soon as you request it (<b>My data › Delete my Premium account</b> or by e-mail)</td></tr>
+    <tr><td data-label="Data">6-digit <b>verification code</b></td><td data-label="Why">Proving that the e-mail address is yours</td><td data-label="Legal basis (GDPR)">Performance of the contract</td><td data-label="Duration">Only its hash, valid for 10 minutes; erased the day after it expires</td></tr>
+    <tr><td data-label="Data"><b>Technical account log</b> (activation steps)</td><td data-label="Why">Security, incident resolution</td><td data-label="Legal basis (GDPR)">Legitimate interest (art. 6.1.f): protecting the service</td><td data-label="Duration">2 days</td></tr>
+    <tr><td data-label="Data"><b>Payment</b>: amount, currency, date, status, PayPal order and payment references, fees</td><td data-label="Why">Activating Premium, handling refunds and disputes, keeping the accounts</td><td data-label="Legal basis (GDPR)">Performance of the contract; legal obligation (art. 6.1.c) for accounting</td><td data-label="Duration">Payment received: 10 years (article L123-22 of the French Commercial Code (code de commerce)), with no link to your account if it has been deleted. Order never paid: 30 days</td></tr>
+    <tr><td data-label="Data"><b>Synchronisation</b> (Premium, if you enable it): copy of your data <b>encrypted on the device</b> before sending (AES-256-GCM, key derived from your playlist)</td><td data-label="Why">Recovering history, favourites, lists and settings on your devices</td><td data-label="Legal basis (GDPR)">Performance of the contract</td><td data-label="Duration">Until you erase it (<b>My data › Delete the online copy</b>). Otherwise, it is erased automatically after 2 years without any synchronisation.</td></tr>
+    <tr><td data-label="Data"><b>Diagnostic log sent</b>: errors recorded by the application and technical information about the device, without passwords, encrypted</td><td data-label="Why">Helping you when you report a problem</td><td data-label="Legal basis (GDPR)">Performance of the contract (your request for assistance)</td><td data-label="Duration">Only when you press “Send to seller”; erased automatically after 7 days, or earlier on request</td></tr>
+    <tr><td data-label="Data"><b>Exchanges with support</b>: your e-mails and our replies</td><td data-label="Why">Answering your questions, complaints and requests to exercise your rights</td><td data-label="Legal basis (GDPR)">Legitimate interest; legal obligation for GDPR requests</td><td data-label="Duration">3 years after the last exchange</td></tr>
+  </tbody>
+</table></div>
+<p>The internal alerts received by the publisher (new request, payment received) never contain your e-mail address. No automated decision producing legal effects is taken concerning you, and no profile is created.</p>
+
+<h2 id="services">4. Services contacted by the application</h2>
+<p>To display certain information, the application directly queries public information services, <b>without an account and without sending anything that identifies you</b>: only the IP address of your connection is visible to them, as with any web page.</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Service</th><th>What for</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Service">Server of your playlist</td><td data-label="What for">Playing the channels, films, series and guide you have there (your provider, responsible for its own processing)</td></tr>
+    <tr><td data-label="Service">xmltvfr.fr</td><td data-label="What for">Programme guide</td></tr>
+    <tr><td data-label="Service">TMDB (The Movie Database)</td><td data-label="What for">Film and series details (titles, synopses, cast, images)</td></tr>
+    <tr><td data-label="Service">Wikipédia, Wikidata, Wikimedia Commons</td><td data-label="What for">Translated titles, photos, rankings and sports information</td></tr>
+    <tr><td data-label="Service">ESPN</td><td data-label="What for">Matches, results and sports statistics</td></tr>
+    <tr><td data-label="Service">YouTube</td><td data-label="What for">Trailers</td></tr>
+    <tr><td data-label="Service">TheIntroDB and a public catalogue of films and series</td><td data-label="What for">Detecting opening and closing credits, completing details as a fallback</td></tr>
+    <tr><td data-label="Service">GitHub (including iptv-org.github.io)</td><td data-label="What for">Application updates, channel logos</td></tr>
+    <tr><td data-label="Service">graaltv.com (our website)</td><td data-label="What for">Settings for the Sports pages and themes</td></tr>
+    <tr><td data-label="Service">Google (ML Kit, Android) or Hugging Face (PC and Mac)</td><td data-label="What for">One-time download of the translation models; no text is sent to them, translation is done on the device</td></tr>
+    <tr><td data-label="Service">Supabase (our servers)</td><td data-label="What for">Premium account, synchronisation if enabled, log if you send it</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="site">5. The graaltv.com website</h2>
+<ul>
+  <li><b>No cookies</b>, no audience measurement, no advertising.</li>
+  <li>The language you choose is kept in your browser (local storage, key <code>graal-lang</code>): it is not sent to us. This storage, strictly necessary for the service requested, does not require consent.</li>
+  <li>The website is hosted by OVH, in France, which records technical logs (including the IP address) for the security of its service, under its own policy.</li>
+  <li>The website's fonts are loaded from Google Fonts servers, which receive the IP address of your connection when they do so.</li>
+  <li>Payment takes place on PayPal's pages; the website's thank-you page collects nothing.</li>
+</ul>
+
+<h2 id="destinataires">6. Recipients and processors</h2>
+<p>Your data is not sold, rented or shared for commercial purposes. Only the publisher has access to it, through a console protected by a password and two-factor authentication. It is processed on our behalf by:</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Provider</th><th>Role</th><th>Location</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Provider">Supabase Inc.</td><td data-label="Role">Hosting of the database and server functions (Premium account, payments, synchronisation, logs)</td><td data-label="Location">Data stored in Paris (eu-west-3 region, European Union); company established in the United States</td></tr>
+    <tr><td data-label="Provider">Brevo (Sendinblue SAS)</td><td data-label="Role">Sending e-mails: verification codes, confirmations, receipts</td><td data-label="Location">France</td></tr>
+    <tr><td data-label="Provider">OVH SAS</td><td data-label="Role">Hosting of the website</td><td data-label="Location">France</td></tr>
+    <tr><td data-label="Provider">GitHub, Inc.</td><td data-label="Role">Hosting of the update files</td><td data-label="Location">United States</td></tr>
+  </tbody>
+</table></div>
+<p><b>PayPal</b> (PayPal (Europe) S.à r.l. et Cie, S.C.A., Luxembourg) processes your payment data (identity, means of payment) as a <b>separate data controller</b>, under its own privacy policy; it only sends us the information listed above. The services in section 4 receive no data from us.</p>
+<p>We may disclose data to judicial or administrative authorities only upon a legal requisition or decision. Because of encryption, we hold neither your playlist credentials nor the list of what you watch.</p>
+
+<h2 id="transferts">7. Transfers outside the European Union</h2>
+<p>Our Premium and synchronisation data is stored in the European Union. Where providers established in the United States (Supabase, GitHub) may access it, in particular for maintenance, these transfers are governed by the European Commission's standard contractual clauses and, where applicable, by the EU–US Data Privacy Framework. You can obtain a copy of these safeguards by writing to us.</p>
+
+<h2 id="securite">8. Security</h2>
+<ul>
+  <li><b>Nothing in plain text on the server</b>: the e-mail address, the code and name of each device and the seller's note are encrypted with AES-256-GCM (a random vector for each item); the address and the device code are looked up by an HMAC-SHA256 hash computed with a secret key.</li>
+  <li><b>Keys outside the database</b>: the encryption keys are secrets of the server function; a copy of the database alone reveals nothing.</li>
+  <li><b>Closed access</b>: the tables can only be read by the server function; the administration console requires a password and a 6-digit code.</li>
+  <li><b>End-to-end encrypted synchronisation</b>: only a device that knows your playlist can find and read the copy.</li>
+  <li>Everything goes over HTTPS; an automatic clean-up erases expired logs and codes every night.</li>
+</ul>
+<p>In the event of a data breach presenting a risk to you, we notify the CNIL within 72 hours and inform you where the law requires it.</p>
+
+<h2 id="droits">9. Your rights</h2>
+<p>Wherever you are, you can <b>access</b> your data, <b>rectify</b> it, <b>erase</b> it, <b>restrict</b> its processing, <b>object</b> to processing based on legitimate interest, obtain its <b>portability</b>, and set <b>instructions</b> regarding what happens to it after your death.</p>
+<ul>
+  <li><b>In the application</b>: <b>Settings › My data</b> lets you delete the online copy, delete your Premium account and delete everything on the device, each time after confirmation.</li>
+  <li><b>By e-mail</b>: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>, preferably from your account address. As we only keep your address in encrypted form, we may ask you to confirm that it is yours (verification code). Reply within one month, which may be extended by two months for a complex request; you will be informed if so.</li>
+  <li><b>Complaint</b>: you can lodge a complaint with the CNIL (3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07, <a href="https://www.cnil.fr">cnil.fr</a>) or with the data protection authority of your country.</li>
+</ul>
+<p>Deleting the Premium account stops Premium on all your devices. Payment data is kept for the duration of the accounting obligation, with no link to you.</p>
+
+<h2 id="mineurs">10. Minors</h2>
+<p>The Premium account is reserved for adults or persons authorised by the holder of parental authority. If you believe that a minor has sent us data without this authorisation, write to us: we will delete it.</p>
+
+<h2 id="modifications">11. Changes</h2>
+<p>This policy follows the development of the application (new provider, change of hosting, new retention period). Any significant change is announced in the application or on this website, and the date at the top of the page is updated.</p>
+</main>
+<footer class="foot">
+  <nav aria-label="Legal pages"><a href="../cgv/?lang=en">Terms of sale</a> <a href="../confidentialite/?lang=en">Privacy</a> <a href="../mentions-legales/?lang=en">Legal notice</a></nav>
+  <p>Graal is a media player. It does not provide, host, sell or recommend any channel, playlist or audiovisual content, and is not affiliated with any provider. Each user is solely responsible for the sources they add and must have the right to play them.</p>
+  <p>Contact: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> · © 2026 Graal</p>
+</footer>
+</template>
+<template data-lang="es" data-title="Política de privacidad – Graal" data-desc="Qué datos conserva Graal – IPTV Player sobre usted, por qué, durante cuánto tiempo, dónde, cómo se protegen y cuáles son sus derechos.">
+<nav class="top" aria-label="Páginas legales"><a class="home" href="../?lang=es">‹ Graal – IPTV Player</a> <a href="../cgv/?lang=es">Condiciones de venta</a> <a href="../confidentialite/?lang=es" aria-current="page">Privacidad</a> <a href="../mentions-legales/?lang=es">Aviso legal</a>
+<span class="langs" role="group" aria-label="Idioma"><a href="?lang=fr" hreflang="fr" lang="fr" data-setlang="fr">FR</a> <a href="?lang=en" hreflang="en" lang="en" data-setlang="en">EN</a> <a href="?lang=es" hreflang="es" lang="es" data-setlang="es" aria-current="true">ES</a> <a href="?lang=it" hreflang="it" lang="it" data-setlang="it">IT</a> <a href="?lang=pt" hreflang="pt" lang="pt" data-setlang="pt">PT</a> <a href="?lang=de" hreflang="de" lang="de" data-setlang="de">DE</a></span></nav>
+<main>
+<p class="box translated" lang="es">Traducción a título informativo; solo la versión francesa da fe. <a href="?lang=fr" hreflang="fr" lang="fr">Leer la versión francesa</a></p>
+<h1>Política de privacidad</h1>
+<p class="date">Versión del 18 de noviembre de 2026. Recoge, en detalle, lo que indica la aplicación en <b>Ajustes › Mis datos</b>.</p>
+
+<div class="box key">
+  <p><b>Lo esencial.</b> Sus listas de reproducción, su historial y sus ajustes permanecen en su dispositivo. Para Premium, conservamos su dirección de correo electrónico y la lista de sus dispositivos, <b>cifradas</b>, y las referencias de su pago. La sincronización se cifra en su dispositivo: ni nosotros ni el proveedor de alojamiento podemos leerla. Sin publicidad, sin rastreo, sin medición de audiencia, ningún dato vendido ni compartido.</p>
+</div>
+
+<nav class="toc" aria-label="Índice"><b>Índice</b><ol>
+  <li><a href="#responsable">Responsable del tratamiento</a></li>
+  <li><a href="#appareil">Lo que permanece en su dispositivo</a></li>
+  <li><a href="#traitements">Lo que tratamos, por qué y durante cuánto tiempo</a></li>
+  <li><a href="#services">Servicios consultados por la aplicación</a></li>
+  <li><a href="#site">El sitio graaltv.com</a></li>
+  <li><a href="#destinataires">Destinatarios y encargados del tratamiento</a></li>
+  <li><a href="#transferts">Transferencias fuera de la Unión Europea</a></li>
+  <li><a href="#securite">Seguridad</a></li>
+  <li><a href="#droits">Sus derechos</a></li>
+  <li><a href="#mineurs">Menores</a></li>
+  <li><a href="#modifications">Modificaciones</a></li>
+</ol></nav>
+
+<h2 id="responsable">1. Responsable del tratamiento</h2>
+<p>Code4Wrld, empresa individual (entreprise individuelle), editor de Graal (véase el <a href="../mentions-legales/?lang=es">aviso legal</a>). Para cualquier pregunta sobre sus datos: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+<p>Su <b>proveedor de contenidos</b> (el servidor de su lista de reproducción) trata por sí mismo los datos de conexión que su dispositivo le envía: es el único responsable de ellos, según sus propias condiciones.</p>
+
+<h2 id="appareil">2. Lo que permanece en su dispositivo</h2>
+<p>Sus listas de reproducción (dirección del servidor, usuario y contraseña del proveedor), el historial y las posiciones de reproducción, los favoritos, las listas, sus deportes, los recordatorios, los ajustes, el código parental (solo su huella, nunca el código), la clave Premium, el registro de diagnóstico y el catálogo en caché se guardan <b>únicamente en su dispositivo</b>: en el almacenamiento de la aplicación en Android (con una copia de la configuración y del registro en una carpeta <code>Graal</code> del dispositivo, si usted lo autoriza, para no perder nada en caso de desinstalación), y en la carpeta <code>.graal</code> de su carpeta personal en PC y Mac.</p>
+<p>No tenemos acceso a ellos. Usted los borra con <b>Ajustes › Mis datos › Borrarlo todo en este dispositivo</b> (sus grabaciones de vídeo, que son sus archivos, no se eliminan). Una desinstalación no elimina la copia guardada fuera de la aplicación en Android: elimínela antes con «Borrarlo todo», o manualmente.</p>
+
+<h2 id="traitements">3. Lo que tratamos, por qué y durante cuánto tiempo</h2>
+<div class="tablewrap"><table>
+  <thead><tr><th>Datos</th><th>Por qué</th><th>Base jurídica (RGPD)</th><th>Plazo</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Datos"><b>Cuenta Premium</b>: dirección de correo electrónico y lista de sus dispositivos (código y nombre de cada dispositivo), cifradas; plan; fechas; posible nota del vendedor (cifrada)</td><td data-label="Por qué">Crear su cuenta, activar y recuperar Premium en sus dispositivos, enviarle los códigos, la confirmación y el recibo</td><td data-label="Base jurídica (RGPD)">Ejecución del contrato (art. 6.1.b)</td><td data-label="Plazo">Mientras exista la cuenta. Se elimina en cuanto usted lo solicite (<b>Mis datos › Eliminar mi cuenta Premium</b> o por correo electrónico)</td></tr>
+    <tr><td data-label="Datos"><b>Código de verificación</b> de 6 cifras</td><td data-label="Por qué">Demostrar que la dirección de correo electrónico es suya</td><td data-label="Base jurídica (RGPD)">Ejecución del contrato</td><td data-label="Plazo">Solo su huella, válida durante 10 minutos; se borra el día siguiente a su caducidad</td></tr>
+    <tr><td data-label="Datos"><b>Registro técnico de la cuenta</b> (pasos de activación)</td><td data-label="Por qué">Seguridad, resolución de incidencias</td><td data-label="Base jurídica (RGPD)">Interés legítimo (art. 6.1.f): proteger el servicio</td><td data-label="Plazo">2 días</td></tr>
+    <tr><td data-label="Datos"><b>Pago</b>: importe, moneda, fecha, estado, referencias del pedido y del pago de PayPal, comisiones</td><td data-label="Por qué">Activar Premium, gestionar reembolsos e impugnaciones, llevar la contabilidad</td><td data-label="Base jurídica (RGPD)">Ejecución del contrato; obligación legal (art. 6.1.c) para la contabilidad</td><td data-label="Plazo">Pago cobrado: 10 años (artículo L123-22 del Código de Comercio francés (code de commerce)), sin vínculo con su cuenta si se ha eliminado. Pedido nunca pagado: 30 días</td></tr>
+    <tr><td data-label="Datos"><b>Sincronización</b> (Premium, si la activa): copia de sus datos <b>cifrada en el dispositivo</b> antes del envío (AES-256-GCM, clave derivada de su lista de reproducción)</td><td data-label="Por qué">Recuperar historial, favoritos, listas y ajustes en sus dispositivos</td><td data-label="Base jurídica (RGPD)">Ejecución del contrato</td><td data-label="Plazo">Hasta que usted la borre (<b>Mis datos › Borrar la copia en línea</b>). En su defecto, se borra automáticamente tras 2 años sin ninguna sincronización.</td></tr>
+    <tr><td data-label="Datos"><b>Registro de diagnóstico enviado</b>: errores anotados por la aplicación e información técnica sobre el dispositivo, sin contraseña, cifrado</td><td data-label="Por qué">Ayudarle cuando nos comunica un problema</td><td data-label="Base jurídica (RGPD)">Ejecución del contrato (su solicitud de asistencia)</td><td data-label="Plazo">Solo cuando usted pulsa «Enviar al vendedor»; se borra automáticamente al cabo de 7 días, o antes previa solicitud</td></tr>
+    <tr><td data-label="Datos"><b>Comunicaciones con el soporte</b>: sus correos electrónicos y nuestras respuestas</td><td data-label="Por qué">Responder a sus preguntas, reclamaciones y solicitudes de ejercicio de derechos</td><td data-label="Base jurídica (RGPD)">Interés legítimo; obligación legal para las solicitudes RGPD</td><td data-label="Plazo">3 años después de la última comunicación</td></tr>
+  </tbody>
+</table></div>
+<p>Las alertas internas que recibe el editor (nueva solicitud, pago recibido) nunca contienen su dirección de correo electrónico. No se toma ninguna decisión automatizada que produzca efectos jurídicos sobre usted, y no se elabora ningún perfil.</p>
+
+<h2 id="services">4. Servicios consultados por la aplicación</h2>
+<p>Para mostrar determinada información, la aplicación consulta directamente servicios públicos de información, <b>sin cuenta y sin enviar nada que le identifique</b>: solo pueden ver la dirección IP de su conexión, como ocurre con cualquier página web.</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Servicio</th><th>Para qué</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Servicio">Servidor de su lista de reproducción</td><td data-label="Para qué">Reproducir los canales, películas, series y la guía que tenga en él (su proveedor, responsable de sus propios tratamientos)</td></tr>
+    <tr><td data-label="Servicio">xmltvfr.fr</td><td data-label="Para qué">Guía de programas</td></tr>
+    <tr><td data-label="Servicio">TMDB (The Movie Database)</td><td data-label="Para qué">Fichas de películas y series (títulos, sinopsis, actores, imágenes)</td></tr>
+    <tr><td data-label="Servicio">Wikipedia, Wikidata, Wikimedia Commons</td><td data-label="Para qué">Títulos traducidos, fotos, clasificaciones e información deportiva</td></tr>
+    <tr><td data-label="Servicio">ESPN</td><td data-label="Para qué">Partidos, resultados y estadísticas deportivas</td></tr>
+    <tr><td data-label="Servicio">YouTube</td><td data-label="Para qué">Tráileres</td></tr>
+    <tr><td data-label="Servicio">TheIntroDB y un catálogo público de películas y series</td><td data-label="Para qué">Detectar los créditos, completar una ficha como respaldo</td></tr>
+    <tr><td data-label="Servicio">GitHub (incluido iptv-org.github.io)</td><td data-label="Para qué">Actualizaciones de la aplicación, logotipos de los canales</td></tr>
+    <tr><td data-label="Servicio">graaltv.com (nuestro sitio)</td><td data-label="Para qué">Ajustes de las páginas de Deportes y de los temas</td></tr>
+    <tr><td data-label="Servicio">Google (ML Kit, Android) o Hugging Face (PC y Mac)</td><td data-label="Para qué">Descarga única de los modelos de traducción; no se envía ningún texto, la traducción se realiza en el dispositivo</td></tr>
+    <tr><td data-label="Servicio">Supabase (nuestros servidores)</td><td data-label="Para qué">Cuenta Premium, sincronización si está activada, registro si usted lo envía</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="site">5. El sitio graaltv.com</h2>
+<ul>
+  <li><b>Ninguna cookie</b>, ninguna medición de audiencia, ninguna publicidad.</li>
+  <li>El idioma que elige se guarda en su navegador (almacenamiento local, clave <code>graal-lang</code>): no se nos envía. Este almacenamiento, estrictamente necesario para el servicio solicitado, no requiere consentimiento.</li>
+  <li>El sitio está alojado por OVH, en Francia, que registra datos técnicos (incluida la dirección IP) para la seguridad de su servicio, según su propia política.</li>
+  <li>Las tipografías del sitio se cargan desde los servidores de Google Fonts, que reciben en ese momento la dirección IP de su conexión.</li>
+  <li>El pago se efectúa en las páginas de PayPal; la página de agradecimiento del sitio no recoge nada.</li>
+</ul>
+
+<h2 id="destinataires">6. Destinatarios y encargados del tratamiento</h2>
+<p>Sus datos no se venden, no se alquilan ni se comparten con fines comerciales. Solo el editor accede a ellos, mediante una consola protegida por contraseña y doble autenticación. Los tratan por nuestra cuenta:</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Proveedor</th><th>Función</th><th>Ubicación</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Proveedor">Supabase Inc.</td><td data-label="Función">Alojamiento de la base de datos y de las funciones de servidor (cuenta Premium, pagos, sincronización, registros)</td><td data-label="Ubicación">Datos almacenados en París (región eu-west-3, Unión Europea); sociedad establecida en Estados Unidos</td></tr>
+    <tr><td data-label="Proveedor">Brevo (Sendinblue SAS)</td><td data-label="Función">Envío de los correos electrónicos: códigos de verificación, confirmaciones, recibos</td><td data-label="Ubicación">Francia</td></tr>
+    <tr><td data-label="Proveedor">OVH SAS</td><td data-label="Función">Alojamiento del sitio</td><td data-label="Ubicación">Francia</td></tr>
+    <tr><td data-label="Proveedor">GitHub, Inc.</td><td data-label="Función">Alojamiento de los archivos de actualización</td><td data-label="Ubicación">Estados Unidos</td></tr>
+  </tbody>
+</table></div>
+<p><b>PayPal</b> (PayPal (Europe) S.à r.l. et Cie, S.C.A., Luxemburgo) trata sus datos de pago (identidad, medio de pago) en calidad de <b>responsable del tratamiento independiente</b>, según su propia política de privacidad; solo nos transmite la información indicada más arriba. Los servicios del apartado 4 no reciben ningún dato de nuestra parte.</p>
+<p>Solo podemos comunicar datos a las autoridades judiciales o administrativas previo requerimiento o resolución legal. Debido al cifrado, no disponemos ni de las credenciales de su lista de reproducción ni de la lista de lo que usted ve.</p>
+
+<h2 id="transferts">7. Transferencias fuera de la Unión Europea</h2>
+<p>Nuestros datos de Premium y de sincronización se almacenan en la Unión Europea. Cuando proveedores establecidos en Estados Unidos (Supabase, GitHub) pueden acceder a ellos, en particular para el mantenimiento, estas transferencias se rigen por las cláusulas contractuales tipo de la Comisión Europea y, en su caso, por el Marco de Privacidad de Datos UE-EE. UU. Puede obtener una copia de estas garantías escribiéndonos.</p>
+
+<h2 id="securite">8. Seguridad</h2>
+<ul>
+  <li><b>Nada en claro en el servidor</b>: la dirección de correo electrónico, el código y el nombre de cada dispositivo y la nota del vendedor se cifran en AES-256-GCM (un vector aleatorio por dato); la dirección y el código del dispositivo se localizan mediante una huella HMAC-SHA256 calculada con una clave secreta.</li>
+  <li><b>Claves fuera de la base de datos</b>: las claves de cifrado son secretos de la función de servidor; una copia de la base de datos por sí sola no revela nada.</li>
+  <li><b>Accesos cerrados</b>: las tablas solo pueden ser leídas por la función de servidor; la consola de administración exige una contraseña y un código de 6 cifras.</li>
+  <li><b>Sincronización cifrada de extremo a extremo</b>: solo un dispositivo que conozca su lista de reproducción puede localizar y leer la copia.</li>
+  <li>Todo pasa por HTTPS; una limpieza automática borra cada noche los registros y códigos caducados.</li>
+</ul>
+<p>En caso de violación de datos que suponga un riesgo para usted, lo notificaremos a la CNIL en un plazo de 72 horas y se lo comunicaremos cuando la ley lo exija.</p>
+
+<h2 id="droits">9. Sus derechos</h2>
+<p>Esté donde esté, puede <b>acceder</b> a sus datos, <b>rectificarlos</b>, <b>suprimirlos</b>, <b>limitar</b> su tratamiento, <b>oponerse</b> a un tratamiento basado en el interés legítimo, obtener su <b>portabilidad</b> y establecer <b>directrices</b> sobre su destino tras su fallecimiento.</p>
+<ul>
+  <li><b>En la aplicación</b>: <b>Ajustes › Mis datos</b> permite borrar la copia en línea, eliminar su cuenta Premium y borrarlo todo en el dispositivo, cada vez previa confirmación.</li>
+  <li><b>Por correo electrónico</b>: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>, preferiblemente desde la dirección de su cuenta. Como solo conservamos su dirección cifrada, podemos pedirle que confirme que es suya (código de verificación). Respuesta en el plazo de un mes, prorrogable dos meses en caso de solicitud compleja; en tal caso se le informará.</li>
+  <li><b>Reclamación</b>: puede acudir a la CNIL (3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07, <a href="https://www.cnil.fr">cnil.fr</a>) o a la autoridad de protección de datos de su país.</li>
+</ul>
+<p>La eliminación de la cuenta Premium detiene Premium en todos sus dispositivos. Los datos de pago se conservan durante el tiempo que exige la obligación contable, sin vínculo con usted.</p>
+
+<h2 id="mineurs">10. Menores</h2>
+<p>La cuenta Premium está reservada a personas mayores de edad o autorizadas por el titular de la patria potestad. Si cree que un menor nos ha transmitido datos sin esta autorización, escríbanos: los eliminaremos.</p>
+
+<h2 id="modifications">11. Modificaciones</h2>
+<p>Esta política sigue la evolución de la aplicación (nuevo proveedor, cambio de alojamiento, nuevo plazo de conservación). Toda modificación importante se anuncia en la aplicación o en este sitio, y se actualiza la fecha que figura al principio de la página.</p>
+</main>
+<footer class="foot">
+  <nav aria-label="Páginas legales"><a href="../cgv/?lang=es">Condiciones de venta</a> <a href="../confidentialite/?lang=es">Privacidad</a> <a href="../mentions-legales/?lang=es">Aviso legal</a></nav>
+  <p>Graal es un reproductor multimedia. No proporciona, aloja, vende ni recomienda ningún canal, lista ni contenido audiovisual, y no está afiliado a ningún proveedor. Cada usuario es el único responsable de las fuentes que añade y debe tener derecho a reproducirlas.</p>
+  <p>Contacto: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> · © 2026 Graal</p>
+</footer>
+</template>
+<template data-lang="it" data-title="Informativa sulla privacy – Graal" data-desc="Che cosa conserva Graal – IPTV Player su di Lei, perché, per quanto tempo, presso chi, come è protetto, e i Suoi diritti.">
+<nav class="top" aria-label="Pagine legali"><a class="home" href="../?lang=it">‹ Graal – IPTV Player</a> <a href="../cgv/?lang=it">Condizioni di vendita</a> <a href="../confidentialite/?lang=it" aria-current="page">Privacy</a> <a href="../mentions-legales/?lang=it">Note legali</a>
+<span class="langs" role="group" aria-label="Lingua"><a href="?lang=fr" hreflang="fr" lang="fr" data-setlang="fr">FR</a> <a href="?lang=en" hreflang="en" lang="en" data-setlang="en">EN</a> <a href="?lang=es" hreflang="es" lang="es" data-setlang="es">ES</a> <a href="?lang=it" hreflang="it" lang="it" data-setlang="it" aria-current="true">IT</a> <a href="?lang=pt" hreflang="pt" lang="pt" data-setlang="pt">PT</a> <a href="?lang=de" hreflang="de" lang="de" data-setlang="de">DE</a></span></nav>
+<main>
+<p class="box translated" lang="it">Traduzione a titolo informativo; fa fede solo la versione francese. <a href="?lang=fr" hreflang="fr" lang="fr">Leggi la versione francese</a></p>
+<h1>Informativa sulla privacy</h1>
+<p class="date">Versione del 18 novembre 2026. Riprende, in dettaglio, quanto indicato dall'applicazione in <b>Impostazioni › I miei dati</b>.</p>
+
+<div class="box key">
+  <p><b>L'essenziale.</b> Le Sue playlist, la Sua cronologia e le Sue impostazioni restano sul Suo dispositivo. Per Premium, conserviamo il Suo indirizzo e-mail e l'elenco dei Suoi dispositivi, <b>cifrati</b>, e i riferimenti del Suo pagamento. La sincronizzazione è cifrata sul Suo dispositivo: né noi né il fornitore di hosting possiamo leggerla. Nessuna pubblicità, nessun tracciamento, nessuna misurazione del pubblico, nessun dato venduto né condiviso.</p>
+</div>
+
+<nav class="toc" aria-label="Indice"><b>Indice</b><ol>
+  <li><a href="#responsable">Titolare del trattamento</a></li>
+  <li><a href="#appareil">Che cosa resta sul Suo dispositivo</a></li>
+  <li><a href="#traitements">Che cosa trattiamo, perché, per quanto tempo</a></li>
+  <li><a href="#services">Servizi contattati dall'applicazione</a></li>
+  <li><a href="#site">Il sito graaltv.com</a></li>
+  <li><a href="#destinataires">Destinatari e responsabili del trattamento</a></li>
+  <li><a href="#transferts">Trasferimenti al di fuori dell'Unione europea</a></li>
+  <li><a href="#securite">Sicurezza</a></li>
+  <li><a href="#droits">I Suoi diritti</a></li>
+  <li><a href="#mineurs">Minori</a></li>
+  <li><a href="#modifications">Modifiche</a></li>
+</ol></nav>
+
+<h2 id="responsable">1. Titolare del trattamento</h2>
+<p>Code4Wrld, impresa individuale (entreprise individuelle), editore di Graal (si vedano le <a href="../mentions-legales/?lang=it">note legali</a>). Per qualsiasi domanda sui Suoi dati: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+<p>Il Suo <b>fornitore di contenuti</b> (il server della Sua playlist) tratta autonomamente i dati di connessione che il Suo dispositivo gli invia: ne è l'unico responsabile, secondo le proprie condizioni.</p>
+
+<h2 id="appareil">2. Che cosa resta sul Suo dispositivo</h2>
+<p>Le Sue playlist (indirizzo del server, nome utente e password del fornitore), la cronologia e le posizioni di riproduzione, i preferiti, gli elenchi, i Suoi sport, i promemoria, le impostazioni, il codice parentale (solo la sua impronta, mai il codice), la chiave Premium, il registro diagnostico e il catalogo in cache sono conservati <b>unicamente sul Suo dispositivo</b>: nella memoria dell'applicazione su Android (con una copia della configurazione e del registro in una cartella <code>Graal</code> del dispositivo, se Lei lo autorizza, per non perdere nulla in caso di disinstallazione), e nella cartella <code>.graal</code> della Sua cartella personale su PC e Mac.</p>
+<p>Non vi abbiamo accesso. Li cancella con <b>Impostazioni › I miei dati › Cancella tutto su questo dispositivo</b> (le Sue registrazioni video, che sono file Suoi, non vengono eliminate). Una disinstallazione non elimina la copia conservata al di fuori dell'applicazione su Android: la elimini prima con «Cancella tutto», oppure manualmente.</p>
+
+<h2 id="traitements">3. Che cosa trattiamo, perché, per quanto tempo</h2>
+<div class="tablewrap"><table>
+  <thead><tr><th>Dati</th><th>Perché</th><th>Base giuridica (GDPR)</th><th>Durata</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Dati"><b>Account Premium</b>: indirizzo e-mail ed elenco dei Suoi dispositivi (codice e nome di ciascun dispositivo), cifrati; formula; date; eventuale nota del venditore (cifrata)</td><td data-label="Perché">Creare il Suo account, attivare e ritrovare Premium sui Suoi dispositivi, inviarLe i codici, la conferma e la ricevuta</td><td data-label="Base giuridica (GDPR)">Esecuzione del contratto (art. 6.1.b)</td><td data-label="Durata">Finché l'account esiste. Eliminato non appena Lei lo richiede (<b>I miei dati › Elimina il mio account Premium</b> o per e-mail)</td></tr>
+    <tr><td data-label="Dati"><b>Codice di verifica</b> a 6 cifre</td><td data-label="Perché">Dimostrare che l'indirizzo e-mail è il Suo</td><td data-label="Base giuridica (GDPR)">Esecuzione del contratto</td><td data-label="Durata">Solo la sua impronta, valida 10 minuti; cancellata il giorno successivo alla scadenza</td></tr>
+    <tr><td data-label="Dati"><b>Registro tecnico dell'account</b> (fasi di attivazione)</td><td data-label="Perché">Sicurezza, risoluzione di incidenti</td><td data-label="Base giuridica (GDPR)">Interesse legittimo (art. 6.1.f): proteggere il servizio</td><td data-label="Durata">2 giorni</td></tr>
+    <tr><td data-label="Dati"><b>Pagamento</b>: importo, valuta, data, stato, riferimenti dell'ordine e del pagamento PayPal, commissioni</td><td data-label="Perché">Attivare Premium, gestire rimborsi e contestazioni, tenere la contabilità</td><td data-label="Base giuridica (GDPR)">Esecuzione del contratto; obbligo legale (art. 6.1.c) per la contabilità</td><td data-label="Durata">Pagamento incassato: 10 anni (articolo L123-22 del Codice di commercio francese, code de commerce), senza collegamento con il Suo account se è stato eliminato. Ordine mai pagato: 30 giorni</td></tr>
+    <tr><td data-label="Dati"><b>Sincronizzazione</b> (Premium, se la attiva): copia dei Suoi dati <b>cifrata sul dispositivo</b> prima dell'invio (AES-256-GCM, chiave derivata dalla Sua playlist)</td><td data-label="Perché">Ritrovare cronologia, preferiti, elenchi e impostazioni sui Suoi dispositivi</td><td data-label="Base giuridica (GDPR)">Esecuzione del contratto</td><td data-label="Durata">Finché Lei non la cancella (<b>I miei dati › Cancella la copia online</b>). In mancanza, viene cancellata automaticamente dopo 2 anni senza alcuna sincronizzazione.</td></tr>
+    <tr><td data-label="Dati"><b>Registro diagnostico inviato</b>: errori annotati dall'applicazione e informazioni tecniche sul dispositivo, senza password, cifrato</td><td data-label="Perché">Aiutarla quando segnala un problema</td><td data-label="Base giuridica (GDPR)">Esecuzione del contratto (la Sua richiesta di assistenza)</td><td data-label="Durata">Solo quando preme «Invia al venditore»; cancellato automaticamente dopo 7 giorni, o prima su richiesta</td></tr>
+    <tr><td data-label="Dati"><b>Comunicazioni con l'assistenza</b>: le Sue e-mail e le nostre risposte</td><td data-label="Perché">Rispondere alle Sue domande, ai Suoi reclami, alle richieste di esercizio dei diritti</td><td data-label="Base giuridica (GDPR)">Interesse legittimo; obbligo legale per le richieste GDPR</td><td data-label="Durata">3 anni dopo l'ultima comunicazione</td></tr>
+  </tbody>
+</table></div>
+<p>Gli avvisi interni ricevuti dall'editore (nuova richiesta, pagamento ricevuto) non contengono mai il Suo indirizzo e-mail. Nessuna decisione automatizzata che produca effetti giuridici viene presa nei Suoi confronti, e non viene creato alcun profilo.</p>
+
+<h2 id="services">4. Servizi contattati dall'applicazione</h2>
+<p>Per visualizzare alcune informazioni, l'applicazione interroga direttamente servizi pubblici di informazione, <b>senza account e senza inviare nulla che La identifichi</b>: è loro visibile solo l'indirizzo IP della Sua connessione, come per qualsiasi pagina web.</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Servizio</th><th>A che cosa serve</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Servizio">Server della Sua playlist</td><td data-label="A che cosa serve">Riprodurre i canali, i film, le serie e la guida che vi ha (il Suo fornitore, responsabile dei propri trattamenti)</td></tr>
+    <tr><td data-label="Servizio">xmltvfr.fr</td><td data-label="A che cosa serve">Guida dei programmi</td></tr>
+    <tr><td data-label="Servizio">TMDB (The Movie Database)</td><td data-label="A che cosa serve">Schede dei film e delle serie (titoli, trame, attori, immagini)</td></tr>
+    <tr><td data-label="Servizio">Wikipedia, Wikidata, Wikimedia Commons</td><td data-label="A che cosa serve">Titoli tradotti, foto, classifiche e informazioni sportive</td></tr>
+    <tr><td data-label="Servizio">ESPN</td><td data-label="A che cosa serve">Partite, risultati e statistiche sportive</td></tr>
+    <tr><td data-label="Servizio">YouTube</td><td data-label="A che cosa serve">Trailer</td></tr>
+    <tr><td data-label="Servizio">TheIntroDB e un catalogo pubblico di film e serie</td><td data-label="A che cosa serve">Individuare le sigle, completare una scheda in caso di necessità</td></tr>
+    <tr><td data-label="Servizio">GitHub (compreso iptv-org.github.io)</td><td data-label="A che cosa serve">Aggiornamenti dell'applicazione, loghi dei canali</td></tr>
+    <tr><td data-label="Servizio">graaltv.com (il nostro sito)</td><td data-label="A che cosa serve">Impostazioni delle pagine Sport e dei temi</td></tr>
+    <tr><td data-label="Servizio">Google (ML Kit, Android) o Hugging Face (PC e Mac)</td><td data-label="A che cosa serve">Download unico dei modelli di traduzione; nessun testo vi viene inviato, la traduzione avviene sul dispositivo</td></tr>
+    <tr><td data-label="Servizio">Supabase (i nostri server)</td><td data-label="A che cosa serve">Account Premium, sincronizzazione se attivata, registro se Lei lo invia</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="site">5. Il sito graaltv.com</h2>
+<ul>
+  <li><b>Nessun cookie</b>, nessuna misurazione del pubblico, nessuna pubblicità.</li>
+  <li>La lingua che sceglie è conservata nel Suo browser (memoria locale, chiave <code>graal-lang</code>): non ci viene inviata. Questa memorizzazione, strettamente necessaria al servizio richiesto, non richiede consenso.</li>
+  <li>Il sito è ospitato da OVH, in Francia, che registra log tecnici (tra cui l'indirizzo IP) per la sicurezza del proprio servizio, secondo la propria informativa.</li>
+  <li>I caratteri tipografici del sito sono caricati dai server di Google Fonts, che ricevono in tale occasione l'indirizzo IP della Sua connessione.</li>
+  <li>Il pagamento avviene sulle pagine di PayPal; la pagina di ringraziamento del sito non raccoglie nulla.</li>
+</ul>
+
+<h2 id="destinataires">6. Destinatari e responsabili del trattamento</h2>
+<p>I Suoi dati non sono venduti, né noleggiati, né condivisi a fini commerciali. Solo l'editore vi accede, tramite una console protetta da password e autenticazione a due fattori. Sono trattati per nostro conto da:</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Fornitore</th><th>Ruolo</th><th>Luogo</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Fornitore">Supabase Inc.</td><td data-label="Ruolo">Hosting del database e delle funzioni server (account Premium, pagamenti, sincronizzazione, registri)</td><td data-label="Luogo">Dati conservati a Parigi (regione eu-west-3, Unione europea); società stabilita negli Stati Uniti</td></tr>
+    <tr><td data-label="Fornitore">Brevo (Sendinblue SAS)</td><td data-label="Ruolo">Invio delle e-mail: codici di verifica, conferme, ricevute</td><td data-label="Luogo">Francia</td></tr>
+    <tr><td data-label="Fornitore">OVH SAS</td><td data-label="Ruolo">Hosting del sito</td><td data-label="Luogo">Francia</td></tr>
+    <tr><td data-label="Fornitore">GitHub, Inc.</td><td data-label="Ruolo">Hosting dei file di aggiornamento</td><td data-label="Luogo">Stati Uniti</td></tr>
+  </tbody>
+</table></div>
+<p><b>PayPal</b> (PayPal (Europe) S.à r.l. et Cie, S.C.A., Lussemburgo) tratta i Suoi dati di pagamento (identità, mezzo di pagamento) in qualità di <b>titolare autonomo del trattamento</b>, secondo la propria informativa sulla privacy; ci trasmette solo le informazioni elencate sopra. I servizi dell'articolo 4 non ricevono alcun dato da parte nostra.</p>
+<p>Possiamo comunicare dati alle autorità giudiziarie o amministrative unicamente su richiesta formale o decisione prevista dalla legge. A causa della cifratura, non deteniamo né le credenziali della Sua playlist, né l'elenco di ciò che guarda.</p>
+
+<h2 id="transferts">7. Trasferimenti al di fuori dell'Unione europea</h2>
+<p>I nostri dati Premium e di sincronizzazione sono conservati nell'Unione europea. Quando fornitori stabiliti negli Stati Uniti (Supabase, GitHub) possono accedervi, in particolare per la manutenzione, tali trasferimenti sono disciplinati dalle clausole contrattuali tipo della Commissione europea e, se del caso, dal quadro per la protezione dei dati UE–USA. Può ottenere una copia di queste garanzie scrivendoci.</p>
+
+<h2 id="securite">8. Sicurezza</h2>
+<ul>
+  <li><b>Nulla in chiaro sul server</b>: indirizzo e-mail, codice e nome di ciascun dispositivo e nota del venditore sono cifrati in AES-256-GCM (un vettore casuale per ogni dato); l'indirizzo e il codice del dispositivo sono ritrovati tramite un'impronta HMAC-SHA256 calcolata con una chiave segreta.</li>
+  <li><b>Chiavi fuori dal database</b>: le chiavi di cifratura sono segreti della funzione server; una copia del solo database non rivela nulla.</li>
+  <li><b>Accessi chiusi</b>: le tabelle sono leggibili solo dalla funzione server; la console di amministrazione richiede una password e un codice a 6 cifre.</li>
+  <li><b>Sincronizzazione cifrata end-to-end</b>: solo un dispositivo che conosce la Sua playlist può ritrovare e leggere la copia.</li>
+  <li>Tutto passa in HTTPS; una pulizia automatica cancella ogni notte i registri e i codici scaduti.</li>
+</ul>
+<p>In caso di violazione dei dati che presenti un rischio per Lei, la notifichiamo alla CNIL entro 72 ore e La informiamo quando la legge lo richiede.</p>
+
+<h2 id="droits">9. I Suoi diritti</h2>
+<p>Ovunque si trovi, può <b>accedere</b> ai Suoi dati, <b>rettificarli</b>, <b>cancellarli</b>, <b>limitarne</b> il trattamento, <b>opporsi</b> a un trattamento basato sull'interesse legittimo, ottenerne la <b>portabilità</b>, e definire <b>direttive</b> sulla loro sorte dopo il Suo decesso.</p>
+<ul>
+  <li><b>Nell'applicazione</b>: <b>Impostazioni › I miei dati</b> consente di cancellare la copia online, di eliminare il Suo account Premium e di cancellare tutto sul dispositivo, ogni volta previa conferma.</li>
+  <li><b>Per e-mail</b>: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>, preferibilmente dall'indirizzo del Suo account. Poiché conserviamo il Suo indirizzo solo in forma cifrata, possiamo chiederLe di confermare che è il Suo (codice di verifica). Risposta entro un mese, prorogabile di due mesi per una richiesta complessa; in tal caso ne viene informato.</li>
+  <li><b>Reclamo</b>: può rivolgersi alla CNIL (3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07, <a href="https://www.cnil.fr">cnil.fr</a>) o all'autorità di protezione dei dati del Suo Paese.</li>
+</ul>
+<p>L'eliminazione dell'account Premium disattiva Premium su tutti i Suoi dispositivi. I dati di pagamento sono conservati per la durata dell'obbligo contabile, senza collegamento con Lei.</p>
+
+<h2 id="mineurs">10. Minori</h2>
+<p>L'account Premium è riservato alle persone maggiorenni o autorizzate dal titolare della responsabilità genitoriale. Se ritiene che un minore ci abbia trasmesso dati senza tale autorizzazione, ci scriva: li elimineremo.</p>
+
+<h2 id="modifications">11. Modifiche</h2>
+<p>Questa informativa segue l'evoluzione dell'applicazione (nuovo fornitore, cambio di hosting, nuova durata). Ogni modifica importante viene annunciata nell'applicazione o su questo sito, e la data in cima alla pagina viene aggiornata.</p>
+</main>
+<footer class="foot">
+  <nav aria-label="Pagine legali"><a href="../cgv/?lang=it">Condizioni di vendita</a> <a href="../confidentialite/?lang=it">Privacy</a> <a href="../mentions-legales/?lang=it">Note legali</a></nav>
+  <p>Graal è un lettore multimediale. Non fornisce, ospita, vende né consiglia alcun canale, playlist o contenuto audiovisivo e non è affiliato ad alcun fornitore. Ogni utente è l'unico responsabile delle fonti che aggiunge e deve avere il diritto di riprodurle.</p>
+  <p>Contatto: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> · © 2026 Graal</p>
+</footer>
+</template>
+<template data-lang="pt" data-title="Política de privacidade – Graal" data-desc="O que o Graal – IPTV Player guarda sobre si, porquê, durante quanto tempo, onde, como está protegido, e os seus direitos.">
+<nav class="top" aria-label="Páginas legais"><a class="home" href="../?lang=pt">‹ Graal – IPTV Player</a> <a href="../cgv/?lang=pt">Condições de venda</a> <a href="../confidentialite/?lang=pt" aria-current="page">Privacidade</a> <a href="../mentions-legales/?lang=pt">Aviso legal</a>
+<span class="langs" role="group" aria-label="Idioma"><a href="?lang=fr" hreflang="fr" lang="fr" data-setlang="fr">FR</a> <a href="?lang=en" hreflang="en" lang="en" data-setlang="en">EN</a> <a href="?lang=es" hreflang="es" lang="es" data-setlang="es">ES</a> <a href="?lang=it" hreflang="it" lang="it" data-setlang="it">IT</a> <a href="?lang=pt" hreflang="pt" lang="pt" data-setlang="pt" aria-current="true">PT</a> <a href="?lang=de" hreflang="de" lang="de" data-setlang="de">DE</a></span></nav>
+<main>
+<p class="box translated" lang="pt">Tradução para informação; só a versão francesa faz fé. <a href="?lang=fr" hreflang="fr" lang="fr">Ler a versão francesa</a></p>
+<h1>Política de privacidade</h1>
+<p class="date">Versão de 18 de novembro de 2026. Retoma, em pormenor, o que a aplicação indica em <b>Definições › Os meus dados</b>.</p>
+
+<div class="box key">
+  <p><b>O essencial.</b> As suas playlists, o seu histórico e as suas definições ficam no seu aparelho. Para o Premium, guardamos o seu endereço de e-mail e a lista dos seus aparelhos, <b>cifrados</b>, e as referências do seu pagamento. A sincronização é cifrada no seu aparelho: nem nós nem o fornecedor de alojamento a podemos ler. Sem publicidade, sem rastreio, sem medição de audiência, nenhum dado vendido nem partilhado.</p>
+</div>
+
+<nav class="toc" aria-label="Índice"><b>Índice</b><ol>
+  <li><a href="#responsable">Responsável pelo tratamento</a></li>
+  <li><a href="#appareil">O que fica no seu aparelho</a></li>
+  <li><a href="#traitements">O que tratamos, porquê, durante quanto tempo</a></li>
+  <li><a href="#services">Serviços contactados pela aplicação</a></li>
+  <li><a href="#site">O site graaltv.com</a></li>
+  <li><a href="#destinataires">Destinatários e subcontratantes</a></li>
+  <li><a href="#transferts">Transferências para fora da União Europeia</a></li>
+  <li><a href="#securite">Segurança</a></li>
+  <li><a href="#droits">Os seus direitos</a></li>
+  <li><a href="#mineurs">Menores</a></li>
+  <li><a href="#modifications">Alterações</a></li>
+</ol></nav>
+
+<h2 id="responsable">1. Responsável pelo tratamento</h2>
+<p>Code4Wrld, empresa em nome individual (entreprise individuelle), editor do Graal (ver o <a href="../mentions-legales/?lang=pt">aviso legal</a>). Para qualquer questão sobre os seus dados: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+<p>O seu <b>fornecedor de conteúdos</b> (o servidor da sua playlist) trata ele próprio os dados de ligação que o seu aparelho lhe envia: é o único responsável por eles, segundo as suas próprias condições.</p>
+
+<h2 id="appareil">2. O que fica no seu aparelho</h2>
+<p>As suas playlists (endereço do servidor, identificador e palavra-passe do fornecedor), o histórico e as posições de reprodução, os favoritos, as listas, os seus desportos, os lembretes, as definições, o código parental (apenas a sua impressão digital, nunca o código), a chave Premium, o log de diagnóstico e o catálogo em cache são guardados <b>apenas no seu aparelho</b>: no armazenamento da aplicação no Android (com uma cópia da configuração e do log numa pasta <code>Graal</code> do aparelho, se o autorizar, para não perder nada em caso de desinstalação), e na pasta <code>.graal</code> da sua pasta pessoal no PC e no Mac.</p>
+<p>Não temos acesso a eles. Pode apagá-los com <b>Definições › Os meus dados › Apagar tudo neste aparelho</b> (as suas gravações de vídeo, que são ficheiros seus, não são eliminadas). Uma desinstalação não elimina a cópia guardada fora da aplicação no Android: elimine-a antes com «Apagar tudo», ou manualmente.</p>
+
+<h2 id="traitements">3. O que tratamos, porquê, durante quanto tempo</h2>
+<div class="tablewrap"><table>
+  <thead><tr><th>Dados</th><th>Porquê</th><th>Fundamento jurídico (RGPD)</th><th>Duração</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Dados"><b>Conta Premium</b>: endereço de e-mail e lista dos seus aparelhos (código e nome de cada aparelho), cifrados; plano; datas; eventual nota do vendedor (cifrada)</td><td data-label="Porquê">Criar a sua conta, ativar e recuperar o Premium nos seus aparelhos, enviar-lhe os códigos, a confirmação e o recibo</td><td data-label="Fundamento jurídico (RGPD)">Execução do contrato (art. 6.1.b)</td><td data-label="Duração">Enquanto a conta existir. Eliminada logo que o pedir (<b>Os meus dados › Eliminar a minha conta Premium</b> ou por e-mail)</td></tr>
+    <tr><td data-label="Dados"><b>Código de verificação</b> de 6 algarismos</td><td data-label="Porquê">Provar que o endereço de e-mail é seu</td><td data-label="Fundamento jurídico (RGPD)">Execução do contrato</td><td data-label="Duração">Apenas a sua impressão digital, válida durante 10 minutos; apagada no dia seguinte ao fim da sua validade</td></tr>
+    <tr><td data-label="Dados"><b>Log técnico da conta</b> (etapas de ativação)</td><td data-label="Porquê">Segurança, resolução de incidentes</td><td data-label="Fundamento jurídico (RGPD)">Interesse legítimo (art. 6.1.f): proteger o serviço</td><td data-label="Duração">2 dias</td></tr>
+    <tr><td data-label="Dados"><b>Pagamento</b>: montante, moeda, data, estado, referências da encomenda e do pagamento PayPal, comissões</td><td data-label="Porquê">Ativar o Premium, gerir reembolsos e contestações, manter a contabilidade</td><td data-label="Fundamento jurídico (RGPD)">Execução do contrato; obrigação legal (art. 6.1.c) para a contabilidade</td><td data-label="Duração">Pagamento recebido: 10 anos (artigo L123-22 do Código Comercial francês (code de commerce)), sem ligação à sua conta se esta tiver sido eliminada. Encomenda nunca paga: 30 dias</td></tr>
+    <tr><td data-label="Dados"><b>Sincronização</b> (Premium, se a ativar): cópia dos seus dados <b>cifrada no aparelho</b> antes do envio (AES-256-GCM, chave derivada da sua playlist)</td><td data-label="Porquê">Recuperar histórico, favoritos, listas e definições nos seus aparelhos</td><td data-label="Fundamento jurídico (RGPD)">Execução do contrato</td><td data-label="Duração">Até que a apague (<b>Os meus dados › Apagar a cópia online</b>). Caso contrário, é apagada automaticamente após 2 anos sem qualquer sincronização.</td></tr>
+    <tr><td data-label="Dados"><b>Log de diagnóstico enviado</b>: erros registados pela aplicação e informações técnicas sobre o aparelho, sem palavra-passe, cifrado</td><td data-label="Porquê">Ajudá-lo quando comunica um problema</td><td data-label="Fundamento jurídico (RGPD)">Execução do contrato (o seu pedido de assistência)</td><td data-label="Duração">Apenas quando carrega em «Enviar ao vendedor»; apagado automaticamente ao fim de 7 dias, ou antes, mediante pedido</td></tr>
+    <tr><td data-label="Dados"><b>Comunicações com o apoio</b>: os seus e-mails e as nossas respostas</td><td data-label="Porquê">Responder às suas perguntas, reclamações e pedidos de exercício de direitos</td><td data-label="Fundamento jurídico (RGPD)">Interesse legítimo; obrigação legal para os pedidos RGPD</td><td data-label="Duração">3 anos após a última comunicação</td></tr>
+  </tbody>
+</table></div>
+<p>Os alertas internos que o editor recebe (novo pedido, pagamento recebido) nunca contêm o seu endereço de e-mail. Não é tomada a seu respeito nenhuma decisão automatizada que produza efeitos jurídicos, e não é estabelecido nenhum perfil.</p>
+
+<h2 id="services">4. Serviços contactados pela aplicação</h2>
+<p>Para apresentar determinadas informações, a aplicação consulta diretamente serviços públicos de informação, <b>sem conta e sem enviar nada que o identifique</b>: apenas o endereço IP da sua ligação lhes é visível, como em qualquer página web.</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Serviço</th><th>Para quê</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Serviço">Servidor da sua playlist</td><td data-label="Para quê">Reproduzir os canais, filmes, séries e o guia que lá tem (o seu fornecedor, responsável pelos seus próprios tratamentos)</td></tr>
+    <tr><td data-label="Serviço">xmltvfr.fr</td><td data-label="Para quê">Guia de programas</td></tr>
+    <tr><td data-label="Serviço">TMDB (The Movie Database)</td><td data-label="Para quê">Fichas de filmes e séries (títulos, sinopses, atores, imagens)</td></tr>
+    <tr><td data-label="Serviço">Wikipédia, Wikidata, Wikimedia Commons</td><td data-label="Para quê">Títulos traduzidos, fotografias, classificações e informações desportivas</td></tr>
+    <tr><td data-label="Serviço">ESPN</td><td data-label="Para quê">Jogos, resultados e estatísticas desportivas</td></tr>
+    <tr><td data-label="Serviço">YouTube</td><td data-label="Para quê">Trailers</td></tr>
+    <tr><td data-label="Serviço">TheIntroDB e um catálogo público de filmes e séries</td><td data-label="Para quê">Identificar os genéricos, completar uma ficha como recurso</td></tr>
+    <tr><td data-label="Serviço">GitHub (incluindo iptv-org.github.io)</td><td data-label="Para quê">Atualizações da aplicação, logótipos dos canais</td></tr>
+    <tr><td data-label="Serviço">graaltv.com (o nosso site)</td><td data-label="Para quê">Definições das páginas de Desporto e dos temas</td></tr>
+    <tr><td data-label="Serviço">Google (ML Kit, Android) ou Hugging Face (PC e Mac)</td><td data-label="Para quê">Transferência única dos modelos de tradução; nenhum texto lhes é enviado, a tradução é feita no aparelho</td></tr>
+    <tr><td data-label="Serviço">Supabase (os nossos servidores)</td><td data-label="Para quê">Conta Premium, sincronização se ativada, log se o enviar</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="site">5. O site graaltv.com</h2>
+<ul>
+  <li><b>Nenhum cookie</b>, nenhuma medição de audiência, nenhuma publicidade.</li>
+  <li>O idioma que escolher é guardado no seu navegador (armazenamento local, chave <code>graal-lang</code>): não nos é enviado. Este armazenamento, estritamente necessário ao serviço solicitado, não requer consentimento.</li>
+  <li>O site é alojado pela OVH, em França, que regista logs técnicos (incluindo o endereço IP) para a segurança do seu serviço, segundo a sua própria política.</li>
+  <li>Os tipos de letra do site são carregados a partir dos servidores do Google Fonts, que recebem nessa ocasião o endereço IP da sua ligação.</li>
+  <li>O pagamento é efetuado nas páginas do PayPal; a página de agradecimento do site não recolhe nada.</li>
+</ul>
+
+<h2 id="destinataires">6. Destinatários e subcontratantes</h2>
+<p>Os seus dados não são vendidos, alugados nem partilhados para fins comerciais. Apenas o editor lhes acede, através de uma consola protegida por palavra-passe e autenticação de dois fatores. São tratados por nossa conta por:</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Prestador</th><th>Função</th><th>Local</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Prestador">Supabase Inc.</td><td data-label="Função">Alojamento da base de dados e das funções de servidor (conta Premium, pagamentos, sincronização, logs)</td><td data-label="Local">Dados armazenados em Paris (região eu-west-3, União Europeia); empresa estabelecida nos Estados Unidos</td></tr>
+    <tr><td data-label="Prestador">Brevo (Sendinblue SAS)</td><td data-label="Função">Envio dos e-mails: códigos de verificação, confirmações, recibos</td><td data-label="Local">França</td></tr>
+    <tr><td data-label="Prestador">OVH SAS</td><td data-label="Função">Alojamento do site</td><td data-label="Local">França</td></tr>
+    <tr><td data-label="Prestador">GitHub, Inc.</td><td data-label="Função">Alojamento dos ficheiros de atualização</td><td data-label="Local">Estados Unidos</td></tr>
+  </tbody>
+</table></div>
+<p>O <b>PayPal</b> (PayPal (Europe) S.à r.l. et Cie, S.C.A., Luxemburgo) trata os seus dados de pagamento (identidade, meio de pagamento) na qualidade de <b>responsável pelo tratamento distinto</b>, segundo a sua própria política de privacidade; transmite-nos apenas as informações acima indicadas. Os serviços do artigo 4 não recebem nenhum dado da nossa parte.</p>
+<p>Só podemos comunicar dados às autoridades judiciais ou administrativas mediante requisição ou decisão legal. Devido à cifragem, não detemos nem as credenciais da sua playlist, nem a lista do que vê.</p>
+
+<h2 id="transferts">7. Transferências para fora da União Europeia</h2>
+<p>Os nossos dados Premium e de sincronização são armazenados na União Europeia. Quando prestadores estabelecidos nos Estados Unidos (Supabase, GitHub) lhes possam aceder, nomeadamente para manutenção, essas transferências são enquadradas pelas cláusulas contratuais-tipo da Comissão Europeia e, se for caso disso, pelo Quadro de Proteção de Dados UE–EUA. Pode obter uma cópia destas garantias escrevendo-nos.</p>
+
+<h2 id="securite">8. Segurança</h2>
+<ul>
+  <li><b>Nada em claro no servidor</b>: o endereço de e-mail, o código e o nome de cada aparelho e a nota do vendedor são cifrados em AES-256-GCM (um vetor aleatório por dado); o endereço e o código do aparelho são encontrados através de uma impressão digital HMAC-SHA256 calculada com uma chave secreta.</li>
+  <li><b>Chaves fora da base</b>: as chaves de cifragem são segredos da função de servidor; uma cópia da base, por si só, não revela nada.</li>
+  <li><b>Acessos fechados</b>: as tabelas só podem ser lidas pela função de servidor; a consola de administração exige uma palavra-passe e um código de 6 algarismos.</li>
+  <li><b>Sincronização cifrada de ponta a ponta</b>: só um aparelho que conheça a sua playlist pode encontrar e ler a cópia.</li>
+  <li>Tudo passa por HTTPS; uma limpeza automática apaga todas as noites os logs e os códigos expirados.</li>
+</ul>
+<p>Em caso de violação de dados que represente um risco para si, notificamo-la à CNIL no prazo de 72 horas e informamo-lo quando a lei o exigir.</p>
+
+<h2 id="droits">9. Os seus direitos</h2>
+<p>Onde quer que esteja, pode <b>aceder</b> aos seus dados, <b>retificá-los</b>, <b>apagá-los</b>, <b>limitar</b> o seu tratamento, <b>opor-se</b> a um tratamento baseado no interesse legítimo, obter a sua <b>portabilidade</b> e definir <b>diretrizes</b> sobre o seu destino após a sua morte.</p>
+<ul>
+  <li><b>Na aplicação</b>: <b>Definições › Os meus dados</b> permite apagar a cópia online, eliminar a sua conta Premium e apagar tudo no aparelho, sempre após confirmação.</li>
+  <li><b>Por e-mail</b>: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>, de preferência a partir do endereço da sua conta. Como só guardamos o seu endereço cifrado, podemos pedir-lhe que confirme que é seu (código de verificação). Resposta no prazo de um mês, prorrogável por dois meses no caso de um pedido complexo; nesse caso, será informado.</li>
+  <li><b>Reclamação</b>: pode apresentar reclamação à CNIL (3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07, <a href="https://www.cnil.fr">cnil.fr</a>) ou à autoridade de proteção de dados do seu país.</li>
+</ul>
+<p>A eliminação da conta Premium desativa o Premium em todos os seus aparelhos. Os dados de pagamento são conservados durante o período da obrigação contabilística, sem ligação a si.</p>
+
+<h2 id="mineurs">10. Menores</h2>
+<p>A conta Premium está reservada a pessoas maiores de idade ou autorizadas pelo titular das responsabilidades parentais. Se pensar que um menor nos transmitiu dados sem essa autorização, escreva-nos: eliminá-los-emos.</p>
+
+<h2 id="modifications">11. Alterações</h2>
+<p>Esta política acompanha a evolução da aplicação (novo prestador, mudança de alojamento, nova duração). Qualquer alteração importante é anunciada na aplicação ou neste site, e a data no topo da página é atualizada.</p>
+</main>
+<footer class="foot">
+  <nav aria-label="Páginas legais"><a href="../cgv/?lang=pt">Condições de venda</a> <a href="../confidentialite/?lang=pt">Privacidade</a> <a href="../mentions-legales/?lang=pt">Aviso legal</a></nav>
+  <p>O Graal é um leitor multimédia. Não fornece, aloja, vende nem recomenda qualquer canal, lista ou conteúdo audiovisual, e não está afiliado a nenhum fornecedor. Cada utilizador é o único responsável pelas fontes que adiciona e deve ter o direito de as reproduzir.</p>
+  <p>Contacto: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> · © 2026 Graal</p>
+</footer>
+</template>
+<template data-lang="de" data-title="Datenschutzerklärung – Graal" data-desc="Was Graal – IPTV Player über Sie speichert, warum, wie lange, bei wem, wie es geschützt ist, und Ihre Rechte.">
+<nav class="top" aria-label="Rechtliche Seiten"><a class="home" href="../?lang=de">‹ Graal – IPTV Player</a> <a href="../cgv/?lang=de">Verkaufsbedingungen</a> <a href="../confidentialite/?lang=de" aria-current="page">Datenschutz</a> <a href="../mentions-legales/?lang=de">Impressum</a>
+<span class="langs" role="group" aria-label="Sprache"><a href="?lang=fr" hreflang="fr" lang="fr" data-setlang="fr">FR</a> <a href="?lang=en" hreflang="en" lang="en" data-setlang="en">EN</a> <a href="?lang=es" hreflang="es" lang="es" data-setlang="es">ES</a> <a href="?lang=it" hreflang="it" lang="it" data-setlang="it">IT</a> <a href="?lang=pt" hreflang="pt" lang="pt" data-setlang="pt">PT</a> <a href="?lang=de" hreflang="de" lang="de" data-setlang="de" aria-current="true">DE</a></span></nav>
+<main>
+<p class="box translated" lang="de">Übersetzung zur Information; maßgeblich ist allein die französische Fassung. <a href="?lang=fr" hreflang="fr" lang="fr">Französische Fassung lesen</a></p>
+<h1>Datenschutzerklärung</h1>
+<p class="date">Fassung vom 18. November 2026. Sie gibt ausführlich wieder, was die Anwendung unter <b>Einstellungen › Meine Daten</b> angibt.</p>
+
+<div class="box key">
+  <p><b>Das Wichtigste.</b> Ihre Playlists, Ihr Verlauf und Ihre Einstellungen bleiben auf Ihrem Gerät. Für Premium speichern wir Ihre E-Mail-Adresse und die Liste Ihrer Geräte, <b>verschlüsselt</b>, sowie die Referenzen Ihrer Zahlung. Die Synchronisierung wird auf Ihrem Gerät verschlüsselt: Weder wir noch der Hosting-Anbieter können sie lesen. Keine Werbung, kein Tracking, keine Reichweitenmessung, keine Daten werden verkauft oder weitergegeben.</p>
+</div>
+
+<nav class="toc" aria-label="Inhalt"><b>Inhalt</b><ol>
+  <li><a href="#responsable">Verantwortlicher</a></li>
+  <li><a href="#appareil">Was auf Ihrem Gerät bleibt</a></li>
+  <li><a href="#traitements">Was wir verarbeiten, warum, wie lange</a></li>
+  <li><a href="#services">Von der Anwendung kontaktierte Dienste</a></li>
+  <li><a href="#site">Die Website graaltv.com</a></li>
+  <li><a href="#destinataires">Empfänger und Auftragsverarbeiter</a></li>
+  <li><a href="#transferts">Übermittlungen außerhalb der Europäischen Union</a></li>
+  <li><a href="#securite">Sicherheit</a></li>
+  <li><a href="#droits">Ihre Rechte</a></li>
+  <li><a href="#mineurs">Minderjährige</a></li>
+  <li><a href="#modifications">Änderungen</a></li>
+</ol></nav>
+
+<h2 id="responsable">1. Verantwortlicher</h2>
+<p>Code4Wrld, Einzelunternehmen (entreprise individuelle), Herausgeber von Graal (siehe das <a href="../mentions-legales/?lang=de">Impressum</a>). Für alle Fragen zu Ihren Daten: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+<p>Ihr <b>Inhalteanbieter</b> (der Server Ihrer Playlist) verarbeitet die Verbindungsdaten, die Ihr Gerät an ihn sendet, selbst: Er ist dafür allein verantwortlich, nach seinen eigenen Bedingungen.</p>
+
+<h2 id="appareil">2. Was auf Ihrem Gerät bleibt</h2>
+<p>Ihre Playlists (Serveradresse, Benutzername und Passwort des Anbieters), der Verlauf und die Wiedergabepositionen, die Favoriten, die Listen, Ihre Sportarten, die Erinnerungen, die Einstellungen, der Jugendschutzcode (nur sein Hashwert, niemals der Code selbst), der Premium-Schlüssel, das Diagnoseprotokoll und der zwischengespeicherte Katalog werden <b>ausschließlich auf Ihrem Gerät</b> gespeichert: im Speicher der Anwendung unter Android (mit einer Kopie der Konfiguration und des Protokolls in einem Ordner <code>Graal</code> auf dem Gerät, sofern Sie dies erlauben, damit bei einer Deinstallation nichts verloren geht) und im Ordner <code>.graal</code> Ihres persönlichen Ordners auf PC und Mac.</p>
+<p>Wir haben darauf keinen Zugriff. Sie löschen diese Daten mit <b>Einstellungen › Meine Daten › Alles auf diesem Gerät löschen</b> (Ihre Videoaufnahmen, die Ihre Dateien sind, werden nicht gelöscht). Eine Deinstallation löscht die außerhalb der Anwendung gespeicherte Kopie unter Android nicht: Löschen Sie sie vorher mit „Alles auf diesem Gerät löschen“ oder von Hand.</p>
+
+<h2 id="traitements">3. Was wir verarbeiten, warum, wie lange</h2>
+<div class="tablewrap"><table>
+  <thead><tr><th>Daten</th><th>Zweck</th><th>Rechtsgrundlage (DSGVO)</th><th>Dauer</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Daten"><b>Premium-Konto</b>: E-Mail-Adresse und Liste Ihrer Geräte (Code und Name jedes Geräts), verschlüsselt; Paket; Daten; gegebenenfalls Notiz des Verkäufers (verschlüsselt)</td><td data-label="Zweck">Ihr Konto erstellen, Premium auf Ihren Geräten aktivieren und wiederherstellen, Ihnen die Codes, die Bestätigung und die Quittung senden</td><td data-label="Rechtsgrundlage (DSGVO)">Vertragserfüllung (Art. 6.1.b)</td><td data-label="Dauer">Solange das Konto besteht. Gelöscht, sobald Sie es verlangen (<b>Meine Daten › Mein Premium-Konto löschen</b> oder per E-Mail)</td></tr>
+    <tr><td data-label="Daten"><b>Bestätigungscode</b> mit 6 Ziffern</td><td data-label="Zweck">Nachweisen, dass die E-Mail-Adresse Ihnen gehört</td><td data-label="Rechtsgrundlage (DSGVO)">Vertragserfüllung</td><td data-label="Dauer">Nur sein Hashwert, 10 Minuten gültig; am Tag nach seinem Ablauf gelöscht</td></tr>
+    <tr><td data-label="Daten"><b>Technisches Protokoll des Kontos</b> (Aktivierungsschritte)</td><td data-label="Zweck">Sicherheit, Behebung von Störungen</td><td data-label="Rechtsgrundlage (DSGVO)">Berechtigtes Interesse (Art. 6.1.f): Schutz des Dienstes</td><td data-label="Dauer">2 Tage</td></tr>
+    <tr><td data-label="Daten"><b>Zahlung</b>: Betrag, Währung, Datum, Status, PayPal-Bestell- und Zahlungsreferenzen, Gebühren</td><td data-label="Zweck">Premium aktivieren, Erstattungen und Beanstandungen bearbeiten, die Buchhaltung führen</td><td data-label="Rechtsgrundlage (DSGVO)">Vertragserfüllung; rechtliche Verpflichtung (Art. 6.1.c) für die Buchhaltung</td><td data-label="Dauer">Eingegangene Zahlung: 10 Jahre (Artikel L123-22 des französischen Handelsgesetzbuchs (code de commerce)), ohne Verknüpfung mit Ihrem Konto, falls dieses gelöscht wurde. Nie bezahlte Bestellung: 30 Tage</td></tr>
+    <tr><td data-label="Daten"><b>Synchronisierung</b> (Premium, wenn Sie sie aktivieren): Kopie Ihrer Daten, vor dem Senden <b>auf dem Gerät verschlüsselt</b> (AES-256-GCM, Schlüssel aus Ihrer Playlist abgeleitet)</td><td data-label="Zweck">Verlauf, Favoriten, Listen und Einstellungen auf Ihren Geräten wiederfinden</td><td data-label="Rechtsgrundlage (DSGVO)">Vertragserfüllung</td><td data-label="Dauer">Bis Sie sie löschen (<b>Meine Daten › Online-Kopie löschen</b>). Andernfalls wird sie nach 2 Jahren ohne jede Synchronisierung automatisch gelöscht.</td></tr>
+    <tr><td data-label="Daten"><b>Gesendetes Diagnoseprotokoll</b>: von der Anwendung erfasste Fehler und technische Informationen über das Gerät, ohne Passwort, verschlüsselt</td><td data-label="Zweck">Ihnen helfen, wenn Sie ein Problem melden</td><td data-label="Rechtsgrundlage (DSGVO)">Vertragserfüllung (Ihre Supportanfrage)</td><td data-label="Dauer">Nur wenn Sie auf „An den Verkäufer senden“ drücken; nach 7 Tagen automatisch gelöscht, oder früher auf Anfrage</td></tr>
+    <tr><td data-label="Daten"><b>Austausch mit dem Support</b>: Ihre E-Mails und unsere Antworten</td><td data-label="Zweck">Ihre Fragen, Beschwerden und Anträge auf Ausübung Ihrer Rechte beantworten</td><td data-label="Rechtsgrundlage (DSGVO)">Berechtigtes Interesse; rechtliche Verpflichtung für DSGVO-Anfragen</td><td data-label="Dauer">3 Jahre nach dem letzten Austausch</td></tr>
+  </tbody>
+</table></div>
+<p>Die internen Benachrichtigungen, die der Herausgeber erhält (neue Anfrage, Zahlung eingegangen), enthalten niemals Ihre E-Mail-Adresse. Es wird keine automatisierte Entscheidung mit rechtlicher Wirkung Ihnen gegenüber getroffen, und es wird kein Profil erstellt.</p>
+
+<h2 id="services">4. Von der Anwendung kontaktierte Dienste</h2>
+<p>Um bestimmte Informationen anzuzeigen, fragt die Anwendung öffentliche Informationsdienste direkt ab, <b>ohne Konto und ohne etwas zu senden, das Sie identifiziert</b>: Für sie ist nur die IP-Adresse Ihrer Verbindung sichtbar, wie bei jeder Webseite.</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Dienst</th><th>Wozu</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Dienst">Server Ihrer Playlist</td><td data-label="Wozu">Die Sender, Filme, Serien und den Programmführer wiedergeben, die Sie dort haben (Ihr Anbieter, verantwortlich für seine eigenen Verarbeitungen)</td></tr>
+    <tr><td data-label="Dienst">xmltvfr.fr</td><td data-label="Wozu">Programmführer</td></tr>
+    <tr><td data-label="Dienst">TMDB (The Movie Database)</td><td data-label="Wozu">Film- und Serienseiten (Titel, Zusammenfassungen, Darsteller, Bilder)</td></tr>
+    <tr><td data-label="Dienst">Wikipédia, Wikidata, Wikimedia Commons</td><td data-label="Wozu">Übersetzte Titel, Fotos, Tabellen und Sportinformationen</td></tr>
+    <tr><td data-label="Dienst">ESPN</td><td data-label="Wozu">Spiele, Ergebnisse und Sportstatistiken</td></tr>
+    <tr><td data-label="Dienst">YouTube</td><td data-label="Wozu">Trailer</td></tr>
+    <tr><td data-label="Dienst">TheIntroDB und ein öffentlicher Film- und Serienkatalog</td><td data-label="Wozu">Vor- und Abspanne erkennen, eine Seite ersatzweise ergänzen</td></tr>
+    <tr><td data-label="Dienst">GitHub (darunter iptv-org.github.io)</td><td data-label="Wozu">Updates der Anwendung, Senderlogos</td></tr>
+    <tr><td data-label="Dienst">graaltv.com (unsere Website)</td><td data-label="Wozu">Einstellungen der Sport-Seiten und der Themen</td></tr>
+    <tr><td data-label="Dienst">Google (ML Kit, Android) oder Hugging Face (PC und Mac)</td><td data-label="Wozu">Einmaliges Herunterladen der Übersetzungsmodelle; es wird kein Text dorthin gesendet, die Übersetzung erfolgt auf dem Gerät</td></tr>
+    <tr><td data-label="Dienst">Supabase (unsere Server)</td><td data-label="Wozu">Premium-Konto, Synchronisierung falls aktiviert, Protokoll falls Sie es senden</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="site">5. Die Website graaltv.com</h2>
+<ul>
+  <li><b>Keine Cookies</b>, keine Reichweitenmessung, keine Werbung.</li>
+  <li>Die von Ihnen gewählte Sprache wird in Ihrem Browser gespeichert (lokaler Speicher, Schlüssel <code>graal-lang</code>): Sie wird nicht an uns gesendet. Diese Speicherung ist für den angeforderten Dienst unbedingt erforderlich und bedarf keiner Einwilligung.</li>
+  <li>Die Website wird von OVH in Frankreich gehostet, das technische Protokolle (einschließlich der IP-Adresse) für die Sicherheit seines Dienstes nach seiner eigenen Richtlinie speichert.</li>
+  <li>Die Schriftarten der Website werden von den Servern von Google Fonts geladen, die dabei die IP-Adresse Ihrer Verbindung erhalten.</li>
+  <li>Die Zahlung erfolgt auf den Seiten von PayPal; die Dankesseite der Website erhebt keine Daten.</li>
+</ul>
+
+<h2 id="destinataires">6. Empfänger und Auftragsverarbeiter</h2>
+<p>Ihre Daten werden weder verkauft noch vermietet noch zu kommerziellen Zwecken weitergegeben. Nur der Herausgeber hat Zugriff darauf, über eine durch Passwort und Zwei-Faktor-Authentifizierung geschützte Konsole. Sie werden in unserem Auftrag verarbeitet von:</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Dienstleister</th><th>Aufgabe</th><th>Ort</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Dienstleister">Supabase Inc.</td><td data-label="Aufgabe">Hosting der Datenbank und der Serverfunktionen (Premium-Konto, Zahlungen, Synchronisierung, Protokolle)</td><td data-label="Ort">Daten in Paris gespeichert (Region eu-west-3, Europäische Union); Unternehmen mit Sitz in den Vereinigten Staaten</td></tr>
+    <tr><td data-label="Dienstleister">Brevo (Sendinblue SAS)</td><td data-label="Aufgabe">Versand der E-Mails: Bestätigungscodes, Bestätigungen, Quittungen</td><td data-label="Ort">Frankreich</td></tr>
+    <tr><td data-label="Dienstleister">OVH SAS</td><td data-label="Aufgabe">Hosting der Website</td><td data-label="Ort">Frankreich</td></tr>
+    <tr><td data-label="Dienstleister">GitHub, Inc.</td><td data-label="Aufgabe">Hosting der Update-Dateien</td><td data-label="Ort">Vereinigte Staaten</td></tr>
+  </tbody>
+</table></div>
+<p><b>PayPal</b> (PayPal (Europe) S.à r.l. et Cie, S.C.A., Luxemburg) verarbeitet Ihre Zahlungsdaten (Identität, Zahlungsmittel) als <b>eigenständiger Verantwortlicher</b> nach seiner eigenen Datenschutzerklärung; PayPal übermittelt uns nur die oben aufgeführten Informationen. Die Dienste aus Abschnitt 4 erhalten von uns keinerlei Daten.</p>
+<p>Wir können Daten an Justiz- oder Verwaltungsbehörden ausschließlich auf behördliche Anordnung oder aufgrund einer gesetzlichen Entscheidung herausgeben. Aufgrund der Verschlüsselung besitzen wir weder die Zugangsdaten Ihrer Playlist noch die Liste dessen, was Sie ansehen.</p>
+
+<h2 id="transferts">7. Übermittlungen außerhalb der Europäischen Union</h2>
+<p>Unsere Premium- und Synchronisierungsdaten werden in der Europäischen Union gespeichert. Soweit in den Vereinigten Staaten ansässige Dienstleister (Supabase, GitHub) darauf zugreifen können, insbesondere zur Wartung, sind diese Übermittlungen durch die Standardvertragsklauseln der Europäischen Kommission und gegebenenfalls durch den EU-US-Datenschutzrahmen abgesichert. Sie können eine Kopie dieser Garantien erhalten, indem Sie uns schreiben.</p>
+
+<h2 id="securite">8. Sicherheit</h2>
+<ul>
+  <li><b>Nichts im Klartext auf dem Server</b>: E-Mail-Adresse, Code und Name jedes Geräts sowie die Notiz des Verkäufers werden mit AES-256-GCM verschlüsselt (ein zufälliger Vektor pro Datensatz); Adresse und Gerätecode werden über einen HMAC-SHA256-Hashwert wiedergefunden, der mit einem geheimen Schlüssel berechnet wird.</li>
+  <li><b>Schlüssel außerhalb der Datenbank</b>: Die Verschlüsselungsschlüssel sind Geheimnisse der Serverfunktion; eine Kopie der Datenbank allein gibt nichts preis.</li>
+  <li><b>Gesperrte Zugänge</b>: Die Tabellen sind nur für die Serverfunktion lesbar; die Verwaltungskonsole verlangt ein Passwort und einen 6-stelligen Code.</li>
+  <li><b>Ende-zu-Ende-verschlüsselte Synchronisierung</b>: Nur ein Gerät, das Ihre Playlist kennt, kann die Kopie finden und lesen.</li>
+  <li>Alles läuft über HTTPS; eine automatische Bereinigung löscht jede Nacht abgelaufene Protokolle und Codes.</li>
+</ul>
+<p>Im Falle einer Verletzung des Schutzes personenbezogener Daten, die ein Risiko für Sie darstellt, melden wir diese innerhalb von 72 Stunden der CNIL und informieren Sie, wenn das Gesetz dies verlangt.</p>
+
+<h2 id="droits">9. Ihre Rechte</h2>
+<p>Wo immer Sie sich befinden, können Sie auf Ihre Daten <b>zugreifen</b>, sie <b>berichtigen</b>, sie <b>löschen</b>, ihre Verarbeitung <b>einschränken</b>, einer auf berechtigtem Interesse beruhenden Verarbeitung <b>widersprechen</b>, ihre <b>Übertragbarkeit</b> verlangen und <b>Verfügungen</b> über ihren Verbleib nach Ihrem Tod festlegen.</p>
+<ul>
+  <li><b>In der Anwendung</b>: Unter <b>Einstellungen › Meine Daten</b> können Sie die Online-Kopie löschen, Ihr Premium-Konto löschen und alles auf dem Gerät löschen, jeweils nach Bestätigung.</li>
+  <li><b>Per E-Mail</b>: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>, vorzugsweise von der Adresse Ihres Kontos aus. Da wir Ihre Adresse nur verschlüsselt speichern, können wir Sie bitten zu bestätigen, dass sie Ihnen gehört (Bestätigungscode). Antwort innerhalb eines Monats, bei einer komplexen Anfrage um zwei Monate verlängerbar; Sie werden in diesem Fall darüber informiert.</li>
+  <li><b>Beschwerde</b>: Sie können sich an die CNIL (3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07, <a href="https://www.cnil.fr">cnil.fr</a>) oder an die Datenschutzbehörde Ihres Landes wenden.</li>
+</ul>
+<p>Die Löschung des Premium-Kontos beendet Premium auf allen Ihren Geräten. Die Zahlungsdaten werden für die Dauer der buchhalterischen Aufbewahrungspflicht gespeichert, ohne Verknüpfung mit Ihnen.</p>
+
+<h2 id="mineurs">10. Minderjährige</h2>
+<p>Das Premium-Konto ist volljährigen Personen oder Personen mit Erlaubnis des Inhabers der elterlichen Sorge vorbehalten. Wenn Sie glauben, dass uns ein Minderjähriger ohne diese Erlaubnis Daten übermittelt hat, schreiben Sie uns: Wir werden sie löschen.</p>
+
+<h2 id="modifications">11. Änderungen</h2>
+<p>Diese Erklärung folgt der Entwicklung der Anwendung (neuer Dienstleister, Wechsel des Hostings, neue Speicherdauer). Jede wesentliche Änderung wird in der Anwendung oder auf dieser Website angekündigt, und das Datum oben auf der Seite wird aktualisiert.</p>
+</main>
+<footer class="foot">
+  <nav aria-label="Rechtliche Seiten"><a href="../cgv/?lang=de">Verkaufsbedingungen</a> <a href="../confidentialite/?lang=de">Datenschutz</a> <a href="../mentions-legales/?lang=de">Impressum</a></nav>
+  <p>Graal ist ein Mediaplayer. Er stellt keine Sender, Playlists oder audiovisuellen Inhalte bereit, hostet, verkauft oder empfiehlt sie nicht und ist mit keinem Anbieter verbunden. Jeder Nutzer ist allein für die hinzugefügten Quellen verantwortlich und muss das Recht haben, sie abzuspielen.</p>
+  <p>Kontakt: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> · © 2026 Graal</p>
+</footer>
+</template>
+<script>
+// Shows the version in the visitor's language (see ../lang.js); French stays in the page for readers without JavaScript.
+(function () {
+  var root = document.documentElement, lang = root.lang;
+  var tpl = lang !== 'fr' && document.querySelector('template[data-lang="' + lang + '"]');
+  if (tpl) {
+    var page = document.getElementById('page');
+    page.replaceChildren(tpl.content.cloneNode(true));
+    document.title = tpl.dataset.title;
+    document.querySelector('meta[name="description"]').content = tpl.dataset.desc;
+  } else root.lang = 'fr';
+  root.classList.remove('swap');
+  var target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (tpl && target) target.scrollIntoView();
+})();
+</script>
+</body>
+</html>

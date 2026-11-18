@@ -1,0 +1,60 @@
+# Envoie le site graaltv.com sur l'hébergement OVH à chaque modification de ses fichiers sur main.
+# Les versions de l'appli (Releases) restent sur GitHub ; tools/, README.md et .github/ ne partent pas.
+name: Mise en ligne OVH
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'lang.js'
+      - '.htaccess'
+      - 'admin/**'
+      - 'apk/**'
+      - 'cgv/**'
+      - 'confidentialite/**'
+      - 'data/**'
+      - 'demo/**'
+      - 'img/**'
+      - 'mentions-legales/**'
+      - 'merci/**'
+      - '.github/workflows/ovh.yml'
+  workflow_dispatch:
+concurrency:
+  group: ovh
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  envoi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Envoi en SFTP (chiffré)
+        env:
+          SFTP_USER: ${{ secrets.OVH_SFTP_USER }}
+          SSHPASS: ${{ secrets.OVH_SFTP_PASSWORD }}
+        run: |
+          set -eu
+          command -v sshpass >/dev/null || { sudo apt-get update -qq && sudo apt-get install -y -qq sshpass; }
+          # La clé publique du serveur d'OVH : l'envoi est refusé si un autre serveur répond à sa place.
+          echo "ftp.cluster129.hosting.ovh.net ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPHzGPnvg+XUpaMELjQ4AIj/6pkjvvHYCUxDVpcdaC8T" > "$RUNNER_TEMP/serveur"
+          DOSSIERS="admin apk cgv confidentialite data demo img mentions-legales merci"
+          {
+            find $DOSSIERS -type d | sort | while read -r d; do echo "-mkdir \"www/$d\""; done
+            for f in .htaccess index.html lang.js; do echo "put \"$f\" \"www/$f\""; done
+            find $DOSSIERS -type f ! -name '.*' ! -name 'README.md' | sort | while read -r f; do echo "put \"$f\" \"www/$f\""; done
+          } > "$RUNNER_TEMP/envoi"
+          sshpass -e sftp -o BatchMode=no -o PubkeyAuthentication=no -o PreferredAuthentications=password \
+            -o UserKnownHostsFile="$RUNNER_TEMP/serveur" -o StrictHostKeyChecking=yes -o ConnectTimeout=30 \
+            -b "$RUNNER_TEMP/envoi" "$SFTP_USER@ftp.cluster129.hosting.ovh.net" > /dev/null
+          echo "$(grep -c '^put' "$RUNNER_TEMP/envoi") fichiers envoyés"
+      - name: Contrôle
+        run: |
+          set -eu
+          sleep 5
+          for f in index.html data/sports-lists.json data/themes.json cgv/index.html; do
+            test "$(curl -s --max-time 30 --resolve graaltv.com:443:51.91.236.255 "https://graaltv.com/$f" | sha256sum | cut -d' ' -f1)" = "$(sha256sum "$f" | cut -d' ' -f1)" || { echo "différent en ligne : $f"; exit 1; }
+          done
+          echo "Les fichiers en ligne sont ceux du dépôt."

@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Graal Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+/* Graal's own look: its default theme "Galaxie" (Themes.kt), dark like the app. */
+:root {
+  color-scheme: dark;
+  --bg: #0B081B; --glow1: #192764; --glow2: #241943;
+  --panel: #1E1B2D; --panel-high: #2B2839; --border: #3A3748;
+  --text: #E8E8F0; --dim: #9090B0;
+  --sel: linear-gradient(90deg, #5323FF, #7232FF, #9342FF); --accent: #9342FF; --accent-text: #B79BFF;
+  --err: #E74C3C; --ok: #2ECC71; --gold: #F5C518;
+}
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0; min-height: 100vh; color: var(--text);
+  font: 15px/1.5 "DM Sans", system-ui, "Segoe UI", Roboto, sans-serif;
+  background: radial-gradient(1100px 700px at 15% -10%, var(--glow1) 0%, transparent 60%),
+              radial-gradient(900px 600px at 100% 110%, var(--glow2) 0%, transparent 60%), var(--bg);
+  background-attachment: fixed;
+}
+header { display: flex; align-items: center; gap: 14px; padding: 16px 24px; position: sticky; top: 0; z-index: 2;
+  background: rgba(11, 8, 27, .82); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+header .logo { width: 40px; height: 40px; border-radius: 11px; background: none;
+  color: #fff; font-weight: 700; font-size: 24px; display: grid; place-items: center; box-shadow: 0 6px 18px rgba(147, 66, 255, .35); }
+header h1 { font-size: 19px; margin: 0; flex: 1; font-weight: 700; letter-spacing: .3px; }
+header h1 span { color: var(--dim); font-weight: 500; }
+main { max-width: 1200px; margin: 0 auto; padding: 24px 16px 64px; }
+.card { background: rgba(30, 27, 45, .88); border: 1px solid var(--border); border-radius: 18px; padding: 22px; margin-bottom: 16px; }
+.narrow { max-width: 440px; margin: 48px auto; }
+h2 { font-size: 18px; margin: 0 0 14px; font-weight: 700; }
+h3 { font-size: 14px; margin: 16px 0 8px; color: var(--dim); font-weight: 500; }
+p { color: var(--dim); }
+label { display: block; font-size: 13px; color: var(--dim); margin: 14px 0 6px; }
+input { width: 100%; padding: 11px 16px; border-radius: 24px; border: 1px solid var(--border); background: var(--panel-high);
+  color: var(--text); font: inherit; outline: none; transition: border-color .15s, box-shadow .15s; }
+input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(147, 66, 255, .25); }
+button { padding: 10px 22px; border-radius: 24px; border: 0; background: var(--sel); color: #fff; font: inherit; font-weight: 700;
+  cursor: pointer; box-shadow: 0 6px 16px rgba(83, 35, 255, .3); transition: transform .12s, filter .12s; }
+button:hover { filter: brightness(1.1); } button:active { transform: scale(.98); }
+button.ghost { background: var(--panel-high); color: var(--text); box-shadow: none; border: 1px solid var(--border); font-weight: 500; }
+button.ghost:hover { border-color: var(--accent); }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.msg { margin-top: 12px; font-size: 14px; color: var(--dim); }
+.msg.err { color: var(--err); } .msg.ok { color: var(--ok); }
+.hidden { display: none !important; }
+table { width: 100%; border-collapse: separate; border-spacing: 0 6px; }
+th { text-align: left; color: var(--dim); font-weight: 500; font-size: 13px; padding: 4px 14px; }
+td { padding: 12px 14px; background: var(--panel-high); font-size: 14px; }
+td:first-child { border-radius: 14px 0 0 14px; } td:last-child { border-radius: 0 14px 14px 0; }
+th .sort { padding: 2px 8px; margin-left: -8px; border-radius: 10px; background: none; box-shadow: none; color: var(--dim); font: inherit; font-size: 13px; font-weight: 500; }
+th .sort:hover { color: var(--text); filter: none; } th .sort.on { color: var(--accent-text); font-weight: 700; }
+th .sort i { font-style: normal; display: inline-block; width: 1em; }
+tr.click { cursor: pointer; }
+button.danger { background: var(--err); box-shadow: 0 6px 16px rgba(231, 76, 60, .3); }
+button:disabled { opacity: .45; cursor: default; filter: none; transform: none; }
+.pick { width: 1px; padding-right: 0; } .pick input { width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer; margin: 0; }
+th.pick, td.pick { display: none; } .selecting th.pick, .selecting td.pick { display: table-cell; }
+tr.chosen td { background: #3A2D6B; } tr.click:hover td { background: #3A2D6B; }
+.code { font-family: ui-monospace, Consolas, monospace; font-weight: 700; color: var(--accent-text); }
+.pill { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; background: rgba(147, 66, 255, .2); color: var(--accent-text); margin: 2px 6px 2px 0; }
+.pill.warn { background: rgba(245, 197, 24, .16); color: var(--gold); } .pill.err { background: rgba(231, 76, 60, .18); color: #FF8A7E; } .pill.ok { background: rgba(46, 204, 113, .16); color: var(--ok); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.stat { background: var(--panel-high); border-radius: 14px; padding: 14px 16px; }
+.stat b { display: block; font-size: 18px; margin-top: 2px; } .stat span { color: var(--dim); font-size: 13px; }
+.lines { font-family: ui-monospace, Consolas, monospace; font-size: 12.5px; max-height: 520px; overflow: auto; background: rgba(11, 8, 27, .7); border-radius: 14px; padding: 8px; border: 1px solid var(--border); }
+.line { padding: 4px 8px; border-radius: 8px; white-space: pre-wrap; word-break: break-word; }
+.line.W { background: rgba(245, 197, 24, .09); } .line.E { background: rgba(231, 76, 60, .14); }
+.line .t { color: var(--dim); } .line .g { color: var(--accent-text); font-weight: 700; }
+.chips button { padding: 6px 14px; font-size: 13px; margin: 0 6px 8px 0; background: var(--panel-high); color: var(--text); border: 1px solid var(--border); box-shadow: none; font-weight: 500; }
+.chips button.on { background: var(--sel); border-color: transparent; color: #fff; font-weight: 700; }
+details summary { cursor: pointer; }
+.qr { background: #fff; padding: 12px; border-radius: 16px; width: 220px; display: block; margin: 8px auto; }
+::-webkit-scrollbar { width: 10px; height: 10px; } ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+nav.tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+nav.tabs button { background: var(--panel-high); color: var(--text); border: 1px solid var(--border); box-shadow: none; font-weight: 500; }
+nav.tabs button.on { background: var(--sel); border-color: transparent; color: #fff; font-weight: 700; }
+nav.tabs .badge { display: inline-block; min-width: 20px; padding: 0 6px; margin-left: 6px; border-radius: 10px; background: var(--gold); color: #000; font-size: 12px; font-weight: 700; }
+.acc { background: var(--panel-high); border-radius: 16px; padding: 16px 18px; margin-bottom: 10px; }
+.acc .head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.acc .mail { font-weight: 700; font-size: 16px; word-break: break-all; margin-right: 6px; }
+.acc .meta { color: var(--dim); font-size: 13px; margin: 6px 0; }
+.acc .fold { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; margin: 4px 0; font-size: 13px; font-weight: 500;
+  background: rgba(255, 255, 255, .05); color: var(--text); border: 1px solid var(--border); box-shadow: none; border-radius: 16px; }
+.acc .fold i { font-style: normal; display: inline-block; transition: transform .15s; }
+.acc .fold.open i { transform: rotate(90deg); }
+.acc .devs.hidden { display: none; }
+.acc .dev { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-top: 1px solid var(--border); font-size: 14px; flex-wrap: wrap; }
+.acc .dev .grow { flex: 1; min-width: 160px; }
+.acc button { padding: 7px 16px; font-size: 13px; }
+.acc .edit { border-top: 1px solid var(--border); margin-top: 12px; }
+select { padding: 10px 14px; border-radius: 24px; border: 1px solid var(--border); background: var(--panel-high); color: var(--text); font: inherit; }
+@media (max-width: 640px) { th:nth-child(5), td:nth-child(5) { display: none; } header { padding: 12px 16px; } }
+</style>
+</head>
+<body>
+<header><svg class="logo" viewBox="0 0 200 200" aria-label="Graal"><defs><linearGradient id="lg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7B5CFF"/><stop offset=".55" stop-color="#C04BE0"/><stop offset="1" stop-color="#FF7A6B"/></linearGradient><linearGradient id="ln" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1A1A36"/><stop offset="1" stop-color="#0E0E1E"/></linearGradient></defs><rect width="200" height="200" rx="44" fill="url(#ln)"/><path transform="translate(100 100) scale(1.1565) translate(-90 -108)" d="M125.36 72.64 A50 50 0 1 0 140.0 108.0 L99.0 108" fill="none" stroke="url(#lg)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/></svg><h1>Graal <span>· Console admin</span></h1><button id="logout" class="ghost hidden">Déconnexion</button></header>
+<main>
+<nav id="tabs" class="tabs hidden"><button id="t-premium" class="on">Premium<span id="t-badge" class="badge hidden"></span></button><button id="t-pay">Paiements<span id="t-paybadge" class="badge hidden"></span></button><button id="t-logs">Journaux</button></nav>
+
+<!-- 1. Connexion -->
+<section id="v-login" class="card narrow hidden">
+  <h2>Connexion</h2>
+  <label for="email">E-mail</label><input id="email" type="email" autocomplete="username">
+  <label for="pass">Mot de passe</label><input id="pass" type="password" autocomplete="current-password">
+  <div class="row" style="margin-top:16px"><button id="b-login">Se connecter</button></div>
+  <div id="m-login" class="msg"></div>
+</section>
+
+<!-- 2. Double authentification : première fois -->
+<section id="v-enroll" class="card narrow hidden">
+  <h2>Activer la double authentification</h2>
+  <p>Scanne ce QR code avec une appli d'authentification (Google Authenticator, Microsoft Authenticator, Authy…), puis tape le code à 6 chiffres qu'elle affiche.</p>
+  <img id="qr" class="qr" alt="QR code de la double authentification">
+  <p style="font-size:13px;color:var(--dim)">Ou saisis cette clé à la main : <span id="secret" class="code"></span></p>
+  <label for="c-enroll">Code à 6 chiffres</label><input id="c-enroll" inputmode="numeric" maxlength="6" autocomplete="one-time-code">
+  <div class="row" style="margin-top:16px"><button id="b-enroll">Valider</button></div>
+  <div id="m-enroll" class="msg"></div>
+</section>
+
+<!-- 3. Double authentification : chaque connexion -->
+<section id="v-mfa" class="card narrow hidden">
+  <h2>Code de vérification</h2>
+  <p>Tape le code à 6 chiffres de ton appli d'authentification.</p>
+  <label for="c-mfa">Code</label><input id="c-mfa" inputmode="numeric" maxlength="6" autocomplete="one-time-code">
+  <div class="row" style="margin-top:16px"><button id="b-mfa">Vérifier</button></div>
+  <div id="m-mfa" class="msg"></div>
+</section>
+
+<!-- 4. Pas encore admin -->
+<section id="v-notadmin" class="card narrow hidden">
+  <h2>Compte créé, en attente</h2>
+  <p>Ton compte n'est pas encore inscrit comme admin. Donne cet identifiant à la personne qui gère Graal :</p>
+  <p class="code" id="uid"></p>
+</section>
+
+<!-- 5. Premium : demandes et comptes -->
+<section id="v-premium" class="hidden">
+  <div class="card">
+    <div class="row"><input id="pq" placeholder="Rechercher : e-mail, appareil, note" style="flex:1;min-width:220px">
+      <select id="pf"><option value="pending">En attente</option><option value="active">Actifs</option><option value="gift">Offerts</option><option value="all">Tous</option></select>
+      <button id="p-refresh" class="ghost">Actualiser</button></div>
+    <details style="margin-top:14px"><summary><b>Créer un compte</b> <span style="color:var(--dim);font-size:13px">(client connu : ses appareils le rejoindront avec son e-mail et le code reçu ; avec le code de son appli, l'appareil est activé tout de suite)</span></summary>
+      <div class="row" style="margin-top:12px"><input id="c-email" type="email" placeholder="E-mail du client" style="flex:2;min-width:200px">
+        <input id="c-code" placeholder="Code de l'appli (facultatif)" maxlength="9" autocomplete="off" title="Le code affiché dans l'appli, Réglages > Premium : l'appareil est activé tout de suite, sans rien taper. Sans e-mail : activation forcée." style="flex:1;min-width:170px" autocapitalize="characters" spellcheck="false">
+        <select id="c-plan"><option value="solo">1 appareil</option><option value="foyer">Foyer (5)</option></select>
+        <select id="c-gift" title="Premium offert, sans paiement"><option value="">Pas offert</option><option value="ami">Offert : ami</option><option value="famille">Offert : famille</option><option value="test">Offert : test</option></select>
+        <input id="c-note" placeholder="Note (facultatif)" style="flex:1;min-width:140px"><button id="c-create">Créer</button></div>
+      <div id="m-create" class="msg"></div>
+    </details>
+  </div>
+  <div id="p-list"></div>
+  <div id="m-premium" class="msg"></div>
+</section>
+
+<!-- 5 bis. Paiements : chaque paiement PayPal, son journal, les anomalies en haut -->
+<section id="v-pay" class="hidden">
+  <div class="card">
+    <div class="row"><input id="yq" placeholder="Rechercher : e-mail, référence PayPal" style="flex:1;min-width:220px">
+      <select id="yf"><option value="paid">Payés</option><option value="issue">Remboursés, contestés</option><option value="created">Non payés</option><option value="all">Tous</option></select>
+      <button id="y-refresh" class="ghost">Actualiser</button></div>
+    <div id="y-mode" class="msg"></div>
+  </div>
+  <div id="y-alerts"></div>
+  <div class="card" id="y-totals"></div>
+  <div id="y-list"></div>
+  <div id="m-pay" class="msg"></div>
+</section>
+
+<!-- 6. Liste des journaux -->
+<section id="v-list" class="hidden">
+  <div class="card">
+    <div class="row"><input id="q" placeholder="Rechercher : code GR-…, appareil, version" style="flex:1;min-width:220px"><button id="b-select" class="ghost">Sélectionner</button><button id="b-refresh" class="ghost">Actualiser</button></div>
+    <div id="selbar" class="row hidden" style="margin-top:12px"><button id="b-all" class="ghost">Tout sélectionner</button><button id="b-delete" class="danger" disabled>Supprimer</button><span id="m-sel" class="msg" style="margin:0"></span></div>
+  </div>
+  <div class="card" style="padding:6px 10px">
+    <table><thead><tr><th class="pick"></th><th><button class="sort" data-k="date">Date <i></i></button></th><th>Code</th><th>Appareil</th><th><button class="sort" data-k="version">Version <i></i></button></th></tr></thead><tbody id="rows"></tbody></table>
+    <div id="m-list" class="msg"></div>
+  </div>
+</section>
+
+<!-- 7. Un journal -->
+<section id="v-log" class="hidden">
+  <div class="row" style="margin-bottom:12px"><button id="b-back" class="ghost">← Tous les journaux</button></div>
+  <div class="card"><h2 id="l-title"></h2><div id="l-summary" class="grid"></div></div>
+  <div class="card"><h2>Problèmes repérés</h2><div id="l-problems"></div></div>
+  <div class="card"><h2>Déroulé</h2><div id="l-chips" class="chips"></div><div id="l-timeline" class="lines"></div></div>
+  <div class="card"><details><summary><b>Journal brut</b></summary><input id="l-filter" placeholder="Filtrer les lignes…" style="margin:12px 0"><div id="l-raw" class="lines"></div></details></div>
+</section>
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+// The publishable key and the address are public by design: what protects the logs is the
+// database's own rule (an admin, signed in with the 6-digit code), not this page.
+const sb = supabase.createClient('https://udvohbjcmsphasfiziys.supabase.co', 'sb_publishable_ViGObmr8lA2FdFS78wgJig_v2Spw3Zg');
+const $ = id => document.getElementById(id);
+const views = ['v-login', 'v-enroll', 'v-mfa', 'v-notadmin', 'v-premium', 'v-pay', 'v-list', 'v-log'];
+function show(id) {
+  views.forEach(v => $(v).classList.toggle('hidden', v !== id)); $('logout').classList.toggle('hidden', id === 'v-login');
+  const signedIn = ['v-premium', 'v-pay', 'v-list', 'v-log'].includes(id);
+  $('tabs').classList.toggle('hidden', !signedIn);
+  $('t-premium').classList.toggle('on', id === 'v-premium'); $('t-pay').classList.toggle('on', id === 'v-pay'); $('t-logs').classList.toggle('on', id === 'v-list' || id === 'v-log');
+}
+function say(id, text, kind) { $(id).textContent = text || ''; $(id).className = 'msg ' + (kind || ''); }
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const when = iso => new Date(iso).toLocaleString('fr-FR', { dateStyle: 'short', timeStyle: 'short' });
+
+let factorId = null;
+
+async function route() {
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) return show('v-login');
+  const { data: aal } = await sb.auth.mfa.getAuthenticatorAssuranceLevel();
+  if (aal.currentLevel !== 'aal2') {
+    const { data: f } = await sb.auth.mfa.listFactors();
+    const totp = (f && f.totp || []).find(x => x.status === 'verified');
+    if (totp) { factorId = totp.id; return show('v-mfa'); }
+    return enroll();
+  }
+  const { data: me } = await sb.from('admins').select('user_id').limit(1);
+  if (!me || !me.length) { $('uid').textContent = session.user.id; return show('v-notadmin'); }
+  show('v-premium'); loadPremium(); loadPayments();
+}
+
+async function enroll() {
+  // A factor started earlier and never finished: removed, a fresh one shown.
+  const { data: f } = await sb.auth.mfa.listFactors();
+  for (const x of (f && f.all || [])) if (x.status !== 'verified') await sb.auth.mfa.unenroll({ factorId: x.id });
+  const { data, error } = await sb.auth.mfa.enroll({ factorType: 'totp', friendlyName: 'Graal admin' });
+  if (error) { show('v-enroll'); return say('m-enroll', error.message, 'err'); }
+  factorId = data.id; $('qr').src = data.totp.qr_code; $('secret').textContent = data.totp.secret;
+  show('v-enroll');
+}
+
+async function verify(code, msgId) {
+  const { data: ch, error: e1 } = await sb.auth.mfa.challenge({ factorId });
+  if (e1) return say(msgId, e1.message, 'err');
+  const { error } = await sb.auth.mfa.verify({ factorId, challengeId: ch.id, code: code.trim() });
+  if (error) return say(msgId, 'Code incorrect ou expiré.', 'err');
+  route();
+}
+
+$('b-login').onclick = async () => {
+  say('m-login', 'Connexion…');
+  const { error } = await sb.auth.signInWithPassword({ email: $('email').value.trim(), password: $('pass').value });
+  if (error) return say('m-login', 'E-mail ou mot de passe incorrect.', 'err');
+  say('m-login', ''); route();
+};
+$('b-enroll').onclick = () => verify($('c-enroll').value, 'm-enroll');
+$('b-mfa').onclick = () => verify($('c-mfa').value, 'm-mfa');
+$('logout').onclick = async () => { await sb.auth.signOut(); show('v-login'); };
+$('b-refresh').onclick = () => loadList();
+$('t-premium').onclick = () => { show('v-premium'); loadPremium(); };
+$('t-pay').onclick = () => { show('v-pay'); loadPayments(); };
+$('t-logs').onclick = () => { show('v-list'); loadList(); };
+$('b-back').onclick = () => show('v-list');
+['c-enroll', 'c-mfa', 'pass'].forEach(id => $(id).addEventListener('keydown', e => { if (e.key === 'Enter') ({ 'c-enroll': $('b-enroll'), 'c-mfa': $('b-mfa'), pass: $('b-login') })[id].click(); }));
+
+// ---- Premium: requests and accounts (server function "premium", which checks the admin and the
+// 6-digit sign-in itself; the e-mails are stored encrypted and only decrypted there) -----------
+let accounts = [];
+const openDevices = new Set();
+let editing = null; // the account whose form is open (« Modifier le compte »)
+let adding = null;  // the account a device is being added to (« Ajouter un appareil »)
+async function premium(action, body) {
+  const { data, error } = await sb.functions.invoke('premium', { body: { action, ...(body || {}) } });
+  const MESSAGES = { exists: 'Un compte existe déjà avec cette adresse.', bad_email: 'Adresse e-mail invalide (ou, sans adresse, donne le code de l\'appareil).', bad_device: 'Code de l\'appareil invalide : 8 caractères, comme 7K3M-Q9XA (Réglages > Premium dans l\'appli).', full: 'Ce compte a déjà tous ses appareils : change sa formule ou retire un appareil.', no_account: 'Compte introuvable.', forbidden: 'Accès refusé (reconnecte-toi avec le code à 6 chiffres).',
+    not_configured: 'Premium pas encore configuré côté serveur : les secrets (clés de chiffrement, Brevo, Telegram) ne sont pas en place.', server: 'Erreur du serveur Premium (voir les journaux de la fonction dans Supabase).' };
+  if (error) {
+    // The function's own answer (its "error" field) says why, whatever the HTTP status.
+    let why = null;
+    try { why = (await error.context.json()).error; } catch (_) { /* no JSON body */ }
+    throw new Error(MESSAGES[why] || why || error.message);
+  }
+  if (data && data.error) throw new Error(MESSAGES[data.error] || data.error);
+  return data;
+}
+async function loadPremium() {
+  say('m-premium', 'Chargement…');
+  try { accounts = (await premium('admin_list')).accounts || []; say('m-premium', ''); }
+  catch (e) { accounts = []; say('m-premium', e.message, 'err'); }
+  const waiting = accounts.filter(a => a.status === 'pending').length;
+  $('t-badge').textContent = waiting; $('t-badge').classList.toggle('hidden', !waiting);
+  if (!waiting && $('pf').value === 'pending' && accounts.length) $('pf').value = 'active';
+  drawPremium();
+}
+const STATUS = { pending: ['En attente', 'warn'], active: ['Actif', 'ok'], refused: ['Refusé', 'err'], revoked: ['Désactivé', 'err'] };
+const GIFT = { ami: 'ami', famille: 'famille', test: 'test' };
+// More than one device is the Foyer formula, whatever their number (5 unless the seller chose another).
+const PLAN = a => a.max > 1 ? `Foyer · ${a.max} appareils` : '1 appareil';
+function drawPremium() {
+  const q = $('pq').value.trim().toLowerCase(), f = $('pf').value;
+  const shown = accounts.filter(a => (f === 'all' || (f === 'gift' ? !!a.gift : a.status === f)) &&
+    (!q || [a.email, a.note || '', ...a.devices.map(d => d.code + ' ' + (d.label || ''))].join(' ').toLowerCase().includes(q)));
+  $('p-list').innerHTML = shown.map(a => {
+    const [label, kind] = STATUS[a.status] || [a.status, ''];
+    const acts = [];
+    if (a.status === 'pending') acts.push(`<button data-a="admin_validate" data-id="${a.id}">Valider</button><button class="ghost" data-a="admin_refuse" data-id="${a.id}">Refuser</button>`);
+    if (a.status === 'active') acts.push(`<button class="ghost" data-a="admin_revoke" data-id="${a.id}">Désactiver</button>`);
+    if (a.status === 'revoked' || a.status === 'refused') acts.push(`<button class="ghost" data-a="admin_reactivate" data-id="${a.id}">Activer</button>`);
+    if (a.status === 'active') acts.push(`<button class="ghost" data-a="admin_add_device" data-id="${a.id}" title="Activer un appareil avec le code affiché dans l'appli (Réglages > Premium)">Ajouter un appareil</button>`);
+    acts.push(`<button class="ghost" data-a="edit" data-id="${a.id}" title="E-mail, formule, Premium offert, note">Modifier le compte</button><button class="ghost" data-a="admin_delete" data-id="${a.id}">Supprimer</button>`);
+    // The account being modified shows its form in place of its buttons: nothing changes before « Valider ».
+    const mail = a.email && a.email !== '?' ? a.email : '';
+    const form = editing !== a.id ? '' : `<div class="edit" data-edit="${a.id}">
+      <label>E-mail du client${mail ? '' : ' (ce compte n\'en a pas encore)'}</label><input data-f="email" type="email" value="${esc(mail)}" placeholder="E-mail du client" spellcheck="false">
+      <div class="row"><div><label>Formule</label><select data-f="plan"><option value="solo"${a.max > 1 ? '' : ' selected'}>1 appareil</option><option value="foyer"${a.max > 1 ? ' selected' : ''}>Foyer (plusieurs appareils)</option></select></div>
+        <div><label>Nombre d'appareils</label><input data-f="max" type="number" min="1" max="20" value="${a.max}" style="width:110px"></div>
+        <div><label>Premium offert</label><select data-f="gift">${[['', 'Pas offert'], ...Object.entries(GIFT)].map(([v, l]) => `<option value="${v}"${(a.gift || '') === v ? ' selected' : ''}>${v ? 'Offert : ' + l : l}</option>`).join('')}</select></div></div>
+      <label>Note (paiement, prénom…)</label><input data-f="note" value="${esc(a.note || '')}" maxlength="500">
+      <div class="row" style="margin-top:16px"><button data-a="edit_save" data-id="${a.id}">Valider</button><button class="ghost" data-a="edit_cancel">Annuler</button></div>
+      <div class="msg" id="m-edit"></div></div>`;
+    // « Ajouter un appareil »: the code typed in the card, its dash put by itself (formatCode).
+    const addForm = adding !== a.id ? '' : `<div class="edit" data-add="${a.id}">
+      <label for="add-code">Code de l'appareil, affiché dans l'appli (Réglages > Premium)</label>
+      <div class="row"><input id="add-code" data-f="device" class="code" placeholder="7K3M-Q9XA" maxlength="9" autocapitalize="characters" autocomplete="off" spellcheck="false" style="flex:1;min-width:150px;max-width:220px">
+        <button data-a="add_save" data-id="${a.id}">Activer</button><button class="ghost" data-a="add_cancel">Annuler</button></div>
+      <div class="msg" id="m-add"></div></div>`;
+    const open = openDevices.has(a.id);
+    const devs = a.devices.map(d => `<div class="dev"><span class="code">${esc(d.code)}</span><span class="grow">${esc(d.label || 'Appareil')}<br><span style="color:var(--dim);font-size:12px">ajouté ${when(d.added_at)} · vu ${when(d.last_seen)} · version ${esc(d.app_version || '?')}</span></span><button class="ghost" data-a="admin_remove_device" data-code="${esc(d.code)}">Retirer</button></div>`).join('');
+    return `<div class="acc"><div class="head"><span class="mail">${esc(a.email || 'Sans e-mail (activé depuis la console)')}</span><span class="pill ${kind}">${label}</span><span class="pill">${PLAN(a)}</span>${a.gift ? `<span class="pill warn">Offert · ${GIFT[a.gift] || esc(a.gift)}</span>` : ''}</div>
+      <div class="meta">Créé ${when(a.created_at)}${a.validated_at ? ' · validé ' + when(a.validated_at) : ''} · ${a.devices.length}/${a.max} appareil(s)${a.note ? ' · ' + esc(a.note) : ''}</div>
+      ${a.devices.length ? `<button class="fold${open ? ' open' : ''}" data-fold="${a.id}"><i>▶</i> ${a.devices.length > 1 ? a.devices.length + ' appareils' : '1 appareil'}</button>` : ''}
+      <div class="devs${open ? '' : ' hidden'}">${devs}</div>${form || addForm || `<div class="row" style="margin-top:10px">${acts.join('')}</div>`}</div>`;
+  }).join('') || `<div class="card"><p style="margin:0">${f === 'pending' ? 'Aucune demande en attente.' : 'Aucun compte.'}</p></div>`;
+}
+// ---- Payments (PayPal): each payment with its journal; whatever is not as expected is an anomaly,
+// shown at the top until marked as seen (the seller also got an e-mail when it happened) -------
+let payments = [], payEvents = [];
+const openPayments = new Set();
+const euro = (cents, cur) => cents == null ? '—' : (cents / 100).toFixed(2).replace('.', ',') + (cur === 'EUR' || !cur ? ' €' : ' ' + cur);
+const PAY_STATUS = { created: ['Non payé', ''], paid: ['Payé', 'ok'], refunded: ['Remboursé', 'err'], disputed: ['Contesté', 'err'] };
+async function loadPayments() {
+  say('m-pay', 'Chargement…');
+  let info = {};
+  try { info = await premium('admin_payments'); say('m-pay', ''); }
+  catch (e) { say('m-pay', e.message === 'unknown_action' ? 'Le serveur ne connaît pas encore les paiements (fonction à déployer).' : e.message, 'err'); }
+  payments = info.payments || []; payEvents = info.events || [];
+  const alerts = payEvents.filter(e => e.anomaly && !e.seen).length;
+  $('t-paybadge').textContent = alerts; $('t-paybadge').classList.toggle('hidden', !alerts);
+  $('y-mode').innerHTML = info.configured === false ? '<span class="pill err">PayPal non branché</span> les secrets PayPal ne sont pas en place : l\'appli garde l\'ancien parcours (validation à la main).'
+    : info.mode === 'sandbox' ? '<span class="pill warn">Mode essais</span> PayPal « sandbox » : aucun argent réel.'
+    : info.mode === 'live' ? '<span class="pill ok">Argent réel</span>' : '';
+  drawPayments();
+}
+function drawPayments() {
+  const q = $('yq').value.trim().toLowerCase(), f = $('yf').value;
+  const alerts = payEvents.filter(e => e.anomaly && !e.seen);
+  $('y-alerts').innerHTML = alerts.length ? `<div class="card" style="border-color:var(--err)"><div class="row"><h2 style="margin:0;flex:1">${alerts.length} anomalie${alerts.length > 1 ? 's' : ''}</h2><button class="ghost" id="y-seen">Tout marquer comme vu</button></div>` +
+    alerts.map(e => `<div class="dev" style="border-color:var(--border)"><span class="pill err">${when(e.at)}</span><span class="grow"><b>${esc(e.kind)}</b>${e.detail ? '<br><span style="color:var(--dim);font-size:13px">' + esc(e.detail) + '</span>' : ''}</span>${e.payment_id ? `<button class="ghost" data-show="${e.payment_id}">Voir le paiement</button>` : ''}<button class="ghost" data-seen="${e.id}">Vu</button></div>`).join('') + '</div>' : '';
+  const real = payments.filter(p => p.status === 'paid' && p.mode === 'live');
+  const sum = k => real.reduce((n, p) => n + (p[k] || 0), 0);
+  $('y-totals').innerHTML = `<div class="grid"><div class="stat"><span>Paiements encaissés</span><b>${real.length}</b></div><div class="stat"><span>Montant payé par les clients</span><b>${euro(sum('amount'))}</b></div><div class="stat"><span>Frais PayPal</span><b>${euro(sum('fee'))}</b></div><div class="stat"><span>Reçu sur ton compte</span><b>${euro(sum('net'))}</b></div></div>`;
+  const shown = payments.filter(p => (f === 'all' || (f === 'issue' ? p.status === 'refunded' || p.status === 'disputed' : p.status === f)) &&
+    (!q || [p.email || '', p.order_id || '', p.capture_id || ''].join(' ').toLowerCase().includes(q)));
+  $('y-list').innerHTML = shown.map(p => {
+    const [label, kind] = PAY_STATUS[p.status] || [p.status, ''];
+    const open = openPayments.has(p.id);
+    const lines = payEvents.filter(e => e.payment_id === p.id).sort((a, b) => a.at < b.at ? -1 : 1)
+      .map(e => `<div class="dev"><span style="color:var(--dim);font-size:13px;min-width:120px">${when(e.at)}</span><span class="grow">${e.anomaly ? '<span class="pill err">Anomalie</span>' : ''}${esc(e.kind)}${e.detail ? ' <span style="color:var(--dim)">· ' + esc(e.detail) + '</span>' : ''}</span></div>`).join('');
+    return `<div class="acc" id="pay-${p.id}"><div class="head"><span class="mail">${p.email ? esc(p.email) : '<span style="color:var(--dim)">compte supprimé</span>'}</span><span class="pill ${kind}">${label}</span><span class="pill">${p.plan === 'foyer' ? 'Foyer' : '1 appareil'}</span>${p.mode === 'sandbox' ? '<span class="pill warn">Essai</span>' : ''}</div>
+      <div class="meta">${p.paid_at ? 'Payé ' + when(p.paid_at) : 'Proposé ' + when(p.created_at)} · ${euro(p.amount, p.currency)}${p.fee != null ? ' · frais ' + euro(p.fee, p.currency) + ' · reçu ' + euro(p.net, p.currency) : ''}${p.capture_id ? ' · PayPal <span class="code">' + esc(p.capture_id) + '</span>' : ''}</div>
+      <button class="fold${open ? ' open' : ''}" data-payfold="${p.id}"><i>▶</i> Journal</button><div class="devs${open ? '' : ' hidden'}">${lines || '<div class="dev">Rien dans le journal.</div>'}</div></div>`;
+  }).join('') || `<div class="card"><p style="margin:0">Aucun paiement${f === 'all' ? '' : ' dans cette liste'}.</p></div>`;
+}
+$('y-refresh').onclick = loadPayments; $('yq').oninput = drawPayments; $('yf').onchange = drawPayments;
+$('v-pay').addEventListener('click', async e => {
+  const fold = e.target.closest('button[data-payfold]');
+  if (fold) { const id = fold.dataset.payfold; openPayments.has(id) ? openPayments.delete(id) : openPayments.add(id); drawPayments(); return; }
+  const go = e.target.closest('button[data-show]');
+  if (go) { openPayments.add(go.dataset.show); $('yf').value = 'all'; $('yq').value = ''; drawPayments(); const card = $('pay-' + go.dataset.show); if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+  const one = e.target.closest('button[data-seen]'), all = e.target.closest('#y-seen');
+  if (!one && !all) return;
+  const ids = one ? [Number(one.dataset.seen)] : payEvents.filter(v => v.anomaly && !v.seen).map(v => v.id);
+  try { await premium('admin_payment_seen', { ids }); await loadPayments(); } catch (err) { say('m-pay', err.message, 'err'); }
+});
+
+const CONFIRM = { admin_refuse: 'Refuser cette demande ?', admin_revoke: 'Désactiver ce compte ? Ses appareils perdront Premium à leur prochaine vérification.', admin_delete: 'Supprimer ce compte et ses appareils ? Ils perdront Premium.', admin_remove_device: 'Retirer cet appareil du compte ? Il perdra Premium.' };
+$('p-list').addEventListener('click', async e => {
+  const f = e.target.closest('button[data-fold]');
+  if (f) {
+    const id = f.dataset.fold;
+    openDevices.has(id) ? openDevices.delete(id) : openDevices.add(id);
+    f.classList.toggle('open', openDevices.has(id));
+    f.nextElementSibling.classList.toggle('hidden', !openDevices.has(id));
+    return;
+  }
+  const b = e.target.closest('button[data-a]'); if (!b) return;
+  const a = b.dataset.a;
+  if (CONFIRM[a] && !confirm(CONFIRM[a])) return;
+  let body = { id: b.dataset.id, code: b.dataset.code };
+  if (a === 'admin_add_device' || a === 'add_cancel') {
+    adding = a === 'admin_add_device' ? b.dataset.id : null; editing = null; drawPremium();
+    if (adding) $('add-code').focus();
+    return;
+  }
+  if (a === 'add_save') { addDevice(b); return; }
+  if (a === 'edit' || a === 'edit_cancel') { editing = a === 'edit' ? b.dataset.id : null; adding = null; drawPremium(); return; }
+  if (a === 'edit_save') { saveAccount(b); return; }
+  b.disabled = true;
+  try { await premium(a, body); await loadPremium(); }
+  catch (err) { b.disabled = false; say('m-premium', err.message, 'err'); }
+});
+// « Valider » of an account's form: only what changed is sent, the e-mail first (the one that can be refused).
+async function saveAccount(b) {
+  const acc = accounts.find(x => x.id === b.dataset.id), box = b.closest('.edit'); if (!acc || !box) return;
+  const v = f => box.querySelector(`[data-f="${f}"]`).value.trim();
+  const was = acc.email && acc.email !== '?' ? acc.email : '';
+  const email = v('email'), max = parseInt(v('max'), 10), plan = max > 1 ? 'foyer' : 'solo', gift = v('gift'), note = v('note');
+  if (!email && was) return say('m-edit', "L'adresse ne peut pas être vide : ce compte en a déjà une.", 'err');
+  if (!(max >= 1 && max <= 20)) return say('m-edit', "Nombre d'appareils : de 1 à 20.", 'err');
+  if (max < acc.devices.length && !confirm(`Ce compte a ${acc.devices.length} appareils : ils restent actifs tant que tu ne les retires pas. Passer quand même à ${max} ?`)) return;
+  b.disabled = true; say('m-edit', 'Enregistrement…');
+  try {
+    if (email && email.toLowerCase() !== was.toLowerCase()) await premium('admin_set_email', { id: acc.id, email });
+    if (plan !== acc.plan || max !== acc.max) await premium('admin_set_plan', { id: acc.id, plan, max });
+    if (gift !== (acc.gift || '')) await premium('admin_set_gift', { id: acc.id, gift });
+    if (note !== (acc.note || '')) await premium('admin_note', { id: acc.id, note });
+    editing = null; await loadPremium();
+  } catch (err) { b.disabled = false; say('m-edit', err.message, 'err'); }
+}
+// A device's code as the app shows it: capitals, the dash by itself after the fourth character,
+// eight characters at most. Only the app's own characters are kept (no 0, 1, I or O in a code).
+function formatCode(text, deleting) {
+  const c = text.toUpperCase().replace(/[^2-9A-HJ-NP-Z]/g, '').slice(0, 8);
+  // The dash comes as soon as the fourth character is typed; not while deleting, or it could never go.
+  return c.length > 4 ? c.slice(0, 4) + '-' + c.slice(4) : (c.length === 4 && !deleting ? c + '-' : c);
+}
+document.addEventListener('input', e => {
+  const i = e.target.closest && e.target.closest('#c-code, #add-code'); if (!i) return;
+  i.value = formatCode(i.value, (e.inputType || '').startsWith('delete'));
+});
+// « Activer » of the add-device form (Entrée does the same, Échap closes it).
+async function addDevice(b) {
+  const code = formatCode($('add-code').value, true);
+  if (code.length !== 9) return say('m-add', "Code incomplet : 8 caractères, comme 7K3M-Q9XA.", 'err');
+  b.disabled = true; say('m-add', 'Activation…');
+  try { await premium('admin_add_device', { id: b.dataset.id, code }); adding = null; await loadPremium(); }
+  catch (err) { b.disabled = false; say('m-add', err.message, 'err'); }
+}
+$('p-list').addEventListener('keydown', e => {
+  if (e.target.id !== 'add-code') return;
+  if (e.key === 'Enter') { e.preventDefault(); addDevice(e.target.closest('.edit').querySelector('[data-a="add_save"]')); }
+  if (e.key === 'Escape') { adding = null; drawPremium(); }
+});
+// In the form, the formula and the number of devices follow each other: Foyer proposes 5, and any
+// number above 1 is Foyer.
+$('p-list').addEventListener('change', e => {
+  const s = e.target.closest('select[data-f="plan"]'); if (!s) return;
+  s.closest('.edit').querySelector('[data-f="max"]').value = s.value === 'foyer' ? 5 : 1;
+});
+$('p-list').addEventListener('input', e => {
+  const n = e.target.closest('input[data-f="max"]'); if (!n) return;
+  n.closest('.edit').querySelector('[data-f="plan"]').value = parseInt(n.value, 10) > 1 ? 'foyer' : 'solo';
+});
+$('pq').oninput = drawPremium; $('pf').onchange = drawPremium; $('p-refresh').onclick = loadPremium;
+$('c-create').onclick = async () => {
+  say('m-create', 'Création…');
+  try {
+    const code = $('c-code').value.trim();
+    await premium('admin_create', { email: $('c-email').value.trim(), code, plan: $('c-plan').value, note: $('c-note').value.trim(), gift: $('c-gift').value });
+    say('m-create', code ? 'Compte créé et appareil activé : il passe en Premium tout seul, fenêtre Premium ouverte dans l\'appli (quelques secondes).'
+      : 'Compte créé : le client tape son e-mail dans Réglages > Premium, puis le code reçu.', 'ok');
+    $('c-email').value = ''; $('c-code').value = ''; $('c-note').value = ''; $('pf').value = 'active'; loadPremium();
+  } catch (err) { say('m-create', err.message, 'err'); }
+};
+
+// ---- The list --------------------------------------------------------------------------
+let all = [];
+async function loadList() {
+  say('m-list', 'Chargement…');
+  let data;
+  try { data = (await premium('admin_logs')).logs || []; } catch (e) { return say('m-list', e.message, 'err'); }
+  all = data; say('m-list', data.length ? '' : 'Aucun journal.'); drawList();
+}
+// Sorted by date (newest first) unless a column's title was clicked; clicked again: the other way.
+let sort = { k: 'date', desc: true };
+// "2.4.55" after "2.4.9": number by number.
+const vparts = v => String(v || '').split(/[^0-9]+/).filter(Boolean).map(Number);
+function vcmp(a, b) {
+  const x = vparts(a), y = vparts(b);
+  for (let i = 0; i < Math.max(x.length, y.length); i++) { const d = (x[i] ?? -1) - (y[i] ?? -1); if (d) return d; }
+  return 0;
+}
+const byDate = (a, b) => new Date(a.created_at) - new Date(b.created_at);
+document.querySelectorAll('th .sort').forEach(b => b.onclick = () => {
+  sort = sort.k === b.dataset.k ? { k: sort.k, desc: !sort.desc } : { k: b.dataset.k, desc: true };
+  drawList();
+});
+function drawList() {
+  const q = $('q').value.trim().toLowerCase();
+  const dir = sort.desc ? -1 : 1;
+  const rows = all.filter(r => !q || [r.code, r.device, r.app_version].join(' ').toLowerCase().includes(q))
+    // The same version: newest first.
+    .sort((a, b) => sort.k === 'version' ? (dir * vcmp(a.app_version, b.app_version) || -byDate(a, b)) : dir * byDate(a, b));
+  document.querySelectorAll('th .sort').forEach(b => {
+    const on = b.dataset.k === sort.k;
+    b.classList.toggle('on', on);
+    b.querySelector('i').textContent = on ? (sort.desc ? '↓' : '↑') : '';
+  });
+  $('rows').innerHTML = rows.map((r, i) => `<tr class="click${chosen.has(r.code) ? ' chosen' : ''}" data-i="${all.indexOf(r)}"><td class="pick"><input type="checkbox" tabindex="-1"${chosen.has(r.code) ? ' checked' : ''}></td><td>${when(r.created_at)}</td><td class="code">${esc(r.code || '—')}</td><td>${esc(r.device || '')}</td><td>${esc(r.app_version || '')}</td></tr>`).join('');
+  // Selecting: a click ticks the line instead of opening it.
+  document.querySelectorAll('#rows tr').forEach(tr => tr.onclick = () => {
+    const r = all[+tr.dataset.i];
+    if (!selecting) return openLog(r);
+    chosen.has(r.code) ? chosen.delete(r.code) : chosen.add(r.code);
+    drawList();
+  });
+  shown = rows;
+  drawSelection();
+}
+
+// ---- Selecting logs to delete ----------------------------------------------------------
+let selecting = false, shown = [];
+const chosen = new Set();
+function drawSelection() {
+  $('v-list').classList.toggle('selecting', selecting);
+  $('selbar').classList.toggle('hidden', !selecting);
+  // One button whose words change, as in the app.
+  $('b-select').textContent = selecting ? 'Annuler' : 'Sélectionner';
+  const everyShown = shown.length > 0 && shown.every(r => chosen.has(r.code));
+  $('b-all').textContent = everyShown ? 'Tout désélectionner' : 'Tout sélectionner';
+  $('b-delete').disabled = chosen.size === 0;
+  $('b-delete').textContent = chosen.size ? `Supprimer (${chosen.size})` : 'Supprimer';
+}
+$('b-select').onclick = () => { selecting = !selecting; chosen.clear(); say('m-sel', ''); drawList(); };
+// "Tout": the lines shown, the search applied.
+$('b-all').onclick = () => {
+  const everyShown = shown.length > 0 && shown.every(r => chosen.has(r.code));
+  shown.forEach(r => everyShown ? chosen.delete(r.code) : chosen.add(r.code));
+  drawList();
+};
+$('b-delete').onclick = async () => {
+  const codes = [...chosen];
+  if (!codes.length || !confirm(`Supprimer définitivement ${codes.length} ${codes.length > 1 ? 'journaux' : 'journal'} ? Impossible de revenir en arrière.`)) return;
+  say('m-sel', 'Suppression…');
+  let gone = [];
+  // By packs: a long list of codes would not fit in one address.
+  for (let i = 0; i < codes.length; i += 100) {
+    try {
+      const pack = codes.slice(i, i + 100);
+      const { deleted } = await premium('admin_logs_delete', { codes: pack });
+      if (deleted) gone = gone.concat(pack);
+    } catch (e) { say('m-sel', e.message, 'err'); break; }
+  }
+  const removed = new Set(gone);
+  all = all.filter(r => !removed.has(r.code));
+  removed.forEach(c => chosen.delete(c));
+  if (gone.length) say('m-list', `${gone.length} ${gone.length > 1 ? 'journaux supprimés' : 'journal supprimé'}.`, 'ok');
+  else if (!$('m-sel').classList.contains('err')) say('m-sel', 'Rien n\'a été supprimé : droits insuffisants ?', 'err');
+  if (!chosen.size) selecting = gone.length ? false : selecting;
+  drawList();
+};
+$('q').oninput = drawList;
+
+// ---- One log, made readable ------------------------------------------------------------
+const LINE = /^(\d{4}-\d\d-\d\d \d\d:\d\d:\d\d) ([IWE])\/(.+?) : ([\s\S]*)$/;
+const PLAYBACK = ['Démarrage', 'Lecture', 'Secours', 'Image', 'Son', 'Guide', 'Catalogue', 'Replay', 'Enregistrement', 'Générique'];
+let parsed = [], shownTags = new Set(['Démarrage', 'Lecture', 'Secours', 'Guide']);
+
+async function openLog(r) {
+  show('v-log');
+  $('l-title').textContent = `${r.code || 'Journal'} · ${when(r.created_at)}`;
+  $('l-summary').innerHTML = '<div class="stat"><span>Chargement…</span></div>';
+  $('l-problems').innerHTML = ''; $('l-timeline').innerHTML = ''; $('l-raw').innerHTML = '';
+  let text;
+  try {
+    const res = await premium('admin_log', { code: r.code, created_at: r.created_at });
+    if (res.error) throw new Error('Introuvable');
+    text = res.log || '';
+  } catch (e) { $('l-summary').innerHTML = `<div class="stat"><span>${esc(e.message)}</span></div>`; return; }
+  parsed = [];
+  for (const raw of text.split('\n')) {
+    const m = LINE.exec(raw);
+    if (m) parsed.push({ at: m[1], lvl: m[2], tag: m[3].trim(), text: m[4] });
+    else if (parsed.length && raw.trim()) parsed[parsed.length - 1].text += '\n' + raw;
+  }
+  summary(r); problems(); chips(); timeline(); raw();
+}
+
+function summary(r) {
+  const starts = parsed.filter(l => l.tag === 'Démarrage');
+  const last = (re) => { for (let i = starts.length - 1; i >= 0; i--) { const m = re.exec(starts[i].text); if (m) return m; } return null; };
+  const ready = parsed.filter(l => /appli prête en ([\d.]+) s/.test(l.text)).map(l => +/appli prête en ([\d.]+) s/.exec(l.text)[1]);
+  const premium = last(/Premium : (.*)/);
+  const sessions = starts.filter(l => /^Graal /.test(l.text)).length;
+  const stats = [
+    ['Appareil', r.device || '?'],
+    ['Version', r.app_version || '?'],
+    ['Premium', premium ? premium[1] : '?'],
+    ['Lancements dans le journal', sessions],
+    ['Dernier démarrage', ready.length ? ready[ready.length - 1] + ' s' : '?'],
+    ['Lignes', parsed.length],
+  ];
+  $('l-summary').innerHTML = stats.map(([k, v]) => `<div class="stat"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('');
+}
+
+function problems() {
+  const groups = [
+    ['Refus du serveur', l => /HTTP (4\d\d|5\d\d)|UDONTHAVEACCESS|Sorry for the inconvenience/.test(l.text), 'err'],
+    ['Coupures et secours', l => l.tag === 'Secours' && l.lvl !== 'I' || /Coupure|chargement n°/.test(l.text), 'warn'],
+    ['Gels de l’appli', l => l.tag === 'Blocage', 'warn'],
+    ['Erreurs', l => l.lvl === 'E', 'err'],
+    ['Autres avertissements', l => l.lvl === 'W', 'warn'],
+  ];
+  const used = new Set(); let html = '';
+  for (const [name, test, kind] of groups) {
+    const hits = parsed.filter((l, i) => !used.has(i) && test(l) && used.add(i));
+    if (!hits.length) continue;
+    html += `<h3><span class="pill ${kind}">${hits.length}</span> ${esc(name)}</h3><div class="lines">` +
+      hits.slice(-40).map(lineHtml).join('') + (hits.length > 40 ? `<div class="line t">… ${hits.length - 40} plus anciennes dans le journal brut</div>` : '') + '</div>';
+  }
+  $('l-problems').innerHTML = html || '<span class="pill ok">Rien d’anormal</span>';
+}
+
+function chips() {
+  const tags = [...new Set(parsed.map(l => l.tag))].sort((a, b) => (PLAYBACK.indexOf(a) + 1 || 99) - (PLAYBACK.indexOf(b) + 1 || 99));
+  $('l-chips').innerHTML = tags.map(t => `<button data-t="${esc(t)}" class="${shownTags.has(t) ? 'on' : ''}">${esc(t)} (${parsed.filter(l => l.tag === t).length})</button>`).join('');
+  document.querySelectorAll('#l-chips button').forEach(b => b.onclick = () => { const t = b.dataset.t; shownTags.has(t) ? shownTags.delete(t) : shownTags.add(t); chips(); timeline(); });
+}
+function timeline() { $('l-timeline').innerHTML = parsed.filter(l => shownTags.has(l.tag)).slice(-600).map(lineHtml).join('') || '<div class="line t">Choisis des catégories ci-dessus.</div>'; }
+function raw() {
+  const f = $('l-filter').value.trim().toLowerCase();
+  $('l-raw').innerHTML = parsed.filter(l => !f || (l.tag + ' ' + l.text).toLowerCase().includes(f)).slice(-3000).map(lineHtml).join('');
+}
+$('l-filter').oninput = raw;
+function lineHtml(l) { return `<div class="line ${l.lvl}"><span class="t">${esc(l.at.slice(5))}</span> <span class="g">${esc(l.tag)}</span> ${esc(l.text)}</div>`; }
+
+sb.auth.onAuthStateChange((event) => { if (event === 'SIGNED_OUT') show('v-login'); });
+route();
+</script>
+</body>
+</html>

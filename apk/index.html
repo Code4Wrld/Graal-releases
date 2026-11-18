@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Graal – APK</title>
+<meta name="robots" content="noindex">
+<script src="../lang.js"></script>
+<style>
+body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #0B081B; color: #EDEBF7; font: 18px/1.5 system-ui, sans-serif; text-align: center; padding: 24px; }
+a { color: #B79BFF; }
+</style>
+</head>
+<body>
+<div>
+  <p id="msg">Téléchargement de Graal…</p>
+  <p><a id="link" href="https://github.com/Code4Wrld/Graal-releases/releases/latest">Si rien ne se passe, cliquez ici.</a></p>
+</div>
+<script>
+// Same language as the rest of the site (../lang.js: ?lang=, the choice kept on graaltv.com, then the browser).
+const APK_TEXTS = {
+  fr: ['Téléchargement de Graal…', 'Si rien ne se passe, cliquez ici.'],
+  en: ['Downloading Graal…', 'If nothing happens, click here.'],
+  es: ['Descargando Graal…', 'Si no ocurre nada, haga clic aquí.'],
+  it: ['Download di Graal in corso…', 'Se non succede nulla, clicchi qui.'],
+  pt: ['A transferir o Graal…', 'Se nada acontecer, clique aqui.'],
+  de: ['Graal wird heruntergeladen …', 'Wenn nichts passiert, klicken Sie hier.'],
+};
+const apkLang = window.GraalLang ? GraalLang.pick() : 'fr';
+if (APK_TEXTS[apkLang]) {
+  document.documentElement.lang = apkLang;
+  document.getElementById('msg').textContent = APK_TEXTS[apkLang][0];
+  document.getElementById('link').textContent = APK_TEXTS[apkLang][1];
+}
+// graaltv.com/apk, typed in Downloader on a Fire TV: straight to the newest APK.
+fetch('https://api.github.com/repos/Code4Wrld/Graal-releases/releases/latest')
+  .then(r => r.ok ? r.json() : null)
+  .then(rel => {
+    const apk = rel && (rel.assets || []).find(a => /\.apk$/.test(a.name));
+    if (apk) { document.getElementById('link').href = apk.browser_download_url; location.replace(apk.browser_download_url); }
+  })
+  .catch(() => {});
+</script>
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mentions légales – Graal</title>
+<meta name="description" content="Mentions légales du site graaltv.com et de l'application Graal – IPTV Player : éditeur, hébergeur, propriété intellectuelle.">
+<style>
+/* Pages légales de graaltv.com : une colonne lisible sur tout écran, l'aspect sombre de Graal. */
+:root { color-scheme: dark; --bg: #0B081B; --panel: #17142B; --panel2: #1F1B38; --border: #343050; --text: #ECECF4; --dim: #B4B4CE; --faint: #8A8AA8; --accent: #B79BFF; --todo: #F5C518; --check: #7FD4FF; }
+* { box-sizing: border-box; }
+html { background: var(--bg); scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; color: var(--text); font: 17px/1.65 system-ui, "Segoe UI", Roboto, sans-serif; padding: 24px 16px 64px; overflow-wrap: break-word; }
+main, .top, .foot { max-width: 780px; margin: 0 auto; }
+a { color: var(--accent); overflow-wrap: anywhere; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.top { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin-bottom: 28px; font-size: 15px; }
+.top .home { font-weight: 700; text-decoration: none; margin-right: auto; }
+.top a:not(.home) { color: var(--faint); text-decoration: none; }
+.top a[aria-current] { color: var(--text); font-weight: 700; }
+.langs { display: flex; flex-wrap: wrap; gap: 4px; width: 100%; justify-content: flex-end; }
+.top .langs a { color: var(--faint); font-size: 13px; font-weight: 700; letter-spacing: .4px; padding: 3px 8px; border: 1px solid var(--border); border-radius: 8px; }
+.top .langs a[aria-current] { color: var(--text); border-color: var(--accent); background: var(--panel2); }
+.translated { font-size: 15px; }
+html.swap #page { visibility: hidden; }
+h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; margin: 0 0 8px; text-wrap: balance; }
+.date { color: var(--faint); margin: 0 0 24px; font-size: 15px; }
+h2 { font-size: 21px; line-height: 1.3; margin: 40px 0 10px; scroll-margin-top: 16px; }
+h3 { font-size: 17px; margin: 22px 0 6px; color: var(--text); }
+p, li, td { color: var(--dim); }
+p b, li b, td b, p strong { color: var(--text); }
+ul, ol { padding-left: 22px; }
+li { margin: 4px 0; }
+.box { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 14px 20px; margin: 16px 0; }
+.box p { margin: 6px 0; }
+.box.key { border-color: #5b4a99; background: var(--panel2); }
+.toc { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 12px 20px; margin: 20px 0 8px; font-size: 15px; }
+.toc b { display: block; margin-bottom: 4px; }
+.toc ol { margin: 0; padding-left: 22px; columns: 2 260px; column-gap: 28px; }
+.toc li { margin: 2px 0; break-inside: avoid; }
+.toc a { text-decoration: none; }
+.tablewrap { margin: 14px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.5; }
+th, td { text-align: left; vertical-align: top; padding: 9px 10px; border-bottom: 1px solid var(--border); }
+th { color: var(--text); background: var(--panel); font-weight: 700; }
+.todo { background: rgba(245, 197, 24, .15); color: var(--todo); border-radius: 6px; padding: 1px 6px; font-weight: 700; }
+.check { background: rgba(127, 212, 255, .13); color: var(--check); border-radius: 6px; padding: 1px 6px; font-weight: 700; }
+.form { background: var(--panel); border: 1px dashed var(--border); border-radius: 12px; padding: 12px 18px; }
+.foot { margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--border); color: var(--faint); font-size: 14px; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 12px; }
+.foot nav a { color: var(--dim); }
+.foot p { color: var(--faint); margin: 6px 0; }
+@media (max-width: 600px) {
+  body { font-size: 16px; padding-top: 18px; }
+  h2 { font-size: 19px; }
+  .top .home { width: 100%; }
+  .langs { justify-content: flex-start; }
+  /* Tableaux en fiches empilées : chaque cellule porte le nom de sa colonne. */
+  table, thead, tbody, tr, th, td { display: block; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; margin: 10px 0; padding: 4px 12px; }
+  td { border: 0; padding: 6px 0; }
+  td + td { border-top: 1px solid var(--border); }
+  td[data-label]::before { content: attr(data-label); display: block; color: var(--text); font-weight: 700; font-size: 13px; }
+}
+@media print {
+  :root { color-scheme: light; --bg: #fff; --panel: #f4f4f8; --panel2: #f4f4f8; --border: #ccc; --text: #000; --dim: #222; --faint: #444; --accent: #2a2a8a; }
+  body { padding: 0; }
+  .top, .toc, .langs { display: none; }
+}
+</style>
+<script src="../lang.js"></script>
+<script>(function () { var l = window.GraalLang ? GraalLang.pick() : 'fr'; document.documentElement.lang = l; if (l !== 'fr') document.documentElement.classList.add('swap'); })();</script>
+</head>
+<body>
+<div id="page">
+<nav class="top" aria-label="Pages légales"><a class="home" href="../?lang=fr">‹ Graal – IPTV Player</a> <a href="../cgv/?lang=fr">Conditions de vente</a> <a href="../confidentialite/?lang=fr">Confidentialité</a> <a href="../mentions-legales/?lang=fr" aria-current="page">Mentions légales</a>
+<span class="langs" role="group" aria-label="Langue"><a href="?lang=fr" hreflang="fr" lang="fr" data-setlang="fr" aria-current="true">FR</a> <a href="?lang=en" hreflang="en" lang="en" data-setlang="en">EN</a> <a href="?lang=es" hreflang="es" lang="es" data-setlang="es">ES</a> <a href="?lang=it" hreflang="it" lang="it" data-setlang="it">IT</a> <a href="?lang=pt" hreflang="pt" lang="pt" data-setlang="pt">PT</a> <a href="?lang=de" hreflang="de" lang="de" data-setlang="de">DE</a></span></nav>
+<main>
+<h1>Mentions légales</h1>
+<p class="date">Mises à jour le 18 novembre 2026.</p>
+
+<h2 id="editeur">Éditeur</h2>
+<p>Le site <b>graaltv.com</b> et l'application <b>Graal – IPTV Player</b> sont édités par :</p>
+<div class="box">
+  <p><b>Code4Wrld</b>, entreprise individuelle (EI)</p>
+  <p>Adresse : communiquée sur simple demande à <a href="mailto:contact@graaltv.com">contact@graaltv.com</a></p>
+  <p>E-mail : <a href="mailto:contact@graaltv.com">contact@graaltv.com</a></p>
+  <p>Immatriculation : en cours au RCS de Draguignan (numéro SIRET indiqué ici dès l'immatriculation).</p>
+  <p>TVA non applicable, article 293 B du CGI</p>
+</div>
+
+<h2 id="publication">Directeur de la publication</h2>
+<p>Code4Wrld, joignable à <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+
+<h2 id="hebergeur">Hébergeur</h2>
+<div class="box">
+  <p><b>OVH SAS</b> (hébergement web)</p>
+  <p>2 rue Kellermann, 59100 Roubaix, France</p>
+  <p>Téléphone : +33 9 72 10 10 07 · <a href="https://www.ovhcloud.com">ovhcloud.com</a></p>
+</div>
+<p>Les fichiers de mise à jour de l'application sont hébergés par GitHub, Inc. (États-Unis).</p>
+<p>Les services en ligne de l'application (compte Premium, synchronisation) sont hébergés par Supabase Inc., sur des serveurs situés à Paris (Union européenne). Voir la <a href="../confidentialite/?lang=fr">politique de confidentialité</a>.</p>
+
+<h2 id="contenu">Nature du service</h2>
+<p>Graal est un lecteur multimédia. Il ne fournit, n'héberge, ne vend, ne sollicite ni ne recommande aucune chaîne, playlist ou contenu audiovisuel, et n'est affilié à aucun fournisseur de contenus. Chaque utilisateur ajoute ses propres sources, sous sa responsabilité, et doit avoir le droit de les lire.</p>
+
+<h2 id="pi">Propriété intellectuelle</h2>
+<p>Le nom et le logo Graal, les textes, illustrations, captures, la charte graphique de ce site et l'application sont la propriété de l'éditeur et sont protégés par le code de la propriété intellectuelle. Toute reproduction, représentation ou adaptation, totale ou partielle, sans autorisation écrite est interdite, sauf exceptions prévues par la loi.</p>
+<p>Le logiciel Graal (son code, sa structure, son interface) est la propriété exclusive de l'éditeur ; tous droits réservés. Il est concédé en licence d'utilisation, jamais vendu. Sont interdits, sauf accord écrit : sa copie, sa modification, sa traduction, sa décompilation, son désassemblage et toute autre rétro-ingénierie, ainsi que la réutilisation de tout ou partie de son code, de sa structure ou de son interface dans un autre logiciel. Ces interdictions s'appliquent dans les limites de la loi (article L122-6-1 du code de la propriété intellectuelle) et ne concernent pas les bibliothèques libres utilisées par Graal, qui restent soumises à leur propre licence.</p>
+<p>Les captures d'écran présentées sur ce site sont des illustrations : les noms de chaînes, titres et images y sont remplacés par des éléments neutres ou proviennent de contenus libres. Les noms, logos et photos de tiers éventuellement affichés dans l'application appartiennent à leurs titulaires et ne sont cités qu'à titre d'information, sans affiliation ni approbation.</p>
+<p>Polices de caractères : DM Sans et Lexend (licence SIL Open Font License). Les fiches des films et séries de l'application utilisent l'API de TMDB, sans approbation ni certification de TMDB. Les composants libres de l'application et leurs licences sont listés dans <b>Paramètres › À propos</b>.</p>
+
+<h2 id="liens">Liens</h2>
+<p>Ce site peut renvoyer vers des sites tiers (boutiques d'applications, PayPal, autorités). Nous n'avons aucun contrôle sur leur contenu et n'en sommes pas responsables.</p>
+
+<h2 id="donnees">Données personnelles et cookies</h2>
+<p>Ce site ne dépose aucun cookie et ne mesure pas l'audience. Le traitement de vos données est décrit dans la <a href="../confidentialite/?lang=fr">politique de confidentialité</a>.</p>
+
+<h2 id="vente">Vente de Premium</h2>
+<p>Voir les <a href="../cgv/?lang=fr">conditions générales de vente</a>, qui indiquent notamment le médiateur de la consommation compétent.</p>
+</main>
+<footer class="foot">
+  <nav aria-label="Pages légales"><a href="../cgv/?lang=fr">Conditions de vente</a> <a href="../confidentialite/?lang=fr">Confidentialité</a> <a href="../mentions-legales/?lang=fr">Mentions légales</a></nav>
+  <p>Graal est un lecteur multimédia. Il ne fournit, n'héberge, ne vend ni ne recommande aucune chaîne, playlist ou contenu audiovisuel, et n'est affilié à aucun fournisseur. Chaque utilisateur est seul responsable des sources qu'il y ajoute et doit avoir le droit de les lire.</p>
+  <p>Contact : <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> · © 2026 Graal</p>
+</footer>
+</div>
+<template data-lang="en" data-title="Legal Notice – Graal" data-desc="Legal notice for the graaltv.com website and the Graal – IPTV Player application: publisher, hosting provider, intellectual property.">
+<nav class="top" aria-label="Legal pages"><a class="home" href="../?lang=en">‹ Graal – IPTV Player</a> <a href="../cgv/?lang=en">Terms of sale</a> <a href="../confidentialite/?lang=en">Privacy</a> <a href="../mentions-legales/?lang=en" aria-current="page">Legal notice</a>
+<span class="langs" role="group" aria-label="Language"><a href="?lang=fr" hreflang="fr" lang="fr" data-setlang="fr">FR</a> <a href="?lang=en" hreflang="en" lang="en" data-setlang="en" aria-current="true">EN</a> <a href="?lang=es" hreflang="es" lang="es" data-setlang="es">ES</a> <a href="?lang=it" hreflang="it" lang="it" data-setlang="it">IT</a> <a href="?lang=pt" hreflang="pt" lang="pt" data-setlang="pt">PT</a> <a href="?lang=de" hreflang="de" lang="de" data-setlang="de">DE</a></span></nav>
+<main>
+<p class="box translated" lang="en">Translation provided for information only; only the French version is legally binding. <a href="?lang=fr" hreflang="fr" lang="fr">Read the French version</a></p>
+<h1>Legal Notice</h1>
+<p class="date">Updated on 18 November 2026.</p>
+
+<h2 id="editeur">Publisher</h2>
+<p>The <b>graaltv.com</b> website and the <b>Graal – IPTV Player</b> application are published by:</p>
+<div class="box">
+  <p><b>Code4Wrld</b>, sole proprietorship (entreprise individuelle, EI)</p>
+  <p>Address: provided simply on request to <a href="mailto:contact@graaltv.com">contact@graaltv.com</a></p>
+  <p>E-mail: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a></p>
+  <p>Registration: in progress with the Trade and Companies Register (RCS) of Draguignan (SIRET number to be shown here once registered).</p>
+  <p>VAT not applicable, article 293 B of the French General Tax Code (CGI)</p>
+</div>
+
+<h2 id="publication">Publication director</h2>
+<p>Code4Wrld, reachable at <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+
+<h2 id="hebergeur">Hosting provider</h2>
+<div class="box">
+  <p><b>OVH SAS</b> (web hosting)</p>
+  <p>2 rue Kellermann, 59100 Roubaix, France</p>
+  <p>Telephone: +33 9 72 10 10 07 · <a href="https://www.ovhcloud.com">ovhcloud.com</a></p>
+</div>
+<p>The application's update files are hosted by GitHub, Inc. (United States).</p>
+<p>The application's online services (Premium account, synchronisation) are hosted by Supabase Inc., on servers located in Paris (European Union). See the <a href="../confidentialite/?lang=en">privacy policy</a>.</p>
+
+<h2 id="contenu">Nature of the service</h2>
+<p>Graal is a media player. It does not provide, host, sell, solicit or recommend any channel, playlist or audiovisual content, and is not affiliated with any content provider. Each user adds their own sources, under their own responsibility, and must have the right to play them.</p>
+
+<h2 id="pi">Intellectual property</h2>
+<p>The Graal name and logo, the texts, illustrations, screenshots, the visual identity of this website and the application are the property of the publisher and are protected by the French Intellectual Property Code (code de la propriété intellectuelle). Any reproduction, representation or adaptation, in whole or in part, without written authorisation is prohibited, except for the exceptions provided for by law.</p>
+<p>The Graal software (its code, its structure, its interface) is the exclusive property of the publisher; all rights reserved. It is licensed for use, never sold. The following are prohibited, except with written consent: copying, modifying, translating, decompiling, disassembling it and any other reverse engineering, as well as reusing all or part of its code, structure or interface in other software. These prohibitions apply within the limits of the law (article L122-6-1 of the French Intellectual Property Code) and do not concern the open-source libraries used by Graal, which remain subject to their own licences.</p>
+<p>The screenshots shown on this website are illustrations: channel names, titles and images in them are replaced with neutral elements or come from free content. Any third-party names, logos and photos that may be displayed in the application belong to their respective owners and are cited for information purposes only, without affiliation or endorsement.</p>
+<p>Fonts: DM Sans and Lexend (SIL Open Font License). The film and series details in the application use the TMDB API, without endorsement or certification by TMDB. The application's open-source components and their licences are listed in <b>Settings › About</b>.</p>
+
+<h2 id="liens">Links</h2>
+<p>This website may link to third-party websites (app stores, PayPal, authorities). We have no control over their content and are not responsible for it.</p>
+
+<h2 id="donnees">Personal data and cookies</h2>
+<p>This website does not set any cookies and does not measure audience. The processing of your data is described in the <a href="../confidentialite/?lang=en">privacy policy</a>.</p>
+
+<h2 id="vente">Sale of Premium</h2>
+<p>See the <a href="../cgv/?lang=en">general terms and conditions of sale</a>, which in particular identify the competent consumer mediator.</p>
+</main>
+<footer class="foot">
+  <nav aria-label="Legal pages"><a href="../cgv/?lang=en">Terms of sale</a> <a href="../confidentialite/?lang=en">Privacy</a> <a href="../mentions-legales/?lang=en">Legal notice</a></nav>
+  <p>Graal is a media player. It does not provide, host, sell or recommend any channel, playlist or audiovisual content, and is not affiliated with any provider. Each user is solely responsible for the sources they add and must have the right to play them.</p>
+  <p>Contact: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> · © 2026 Graal</p>
+</footer>
+</template>
+<template data-lang="es" data-title="Aviso legal – Graal" data-desc="Aviso legal del sitio graaltv.com y de la aplicación Graal – IPTV Player: editor, proveedor de alojamiento, propiedad intelectual.">
+<nav class="top" aria-label="Páginas legales"><a class="home" href="../?lang=es">‹ Graal – IPTV Player</a> <a href="../cgv/?lang=es">Condiciones de venta</a> <a href="../confidentialite/?lang=es">Privacidad</a> <a href="../mentions-legales/?lang=es" aria-current="page">Aviso legal</a>
+<span class="langs" role="group" aria-label="Idioma"><a href="?lang=fr" hreflang="fr" lang="fr" data-setlang="fr">FR</a> <a href="?lang=en" hreflang="en" lang="en" data-setlang="en">EN</a> <a href="?lang=es" hreflang="es" lang="es" data-setlang="es" aria-current="true">ES</a> <a href="?lang=it" hreflang="it" lang="it" data-setlang="it">IT</a> <a href="?lang=pt" hreflang="pt" lang="pt" data-setlang="pt">PT</a> <a href="?lang=de" hreflang="de" lang="de" data-setlang="de">DE</a></span></nav>
+<main>
+<p class="box translated" lang="es">Traducción a título informativo; solo la versión francesa da fe. <a href="?lang=fr" hreflang="fr" lang="fr">Leer la versión francesa</a></p>
+<h1>Aviso legal</h1>
+<p class="date">Actualizado el 18 de noviembre de 2026.</p>
+
+<h2 id="editeur">Editor</h2>
+<p>El sitio <b>graaltv.com</b> y la aplicación <b>Graal – IPTV Player</b> son editados por:</p>
+<div class="box">
+  <p><b>Code4Wrld</b>, empresa individual (entreprise individuelle, EI)</p>
+  <p>Dirección: se facilita previa simple solicitud a <a href="mailto:contact@graaltv.com">contact@graaltv.com</a></p>
+  <p>Correo electrónico: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a></p>
+  <p>Inscripción: en curso en el Registro Mercantil (RCS) de Draguignan (el número SIRET se indicará aquí en cuanto se produzca la inscripción).</p>
+  <p>IVA no aplicable, artículo 293 B del Código General de Impuestos francés (CGI)</p>
+</div>
+
+<h2 id="publication">Director de la publicación</h2>
+<p>Code4Wrld, localizable en <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+
+<h2 id="hebergeur">Proveedor de alojamiento</h2>
+<div class="box">
+  <p><b>OVH SAS</b> (alojamiento web)</p>
+  <p>2 rue Kellermann, 59100 Roubaix, Francia</p>
+  <p>Teléfono: +33 9 72 10 10 07 · <a href="https://www.ovhcloud.com">ovhcloud.com</a></p>
+</div>
+<p>Los archivos de actualización de la aplicación están alojados por GitHub, Inc. (Estados Unidos).</p>
+<p>Los servicios en línea de la aplicación (cuenta Premium, sincronización) están alojados por Supabase Inc., en servidores situados en París (Unión Europea). Véase la <a href="../confidentialite/?lang=es">política de privacidad</a>.</p>
+
+<h2 id="contenu">Naturaleza del servicio</h2>
+<p>Graal es un reproductor multimedia. No suministra, aloja, vende, solicita ni recomienda ningún canal, lista de reproducción ni contenido audiovisual, y no está afiliado a ningún proveedor de contenidos. Cada usuario añade sus propias fuentes, bajo su responsabilidad, y debe tener derecho a reproducirlas.</p>
+
+<h2 id="pi">Propiedad intelectual</h2>
+<p>El nombre y el logotipo Graal, los textos, ilustraciones, capturas, la identidad gráfica de este sitio y la aplicación son propiedad del editor y están protegidos por el Código de la Propiedad Intelectual francés (code de la propriété intellectuelle). Queda prohibida toda reproducción, representación o adaptación, total o parcial, sin autorización escrita, salvo las excepciones previstas por la ley.</p>
+<p>El software Graal (su código, su estructura, su interfaz) es propiedad exclusiva del editor; todos los derechos reservados. Se otorga bajo licencia de uso, nunca se vende. Quedan prohibidos, salvo acuerdo escrito: su copia, su modificación, su traducción, su descompilación, su desensamblado y cualquier otra ingeniería inversa, así como la reutilización de la totalidad o parte de su código, de su estructura o de su interfaz en otro software. Estas prohibiciones se aplican dentro de los límites de la ley (artículo L122-6-1 del Código de la Propiedad Intelectual francés) y no afectan a las bibliotecas libres utilizadas por Graal, que siguen sujetas a su propia licencia.</p>
+<p>Las capturas de pantalla presentadas en este sitio son ilustraciones: los nombres de canales, títulos e imágenes se han sustituido por elementos neutros o proceden de contenidos libres. Los nombres, logotipos y fotos de terceros que puedan mostrarse en la aplicación pertenecen a sus titulares y solo se citan a título informativo, sin afiliación ni respaldo.</p>
+<p>Tipografías: DM Sans y Lexend (licencia SIL Open Font License). Las fichas de películas y series de la aplicación utilizan la API de TMDB, sin respaldo ni certificación de TMDB. Los componentes libres de la aplicación y sus licencias figuran en <b>Ajustes › Acerca de</b>.</p>
+
+<h2 id="liens">Enlaces</h2>
+<p>Este sitio puede remitir a sitios de terceros (tiendas de aplicaciones, PayPal, autoridades). No tenemos ningún control sobre su contenido y no somos responsables de él.</p>
+
+<h2 id="donnees">Datos personales y cookies</h2>
+<p>Este sitio no instala ninguna cookie ni mide la audiencia. El tratamiento de sus datos se describe en la <a href="../confidentialite/?lang=es">política de privacidad</a>.</p>
+
+<h2 id="vente">Venta de Premium</h2>
+<p>Véanse las <a href="../cgv/?lang=es">condiciones generales de venta</a>, que indican en particular el mediador de consumo competente.</p>
+</main>
+<footer class="foot">
+  <nav aria-label="Páginas legales"><a href="../cgv/?lang=es">Condiciones de venta</a> <a href="../confidentialite/?lang=es">Privacidad</a> <a href="../mentions-legales/?lang=es">Aviso legal</a></nav>
+  <p>Graal es un reproductor multimedia. No proporciona, aloja, vende ni recomienda ningún canal, lista ni contenido audiovisual, y no está afiliado a ningún proveedor. Cada usuario es el único responsable de las fuentes que añade y debe tener derecho a reproducirlas.</p>
+  <p>Contacto: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> · © 2026 Graal</p>
+</footer>
+</template>
+<template data-lang="it" data-title="Note legali – Graal" data-desc="Note legali del sito graaltv.com e dell'applicazione Graal – IPTV Player: editore, hosting, proprietà intellettuale.">
+<nav class="top" aria-label="Pagine legali"><a class="home" href="../?lang=it">‹ Graal – IPTV Player</a> <a href="../cgv/?lang=it">Condizioni di vendita</a> <a href="../confidentialite/?lang=it">Privacy</a> <a href="../mentions-legales/?lang=it" aria-current="page">Note legali</a>
+<span class="langs" role="group" aria-label="Lingua"><a href="?lang=fr" hreflang="fr" lang="fr" data-setlang="fr">FR</a> <a href="?lang=en" hreflang="en" lang="en" data-setlang="en">EN</a> <a href="?lang=es" hreflang="es" lang="es" data-setlang="es">ES</a> <a href="?lang=it" hreflang="it" lang="it" data-setlang="it" aria-current="true">IT</a> <a href="?lang=pt" hreflang="pt" lang="pt" data-setlang="pt">PT</a> <a href="?lang=de" hreflang="de" lang="de" data-setlang="de">DE</a></span></nav>
+<main>
+<p class="box translated" lang="it">Traduzione a titolo informativo; fa fede solo la versione francese. <a href="?lang=fr" hreflang="fr" lang="fr">Leggi la versione francese</a></p>
+<h1>Note legali</h1>
+<p class="date">Aggiornate il 18 novembre 2026.</p>
+
+<h2 id="editeur">Editore</h2>
+<p>Il sito <b>graaltv.com</b> e l'applicazione <b>Graal – IPTV Player</b> sono pubblicati da:</p>
+<div class="box">
+  <p><b>Code4Wrld</b>, impresa individuale (entreprise individuelle, EI)</p>
+  <p>Indirizzo: comunicato su semplice richiesta a <a href="mailto:contact@graaltv.com">contact@graaltv.com</a></p>
+  <p>E-mail: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a></p>
+  <p>Iscrizione: in corso presso il Registro delle imprese (RCS) di Draguignan (numero SIRET indicato qui non appena avvenuta l'iscrizione).</p>
+  <p>IVA non applicabile, articolo 293 B del Codice generale delle imposte francese (CGI)</p>
+</div>
+
+<h2 id="publication">Direttore della pubblicazione</h2>
+<p>Code4Wrld, raggiungibile all'indirizzo <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+
+<h2 id="hebergeur">Hosting</h2>
+<div class="box">
+  <p><b>OVH SAS</b> (hosting web)</p>
+  <p>2 rue Kellermann, 59100 Roubaix, Francia</p>
+  <p>Telefono: +33 9 72 10 10 07 · <a href="https://www.ovhcloud.com">ovhcloud.com</a></p>
+</div>
+<p>I file di aggiornamento dell'applicazione sono ospitati da GitHub, Inc. (Stati Uniti).</p>
+<p>I servizi online dell'applicazione (account Premium, sincronizzazione) sono ospitati da Supabase Inc., su server situati a Parigi (Unione europea). Si veda l'<a href="../confidentialite/?lang=it">informativa sulla privacy</a>.</p>
+
+<h2 id="contenu">Natura del servizio</h2>
+<p>Graal è un lettore multimediale. Non fornisce, non ospita, non vende, non sollecita né raccomanda alcun canale, playlist o contenuto audiovisivo, e non è affiliato ad alcun fornitore di contenuti. Ogni utente aggiunge le proprie sorgenti, sotto la propria responsabilità, e deve avere il diritto di riprodurle.</p>
+
+<h2 id="pi">Proprietà intellettuale</h2>
+<p>Il nome e il logo Graal, i testi, le illustrazioni, le schermate, l'identità grafica di questo sito e l'applicazione sono di proprietà dell'editore e sono protetti dal Codice della proprietà intellettuale francese (code de la propriété intellectuelle). Qualsiasi riproduzione, rappresentazione o adattamento, totale o parziale, senza autorizzazione scritta è vietato, salvo le eccezioni previste dalla legge.</p>
+<p>Il software Graal (il suo codice, la sua struttura, la sua interfaccia) è di proprietà esclusiva dell'editore; tutti i diritti riservati. È concesso in licenza d'uso, mai venduto. Sono vietati, salvo accordo scritto: la sua copia, la sua modifica, la sua traduzione, la sua decompilazione, il suo disassemblaggio e qualsiasi altra forma di reverse engineering, nonché il riutilizzo di tutto o parte del suo codice, della sua struttura o della sua interfaccia in un altro software. Questi divieti si applicano nei limiti della legge (articolo L122-6-1 del Codice della proprietà intellettuale francese) e non riguardano le librerie libere utilizzate da Graal, che restano soggette alla propria licenza.</p>
+<p>Le schermate presentate su questo sito sono illustrazioni: i nomi dei canali, i titoli e le immagini vi sono sostituiti da elementi neutri o provengono da contenuti liberi. I nomi, i loghi e le foto di terzi eventualmente visualizzati nell'applicazione appartengono ai rispettivi titolari e sono citati solo a titolo informativo, senza affiliazione né approvazione.</p>
+<p>Caratteri tipografici: DM Sans e Lexend (licenza SIL Open Font License). Le schede dei film e delle serie dell'applicazione utilizzano l'API di TMDB, senza approvazione né certificazione da parte di TMDB. I componenti liberi dell'applicazione e le relative licenze sono elencati in <b>Impostazioni › Info</b>.</p>
+
+<h2 id="liens">Link</h2>
+<p>Questo sito può rimandare a siti di terzi (negozi di applicazioni, PayPal, autorità). Non abbiamo alcun controllo sul loro contenuto e non ne siamo responsabili.</p>
+
+<h2 id="donnees">Dati personali e cookie</h2>
+<p>Questo sito non installa alcun cookie e non misura il pubblico. Il trattamento dei Suoi dati è descritto nell'<a href="../confidentialite/?lang=it">informativa sulla privacy</a>.</p>
+
+<h2 id="vente">Vendita di Premium</h2>
+<p>Si vedano le <a href="../cgv/?lang=it">condizioni generali di vendita</a>, che indicano in particolare il mediatore dei consumatori competente.</p>
+</main>
+<footer class="foot">
+  <nav aria-label="Pagine legali"><a href="../cgv/?lang=it">Condizioni di vendita</a> <a href="../confidentialite/?lang=it">Privacy</a> <a href="../mentions-legales/?lang=it">Note legali</a></nav>
+  <p>Graal è un lettore multimediale. Non fornisce, ospita, vende né consiglia alcun canale, playlist o contenuto audiovisivo e non è affiliato ad alcun fornitore. Ogni utente è l'unico responsabile delle fonti che aggiunge e deve avere il diritto di riprodurle.</p>
+  <p>Contatto: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> · © 2026 Graal</p>
+</footer>
+</template>
+<template data-lang="pt" data-title="Aviso legal – Graal" data-desc="Aviso legal do site graaltv.com e da aplicação Graal – IPTV Player: editor, fornecedor de alojamento, propriedade intelectual.">
+<nav class="top" aria-label="Páginas legais"><a class="home" href="../?lang=pt">‹ Graal – IPTV Player</a> <a href="../cgv/?lang=pt">Condições de venda</a> <a href="../confidentialite/?lang=pt">Privacidade</a> <a href="../mentions-legales/?lang=pt" aria-current="page">Aviso legal</a>
+<span class="langs" role="group" aria-label="Idioma"><a href="?lang=fr" hreflang="fr" lang="fr" data-setlang="fr">FR</a> <a href="?lang=en" hreflang="en" lang="en" data-setlang="en">EN</a> <a href="?lang=es" hreflang="es" lang="es" data-setlang="es">ES</a> <a href="?lang=it" hreflang="it" lang="it" data-setlang="it">IT</a> <a href="?lang=pt" hreflang="pt" lang="pt" data-setlang="pt" aria-current="true">PT</a> <a href="?lang=de" hreflang="de" lang="de" data-setlang="de">DE</a></span></nav>
+<main>
+<p class="box translated" lang="pt">Tradução para informação; só a versão francesa faz fé. <a href="?lang=fr" hreflang="fr" lang="fr">Ler a versão francesa</a></p>
+<h1>Aviso legal</h1>
+<p class="date">Atualizado em 18 de novembro de 2026.</p>
+
+<h2 id="editeur">Editor</h2>
+<p>O site <b>graaltv.com</b> e a aplicação <b>Graal – IPTV Player</b> são editados por:</p>
+<div class="box">
+  <p><b>Code4Wrld</b>, empresa em nome individual (entreprise individuelle, EI)</p>
+  <p>Endereço: comunicado mediante simples pedido para <a href="mailto:contact@graaltv.com">contact@graaltv.com</a></p>
+  <p>E-mail: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a></p>
+  <p>Inscrição: em curso no Registo Comercial (RCS, registre du commerce et des sociétés) de Draguignan (número SIRET indicado aqui logo após a inscrição).</p>
+  <p>IVA não aplicável, artigo 293 B do Código Geral dos Impostos francês (CGI, code général des impôts)</p>
+</div>
+
+<h2 id="publication">Diretor da publicação</h2>
+<p>Code4Wrld, contactável através de <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+
+<h2 id="hebergeur">Fornecedor de alojamento</h2>
+<div class="box">
+  <p><b>OVH SAS</b> (alojamento web)</p>
+  <p>2 rue Kellermann, 59100 Roubaix, França</p>
+  <p>Telefone: +33 9 72 10 10 07 · <a href="https://www.ovhcloud.com">ovhcloud.com</a></p>
+</div>
+<p>Os ficheiros de atualização da aplicação são alojados pela GitHub, Inc. (Estados Unidos).</p>
+<p>Os serviços online da aplicação (conta Premium, sincronização) são alojados pela Supabase Inc., em servidores situados em Paris (União Europeia). Ver a <a href="../confidentialite/?lang=pt">política de privacidade</a>.</p>
+
+<h2 id="contenu">Natureza do serviço</h2>
+<p>O Graal é um leitor multimédia. Não fornece, não aloja, não vende, não solicita nem recomenda nenhum canal, playlist ou conteúdo audiovisual, e não está afiliado a nenhum fornecedor de conteúdos. Cada utilizador adiciona as suas próprias fontes, sob a sua responsabilidade, e deve ter o direito de as ler.</p>
+
+<h2 id="pi">Propriedade intelectual</h2>
+<p>O nome e o logótipo Graal, os textos, ilustrações, capturas de ecrã, a identidade gráfica deste site e a aplicação são propriedade do editor e estão protegidos pelo Código da Propriedade Intelectual francês (code de la propriété intellectuelle). É proibida qualquer reprodução, representação ou adaptação, total ou parcial, sem autorização escrita, salvo as exceções previstas na lei.</p>
+<p>O software Graal (o seu código, a sua estrutura, a sua interface) é propriedade exclusiva do editor; todos os direitos reservados. É concedido sob licença de utilização, nunca vendido. São proibidas, salvo acordo escrito: a sua cópia, modificação, tradução, descompilação, desmontagem e qualquer outra engenharia inversa, bem como a reutilização da totalidade ou de parte do seu código, da sua estrutura ou da sua interface noutro software. Estas proibições aplicam-se nos limites da lei (artigo L122-6-1 do Código da Propriedade Intelectual francês) e não abrangem as bibliotecas livres utilizadas pelo Graal, que continuam sujeitas à sua própria licença.</p>
+<p>As capturas de ecrã apresentadas neste site são ilustrações: os nomes de canais, títulos e imagens são substituídos por elementos neutros ou provêm de conteúdos livres. Os nomes, logótipos e fotografias de terceiros eventualmente apresentados na aplicação pertencem aos respetivos titulares e são citados apenas a título informativo, sem afiliação nem aprovação.</p>
+<p>Tipos de letra: DM Sans e Lexend (licença SIL Open Font License). As fichas de filmes e séries da aplicação utilizam a API do TMDB, sem aprovação nem certificação do TMDB. Os componentes livres da aplicação e as respetivas licenças estão listados em <b>Definições › Acerca de</b>.</p>
+
+<h2 id="liens">Ligações</h2>
+<p>Este site pode remeter para sites de terceiros (lojas de aplicações, PayPal, autoridades). Não temos qualquer controlo sobre o seu conteúdo e não somos responsáveis por ele.</p>
+
+<h2 id="donnees">Dados pessoais e cookies</h2>
+<p>Este site não instala nenhum cookie e não mede a audiência. O tratamento dos seus dados é descrito na <a href="../confidentialite/?lang=pt">política de privacidade</a>.</p>
+
+<h2 id="vente">Venda do Premium</h2>
+<p>Ver as <a href="../cgv/?lang=pt">condições gerais de venda</a>, que indicam nomeadamente o mediador de consumo competente.</p>
+</main>
+<footer class="foot">
+  <nav aria-label="Páginas legais"><a href="../cgv/?lang=pt">Condições de venda</a> <a href="../confidentialite/?lang=pt">Privacidade</a> <a href="../mentions-legales/?lang=pt">Aviso legal</a></nav>
+  <p>O Graal é um leitor multimédia. Não fornece, aloja, vende nem recomenda qualquer canal, lista ou conteúdo audiovisual, e não está afiliado a nenhum fornecedor. Cada utilizador é o único responsável pelas fontes que adiciona e deve ter o direito de as reproduzir.</p>
+  <p>Contacto: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> · © 2026 Graal</p>
+</footer>
+</template>
+<template data-lang="de" data-title="Impressum – Graal" data-desc="Impressum der Website graaltv.com und der Anwendung Graal – IPTV Player: Herausgeber, Hosting-Anbieter, geistiges Eigentum.">
+<nav class="top" aria-label="Rechtliche Seiten"><a class="home" href="../?lang=de">‹ Graal – IPTV Player</a> <a href="../cgv/?lang=de">Verkaufsbedingungen</a> <a href="../confidentialite/?lang=de">Datenschutz</a> <a href="../mentions-legales/?lang=de" aria-current="page">Impressum</a>
+<span class="langs" role="group" aria-label="Sprache"><a href="?lang=fr" hreflang="fr" lang="fr" data-setlang="fr">FR</a> <a href="?lang=en" hreflang="en" lang="en" data-setlang="en">EN</a> <a href="?lang=es" hreflang="es" lang="es" data-setlang="es">ES</a> <a href="?lang=it" hreflang="it" lang="it" data-setlang="it">IT</a> <a href="?lang=pt" hreflang="pt" lang="pt" data-setlang="pt">PT</a> <a href="?lang=de" hreflang="de" lang="de" data-setlang="de" aria-current="true">DE</a></span></nav>
+<main>
+<p class="box translated" lang="de">Übersetzung zur Information; maßgeblich ist allein die französische Fassung. <a href="?lang=fr" hreflang="fr" lang="fr">Französische Fassung lesen</a></p>
+<h1>Impressum</h1>
+<p class="date">Aktualisiert am 18. November 2026.</p>
+
+<h2 id="editeur">Herausgeber</h2>
+<p>Die Website <b>graaltv.com</b> und die Anwendung <b>Graal – IPTV Player</b> werden herausgegeben von:</p>
+<div class="box">
+  <p><b>Code4Wrld</b>, Einzelunternehmen (entreprise individuelle, EI)</p>
+  <p>Anschrift: auf einfache Anfrage an <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> erhältlich</p>
+  <p>E-Mail: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a></p>
+  <p>Registrierung: Eintragung in das Handels- und Gesellschaftsregister (RCS) Draguignan läuft (die SIRET-Nummer wird hier nach der Eintragung angegeben).</p>
+  <p>Keine Umsatzsteuer gemäß Artikel 293 B des französischen allgemeinen Steuergesetzbuchs (CGI)</p>
+</div>
+
+<h2 id="publication">Verantwortlich für den Inhalt</h2>
+<p>Code4Wrld, erreichbar unter <a href="mailto:contact@graaltv.com">contact@graaltv.com</a>.</p>
+
+<h2 id="hebergeur">Hosting-Anbieter</h2>
+<div class="box">
+  <p><b>OVH SAS</b> (Webhosting)</p>
+  <p>2 rue Kellermann, 59100 Roubaix, Frankreich</p>
+  <p>Telefon: +33 9 72 10 10 07 · <a href="https://www.ovhcloud.com">ovhcloud.com</a></p>
+</div>
+<p>Die Update-Dateien der Anwendung werden von GitHub, Inc. (Vereinigte Staaten) gehostet.</p>
+<p>Die Online-Dienste der Anwendung (Premium-Konto, Synchronisierung) werden von Supabase Inc. auf Servern in Paris (Europäische Union) gehostet. Siehe die <a href="../confidentialite/?lang=de">Datenschutzerklärung</a>.</p>
+
+<h2 id="contenu">Art des Dienstes</h2>
+<p>Graal ist ein Mediaplayer. Graal stellt keine Sender, Playlists oder audiovisuellen Inhalte bereit, hostet, verkauft, bewirbt oder empfiehlt keine solchen und ist mit keinem Inhalteanbieter verbunden. Jeder Nutzer fügt seine eigenen Quellen in eigener Verantwortung hinzu und muss berechtigt sein, sie wiederzugeben.</p>
+
+<h2 id="pi">Geistiges Eigentum</h2>
+<p>Der Name und das Logo Graal, die Texte, Illustrationen, Screenshots, das grafische Erscheinungsbild dieser Website sowie die Anwendung sind Eigentum des Herausgebers und durch das französische Gesetzbuch über das geistige Eigentum (code de la propriété intellectuelle) geschützt. Jede vollständige oder teilweise Vervielfältigung, Darstellung oder Bearbeitung ohne schriftliche Genehmigung ist untersagt, soweit das Gesetz keine Ausnahmen vorsieht.</p>
+<p>Die Software Graal (ihr Code, ihre Struktur, ihre Oberfläche) ist ausschließliches Eigentum des Herausgebers; alle Rechte vorbehalten. Sie wird zur Nutzung lizenziert, niemals verkauft. Ohne schriftliche Zustimmung sind untersagt: ihr Kopieren, ihre Änderung, ihre Übersetzung, ihre Dekompilierung, ihre Disassemblierung und jedes andere Reverse Engineering sowie die Wiederverwendung ihres Codes, ihrer Struktur oder ihrer Oberfläche, ganz oder teilweise, in einer anderen Software. Diese Verbote gelten in den Grenzen des Gesetzes (Artikel L122-6-1 des Gesetzbuchs über das geistige Eigentum) und betreffen nicht die von Graal verwendeten freien Bibliotheken, die weiterhin ihrer eigenen Lizenz unterliegen.</p>
+<p>Die auf dieser Website gezeigten Screenshots dienen der Veranschaulichung: Sendernamen, Titel und Bilder sind darin durch neutrale Elemente ersetzt oder stammen aus freien Inhalten. Namen, Logos und Fotos Dritter, die gegebenenfalls in der Anwendung angezeigt werden, gehören ihren Inhabern und werden nur zu Informationszwecken genannt, ohne Verbindung oder Billigung.</p>
+<p>Schriftarten: DM Sans und Lexend (Lizenz SIL Open Font License). Die Film- und Serienseiten der Anwendung nutzen die API von TMDB, ohne Billigung oder Zertifizierung durch TMDB. Die freien Komponenten der Anwendung und ihre Lizenzen sind unter <b>Einstellungen › Info</b> aufgeführt.</p>
+
+<h2 id="liens">Links</h2>
+<p>Diese Website kann auf Websites Dritter verweisen (App-Stores, PayPal, Behörden). Wir haben keinen Einfluss auf deren Inhalt und sind dafür nicht verantwortlich.</p>
+
+<h2 id="donnees">Personenbezogene Daten und Cookies</h2>
+<p>Diese Website setzt keine Cookies und führt keine Reichweitenmessung durch. Die Verarbeitung Ihrer Daten ist in der <a href="../confidentialite/?lang=de">Datenschutzerklärung</a> beschrieben.</p>
+
+<h2 id="vente">Verkauf von Premium</h2>
+<p>Siehe die <a href="../cgv/?lang=de">Allgemeinen Verkaufsbedingungen</a>, die insbesondere die zuständige Verbraucherschlichtungsstelle angeben.</p>
+</main>
+<footer class="foot">
+  <nav aria-label="Rechtliche Seiten"><a href="../cgv/?lang=de">Verkaufsbedingungen</a> <a href="../confidentialite/?lang=de">Datenschutz</a> <a href="../mentions-legales/?lang=de">Impressum</a></nav>
+  <p>Graal ist ein Mediaplayer. Er stellt keine Sender, Playlists oder audiovisuellen Inhalte bereit, hostet, verkauft oder empfiehlt sie nicht und ist mit keinem Anbieter verbunden. Jeder Nutzer ist allein für die hinzugefügten Quellen verantwortlich und muss das Recht haben, sie abzuspielen.</p>
+  <p>Kontakt: <a href="mailto:contact@graaltv.com">contact@graaltv.com</a> · © 2026 Graal</p>
+</footer>
+</template>
+<script>
+// Shows the version in the visitor's language (see ../lang.js); French stays in the page for readers without JavaScript.
+(function () {
+  var root = document.documentElement, lang = root.lang;
+  var tpl = lang !== 'fr' && document.querySelector('template[data-lang="' + lang + '"]');
+  if (tpl) {
+    var page = document.getElementById('page');
+    page.replaceChildren(tpl.content.cloneNode(true));
+    document.title = tpl.dataset.title;
+    document.querySelector('meta[name="description"]').content = tpl.dataset.desc;
+  } else root.lang = 'fr';
+  root.classList.remove('swap');
+  var target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (tpl && target) target.scrollIntoView();
+})();
+</script>
+</body>
+</html>
