@@ -18,22 +18,22 @@ LANGS = ["fr", "en", "es", "it", "pt", "de"]
 UI = {
     "fr": dict(names=["Conditions de vente", "Confidentialité", "Mentions légales"], nav="Pages légales", lang="Langue",
                contact="Contact", notice=None, readfr=None,
-               legal="Graal est un lecteur multimédia. Il ne fournit, n'héberge, ne vend ni ne recommande aucune chaîne, playlist ou contenu audiovisuel, et n'est affilié à aucun fournisseur. Chaque utilisateur est seul responsable des sources qu'il y ajoute et doit avoir le droit de les lire."),
+               legal="Graal est un lecteur multimédia. Il ne fournit, n'héberge, ne vend ni ne recommande aucune chaîne, playlist ou contenu audiovisuel. Chaque utilisateur est seul responsable des sources qu'il y ajoute et doit avoir le droit de les lire."),
     "en": dict(names=["Terms of sale", "Privacy", "Legal notice"], nav="Legal pages", lang="Language", contact="Contact",
                notice="Translation provided for information only; only the French version is legally binding.", readfr="Read the French version",
-               legal="Graal is a media player. It does not provide, host, sell or recommend any channel, playlist or audiovisual content, and is not affiliated with any provider. Each user is solely responsible for the sources they add and must have the right to play them."),
+               legal="Graal is a media player. It does not provide, host, sell or recommend any channel, playlist or audiovisual content. Each user is solely responsible for the sources they add and must have the right to play them."),
     "es": dict(names=["Condiciones de venta", "Privacidad", "Aviso legal"], nav="Páginas legales", lang="Idioma", contact="Contacto",
                notice="Traducción a título informativo; solo la versión francesa da fe.", readfr="Leer la versión francesa",
-               legal="Graal es un reproductor multimedia. No proporciona, aloja, vende ni recomienda ningún canal, lista ni contenido audiovisual, y no está afiliado a ningún proveedor. Cada usuario es el único responsable de las fuentes que añade y debe tener derecho a reproducirlas."),
+               legal="Graal es un reproductor multimedia. No proporciona, aloja, vende ni recomienda ningún canal, lista ni contenido audiovisual. Cada usuario es el único responsable de las fuentes que añade y debe tener derecho a reproducirlas."),
     "it": dict(names=["Condizioni di vendita", "Privacy", "Note legali"], nav="Pagine legali", lang="Lingua", contact="Contatto",
                notice="Traduzione a titolo informativo; fa fede solo la versione francese.", readfr="Leggi la versione francese",
-               legal="Graal è un lettore multimediale. Non fornisce, ospita, vende né consiglia alcun canale, playlist o contenuto audiovisivo e non è affiliato ad alcun fornitore. Ogni utente è l'unico responsabile delle fonti che aggiunge e deve avere il diritto di riprodurle."),
+               legal="Graal è un lettore multimediale. Non fornisce, ospita, vende né consiglia alcun canale, playlist o contenuto audiovisivo. Ogni utente è l'unico responsabile delle fonti che aggiunge e deve avere il diritto di riprodurle."),
     "pt": dict(names=["Condições de venda", "Privacidade", "Aviso legal"], nav="Páginas legais", lang="Idioma", contact="Contacto",
                notice="Tradução para informação; só a versão francesa faz fé.", readfr="Ler a versão francesa",
-               legal="O Graal é um leitor multimédia. Não fornece, aloja, vende nem recomenda qualquer canal, lista ou conteúdo audiovisual, e não está afiliado a nenhum fornecedor. Cada utilizador é o único responsável pelas fontes que adiciona e deve ter o direito de as reproduzir."),
+               legal="O Graal é um leitor multimédia. Não fornece, aloja, vende nem recomenda qualquer canal, lista ou conteúdo audiovisual. Cada utilizador é o único responsável pelas fontes que adiciona e deve ter o direito de as reproduzir."),
     "de": dict(names=["Verkaufsbedingungen", "Datenschutz", "Impressum"], nav="Rechtliche Seiten", lang="Sprache", contact="Kontakt",
                notice="Übersetzung zur Information; maßgeblich ist allein die französische Fassung.", readfr="Französische Fassung lesen",
-               legal="Graal ist ein Mediaplayer. Er stellt keine Sender, Playlists oder audiovisuellen Inhalte bereit, hostet, verkauft oder empfiehlt sie nicht und ist mit keinem Anbieter verbunden. Jeder Nutzer ist allein für die hinzugefügten Quellen verantwortlich und muss das Recht haben, sie abzuspielen."),
+               legal="Graal ist ein Mediaplayer. Er stellt keine Sender, Playlists oder audiovisuellen Inhalte bereit, hostet, verkauft oder empfiehlt sie nicht. Jeder Nutzer ist allein für die hinzugefügten Quellen verantwortlich und muss das Recht haben, sie abzuspielen."),
 }
 
 CSS = """
