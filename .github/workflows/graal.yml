@@ -11,6 +11,10 @@
 # Secrets de CE depot (Settings > Secrets and variables > Actions) :
 #   CODE_TOKEN            jeton GitHub fine-grained, "Contents: Read-only" sur Code4Wrld/Graal
 #   GRAAL_LICENCE_SECRET  le graal.licenceSecret de local.properties (sans lui, Premium serait offert)
+#   GRAAL_KEYSTORE2_B64, GRAAL_KEYSTORE2_PASSWORD, GRAAL_LINEAGE_B64
+#                         la cle de signature au nom de Code4Wrld (graal-2026.keystore), son mot de
+#                         passe et la preuve de lien avec l'ancienne cle (graal.lineage) : depuis la
+#                         1.0.64, Android 13 et plus voient cette cle, les plus anciens la premiere
 #   GRAAL_KEYSTORE_B64    la cle de signature de l'APK (graal.keystore), en base64 : sans la meme
 #                         cle, Android refuserait la mise a jour sur les appareils
 name: Graal
@@ -52,6 +56,9 @@ jobs:
         env:
           LICENCE: ${{ secrets.GRAAL_LICENCE_SECRET }}
           KEYSTORE: ${{ secrets.GRAAL_KEYSTORE_B64 }}
+          KEYSTORE2: ${{ secrets.GRAAL_KEYSTORE2_B64 }}
+          KEYSTORE2_PASSWORD: ${{ secrets.GRAAL_KEYSTORE2_PASSWORD }}
+          LINEAGE: ${{ secrets.GRAAL_LINEAGE_B64 }}
           TMDB: ${{ secrets.GRAAL_TMDB_KEY }}
         run: |
           # A secret pasted with a line end would break the key or the APK: kept bare.
@@ -61,6 +68,15 @@ jobs:
             exit 1
           fi
           printf '%s' "$KEYSTORE" | tr -d '\r\n ' | base64 -d > "$RUNNER_TEMP/graal.keystore"
+          # The second key: once a device has taken an APK signed with it, one without it is refused.
+          if [ -z "$KEYSTORE2" ] || [ -z "$KEYSTORE2_PASSWORD" ] || [ -z "$LINEAGE" ]; then
+            echo "::error::GRAAL_KEYSTORE2_B64, GRAAL_KEYSTORE2_PASSWORD ou GRAAL_LINEAGE_B64 absent : APK refuse (mise a jour impossible sur Android 13 et plus)."
+            exit 1
+          fi
+          umask 077
+          printf '%s' "$KEYSTORE2" | tr -d '\r\n ' | base64 -d > "$RUNNER_TEMP/graal-2026.keystore"
+          printf '%s' "$LINEAGE" | tr -d '\r\n ' | base64 -d > "$RUNNER_TEMP/graal.lineage"
+          printf '%s' "$KEYSTORE2_PASSWORD" | tr -d '\r\n' > "$RUNNER_TEMP/graal-2026.motdepasse"
           {
             echo "graal.licenceSecret=$LICENCE"
             echo "graal.keystore=$RUNNER_TEMP/graal.keystore"
@@ -75,7 +91,20 @@ jobs:
           ./gradlew ":$MODULE:assembleRelease" --console=plain -q
           VERSION=$(grep '^graal.version=' gradle.properties | cut -d= -f2 | tr -d '[:space:]')
           mkdir -p dist
-          cp "$MODULE/build/outputs/apk/release/$MODULE-release.apk" "dist/Graal-$VERSION.apk"
+          # Signed again with both keys: Android 13 and later see the Code4Wrld key (proved to follow
+          # the first one by the lineage), older ones still the first key. Checked before going out.
+          SIGNER=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)/apksigner
+          "$SIGNER" sign --ks "$RUNNER_TEMP/graal.keystore" --ks-key-alias androiddebugkey --ks-pass pass:android --key-pass pass:android \
+            --next-signer --ks "$RUNNER_TEMP/graal-2026.keystore" --ks-key-alias graal --ks-pass "file:$RUNNER_TEMP/graal-2026.motdepasse" \
+            --lineage "$RUNNER_TEMP/graal.lineage" --out "dist/Graal-$VERSION.apk" "$MODULE/build/outputs/apk/release/$MODULE-release.apk"
+          rm -f "dist/Graal-$VERSION.apk.idsig"
+          OLD=$("$SIGNER" verify --min-sdk-version 30 --max-sdk-version 30 --print-certs "dist/Graal-$VERSION.apk" | grep 'SHA-256' | head -1 | awk '{print $NF}')
+          NEW=$("$SIGNER" verify --min-sdk-version 34 --max-sdk-version 34 --print-certs "dist/Graal-$VERSION.apk" | grep 'SHA-256' | head -1 | awk '{print $NF}')
+          echo "cle vue par Android 12 et moins : $OLD ; par Android 13 et plus : $NEW"
+          if [ "$OLD" != "fd36fe008fd8665da1e39da5756266c07c4e6cc6754de0456d30c160315726d7" ] || [ "$NEW" != "20519d498f2f16cfe0ee6c462cfc2cb4f59a8577bd353f159f00df4ab88a130c" ]; then
+            echo "::error::Signature inattendue : APK refuse."
+            exit 1
+          fi
           ls -la dist
       - uses: actions/upload-artifact@v5
         with:
