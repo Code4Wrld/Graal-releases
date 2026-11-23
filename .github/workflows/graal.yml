@@ -120,7 +120,6 @@ jobs:
           # The notes are the code repo's Release body, written by tools/publier-version.ps1.
           GH_TOKEN="$CODE_TOKEN" gh release view "$TAG" -R "$CODE_REPO" --json body -q .body > notes.txt || echo "Graal ${TAG#v}" > notes.txt
           gh release create "$TAG" dist/* -R "${{ github.repository }}" --title "Graal ${TAG#v}" --notes-file notes.txt --latest
-          GH_TOKEN="$CODE_TOKEN" gh release upload "$TAG" dist/* -R "$CODE_REPO" --clobber || echo "::warning::APK non copie dans la Release du depot du code (jeton en lecture seule)."
 
   windows:
     runs-on: windows-latest
@@ -174,7 +173,6 @@ jobs:
           # The Release is created with the APK: wait for it (15 min at most).
           for i in $(seq 1 90); do gh release view "$TAG" -R "${{ github.repository }}" > /dev/null 2>&1 && break; sleep 10; done
           gh release upload "$TAG" dist/* -R "${{ github.repository }}" --clobber
-          GH_TOKEN="$CODE_TOKEN" gh release upload "$TAG" dist/* -R "$CODE_REPO" --clobber || echo "::warning::Fichiers non copies dans la Release du depot du code (jeton en lecture seule)."
 
   mac:
     strategy:
@@ -241,4 +239,3 @@ jobs:
           # The Release is created with the APK: wait for it (15 min at most).
           for i in $(seq 1 90); do gh release view "$TAG" -R "${{ github.repository }}" > /dev/null 2>&1 && break; sleep 10; done
           gh release upload "$TAG" dist/* -R "${{ github.repository }}" --clobber
-          GH_TOKEN="$CODE_TOKEN" gh release upload "$TAG" dist/* -R "$CODE_REPO" --clobber || echo "::warning::Fichiers non copies dans la Release du depot du code (jeton en lecture seule)."
