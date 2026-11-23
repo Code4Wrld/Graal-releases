@@ -723,6 +723,618 @@
      ]
     }
    ]
+  },
+  "basket": {
+   "competitions": [
+    "NBA",
+    "Euroligue",
+    "Betclic Élite",
+    "WNBA"
+   ],
+   "groups": [
+    {
+     "title": "NBA",
+     "kind": "team",
+     "items": [
+      "Atlanta Hawks",
+      "Boston Celtics",
+      "Brooklyn Nets",
+      "Charlotte Hornets",
+      "Chicago Bulls",
+      "Cleveland Cavaliers",
+      "Dallas Mavericks",
+      "Denver Nuggets",
+      "Detroit Pistons",
+      "Golden State Warriors",
+      "Houston Rockets",
+      "Indiana Pacers",
+      "Los Angeles Clippers",
+      "Los Angeles Lakers",
+      "Memphis Grizzlies",
+      "Miami Heat",
+      "Milwaukee Bucks",
+      "Minnesota Timberwolves",
+      "New Orleans Pelicans",
+      "New York Knicks",
+      "Oklahoma City Thunder",
+      "Orlando Magic",
+      "Philadelphia 76ers",
+      "Phoenix Suns",
+      "Portland Trail Blazers",
+      "Sacramento Kings",
+      "San Antonio Spurs",
+      "Toronto Raptors",
+      "Utah Jazz",
+      "Washington Wizards"
+     ]
+    },
+    {
+     "title": "Euroligue",
+     "kind": "team",
+     "items": [
+      "Real Madrid",
+      "FC Barcelone",
+      "Baskonia",
+      "Valence",
+      "Olympiakos",
+      "Panathinaïkos",
+      "Fenerbahçe",
+      "Anadolu Efes",
+      "Beşiktaş",
+      "Maccabi Tel-Aviv",
+      "Hapoel Tel-Aviv",
+      "ASVEL",
+      "Paris Basketball",
+      "Olimpia Milan",
+      "Virtus Bologne",
+      "Bayern Munich",
+      "Žalgiris Kaunas",
+      "Étoile Rouge de Belgrade",
+      "Partizan Belgrade",
+      "Dubaï Basketball"
+     ]
+    },
+    {
+     "title": "Betclic Élite",
+     "kind": "team",
+     "items": [
+      "ASVEL",
+      "BCM Gravelines-Dunkerque",
+      "Boulazac Basket Dordogne",
+      "Cholet Basket",
+      "Chorale de Roanne",
+      "Élan Béarnais",
+      "Élan Chalon",
+      "JDA Dijon",
+      "JL Bourg",
+      "Le Mans Sarthe Basket",
+      "Limoges CSP",
+      "Nanterre 92",
+      "Paris Basketball",
+      "Saint-Quentin Basket-Ball",
+      "SIG Strasbourg",
+      "SLUC Nancy"
+     ]
+    },
+    {
+     "title": "Équipes nationales",
+     "kind": "team",
+     "items": [
+      "France",
+      "États-Unis",
+      "Espagne",
+      "Serbie",
+      "Allemagne",
+      "Canada",
+      "Australie",
+      "Grèce",
+      "Italie",
+      "Slovénie",
+      "Lituanie"
+     ]
+    }
+   ]
+  },
+  "rugby": {
+   "competitions": [
+    "Top 14",
+    "Pro D2",
+    "Six Nations",
+    "Champions Cup",
+    "Challenge Cup",
+    "Rugby Championship",
+    "Coupe du monde"
+   ],
+   "groups": [
+    {
+     "title": "Top 14",
+     "kind": "team",
+     "items": [
+      "Aviron Bayonnais",
+      "Union Bordeaux-Bègles",
+      "Castres Olympique",
+      "ASM Clermont",
+      "Lyon OU",
+      "Montpellier Hérault Rugby",
+      "Stade Français Paris",
+      "Section Paloise",
+      "USA Perpignan",
+      "Racing 92",
+      "Stade Rochelais",
+      "RC Toulon",
+      "Stade Toulousain",
+      "RC Vannes"
+     ]
+    },
+    {
+     "title": "Pro D2",
+     "kind": "team",
+     "items": [
+      "SU Agen",
+      "Stade Aurillacois",
+      "AS Béziers",
+      "Biarritz Olympique",
+      "CA Brive",
+      "Colomiers Rugby",
+      "US Dax",
+      "FC Grenoble",
+      "US Montauban",
+      "RC Narbonne",
+      "Nissa Rugby",
+      "USON Nevers",
+      "Oyonnax Rugby",
+      "Provence Rugby",
+      "Soyaux Angoulême XV",
+      "Valence Romans Drôme Rugby"
+     ]
+    },
+    {
+     "title": "Équipes nationales",
+     "kind": "team",
+     "items": [
+      "France",
+      "Angleterre",
+      "Irlande",
+      "Écosse",
+      "Pays de Galles",
+      "Italie",
+      "Nouvelle-Zélande",
+      "Afrique du Sud",
+      "Australie",
+      "Argentine"
+     ]
+    }
+   ]
+  },
+  "hockey": {
+   "competitions": [
+    "NHL",
+    "Ligue Magnus",
+    "Championnat du monde"
+   ],
+   "groups": [
+    {
+     "title": "NHL",
+     "kind": "team",
+     "items": [
+      "Anaheim Ducks",
+      "Boston Bruins",
+      "Buffalo Sabres",
+      "Calgary Flames",
+      "Carolina Hurricanes",
+      "Chicago Blackhawks",
+      "Colorado Avalanche",
+      "Columbus Blue Jackets",
+      "Dallas Stars",
+      "Detroit Red Wings",
+      "Edmonton Oilers",
+      "Florida Panthers",
+      "Los Angeles Kings",
+      "Minnesota Wild",
+      "Montreal Canadiens",
+      "Nashville Predators",
+      "New Jersey Devils",
+      "New York Islanders",
+      "New York Rangers",
+      "Ottawa Senators",
+      "Philadelphia Flyers",
+      "Pittsburgh Penguins",
+      "San Jose Sharks",
+      "Seattle Kraken",
+      "St. Louis Blues",
+      "Tampa Bay Lightning",
+      "Toronto Maple Leafs",
+      "Utah Mammoth",
+      "Vancouver Canucks",
+      "Vegas Golden Knights",
+      "Washington Capitals",
+      "Winnipeg Jets"
+     ]
+    },
+    {
+     "title": "Ligue Magnus",
+     "kind": "team",
+     "items": [
+      "Gothiques d'Amiens",
+      "Ducs d'Angers",
+      "Hormadi Anglet",
+      "Boxers de Bordeaux",
+      "Diables Rouges de Briançon",
+      "Jokers de Cergy-Pontoise",
+      "Pionniers de Chamonix Mont-Blanc",
+      "Rapaces de Gap",
+      "Brûleurs de Loups de Grenoble",
+      "Spartiates de Marseille",
+      "Aigles de Nice",
+      "Dragons de Rouen"
+     ]
+    }
+   ]
+  },
+  "football-americain": {
+   "competitions": [
+    "NFL",
+    "Super Bowl"
+   ],
+   "groups": [
+    {
+     "title": "NFL",
+     "kind": "team",
+     "items": [
+      "Arizona Cardinals",
+      "Atlanta Falcons",
+      "Baltimore Ravens",
+      "Buffalo Bills",
+      "Carolina Panthers",
+      "Chicago Bears",
+      "Cincinnati Bengals",
+      "Cleveland Browns",
+      "Dallas Cowboys",
+      "Denver Broncos",
+      "Detroit Lions",
+      "Green Bay Packers",
+      "Houston Texans",
+      "Indianapolis Colts",
+      "Jacksonville Jaguars",
+      "Kansas City Chiefs",
+      "Las Vegas Raiders",
+      "Los Angeles Chargers",
+      "Los Angeles Rams",
+      "Miami Dolphins",
+      "Minnesota Vikings",
+      "New England Patriots",
+      "New Orleans Saints",
+      "New York Giants",
+      "New York Jets",
+      "Philadelphia Eagles",
+      "Pittsburgh Steelers",
+      "San Francisco 49ers",
+      "Seattle Seahawks",
+      "Tampa Bay Buccaneers",
+      "Tennessee Titans",
+      "Washington Commanders"
+     ]
+    }
+   ]
+  },
+  "baseball": {
+   "competitions": [
+    "MLB",
+    "World Series"
+   ],
+   "groups": [
+    {
+     "title": "MLB",
+     "kind": "team",
+     "items": [
+      "Arizona Diamondbacks",
+      "Athletics",
+      "Atlanta Braves",
+      "Baltimore Orioles",
+      "Boston Red Sox",
+      "Chicago Cubs",
+      "Chicago White Sox",
+      "Cincinnati Reds",
+      "Cleveland Guardians",
+      "Colorado Rockies",
+      "Detroit Tigers",
+      "Houston Astros",
+      "Kansas City Royals",
+      "Los Angeles Angels",
+      "Los Angeles Dodgers",
+      "Miami Marlins",
+      "Milwaukee Brewers",
+      "Minnesota Twins",
+      "New York Mets",
+      "New York Yankees",
+      "Philadelphia Phillies",
+      "Pittsburgh Pirates",
+      "San Diego Padres",
+      "San Francisco Giants",
+      "Seattle Mariners",
+      "St. Louis Cardinals",
+      "Tampa Bay Rays",
+      "Texas Rangers",
+      "Toronto Blue Jays",
+      "Washington Nationals"
+     ]
+    }
+   ]
+  },
+  "f1": {
+   "competitions": [
+    "Formule 1"
+   ],
+   "groups": [
+    {
+     "title": "Écuries",
+     "kind": "team",
+     "items": [
+      "McLaren",
+      "Ferrari",
+      "Mercedes",
+      "Red Bull Racing",
+      "Racing Bulls",
+      "Aston Martin",
+      "Alpine",
+      "Williams",
+      "Haas",
+      "Audi",
+      "Cadillac"
+     ]
+    },
+    {
+     "title": "Pilotes",
+     "kind": "person",
+     "items": [
+      "Lando Norris",
+      "Oscar Piastri",
+      "Charles Leclerc",
+      "Lewis Hamilton",
+      "George Russell",
+      "Kimi Antonelli",
+      "Max Verstappen",
+      "Isack Hadjar",
+      "Liam Lawson",
+      "Arvid Lindblad",
+      "Yuki Tsunoda",
+      "Fernando Alonso",
+      "Lance Stroll",
+      "Pierre Gasly",
+      "Franco Colapinto",
+      "Alexander Albon",
+      "Carlos Sainz",
+      "Esteban Ocon",
+      "Oliver Bearman",
+      "Rafael Câmara",
+      "Ryo Hirakawa",
+      "Nico Hülkenberg",
+      "Gabriel Bortoleto",
+      "Sergio Pérez",
+      "Valtteri Bottas"
+     ]
+    }
+   ]
+  },
+  "motogp": {
+   "competitions": [
+    "MotoGP",
+    "Moto2",
+    "Moto3"
+   ],
+   "groups": [
+    {
+     "title": "Équipes",
+     "kind": "team",
+     "items": [
+      "Ducati Lenovo Team",
+      "Aprilia Racing",
+      "Trackhouse MotoGP Team",
+      "Gresini Racing",
+      "VR46 Racing Team",
+      "LCR Honda",
+      "Honda HRC Castrol",
+      "Monster Energy Yamaha",
+      "Prima Pramac Yamaha",
+      "Red Bull KTM Factory Racing",
+      "Red Bull KTM Tech3"
+     ]
+    },
+    {
+     "title": "Pilotes",
+     "kind": "person",
+     "items": [
+      "Marc Márquez",
+      "Francesco Bagnaia",
+      "Marco Bezzecchi",
+      "Jorge Martín",
+      "Raúl Fernández",
+      "Ai Ogura",
+      "Álex Márquez",
+      "Fermín Aldeguer",
+      "Fabio Di Giannantonio",
+      "Franco Morbidelli",
+      "Johann Zarco",
+      "Diogo Moreira",
+      "Joan Mir",
+      "Luca Marini",
+      "Fabio Quartararo",
+      "Álex Rins",
+      "Jack Miller",
+      "Toprak Razgatlıoğlu",
+      "Pedro Acosta",
+      "Brad Binder",
+      "Maverick Viñales",
+      "Enea Bastianini"
+     ]
+    }
+   ]
+  },
+  "rallye": {
+   "competitions": [
+    "WRC",
+    "Dakar"
+   ],
+   "groups": [
+    {
+     "title": "Écuries",
+     "kind": "team",
+     "items": [
+      "Toyota Gazoo Racing",
+      "Hyundai Motorsport",
+      "M-Sport Ford"
+     ]
+    },
+    {
+     "title": "Pilotes",
+     "kind": "person",
+     "items": [
+      "Sébastien Ogier",
+      "Elfyn Evans",
+      "Takamoto Katsuta",
+      "Oliver Solberg",
+      "Sami Pajari",
+      "Thierry Neuville",
+      "Adrien Fourmaux",
+      "Hayden Paddon",
+      "Esapekka Lappi",
+      "Dani Sordo",
+      "Josh McErlean",
+      "Jon Armstrong",
+      "Grégoire Munster",
+      "Mārtiņš Sesks"
+     ]
+    }
+   ]
+  },
+  "tennis": {
+   "competitions": [
+    "Roland-Garros",
+    "Wimbledon",
+    "Open d'Australie",
+    "US Open",
+    "Coupe Davis",
+    "Masters 1000",
+    "ATP Finals"
+   ],
+   "groups": [
+    {
+     "title": "ATP",
+     "kind": "person",
+     "items": [
+      "Alexander Zverev",
+      "Jannik Sinner",
+      "Carlos Alcaraz",
+      "Ben Shelton",
+      "Daniil Medvedev",
+      "Arthur Fils",
+      "Flavio Cobolli",
+      "Frances Tiafoe",
+      "Taylor Fritz",
+      "Rafael Jódar",
+      "Alex de Minaur",
+      "Novak Djokovic",
+      "Tommy Paul",
+      "Jiří Lehečka",
+      "Jakub Menšík",
+      "Alejandro Davidovich Fokina",
+      "Félix Auger-Aliassime",
+      "Casper Ruud",
+      "Brandon Nakashima",
+      "Francisco Cerúndolo",
+      "Luciano Darderi",
+      "Learner Tien",
+      "Andrey Rublev",
+      "Karen Khachanov",
+      "Alexander Bublik",
+      "Valentin Vacherot",
+      "Lorenzo Musetti",
+      "Alexander Blockx",
+      "Tomás Martín Etcheverry",
+      "Hubert Hurkacz"
+     ]
+    },
+    {
+     "title": "WTA",
+     "kind": "person",
+     "items": [
+      "Elena Rybakina",
+      "Mirra Andreeva",
+      "Aryna Sabalenka",
+      "Coco Gauff",
+      "Jessica Pegula",
+      "Elina Svitolina",
+      "Linda Nosková",
+      "Karolína Muchová",
+      "Iga Świątek",
+      "Marta Kostyuk",
+      "Diana Shnaider",
+      "Maja Chwalińska",
+      "Iva Jovic",
+      "Elise Mertens",
+      "Alexandra Eala",
+      "Sorana Cîrstea",
+      "Naomi Osaka",
+      "Leylah Fernandez",
+      "Madison Keys",
+      "Belinda Bencic",
+      "Victoria Mboko",
+      "Zheng Qinwen",
+      "Amanda Anisimova",
+      "Marie Bouzková",
+      "Jelena Ostapenko",
+      "Anna Kalinskaya",
+      "Emma Navarro",
+      "Anastasia Potapova",
+      "Maria Sakkari",
+      "Nikola Bartůňková"
+     ]
+    }
+   ]
+  },
+  "tennis-de-table": {
+   "competitions": [
+    "WTT",
+    "Championnats du monde",
+    "Championnats d'Europe",
+    "Pro A"
+   ],
+   "groups": [
+    {
+     "title": "Joueurs et joueuses",
+     "kind": "person",
+     "items": [
+      "Sora Matsushima",
+      "Tomokazu Harimoto",
+      "Félix Lebrun",
+      "Wang Chuqin",
+      "Lin Yun-ju",
+      "Truls Möregårdh",
+      "Hugo Calderano",
+      "Jang Woo-jin",
+      "Alexis Lebrun",
+      "Lin Shidong",
+      "Patrick Franziska",
+      "Zhou Qihao",
+      "Wen Ruibo",
+      "Darko Jorgić",
+      "Shunsuke Togami",
+      "Wang Manyu",
+      "Sun Yingsha",
+      "Miwa Harimoto",
+      "Kuai Man",
+      "Wang Yidi",
+      "Hina Hayata",
+      "Chen Xingtong",
+      "Chen Yi",
+      "Hitomi Sato",
+      "Satsuki Odo",
+      "Simon Gauzy",
+      "Prithika Pavade",
+      "Jianan Yuan"
+     ]
+    }
+   ]
   }
  }
 }
