@@ -65,10 +65,16 @@
  "sports": {
   "handball": {
    "competitions": [
-    "Liqui Moly Starligue",
+    "Starligue",
     "Ligue des champions EHF",
     "Championnat du monde",
-    "Championnat d'Europe"
+    "Championnat d'Europe",
+    "Proligue",
+    "Ligue Butagaz Énergie",
+    "Bundesliga",
+    "Liga Asobal",
+    "Ligue européenne EHF",
+    "Ligue des champions EHF féminine"
    ],
    "groups": [
     {
@@ -159,6 +165,152 @@
       "Tamara Horacek",
       "Henny Reistad"
      ]
+    },
+    {
+     "title": "Proligue",
+     "kind": "team",
+     "items": [
+      "Istres Provence Handball",
+      "Dijon Métropole Handball",
+      "US Ivry Handball",
+      "Pontault-Combault Handball",
+      "Pau Billère Handball",
+      "JS Cherbourg",
+      "Valence Handball",
+      "US Créteil Handball",
+      "HBC Cournon-d'Auvergne",
+      "Grand Besançon Doubs Handball",
+      "Frontignan Handball",
+      "Sarrebourg Moselle-Sud Handball",
+      "US Saintes Handball",
+      "Massy Essonne Handball",
+      "Draguignan Var Handball",
+      "Élite Val d'Oise Handball"
+     ]
+    },
+    {
+     "title": "Ligue Butagaz Énergie",
+     "kind": "team",
+     "items": [
+      "Brest Bretagne Handball",
+      "Metz Handball",
+      "Chambray Touraine Handball",
+      "Saint-Amand Handball",
+      "JDA Dijon Handball",
+      "OGC Nice Handball",
+      "Handball Plan-de-Cuques",
+      "ES Besançon Féminin",
+      "Paris 92",
+      "Strasbourg Achenheim Truchtersheim Handball",
+      "Toulon Métropole Var Handball",
+      "Stella Saint-Maur Handball"
+     ]
+    },
+    {
+     "title": "Bundesliga",
+     "kind": "team",
+     "items": [
+      "HBW Balingen-Weilstetten",
+      "Bergischer HC",
+      "Füchse Berlin",
+      "SG BBM Bietigheim",
+      "ThSV Eisenach",
+      "HC Erlangen",
+      "SG Flensburg-Handewitt",
+      "Frisch Auf Göppingen",
+      "VfL Gummersbach",
+      "HSV Hambourg",
+      "TSV Hannover-Burgdorf",
+      "THW Kiel",
+      "TBV Lemgo",
+      "SC Magdebourg",
+      "MT Melsungen",
+      "Rhein-Neckar Löwen",
+      "TVB Stuttgart",
+      "HSG Wetzlar"
+     ]
+    },
+    {
+     "title": "Liga Asobal",
+     "kind": "team",
+     "items": [
+      "Ademar León",
+      "Atlético Valladolid",
+      "FC Barcelone",
+      "Bidasoa Irún",
+      "BM Caserío Ciudad Real",
+      "BM Cangas",
+      "BM Cuenca",
+      "BM Eón Alicante",
+      "BM Granollers",
+      "BM Logroño La Rioja",
+      "BM Nava",
+      "BM Puente Genil",
+      "BM Puerto Sagunto",
+      "BM Proin Sevilla",
+      "BM Torrelavega",
+      "BM Villa de Aranda"
+     ]
+    },
+    {
+     "title": "Ligue européenne EHF",
+     "kind": "team",
+     "items": [
+      "Elverum Handball",
+      "RK Nexe",
+      "Hammarby Handball",
+      "Saint-Raphaël Var Handball",
+      "Limoges Handball",
+      "Madeira Andebol SAD",
+      "Bidasoa Irún",
+      "FH Hafnarfjörður",
+      "Kadetten Schaffhouse",
+      "RK Izviđač",
+      "Chambéry Savoie Mont Blanc Handball",
+      "CSM Bucarest",
+      "IK Sävehof",
+      "Bergischer HC",
+      "MRK Sesvete",
+      "Tatran Prešov",
+      "SG Flensburg-Handewitt",
+      "BM Granollers",
+      "HC Buzău",
+      "Águas Santas",
+      "BM Torrelavega",
+      "TTH Holstebro",
+      "Benfica Lisbonne",
+      "Baník Karviná",
+      "VfL Gummersbach",
+      "Wybrzeże Gdańsk",
+      "BM Logroño La Rioja",
+      "Eurofarm Pelister",
+      "Slovan Ljubljana",
+      "Valur Reykjavik",
+      "Mors-Thy Håndbold",
+      "Tatabánya KC"
+     ]
+    },
+    {
+     "title": "Ligue des champions EHF féminine",
+     "kind": "team",
+     "items": [
+      "Team Esbjerg",
+      "FTC Budapest",
+      "Brest Bretagne Handball",
+      "CSM Bucarest",
+      "Borussia Dortmund Handball",
+      "Sola HK",
+      "Budućnost Podgorica",
+      "Krim Ljubljana",
+      "Metz Handball",
+      "Győri ETO KC",
+      "Gloria Bistrița",
+      "Storhamar Handball",
+      "Podravka Koprivnica",
+      "Odense Håndbold",
+      "Nykøbing Falster",
+      "HSG Blomberg-Lippe"
+     ]
     }
    ]
   },
@@ -167,7 +319,12 @@
     "IPL",
     "Coupe du monde",
     "The Ashes",
-    "Big Bash League"
+    "Big Bash League",
+    "The Hundred",
+    "Pakistan Super League",
+    "SA20",
+    "Caribbean Premier League",
+    "Major League Cricket"
    ],
    "groups": [
     {
@@ -220,6 +377,85 @@
       "Rashid Khan",
       "Shaheen Afridi",
       "Mitchell Starc"
+     ]
+    },
+    {
+     "title": "Big Bash League",
+     "kind": "team",
+     "items": [
+      "Adelaide Strikers",
+      "Brisbane Heat",
+      "Hobart Hurricanes",
+      "Melbourne Renegades",
+      "Melbourne Stars",
+      "Perth Scorchers",
+      "Sydney Sixers",
+      "Sydney Thunder"
+     ]
+    },
+    {
+     "title": "The Hundred",
+     "kind": "team",
+     "items": [
+      "Birmingham Phoenix",
+      "London Spirit",
+      "Manchester Super Giants",
+      "MI London",
+      "Southern Brave",
+      "Sunrisers Leeds",
+      "Trent Rockets",
+      "Welsh Fire"
+     ]
+    },
+    {
+     "title": "Pakistan Super League",
+     "kind": "team",
+     "items": [
+      "Hyderabad Kingsmen",
+      "Islamabad United",
+      "Karachi Kings",
+      "Lahore Qalandars",
+      "Multan Sultans",
+      "Peshawar Zalmi",
+      "Quetta Gladiators",
+      "Rawalpindiz"
+     ]
+    },
+    {
+     "title": "SA20",
+     "kind": "team",
+     "items": [
+      "Durban's Super Giants",
+      "Joburg Super Kings",
+      "MI Cape Town",
+      "Paarl Royals",
+      "Pretoria Capitals",
+      "Sunrisers Eastern Cape"
+     ]
+    },
+    {
+     "title": "Caribbean Premier League",
+     "kind": "team",
+     "items": [
+      "Antigua & Barbuda Falcons",
+      "Barbados Tridents",
+      "Guyana Amazon Warriors",
+      "Jamaica Kingsmen",
+      "St Kitts & Nevis Patriots",
+      "Saint Lucia Kings",
+      "Trinbago Knight Riders"
+     ]
+    },
+    {
+     "title": "Major League Cricket",
+     "kind": "team",
+     "items": [
+      "Los Angeles Knight Riders",
+      "MI New York",
+      "San Francisco Unicorns",
+      "Seattle Orcas",
+      "Texas Super Kings",
+      "Washington Freedom"
      ]
     }
    ]
@@ -368,10 +604,13 @@
   },
   "volley": {
    "competitions": [
-    "Marmara SpikeLigue",
+    "Alterna Volstar",
     "Ligue des champions CEV",
     "Ligue des nations",
-    "Championnat du monde"
+    "Championnat du monde",
+    "Saforelle Volstar",
+    "SuperLega",
+    "Tauron Liga"
    ],
    "groups": [
     {
@@ -407,6 +646,107 @@
       "Paola Egonu",
       "Tijana Bošković",
       "Gabi Guimarães"
+     ]
+    },
+    {
+     "title": "Alterna Volstar",
+     "kind": "team",
+     "items": [
+      "Montpellier Volley",
+      "Stade Poitevin Volley",
+      "Tours Volley-Ball",
+      "Tourcoing Lille Métropole Volley",
+      "Spacer's Toulouse",
+      "Arago de Sète",
+      "Plessis-Robinson Volley-Ball",
+      "Nice Volley-Ball",
+      "AS Cannes Volley-Ball",
+      "Paris Volley",
+      "Narbonne Volley",
+      "Chaumont Volley-Ball 52",
+      "Saint-Nazaire Volley-Ball Atlantique",
+      "Royan Atlantique Volley-Ball"
+     ]
+    },
+    {
+     "title": "Saforelle Volstar",
+     "kind": "team",
+     "items": [
+      "Béziers Volley",
+      "Bordeaux-Mérignac Volley",
+      "RC Cannes",
+      "VBC Chamalières",
+      "Évreux Volley-Ball",
+      "France Avenir 2024",
+      "Volero Le Cannet",
+      "Levallois Paris Saint-Cloud",
+      "Volley Mulhouse Alsace",
+      "Neptunes de Nantes",
+      "Saint-Dié-des-Vosges Volley-Ball",
+      "Terville Florange OC",
+      "Vandœuvre Nancy Volley-Ball"
+     ]
+    },
+    {
+     "title": "SuperLega",
+     "kind": "team",
+     "items": [
+      "Cisterna Volley",
+      "Cuneo Volley",
+      "Lube Civitanova",
+      "Prata di Pordenone",
+      "Vero Volley Monza",
+      "Modena Volley",
+      "Pallavolo Padova",
+      "Allianz Milano",
+      "Pérouse",
+      "Trentino Volley",
+      "Verona Volley",
+      "Piacenza Volley"
+     ]
+    },
+    {
+     "title": "Tauron Liga",
+     "kind": "team",
+     "items": [
+      "Warta Zawiercie",
+      "LUK Lublin",
+      "Projekt Varsovie",
+      "Resovia Rzeszów",
+      "Skra Bełchatów",
+      "AZS Olsztyn",
+      "ZAKSA Kędzierzyn-Koźle",
+      "Trefl Gdańsk",
+      "Ślepsk Suwałki",
+      "Jastrzębie Barkom",
+      "Stilon Gorzów",
+      "ChKS Chełm",
+      "Norwid Częstochowa",
+      "GKS Katowice"
+     ]
+    },
+    {
+     "title": "Ligue des champions CEV",
+     "kind": "team",
+     "items": [
+      "Berlin Recycling Volleys",
+      "Galatasaray Istanbul",
+      "Panathinaïkos Athènes",
+      "Pérouse",
+      "Ziraat Bankası Ankara",
+      "Montpellier Volley",
+      "Dinamo Bucarest",
+      "Warta Zawiercie",
+      "SVG Lüneburg",
+      "VK Karlovarsko",
+      "Guaguas Las Palmas",
+      "Lube Civitanova",
+      "Projekt Varsovie",
+      "VC Maaseik",
+      "Trentino Volley",
+      "LUK Lublin",
+      "Verona Volley",
+      "Tours Volley-Ball"
      ]
     }
    ]
@@ -519,7 +859,8 @@
     "SailGP",
     "America's Cup",
     "The Ocean Race",
-    "Solitaire du Figaro"
+    "Solitaire du Figaro",
+    "Équipes SailGP"
    ],
    "groups": [
     {
@@ -729,7 +1070,15 @@
     "NBA",
     "Euroligue",
     "Betclic Élite",
-    "WNBA"
+    "WNBA",
+    "Élite 2",
+    "Nationale 1",
+    "Liga ACB",
+    "Lega Basket Serie A",
+    "Basketball Bundesliga",
+    "EuroCup",
+    "Ligue des champions FIBA",
+    "La Boulangère Wonderligue"
    ],
    "groups": [
     {
@@ -832,6 +1181,228 @@
       "Slovénie",
       "Lituanie"
      ]
+    },
+    {
+     "title": "Élite 2",
+     "kind": "team",
+     "items": [
+      "ADA Blois",
+      "Aix Maurienne Savoie Basket",
+      "Alliance Sport Alsace",
+      "ALM Évreux",
+      "Antibes Sharks",
+      "Caen Basket Calvados",
+      "Champagne Basket",
+      "Denain Voltaire",
+      "Fos Provence Basket",
+      "Hyères-Toulon Var Basket",
+      "JA Vichy",
+      "Levallois Sporting Club",
+      "Nantes Basket Hermine",
+      "Orléans Loiret Basket",
+      "Poitiers Basket 86",
+      "Rouen Métropole Basket",
+      "SCABB Saint-Étienne Métropole",
+      "Stade Rochelais Basket",
+      "STB Le Havre",
+      "UJAP Quimper"
+     ]
+    },
+    {
+     "title": "Nationale 1",
+     "kind": "team",
+     "items": [
+      "Andrézieux-Bouthéon Loire Sud Basket",
+      "AS Loon-Plage",
+      "Aurore de Vitré",
+      "BC Orchies",
+      "Berck Rang-du-Fliers",
+      "Besançon Avenir Comtois",
+      "C'Chartres Basket Masculin",
+      "CEP Lorient",
+      "Étoile Angers Basket",
+      "Étoile de Charleville-Mézières",
+      "JSA Bordeaux",
+      "Les Sables Vendée Basket",
+      "LyonSO Basket",
+      "Mulhouse Mustangs",
+      "Pays de Fougères Basket",
+      "Pays Salonais Basket",
+      "Pôle France Basket",
+      "Saint-Vallier Basket Drôme",
+      "SOM Boulogne-sur-Mer",
+      "Toulouse Basketball Club",
+      "Tours Métropole Basket",
+      "Union Rennes Basket",
+      "Union Tarbes-Lourdes Pyrénées Basket",
+      "US Laval",
+      "Val de Seine Basket",
+      "Vendée Challans Basket"
+     ]
+    },
+    {
+     "title": "Liga ACB",
+     "kind": "team",
+     "items": [
+      "Baskonia Vitoria",
+      "Bàsquet Girona",
+      "Bàsquet Manresa",
+      "Básquet Coruña",
+      "BC Andorre",
+      "Bilbao Basket",
+      "Breogán Lugo",
+      "Casademont Saragosse",
+      "FC Barcelone",
+      "Força Lleida",
+      "Joventut Badalone",
+      "La Laguna Tenerife",
+      "Obradoiro",
+      "Real Madrid",
+      "San Pablo Burgos",
+      "UCAM Murcie",
+      "Unicaja Málaga",
+      "Valence Basket"
+     ]
+    },
+    {
+     "title": "Lega Basket Serie A",
+     "kind": "team",
+     "items": [
+      "APU Udine",
+      "Aquila Trente",
+      "BC Roma",
+      "Derthona Tortona",
+      "Maxima Roma",
+      "Napoli Basket",
+      "Olimpia Milan",
+      "Pallacanestro Cantù",
+      "Pallacanestro Reggiana",
+      "Pallacanestro Trieste",
+      "Pallacanestro Varese",
+      "Reyer Venise",
+      "Scafati Basket",
+      "Scaligera Vérone",
+      "Trévise Basket",
+      "Virtus Bologne"
+     ]
+    },
+    {
+     "title": "Basketball Bundesliga",
+     "kind": "team",
+     "items": [
+      "Alba Berlin",
+      "Bamberg Baskets",
+      "Baskets Oldenburg",
+      "Bayern Munich",
+      "Gladiators Trier",
+      "Hamburg Towers",
+      "Löwen Braunschweig",
+      "Mitteldeutscher BC",
+      "Niners Chemnitz",
+      "Phoenix Hagen",
+      "Rasta Vechta",
+      "Ratiopharm Ulm",
+      "Riesen Ludwigsburg",
+      "Rostock Seawolves",
+      "Science City Jena",
+      "Skyliners Francfort",
+      "Telekom Baskets Bonn",
+      "Würzburg Baskets"
+     ]
+    },
+    {
+     "title": "EuroCup",
+     "kind": "team",
+     "items": [
+      "Aquila Trente",
+      "Aris Salonique",
+      "Bahçeşehir Koleji",
+      "Balkan Botevgrad",
+      "Bàsquet Manresa",
+      "BC Roma",
+      "BC Šiauliai",
+      "Budućnost Podgorica",
+      "Cedevita Olimpija",
+      "Derthona Tortona",
+      "Hapoël Jérusalem",
+      "JL Bourg-en-Bresse",
+      "KK Bosna",
+      "La Laguna Tenerife",
+      "Le Mans Sarthe Basket",
+      "Lietkabelis Panevėžys",
+      "London Lions",
+      "Maxima Roma",
+      "Napoli Basket",
+      "Neptūnas Klaipėda",
+      "Niners Chemnitz",
+      "PAOK Salonique",
+      "Ratiopharm Ulm",
+      "Reyer Venise",
+      "Rīgas Zeļļi",
+      "Rostock Seawolves",
+      "San Pablo Burgos",
+      "Skyliners Francfort",
+      "Śląsk Wrocław",
+      "Tofaş Bursa",
+      "Türk Telekom",
+      "U-BT Cluj-Napoca"
+     ]
+    },
+    {
+     "title": "Ligue des champions FIBA",
+     "kind": "team",
+     "items": [
+      "AEK Athènes",
+      "Alba Berlin",
+      "Antwerp Giants",
+      "Bamberg Baskets",
+      "Bilbao Basket",
+      "BK Pardubice",
+      "Bnei Herzliya",
+      "Cholet Basket",
+      "Cibona Zagreb",
+      "Falco Szombathely",
+      "FC Porto",
+      "Galatasaray",
+      "Hapoël Holon",
+      "Igokea",
+      "Joventut Badalone",
+      "Juventus Utena",
+      "Legia Varsovie",
+      "Nanterre 92",
+      "Pallacanestro Reggiana",
+      "Pallacanestro Varese",
+      "Peristeri",
+      "Rasta Vechta",
+      "Rytas Vilnius",
+      "Sabah Bakou",
+      "Salon Vilpas",
+      "SIG Strasbourg",
+      "Slavia Prague",
+      "Spartak Subotica",
+      "Telekom Baskets Bonn",
+      "Trabzonspor",
+      "UCAM Murcie",
+      "Unicaja Málaga"
+     ]
+    },
+    {
+     "title": "La Boulangère Wonderligue",
+     "kind": "team",
+     "items": [
+      "ASVEL Féminin",
+      "Basket Landes",
+      "Basket Lattes Montpellier",
+      "BC La Tronche-Meylan",
+      "C'Chartres Basket Féminin",
+      "Charnay Basket Bourgogne Sud",
+      "ESB Villeneuve-d'Ascq",
+      "Flammes Carolo Basket",
+      "Landerneau Bretagne Basket",
+      "Tango Bourges Basket",
+      "Toulouse Métropole Basket",
+      "UF Angers Basket 49"
+     ]
     }
    ]
   },
@@ -843,7 +1414,11 @@
     "Champions Cup",
     "Challenge Cup",
     "Rugby Championship",
-    "Coupe du monde"
+    "Coupe du monde",
+    "Nationale",
+    "Premiership",
+    "United Rugby Championship",
+    "Élite 1 féminine"
    ],
    "groups": [
     {
@@ -903,6 +1478,134 @@
       "Australie",
       "Argentine"
      ]
+    },
+    {
+     "title": "Nationale",
+     "kind": "team",
+     "items": [
+      "Stade Montois",
+      "US Carcassonne",
+      "SC Albi",
+      "SO Chambéry",
+      "RC Massy",
+      "CA Périgueux",
+      "Rouen Normandie Rugby",
+      "US Bressane",
+      "CS Bourgoin-Jallieu",
+      "RC Suresnes",
+      "Rennes Étudiants Club",
+      "Olympique Marcquois",
+      "RC Orléans",
+      "CS Vienne"
+     ]
+    },
+    {
+     "title": "Premiership",
+     "kind": "team",
+     "items": [
+      "Bath Rugby",
+      "Bristol Bears",
+      "Exeter Chiefs",
+      "Gloucester Rugby",
+      "Harlequins",
+      "Leicester Tigers",
+      "Newcastle Red Bulls",
+      "Northampton Saints",
+      "Sale Sharks",
+      "Saracens"
+     ]
+    },
+    {
+     "title": "United Rugby Championship",
+     "kind": "team",
+     "items": [
+      "Leinster",
+      "Munster",
+      "Ulster",
+      "Connacht",
+      "Glasgow Warriors",
+      "Edinburgh Rugby",
+      "Cardiff Rugby",
+      "Dragons RFC",
+      "Ospreys",
+      "Scarlets",
+      "Benetton Rugby",
+      "Zebre Parma",
+      "Bulls",
+      "Lions",
+      "Sharks",
+      "Stormers"
+     ]
+    },
+    {
+     "title": "Champions Cup",
+     "kind": "team",
+     "items": [
+      "Bath Rugby",
+      "Bristol Bears",
+      "Exeter Chiefs",
+      "Gloucester Rugby",
+      "Leicester Tigers",
+      "Northampton Saints",
+      "Sale Sharks",
+      "Saracens",
+      "Union Bordeaux-Bègles",
+      "ASM Clermont",
+      "Stade Rochelais",
+      "Montpellier Hérault Rugby",
+      "Section Paloise",
+      "Racing 92",
+      "Stade Français Paris",
+      "Stade Toulousain",
+      "Connacht",
+      "Leinster",
+      "Munster",
+      "Glasgow Warriors",
+      "Bulls",
+      "Lions",
+      "Stormers",
+      "Cardiff Rugby"
+     ]
+    },
+    {
+     "title": "Challenge Cup",
+     "kind": "team",
+     "items": [
+      "Harlequins",
+      "Newcastle Red Bulls",
+      "Aviron Bayonnais",
+      "Castres Olympique",
+      "Lyon OU",
+      "USA Perpignan",
+      "RC Toulon",
+      "RC Vannes",
+      "Ulster",
+      "Benetton Rugby",
+      "Zebre Parma",
+      "Edinburgh Rugby",
+      "Dragons RFC",
+      "Ospreys",
+      "Scarlets",
+      "Sharks",
+      "Cheetahs",
+      "Black Lion"
+     ]
+    },
+    {
+     "title": "Élite 1 féminine",
+     "kind": "team",
+     "items": [
+      "ASM Rugby Féminin",
+      "Stade Toulousain",
+      "Stade Bordelais",
+      "Blagnac Rugby Féminin",
+      "Montpellier Hérault Rugby",
+      "AC Bobigny 93",
+      "FC Grenoble",
+      "Lyon OU",
+      "RC Toulon",
+      "Stade Rochelais"
+     ]
     }
    ]
   },
@@ -910,7 +1613,11 @@
    "competitions": [
     "NHL",
     "Ligue Magnus",
-    "Championnat du monde"
+    "Championnat du monde",
+    "Division 1",
+    "National League",
+    "DEL",
+    "Ligue des champions de hockey"
    ],
    "groups": [
     {
@@ -968,13 +1675,108 @@
       "Aigles de Nice",
       "Dragons de Rouen"
      ]
+    },
+    {
+     "title": "Division 1",
+     "kind": "team",
+     "items": [
+      "Bisons de Neuilly-sur-Marne",
+      "Comètes de Meudon",
+      "Corsaires de Dunkerque",
+      "Corsaires de Nantes",
+      "Diables rouges de Valenciennes",
+      "Dogs de Cholet",
+      "Drakkars de Caen",
+      "Éléphants de Chambéry",
+      "Étoile noire de Strasbourg",
+      "Lions de Lyon",
+      "Lynx de Valence",
+      "Ours de Villard-de-Lans",
+      "Pingouins de Morzine-Avoriaz",
+      "Remparts de Tours",
+      "Wildcats d'Épinal",
+      "Yétis du Mont-Blanc"
+     ]
+    },
+    {
+     "title": "National League",
+     "kind": "team",
+     "items": [
+      "EHC Kloten",
+      "EV Zoug",
+      "Fribourg-Gottéron",
+      "Genève-Servette",
+      "HC Ajoie",
+      "HC Ambrì-Piotta",
+      "HC Bienne",
+      "HC Davos",
+      "HC Lugano",
+      "Lausanne HC",
+      "Rapperswil-Jona Lakers",
+      "SC Berne",
+      "SCL Tigers",
+      "ZSC Lions"
+     ]
+    },
+    {
+     "title": "DEL",
+     "kind": "team",
+     "items": [
+      "Adler Mannheim",
+      "Augsburger Panther",
+      "Eisbären Berlin",
+      "ERC Ingolstadt",
+      "Fischtown Pinguins Bremerhaven",
+      "Grizzlys Wolfsburg",
+      "Iserlohn Roosters",
+      "Kölner Haie",
+      "Krefeld Pinguine",
+      "Löwen Francfort",
+      "Nürnberg Ice Tigers",
+      "Red Bull Munich",
+      "Schwenninger Wild Wings",
+      "Straubing Tigers"
+     ]
+    },
+    {
+     "title": "Ligue des champions de hockey",
+     "kind": "team",
+     "items": [
+      "Adler Mannheim",
+      "Bílí Tygři Liberec",
+      "Boxers de Bordeaux",
+      "Dynamo Pardubice",
+      "Eisbären Berlin",
+      "Fribourg-Gottéron",
+      "Frölunda HC",
+      "Genève-Servette",
+      "GKS Tychy",
+      "Graz 99ers",
+      "HC Davos",
+      "Herning Blue Fox",
+      "HK Nitra",
+      "KAC Klagenfurt",
+      "Kölner Haie",
+      "KooKoo Kouvola",
+      "Red Bull Salzbourg",
+      "Rögle BK",
+      "SaiPa Lappeenranta",
+      "Skellefteå AIK",
+      "Škoda Plzeň",
+      "Storhamar",
+      "Tappara Tampere",
+      "Växjö Lakers"
+     ]
     }
    ]
   },
   "football-americain": {
    "competitions": [
     "NFL",
-    "Super Bowl"
+    "Super Bowl",
+    "European Football Alliance",
+    "American Football League Europe",
+    "NCAA"
    ],
    "groups": [
     {
@@ -1014,13 +1816,72 @@
       "Tennessee Titans",
       "Washington Commanders"
      ]
+    },
+    {
+     "title": "European Football Alliance",
+     "kind": "team",
+     "items": [
+      "Frankfurt Galaxy",
+      "Munich Ravens",
+      "Nordic Storm",
+      "Paris Musketeers",
+      "Prague Lions",
+      "Raiders Tirol"
+     ]
+    },
+    {
+     "title": "American Football League Europe",
+     "kind": "team",
+     "items": [
+      "Alpine Rams",
+      "Berlin Thunder",
+      "Firenze Red Lions",
+      "London Warriors",
+      "Panthers Wrocław",
+      "Paris Lights",
+      "Rhein Fire",
+      "Vienna Vikings"
+     ]
+    },
+    {
+     "title": "NCAA",
+     "kind": "team",
+     "items": [
+      "Georgia Bulldogs",
+      "Utah Utes",
+      "Notre Dame Fighting Irish",
+      "Miami Hurricanes",
+      "Texas Longhorns",
+      "Alabama Crimson Tide",
+      "Tennessee Volunteers",
+      "Wake Forest Demon Deacons",
+      "Texas Tech Red Raiders",
+      "UCLA Bruins",
+      "BYU Cougars",
+      "Indiana Hoosiers",
+      "Iowa Hawkeyes",
+      "Oregon Ducks",
+      "USC Trojans",
+      "Arizona Wildcats",
+      "Houston Cougars",
+      "Louisville Cardinals",
+      "Oklahoma Sooners",
+      "Florida Gators",
+      "Liberty Flames",
+      "Boise State Broncos",
+      "Ole Miss Rebels",
+      "Missouri Tigers",
+      "Ohio State Buckeyes"
+     ]
     }
    ]
   },
   "baseball": {
    "competitions": [
     "MLB",
-    "World Series"
+    "World Series",
+    "NPB",
+    "KBO"
    ],
    "groups": [
     {
@@ -1057,6 +1918,40 @@
       "Texas Rangers",
       "Toronto Blue Jays",
       "Washington Nationals"
+     ]
+    },
+    {
+     "title": "NPB",
+     "kind": "team",
+     "items": [
+      "Chunichi Dragons",
+      "Hanshin Tigers",
+      "Hiroshima Toyo Carp",
+      "Tokyo Yakult Swallows",
+      "Yokohama DeNA BayStars",
+      "Yomiuri Giants",
+      "Chiba Lotte Marines",
+      "Fukuoka SoftBank Hawks",
+      "Hokkaido Nippon-Ham Fighters",
+      "Orix Buffaloes",
+      "Saitama Seibu Lions",
+      "Tohoku Rakuten Golden Eagles"
+     ]
+    },
+    {
+     "title": "KBO",
+     "kind": "team",
+     "items": [
+      "Doosan Bears",
+      "Hanwha Eagles",
+      "Kia Tigers",
+      "Kiwoom Heroes",
+      "KT Wiz",
+      "LG Twins",
+      "Lotte Giants",
+      "NC Dinos",
+      "Samsung Lions",
+      "SSG Landers"
      ]
     }
    ]
